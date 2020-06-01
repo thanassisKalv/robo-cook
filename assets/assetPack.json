@@ -1,0 +1,166 @@
+{ 
+    "level1": [
+        {
+            "type": "image",
+            "key": "empty",
+            "url": "assets/images/tiles/empty.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "quest",
+            "url": "assets/images/tiles/quest-ingre.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "roadEW",
+            "url": "assets/images/tiles/roadEW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "start",
+            "url": "assets/images/tiles/start.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-simple",
+            "url": "assets/images/tiles/path-simple.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q1",
+            "url": "assets/images/tiles/path-quest-1.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q2",
+            "url": "assets/images/tiles/path-quest-2.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q3",
+            "url": "assets/images/tiles/path-quest-3.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "arrow",
+            "url": "assets/images/sprites/arrow.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "bg",
+            "url": "assets/images/background-scene-1.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "gamebg",
+            "url": "assets/images/defenseBG.jpg",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "moneyholder",
+            "url": "assets/images/moneyholder.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "healthholder",
+            "url": "assets/images/healthHolder.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "title",
+            "url": "assets/images/title.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "btnAgain",
+            "url": "assets/images/btnAgain.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "btnBegin",
+            "url": "assets/images/btnBegin.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "gameoverText",
+            "url": "assets/images/gameoverText.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q1-info",
+            "url": "assets/questions/path-q1.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q2-info",
+            "url": "assets/questions/path-q2.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-q3-info",
+            "url": "assets/questions/path-q3.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "close",
+            "url": "assets/questions/x-mark.png",
+            "overwrite": false
+        },
+        {
+            "type": "spritesheet",
+            "key": "human",
+            "url": "assets/images/sprites/Human/human_regular_hair.png",
+            "frameWidth": 60,
+            "frameHeight": 60
+        },
+        {
+            "type": "spritesheet",
+            "key": "baldguy",
+            "url": "assets/images/sprites/Human/human_regular_bald.png",
+            "frameWidth": 60,
+            "frameHeight": 60
+        },
+        {
+            "type": "spritesheet",
+            "key": "skeleton",
+            "url": "assets/images/sprites/Skeleton/skeleton.png",
+            "frameWidth": 60,
+            "frameHeight": 60
+        },
+        {
+            "type": "spritesheet",
+            "key": "pig",
+            "url": "assets/images/sprites/Pig/pig.png",
+            "frameWidth": 60,
+            "frameHeight": 60
+        },
+        {
+            "type": "json",
+            "key": "mapdata",
+            "url": "assets/isotiles.json"
+        }
+    ],
+    "meta": {
+        "version": "1.0"
+    }
+}

@@ -1,0 +1,28 @@
+Blur scripts taken from Phaser's examples, Filters -> Blur, 
+with credit to Mat Groves, http://matgroves.com/ @Doormat23
+
+Dice spritesheet taken from http://opengameart.org/content/boardgame-pack, 
+buttons spritesheet taken from http://opengameart.org/content/ui-pack,
+chars/green_sprite taken from http://opengameart.org/content/platformer-art-more-animations-and-enemies
+with credit to Kenney.nl
+
+chars/blue_monster taken from http://opengameart.org/content/monsters-2d-pack-no-2,
+with credit to Alucard (http://opengameart.org/users/alucard)
+
+tilesets/daneeklu/ taken from http://opengameart.org/content/farming-tilesets-magic-animations-and-ui-elements
+with credit to Daniel Eddeland
+and is dual licensed under the following licenses.
+*CC-BY-SA 3.0
+*GNU GPL 3.0 or later
+
+tilesets/lpc/base_out_atlas.png and
+tilesets/lpc/terrain_atlas.png 
+    taken from http://opengameart.org/content/lpc-tile-atlas
+see tilesets/lpc/Attribution.txt for full list of contributors and licensing details
+
+tilesets/hyptosis/magecity_0.png taken from
+http://opengameart.org/content/mage-city-arcanos
+with credit to Hyptosis, www.lorestrome.com
+
+chars/mage_f.png taken from http://opengameart.org/content/antifareas-rpg-sprite-set-1-enlarged-w-transparent-background-fixed
+with credit to Antifarea
