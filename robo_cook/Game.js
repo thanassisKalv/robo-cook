@@ -33,7 +33,6 @@ roboCook.Game = function (game) {
 
     this.rotation;     // angle of target with respect to player    
     
-    this.monsters;     // monsters group
     this.textDice;
     this.scoreText;
     this.diceGroup;
@@ -152,8 +151,7 @@ roboCook.Game.prototype = {
         this.playersTurnText.addColor('#ff0000', 7);
         this.playersTurnText.addColor('#000000', 9);
 
-        // monsters
-        this.monsters = new MonsterSpawner(this, 300, 300, 300);
+        // dices
         this.diceSum = this.add.text(1080, 340, "Dice Sum: -");
         this.diceSum.font = "Handlee";
         this.diceSum.fontSize = 30;
