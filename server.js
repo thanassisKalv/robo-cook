@@ -12,5 +12,4 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-//app.listen(8080, "195.251.117.235");
 app.listen(port, IP, () => console.log(`\nRobo-Cook listening on ${IP}:${port}!`))

@@ -45,20 +45,22 @@ class QuestPopUp extends Phaser.Sprite {
         this.correctMusic = this.game.add.audio('correct');
         //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
-	}
+    }
+    
+     randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
 
     openWindow() {
-        if ((this.tween !== null && this.tween.isRunning) || this.qpop.scale.x === 1){
+        if ((this.tween !== null && this.tween.isRunning) || this.qpop.scale.x === 1)
             return;
-        }
         //  Create a tween that will pop-open the window, but only if it's not already tweening or open
         this.tween =  this.game.add.tween(this.qpop.scale).to( { x: 0.9, y: 0.9 }, 1000, Phaser.Easing.Elastic.Out, true);
     }
 
 	closeWindow() {
-        if (this.tween && this.tween.isRunning || this.qpop.scale.x === 0.1){
+        if (this.tween && this.tween.isRunning || this.qpop.scale.x === 0.1)
             return;
-        }
         //  Create a tween that will close the window, but only if it's not already tweening or closed
         this.tween = this.game.add.tween(this.qpop.scale).to( { x: 0.01, y: 0.01 }, 500, Phaser.Easing.Elastic.In, true);
     }
@@ -72,9 +74,10 @@ class QuestPopUp extends Phaser.Sprite {
         this.timeBar = this.game.add.image(1100, 555, 'green-bar');
         // add text label to left of bar
         this.timeLabel = this.game.add.text(1100, 525, 'Time Remaining',  {font: "22px Handlee"});
-        this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + 20;
+        this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + this.tLimit;
 
         this.categoryIndexSelected = qType;
+        this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[qType].questions.length);
         this.showImageQuestion(this.categoryIndexSelected, this.currentQuestionIndex);
         // this.livesGroups = this.showLives(this.remainingLives);     --- add related score UI later
         var questionItem = this.getQuestionItem(this.categoryIndexSelected, this.currentQuestionIndex);
@@ -104,10 +107,11 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     listQuestionsByCategory(categoryIndex){
+        console.log(categoryIndex);
         return this.data.categories[categoryIndex].questions;
     }
 
-    getQuestionItem(categoryIndex,questionIndex){
+    getQuestionItem(categoryIndex, questionIndex){
         return this.listQuestionsByCategory(categoryIndex)[questionIndex];
     }
 

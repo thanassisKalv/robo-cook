@@ -172,8 +172,6 @@ roboCook.Game.prototype = {
         this.player2text = this.add.text(30, 90, "P2: ", {font: "30px Handlee"});
         this.levelName = this.add.text(830, 50, "The Seafood Path", {font: "26px Handlee"});
 
-        this.nextSoldierTime = this.game.time.now  + this.soldierTime;
-
         this.music = this.game.add.audio('bgMusic');
         this.music.loop = true;
         this.music.play();
@@ -197,25 +195,25 @@ roboCook.Game.prototype = {
         this.roboCook1.enableBody = true;
         this.roboCook1.inputEnabled = true;
         this.roboCook1.input.enableDrag(true, false, false, 255, this.playBoard);
-        this.roboCook1.physicsBodyType = Phaser.Physics.ARCADE;
-
+        //this.roboCook1.physicsBodyType = Phaser.Physics.ARCADE;
         this.roboCook1.events.onDragStart.add(this.onDragStart, this);
         this.roboCook1.events.onDragStop.add(this.onDragStop, this);
         this.roboCook1.input.draggable = false;
         this.roboCook1.anchor.setTo(0.5, 0.5);
         this.roboCook1.scale.setTo(0.35, 0.35);
+        this.roboCook1.currentTile = this.startTile;
 
         this.roboCook2 = this.game.add.sprite(this.playerStart.x+30, this.playerStart.y, "robots-pink", 1);
         this.roboCook2.enableBody = true;
         this.roboCook2.inputEnabled = true;
         this.roboCook2.input.enableDrag(true, false, false, 255, this.playBoard);
         this.roboCook2.input.draggable = false;
-        this.roboCook2.physicsBodyType = Phaser.Physics.ARCADE;
-
+        //this.roboCook2.physicsBodyType = Phaser.Physics.ARCADE;
         this.roboCook2.events.onDragStart.add(this.onDragStart, this);
         this.roboCook2.events.onDragStop.add(this.onDragStop, this);
         this.roboCook2.anchor.setTo(0.5, 0.5);
         this.roboCook2.scale.setTo(0.35, 0.35);
+        this.roboCook2.currentTile = this.startTile;
 
         this.isoGroup.forEach(this.startTiles, this, false);
 
@@ -232,7 +230,7 @@ roboCook.Game.prototype = {
         // Loop through all tiles and test to see if the 3D position from above intersects with the automatically generated IsoSprite tile bounds.
         this.isoGroup.forEach(this.checkTiles, this, false);
         
-        if(this.game.input.activePointer.isDown && this.selectedTile && (this.game.time.now > this.nextSoldierTime)) {
+        if(this.game.input.activePointer.isDown && this.selectedTile ) {
         	if(!this.selectedTile.occupant && this.selectedTile.buyable) {
                     //var human = new Human(this.game, this.selectedTile.isoX, this.selectedTile.isoY);
                    // human.setPath(this.playerPath);       
@@ -249,7 +247,6 @@ roboCook.Game.prototype = {
                 this.selectedTile.occupant = false;
                 
             }
-            this.nextSoldierTime = this.game.time.now + this.soldierTime;
         }
 
         if (this.dice1play.contains(this.input.activePointer.x,this.input.activePointer.y)){
@@ -274,7 +271,8 @@ roboCook.Game.prototype = {
     },
     
     onDragStart: function(sprite, pointer) {
-        this.playerStartPos = { x: sprite.position.x , y: sprite.position.y};
+        // sprite.playerStartPos = { x: sprite.x , y: sprite.y};
+        // console.log(sprite)
     },
     
     onDragStop: function(sprite, pointer) {
@@ -283,13 +281,14 @@ roboCook.Game.prototype = {
 
         if(cargs.retTile==null || cargs.retTile.key=="empty"){
             // sprite.input.enabled = false;
-            sprite.tween = this.add.tween(sprite).to({x:this.playerStartPos.x, y:this.playerStartPos.y}, 300, Phaser.Easing.Sinusoidal.InOut);
+            sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
             sprite.tween.start();
         }else{
             sprite.position.x = cargs.retTile.position.x;
             sprite.position.y = cargs.retTile.position.y;
+            sprite.currentTile = cargs.retTile;
             if(cargs.retTile.key.includes("path-q")){
-                console.log(cargs.retTile);
+                //console.log(cargs.retTile);
                 cargs.retTile.questpop.popUpQuestion( cargs.retTile.questNum);
             }
 
@@ -313,9 +312,7 @@ roboCook.Game.prototype = {
     findStopTile: function(tile, args){
         var inBounds = tile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
         if(inBounds){
-            //console.log(args.player);
             //console.log(this.cursorPos.x, this.cursorPos.y);
-            console.log(tile);
             args.retTile = tile;
         }
     },
@@ -429,6 +426,7 @@ roboCook.Game.prototype = {
                 }
                 if(tileName == "start"){
                     this.playerStart = {x: tile.position.x, y: tile.position.y}
+                    this.startTile = tile;
                 }
 
                 this.gameTiles[y][x] = tile;
