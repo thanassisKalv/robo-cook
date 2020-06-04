@@ -1,17 +1,14 @@
 var roboCook = {};
 
 roboCook.Boot = function (game) {
-
 };
 
 roboCook.Boot.prototype = {
 
     preload: function () {
-
         //  Here we load the assets required for our preloader (in this case a background and a loading bar)
-        //this.load.image('preloaderBackground', 'images/preloader_background.jpg');
-        //this.load.image('preloaderBar', 'images/preloadr_bar.png');
-
+        // this.load.image('preloaderBackground', 'images/preloader_background.jpg');
+        // this.load.image('preloaderBar', 'images/preloadr_bar.png');
     },
 
     create: function () {
@@ -31,8 +28,7 @@ roboCook.Boot.prototype = {
             else
                 this.scale.pageAlignHorizontally = false;
         }
-        else
-        {
+        else{
             //  Same goes for mobile settings.
             //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

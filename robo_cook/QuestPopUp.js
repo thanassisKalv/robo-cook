@@ -77,7 +77,8 @@ class QuestPopUp extends Phaser.Sprite {
         this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + this.tLimit;
 
         this.categoryIndexSelected = qType;
-        this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[qType].questions.length);
+        this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[qType].questions.length-1);
+        console.log(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showImageQuestion(this.categoryIndexSelected, this.currentQuestionIndex);
         // this.livesGroups = this.showLives(this.remainingLives);     --- add related score UI later
         var questionItem = this.getQuestionItem(this.categoryIndexSelected, this.currentQuestionIndex);
@@ -106,13 +107,9 @@ class QuestPopUp extends Phaser.Sprite {
         return this.image_question;
     }
 
-    listQuestionsByCategory(categoryIndex){
-        console.log(categoryIndex);
-        return this.data.categories[categoryIndex].questions;
-    }
-
     getQuestionItem(categoryIndex, questionIndex){
-        return this.listQuestionsByCategory(categoryIndex)[questionIndex];
+        return this.data.categories[categoryIndex].questions[questionIndex];
+        //return this.listQuestionsByCategory(categoryIndex)[questionIndex];
     }
 
     addQuestionTitle(textContent){
@@ -184,6 +181,8 @@ class QuestPopUp extends Phaser.Sprite {
             this.context.timeBar.destroy();
             this.context.timeLabel.destroy();
             this.context.game.time.events.remove(this.context.musicEvent);
+            if(this.context.countDownMusic.isPlaying)
+                this.context.countDownMusic.stop();
             if(playersTurn==1)
                 if(this.context.game.cursor.healthP1>1)
                     this.context.game.cursor.healthP1 -= 10;

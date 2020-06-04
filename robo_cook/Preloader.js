@@ -55,7 +55,6 @@ roboCook.Preloader.prototype = {
         this.load.image('bg', path+'assets/robo-cook/background-scene-1.png');
         this.load.image("player", path+"assets/chars/green_sprite.png");
         this.load.image("circle", path+"assets/dashed_circle.png");
-        this.load.image("bullet", path+"assets/bullet.png");
         this.load.image("monster", path+"assets/chars/blue_monster.png");
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");

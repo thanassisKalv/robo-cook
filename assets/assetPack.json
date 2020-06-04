@@ -127,6 +127,18 @@
             "overwrite": false
         },
         {
+            "type": "image",
+            "key": "red-mark",
+            "url": "assets/robo-cook/red-mark-big.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "blue-mark",
+            "url": "assets/robo-cook/blue-mark-big.png",
+            "overwrite": false
+        },
+        {
             "type": "spritesheet",
             "key": "human",
             "url": "assets/images/sprites/Human/human_regular_hair.png",
@@ -137,13 +149,6 @@
             "type": "spritesheet",
             "key": "baldguy",
             "url": "assets/images/sprites/Human/human_regular_bald.png",
-            "frameWidth": 60,
-            "frameHeight": 60
-        },
-        {
-            "type": "spritesheet",
-            "key": "skeleton",
-            "url": "assets/images/sprites/Skeleton/skeleton.png",
             "frameWidth": 60,
             "frameHeight": 60
         },

@@ -190,36 +190,29 @@ roboCook.Game.prototype = {
         this.boundFound = this.pathFound.bind(this);
         this.easystar.findPath(6, 7, 2, 3, this.boundFound);
 
+        //  add a red marker below robo-cook character
+        this.marker1 = this.game.make.sprite(-20, 130, 'red-mark');
+        this.marker1.anchor.setTo(0.5, 0.5);
+        this.marker1.scale.setTo(0.11, 0.11);
+        this.marker1.alpha = 0.7;
         // add our robo-cook characters
-        this.roboCook1 = this.game.add.sprite(this.playerStart.x-30, this.playerStart.y, "robots-blue", 1);
-        this.roboCook1.enableBody = true;
-        this.roboCook1.inputEnabled = true;
-        this.roboCook1.input.enableDrag(true, false, false, 255, this.playBoard);
-        //this.roboCook1.physicsBodyType = Phaser.Physics.ARCADE;
-        this.roboCook1.events.onDragStart.add(this.onDragStart, this);
-        this.roboCook1.events.onDragStop.add(this.onDragStop, this);
-        this.roboCook1.input.draggable = false;
-        this.roboCook1.anchor.setTo(0.5, 0.5);
-        this.roboCook1.scale.setTo(0.35, 0.35);
-        this.roboCook1.currentTile = this.startTile;
+        this.player1 = new RoboCook(this.game, this.playerStart.x-30, this.playerStart.y, "robots-blue", this.startTile, this.marker1 );
+        this.player1.events.onDragStart.add(this.onDragStart, this);
+        this.player1.events.onDragStop.add(this.onDragStop, this);
 
-        this.roboCook2 = this.game.add.sprite(this.playerStart.x+30, this.playerStart.y, "robots-pink", 1);
-        this.roboCook2.enableBody = true;
-        this.roboCook2.inputEnabled = true;
-        this.roboCook2.input.enableDrag(true, false, false, 255, this.playBoard);
-        this.roboCook2.input.draggable = false;
-        //this.roboCook2.physicsBodyType = Phaser.Physics.ARCADE;
-        this.roboCook2.events.onDragStart.add(this.onDragStart, this);
-        this.roboCook2.events.onDragStop.add(this.onDragStop, this);
-        this.roboCook2.anchor.setTo(0.5, 0.5);
-        this.roboCook2.scale.setTo(0.35, 0.35);
-        this.roboCook2.currentTile = this.startTile;
+        this.marker2 = this.game.make.sprite(-20, 130, 'blue-mark');
+        this.marker2.anchor.setTo(0.5, 0.5);
+        this.marker2.scale.setTo(0.11, 0.11);
+        this.marker2.alpha = 0.7;
+        this.player2 = new RoboCook(this.game, this.playerStart.x+30, this.playerStart.y, "robots-pink", this.startTile, this.marker2 );
+        this.player2.events.onDragStart.add(this.onDragStart, this);
+        this.player2.events.onDragStop.add(this.onDragStop, this);
 
         this.isoGroup.forEach(this.startTiles, this, false);
 
         diceGroup.forEachAlive(function(dice){
-            dice.player1 = this.roboCook1;
-            dice.player2 = this.roboCook2;
+            dice.player1 = this.player1;
+            dice.player2 = this.player2;
             dice.playersTurnText = this.playersTurnText;
         }, this);
     },
@@ -232,20 +225,11 @@ roboCook.Game.prototype = {
         
         if(this.game.input.activePointer.isDown && this.selectedTile ) {
         	if(!this.selectedTile.occupant && this.selectedTile.buyable) {
-                    //var human = new Human(this.game, this.selectedTile.isoX, this.selectedTile.isoY);
-                   // human.setPath(this.playerPath);       
-                   // human.sourceTile = this.selectedTile;
-                   // this.allies.add(human);
-                   // this.selectedTile.occupant = human;
                    // this.easystar.findPath(this.selectedTile.Xtable, this.selectedTile.Ytable, 2, 3, this.boundFound);
-                    // console.log(this.selectedTile);
-                   // human.advanceTile();
-                   // human.pathFinished.addOnce(this.pathDone, this);
-                    
+                   // robot.advanceTile();
             }else if(this.selectedTile.occupant && this.selectedTile.buyable) {
                 this.selectedTile.occupant.destroy();
                 this.selectedTile.occupant = false;
-                
             }
         }
 
@@ -272,7 +256,9 @@ roboCook.Game.prototype = {
     
     onDragStart: function(sprite, pointer) {
         // sprite.playerStartPos = { x: sprite.x , y: sprite.y};
-        // console.log(sprite)
+        console.log(sprite)
+        sprite.markerScale = this.game.add.tween(sprite.children[0].scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
+        sprite.markerScale.yoyo(true, 500);
     },
     
     onDragStop: function(sprite, pointer) {
@@ -283,29 +269,32 @@ roboCook.Game.prototype = {
             // sprite.input.enabled = false;
             sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
             sprite.tween.start();
+            sprite.markerScale.stop();
+            sprite.marker.scale.setTo(0.1, 0.1);
         }else{
             sprite.position.x = cargs.retTile.position.x;
             sprite.position.y = cargs.retTile.position.y;
             sprite.currentTile = cargs.retTile;
             if(cargs.retTile.key.includes("path-q")){
-                //console.log(cargs.retTile);
+                console.log(cargs.retTile);
                 cargs.retTile.questpop.popUpQuestion( cargs.retTile.questNum);
             }
 
             if(playersTurn==1){
-                cargs.retTile.occupant = this.roboCook1;
+                cargs.retTile.occupant = this.player1;
                 playersTurn = 2
             }
             else{
-                cargs.retTile.occupant = this.roboCook2;
+                cargs.retTile.occupant = this.player2;
                 playersTurn = 1
             } 
-            this.roboCook1.input.draggable = false;
-            this.roboCook2.input.draggable = false;
+            this.player1.input.draggable = false;
+            this.player2.input.draggable = false;
             
             this.playersTurnText.setText("Player #"+playersTurn+" turn")
             pendingMove = false;
-
+            sprite.markerScale.stop();
+            sprite.marker.scale.setTo(0.11, 0.11);
         }
     },
 
