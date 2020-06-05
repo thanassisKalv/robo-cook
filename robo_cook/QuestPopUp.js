@@ -82,11 +82,17 @@ class QuestPopUp extends Phaser.Sprite {
         var questionItem = this.getQuestionItem(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showQuestion(questionItem);
         //console.log(this.questComponents);
-        if(this.y+this.questComponents.height> this.game.playBoard.height+200){
+        if(this.y+this.questComponents.height > this.game.playBoard.height+200){
             var fixHeight = (this.y+this.questComponents.height)-(this.game.playBoard.height+200);
             this.questComponents.children[0].position.y = this.questComponents.children[0].position.y - fixHeight;
             this.questComponents.children[1].position.y = this.questComponents.children[1].position.y - fixHeight;
             this.questComponents.children[2].position.y = this.questComponents.children[2].position.y - fixHeight;
+        }
+        if(this.x-this.questComponents.width/2 < 0){
+            var fixWidth = (this.x+this.questComponents.width/2);
+            this.questComponents.children[0].position.x = this.questComponents.children[0].position.x + fixWidth/2;
+            this.questComponents.children[1].position.x = this.questComponents.children[1].position.x + fixWidth/2;
+            this.questComponents.children[2].position.x = this.questComponents.children[2].position.x + fixWidth/2;
         }
 
         // present the questItem with a smooth open-up pop
