@@ -3,7 +3,7 @@ robo-cook's path  -  board game in Phaser.js
 
 
 ### to do
- - add nicer popup questions
+ - IMPORTANT: add pathfind() verification on dice movement
  - fix various little bugs
 
 ### done
@@ -12,3 +12,5 @@ robo-cook's path  -  board game in Phaser.js
  - fixed random-selector's range - *04/06*
  - added RoboCook sprite extension and fixed playing-marker to background position - *04/06*
  - added new questions (check qualitative doc) - *04/06*
+ - added smooth pop-up effect for questions - *05/06*
+ - added automatic reposition of question items when out-of-bounds - *05/06*
