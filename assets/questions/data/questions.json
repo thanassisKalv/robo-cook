@@ -37,7 +37,7 @@
 						"Frying",
 						"Raw"
 					],
-					"answer": 0,
+					"answer": 1,
 					"image": "question.jpg",
 					"answer_image": "cd.png"
 				},

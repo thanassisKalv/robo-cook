@@ -154,10 +154,10 @@
         },
         {
             "type": "spritesheet",
-            "key": "pig",
-            "url": "assets/images/sprites/Pig/pig.png",
-            "frameWidth": 60,
-            "frameHeight": 60
+            "key": "clock-running",
+            "url": "assets/questions/clock-running.png",
+            "frameWidth": 414,
+            "frameHeight": 255
         },
         {
             "type": "json",

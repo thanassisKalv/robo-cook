@@ -55,7 +55,7 @@ roboCook.Game = function (game) {
     this.selectedTile;
     this.gameTiles = [];
 
-    this.maxHeightImageQuestion = 450;
+    this.maxHeightImageQuestion = 370;
     
     this.questNum = 0;
     
@@ -67,6 +67,8 @@ var playDice;
 var playersTurn;
 var rollMusic;
 var pendingMove = false;
+
+
 
 roboCook.Game.prototype = {
 
@@ -190,21 +192,11 @@ roboCook.Game.prototype = {
         this.boundFound = this.pathFound.bind(this);
         this.easystar.findPath(6, 7, 2, 3, this.boundFound);
 
-        //  add a red marker below robo-cook character
-        this.marker1 = this.game.make.sprite(-20, 130, 'red-mark');
-        this.marker1.anchor.setTo(0.5, 0.5);
-        this.marker1.scale.setTo(0.11, 0.11);
-        this.marker1.alpha = 0.7;
         // add our robo-cook characters
-        this.player1 = new RoboCook(this.game, this.playerStart.x-30, this.playerStart.y, "robots-blue", this.startTile, this.marker1 );
+        this.player1 = new RoboCook(this.game, this.playerStart.x-30, this.playerStart.y, "robots-blue", this.startTile, 'red-mark');
         this.player1.events.onDragStart.add(this.onDragStart, this);
         this.player1.events.onDragStop.add(this.onDragStop, this);
-
-        this.marker2 = this.game.make.sprite(-20, 130, 'blue-mark');
-        this.marker2.anchor.setTo(0.5, 0.5);
-        this.marker2.scale.setTo(0.11, 0.11);
-        this.marker2.alpha = 0.7;
-        this.player2 = new RoboCook(this.game, this.playerStart.x+30, this.playerStart.y, "robots-pink", this.startTile, this.marker2 );
+        this.player2 = new RoboCook(this.game, this.playerStart.x+30, this.playerStart.y, "robots-pink", this.startTile, 'blue-mark');
         this.player2.events.onDragStart.add(this.onDragStart, this);
         this.player2.events.onDragStop.add(this.onDragStop, this);
 
@@ -225,11 +217,11 @@ roboCook.Game.prototype = {
         
         if(this.game.input.activePointer.isDown && this.selectedTile ) {
         	if(!this.selectedTile.occupant && this.selectedTile.buyable) {
-                   // this.easystar.findPath(this.selectedTile.Xtable, this.selectedTile.Ytable, 2, 3, this.boundFound);
-                   // robot.advanceTile();
+                // this.easystar.findPath(this.selectedTile.Xtable, this.selectedTile.Ytable, 2, 3, this.boundFound);
+                // robot.advanceTile();
             }else if(this.selectedTile.occupant && this.selectedTile.buyable) {
-                this.selectedTile.occupant.destroy();
-                this.selectedTile.occupant = false;
+                // this.selectedTile.occupant.destroy();
+                // this.selectedTile.occupant = false;
             }
         }
 
@@ -256,8 +248,8 @@ roboCook.Game.prototype = {
     
     onDragStart: function(sprite, pointer) {
         // sprite.playerStartPos = { x: sprite.x , y: sprite.y};
-        console.log(sprite)
-        sprite.markerScale = this.game.add.tween(sprite.children[0].scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
+        // console.log(sprite)
+        sprite.markerScale = this.game.add.tween(sprite.marker.scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
         sprite.markerScale.yoyo(true, 500);
     },
     
@@ -271,13 +263,16 @@ roboCook.Game.prototype = {
             sprite.tween.start();
             sprite.markerScale.stop();
             sprite.marker.scale.setTo(0.1, 0.1);
+            pendingMove = false;
         }else{
             sprite.position.x = cargs.retTile.position.x;
             sprite.position.y = cargs.retTile.position.y;
             sprite.currentTile = cargs.retTile;
             if(cargs.retTile.key.includes("path-q")){
-                console.log(cargs.retTile);
+                // console.log(cargs.retTile);
                 cargs.retTile.questpop.popUpQuestion( cargs.retTile.questNum);
+            }else{
+                pendingMove = false;
             }
 
             if(playersTurn==1){
@@ -292,9 +287,9 @@ roboCook.Game.prototype = {
             this.player2.input.draggable = false;
             
             this.playersTurnText.setText("Player #"+playersTurn+" turn")
-            pendingMove = false;
+            
             sprite.markerScale.stop();
-            sprite.marker.scale.setTo(0.11, 0.11);
+            sprite.marker.scale.setTo(0.08, 0.08);
         }
     },
 

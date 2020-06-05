@@ -71,10 +71,11 @@ roboCook.Preloader.prototype = {
 
         this.load.json('questions', path+'assets/questions/data/questions.json');
         this.load.pack('images_questions', 'assets/images-pack.json', null, this);
-        this.load.image('button', 'assets/button.png');
+        this.load.image('button', 'assets/questions/button.png');
         // change asset keys and folder/filenames if necessary
-        this.load.image('green-bar', 'assets/green-bar.png');
-        this.load.image('red-bar', 'assets/red-bar.png');
+        this.load.image('green-bar', 'assets/questions/green-bar.png');
+        this.load.image('red-bar', 'assets/questions/red-bar.png');
+        //this.load.image('clock-running', 'assets/questions/clock-running.gif');
 
         // load the Dice assets
         this.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
