@@ -1,0 +1,2 @@
+progressEmpty : 110 - 242 - 227
+progressDone : 238 - 201 - 17

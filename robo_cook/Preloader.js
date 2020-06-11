@@ -63,24 +63,29 @@ roboCook.Preloader.prototype = {
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
         this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
         this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
+        this.load.image('kitchen-start', path+'assets/robo-cook/kitchen-icon-big.png');
         this.load.image('soundoff', path+'assets/images/sound-off.png')
         this.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
         this.load.audio('rollDice', ['assets/audio/dice_roll.mp3']);
         this.load.audio('countdown', ['assets/audio/countdown10.mp3']);
         this.load.audio('correct', ['assets/audio/correct-sound.mp3']);
+        this.load.audio('incorrect', ['assets/audio/incorrect-sound.mp3']);
 
         this.load.json('questions', path+'assets/questions/data/questions.json');
         this.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.load.image('button', 'assets/questions/button.png');
+        this.load.image('gotit', 'assets/questions/got-answer.png');
         // change asset keys and folder/filenames if necessary
         this.load.image('green-bar', 'assets/questions/green-bar.png');
         this.load.image('red-bar', 'assets/questions/red-bar.png');
+        this.load.image('right', 'assets/questions/right.png');
+        this.load.image('wrong', 'assets/questions/wrong.png');
         //this.load.image('clock-running', 'assets/questions/clock-running.gif');
 
         // load the Dice assets
         this.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
-        this.load.script("BlurX", path + "assets/BlurX.js");
-        this.load.script("BlurY", path + "assets/BlurY.js");
+        this.load.script("BlurX", path + "assets/scripts/BlurX.js");
+        this.load.script("BlurY", path + "assets/scripts/BlurY.js");
         this.load.pack('level1', 'assets/assetPack.json', null, this);
 
         //console.log("GOT HERE!")

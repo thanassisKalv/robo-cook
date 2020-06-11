@@ -42,18 +42,6 @@
 					"answer_image": "cd.png"
 				},
 				{
-					"question": "What is the administrative section of the computer system?",
-					"choices": [
-						"Central Processing Unit",
-						"Control Unit",
-						"Input Unit",
-						"Memory Unit"
-					],
-					"answer": 3,
-					"image": "question.jpg",
-					"answer_image": "central.png"
-				},
-				{
 					"question": "One gram of protein provides us?",
 					"choices": [
 						"4 calories",
@@ -88,7 +76,7 @@
 					],
 					"answer": 2,
 					"image": "unprocessed_red_meat.jpg",
-					"answer_image": "answer1.JPG"
+					"answer_image": "unprocessed_red_meat_answer.JPG"
 				}
 			]
 		}

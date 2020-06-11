@@ -3,49 +3,49 @@
         {
             "type": "image",
             "key": "empty",
-            "url": "assets/images/tiles/empty.png",
+            "url": "assets/tileset/empty.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "quest",
-            "url": "assets/images/tiles/quest-ingre.png",
+            "url": "assets/tileset/quest-ingre.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "roadEW",
-            "url": "assets/images/tiles/roadEW.png",
+            "url": "assets/tileset/roadEW.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "start",
-            "url": "assets/images/tiles/start.png",
+            "url": "assets/tileset/start.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-simple",
-            "url": "assets/images/tiles/path-simple.png",
+            "url": "assets/tileset/path-simple.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q1",
-            "url": "assets/images/tiles/path-quest-1.png",
+            "url": "assets/tileset/path-quest-1.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q2",
-            "url": "assets/images/tiles/path-quest-2.png",
+            "url": "assets/tileset/path-quest-2.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q3",
-            "url": "assets/images/tiles/path-quest-3.png",
+            "url": "assets/tileset/path-quest-3.png",
             "overwrite": false
         },
         {
@@ -122,6 +122,54 @@
         },
         {
             "type": "image",
+            "key": "target-1",
+            "url": "assets/tileset/riverNE.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-2",
+            "url": "assets/tileset/riverNW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-3",
+            "url": "assets/tileset/riverSW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-4",
+            "url": "assets/tileset/riverES.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "progress-1",
+            "url": "assets/tileset/progressNE.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "progress-2",
+            "url": "assets/tileset/progressNW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "progress-3",
+            "url": "assets/tileset/progressSW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "progress-4",
+            "url": "assets/tileset/progressES.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
             "key": "close",
             "url": "assets/questions/x-mark.png",
             "overwrite": false
@@ -158,6 +206,13 @@
             "url": "assets/questions/clock-running.png",
             "frameWidth": 414,
             "frameHeight": 255
+        },
+        {
+            "type": "spritesheet",
+            "key": "hourglass-anim",
+            "url": "assets/questions/animhourglass.png",
+            "frameWidth": 106.25,
+            "frameHeight": 106
         },
         {
             "type": "json",
