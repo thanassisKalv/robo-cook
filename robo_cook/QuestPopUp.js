@@ -265,7 +265,7 @@ class QuestPopUp extends Phaser.Sprite {
     closeQuestionUI(context){
         context.qtween = context.game.add.tween(context.questComponents.scale).to( { x: 0.01, y: 0.01 }, 400, Phaser.Easing.Elastic.In, true);
         context.qtween.onComplete.add(function() { context.questComponents.destroy(); }, this);
-        context.backgroundBar.destroy();
+        context.bgBar.destroy();
         context.timeBar.destroy();
         context.timeClock.destroy();
         context.timeLabel.destroy();

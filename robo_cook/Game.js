@@ -70,6 +70,7 @@ var playDice;
 var playersTurn;
 var rollMusic;
 var pendingMove = false;
+var newDiceResult = false;
 var playerMoveLength;
 
 roboCook.Game.prototype = {
@@ -226,13 +227,25 @@ roboCook.Game.prototype = {
         // Loop through all tiles and test to see if the 3D position from above intersects with the automatically generated IsoSprite tile bounds.
         this.isoGroup.forEach(this.checkTiles, this, false);
         
-        if(this.game.input.activePointer.isDown && this.selectedTile ) {
-        	if(!this.selectedTile.occupant && this.selectedTile.buyable) {
-                // this.easystar.findPath(this.selectedTile.Xtable, this.selectedTile.Ytable, 2, 3, this.boundFound);
-                // robot.advanceTile();
-            }else if(this.selectedTile.occupant && this.selectedTile.buyable) {
-                // this.selectedTile.occupant.destroy();
-                // this.selectedTile.occupant = false;
+        if(newDiceResult) {
+            newDiceResult = false;
+            const startTile = playersTurn==1? this.player1.currentTile : this.player2.currentTile;
+            this.isoGroup.forEach(t => { t.tint = 0xffffff});
+            this.isoGroup.forEach(t => {
+                const tile = t;
+                this.checkPaths = checkPath.bind(this);
+                this.easystar.findPath(startTile.Xtable, startTile.Ytable, tile.Xtable, tile.Ytable, this.checkPaths);
+                this.easystar.calculate();
+            });
+            function checkPath(path){
+                if (path != null && total == path.length-1)
+                    this.isoGroup.forEach(t => {
+                        const subtile = t;       
+                        const inPath = path.some(point => point.x === subtile.Xtable && point.y === subtile.Ytable);
+                        if (inPath) {
+                            subtile.tint = 0x39ff14;
+                        }
+                    });
             }
         }
 
@@ -254,7 +267,7 @@ roboCook.Game.prototype = {
         this.progressBar2.width = this.cursor.healthP2;
 
         // calculate fresh "A-star" paths
-        this.easystar.calculate();
+        //this.easystar.calculate();
     },
     
     onDragStart: function(sprite, pointer) {
@@ -268,6 +281,13 @@ roboCook.Game.prototype = {
         cargs = {player: sprite, retTile: null};
         this.isoGroup.forEach(this.findStopTile, this, false, cargs);
         // calculate if player's chosen position is valid according to your Dice
+        if(cargs.retTile==null || cargs.retTile.key=="empty"){
+            // sprite.input.enabled = false;
+            sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
+            sprite.tween.start();
+            sprite.markerScale.stop();
+            sprite.marker.scale.setTo(0.1, 0.1);
+        }
         this.boundFound = checkPath.bind(this);
         this.easystar.findPath(sprite.currentTile.Xtable, sprite.currentTile.Ytable, cargs.retTile.Xtable, cargs.retTile.Ytable, this.boundFound);
         this.easystar.calculate();
@@ -286,8 +306,8 @@ roboCook.Game.prototype = {
                 sprite.tween.start();
                 sprite.markerScale.stop();
                 sprite.marker.scale.setTo(0.1, 0.1);
-
-            }else{
+            }
+            else{
                 sprite.position.x = cargs.retTile.position.x;
                 sprite.position.y = cargs.retTile.position.y;
                 sprite.currentTile = cargs.retTile;
@@ -334,7 +354,8 @@ roboCook.Game.prototype = {
         if (!tile.selected && inBounds) {
             //console.log(tile.key);
             tile.selected = true;
-            tile.tint = 0x86bfda;
+            if(tile.tint != 0x39ff14)
+                tile.tint = 0x86bfda;
             this.game.add.tween(tile).to({ isoZ: 10 }, 200, Phaser.Easing.Quadratic.InOut, true);
             if (tile.occupant)
                 this.game.add.tween(tile.occupant).to({ isoZ: 10 }, 200, Phaser.Easing.Quadratic.InOut, true);
@@ -344,7 +365,8 @@ roboCook.Game.prototype = {
         // If not, revert back to how it was.
         else if (tile.selected && !inBounds) {
             tile.selected = false;
-            tile.tint = 0xffffff;
+            if(tile.tint != 0x39ff14)
+                tile.tint = 0xffffff;
             this.game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
             if (tile.occupant)
                 this.game.add.tween(tile.occupant).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
@@ -445,11 +467,7 @@ roboCook.Game.prototype = {
                 if(tileName.includes("target-")){
                     this.targetTiles[tileName] = tile;
                 }
-                /* todo -- Think about using elevated "target-tiles" */
-                // if(tileName.includes("target-")){
-                //     tile.isoZ = 64;
-                // }
-
+                /* todo -- Think about using elevated "target-tiles" like -> tile.isoZ = 64;*/
                 this.gameTiles[y][x] = tile;
             }
         }

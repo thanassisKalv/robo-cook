@@ -44,6 +44,7 @@ Dice.prototype.rollComplete = function() {
     this.filters = null;
     this.frame = this.game.rnd.pick([0,1,2,4,5,6]);
     total += this.value();
+    newDiceResult = true;
     if(this.id==1)
         if(playersTurn==1){
             this.player1.input.draggable = true;
