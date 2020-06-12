@@ -18,3 +18,4 @@ robo-cook's path  -  board game in Phaser.js
  - added an *answer* popUp element after player responds to a question - *09/06*
  - IMPORTANT: added pathfind() verification on dice-total after onDragStop - *11/06*
  - added new target-frame of tiles on middle (tile per ingredient) - *11/06*
+ - added highlighting to board tiles after dice roll - *12/06*
