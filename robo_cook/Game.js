@@ -56,33 +56,45 @@ roboCook.Game = function (game) {
     this.selectedTile;
     this.gameTiles = [];
 
-    this.maxHeightImageQuestion = 370;
+    this.maxHeightImageQuestion = 210;
+    this.maxWidthImageQuestion = 340;
     
     this.questNum = 0;
     this.ingredients = [];
     this.targetTiles = {};
+
+    this.offsetUI = 360+106;
+
+    this.pathColor = 0x95F985;
+    this.endPathColor = 0xbc544b;
+
+    this.endTiles = [];
     
 };
 
 var diceGroup;
 var total = 0;
 var playDice;
-var playersTurn;
+var playersTurn = 1;
 var rollMusic;
 var pendingMove = false;
 var newDiceResult = false;
 var playerMoveLength;
+var playerMoving=false;
 
 roboCook.Game.prototype = {
 
     create: function () {
 
         this.mapData =  this.game.cache.getJSON('mapdata');
-        this.bg = this.add.sprite(0,0,'bg');
+        this.bg = this.add.sprite(350,0,'bg');
         this.bg.fixedToCamera =true;
         // change the title according to level
         document.title = "Robo-Cook Path - Seafood Path"
         this.ingredients = ["target-1", "target-2", "target-3", "target-4"];
+        this.proteinLogo = this.add.image(150, this.game.height/2+380, "protein-logo");
+        this.proteinLogo.scale.setTo(0.3, 0.3);
+        this.proteinLogo.anchor.setTo(0.5, 0.5);
 
         // hide the mouse cursor when it's over the game
         this.game.canvas.onmouseover = function(e) {
@@ -94,15 +106,14 @@ roboCook.Game.prototype = {
         this.game.canvas.style.cursor = "none";
 
         // limit the fps, prevents physics errors, 1/60 = 60fps
-        this.time.deltaCap = 1/60;
-        this.playBoard = new Phaser.Rectangle(0, 0, 1069, 974);
-        playersTurn = 1;
+        this.time.deltaCap = 1/30;
+        this.playBoard = new Phaser.Rectangle(0, 0, 1175, 974);
         this.time.advancedTiming = true;
 
         // This is used to set a game canvas-based offset for the (0, 0, 0) isometric coordinate - by default
         // this point would be at screen coordinates 0, 0 (top left) which is usually undesirable.
         this.game.plugins.add(new Phaser.Plugin.Isometric(this.game));
-        this.game.iso.anchor.setTo(0.5, 0.2);
+        this.game.iso.anchor.setTo(0.6, 0.25);
         this.cursorPos = new Phaser.Plugin.Isometric.Point3();
 
         this.isoGroup = this.game.add.group();
@@ -127,62 +138,59 @@ roboCook.Game.prototype = {
         this.progressBar2.height = 15;
         this.progressBar2.width = this.cursor.healthP2;
 
-
         this.cursor.invincible = false;
                                                   
-        // enable physics on our player
-        this.physics.enable(this.cursor, Phaser.Physics.ARCADE);
-        this.cursor.body.allowRotation = false;
-        
         diceGroup = this.add.group();
         for (var i=0; i < 2; i++) {
-            var d = new Dice(this.game, 1110+i*90, 190, i);
+            var d = new Dice(this.game, 1110+i*90+this.offsetUI, 190, i);
             diceGroup.add(d);
         }
 
-        this.dice1play = new Phaser.Circle(1120, 250, 70);
-        this.dice2play = new Phaser.Circle(1210, 250, 70);
+        this.dice1play = new Phaser.Circle(1120+this.offsetUI, 250, 70);
+        this.dice2play = new Phaser.Circle(1210+this.offsetUI, 250, 70);
 
-        this.player1button = this.game.add.sprite( 1120, 250, "handPink",);
-        this.player2button = this.game.add.sprite( 1210, 250, "handBlue");
+        this.player1button = this.game.add.sprite( 1120+this.offsetUI, 250, "handPink",);
+        this.player2button = this.game.add.sprite( 1210+this.offsetUI, 250, "handBlue");
         this.player1button.anchor.setTo(0.5, 0.5);
         this.player2button.anchor.setTo(0.5, 0.5);
         this.player1button.scale.setTo(0.25, 0.25);
         this.player2button.scale.setTo(0.25, 0.25);
         
-        this.playersTurnText = this.add.text(1080, 90, "Player #"+playersTurn+" turn")
-        this.playersTurnText.font = "Handlee";
+        this.playersTurnText = this.add.text(1080+this.offsetUI, 90, "Player #"+playersTurn+" turn", {font: "bold 30px Handlee"})
         this.playersTurnText.fontSize = 30;
         this.playersTurnText.tween = this.add.tween(this.playersTurnText).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
         this.playersTurnText.addColor('#ff0000', 7);
         this.playersTurnText.addColor('#000000', 9);
 
         // dices
-        this.diceSum = this.add.text(1080, 340, "Dice Sum: -");
+        this.diceSum = this.add.text(1080+this.offsetUI, 340, "Dice Sum: -");
         this.diceSum.font = "Handlee";
         this.diceSum.fontSize = 30;
 
         // roll the dice when a mouse button is clicked
         this.input.onDown.add(
             function() {
-                if(playDice && pendingMove==false){
+                if(playDice && pendingMove==false && playerMoving==false){
                     total=0;
                     rollMusic.play();
                     diceGroup.callAll("roll", null);
                 }
+
             }, this);
 
-        // UI text elements
-        this.scoreText = this.add.text(30, 30, "Recipe Progress", {font: "30px Handlee"});
-        this.player1text = this.add.text(30, 60, "P1: ", {font: "30px Handlee"});
-        this.player2text = this.add.text(30, 90, "P2: ", {font: "30px Handlee"});
-        this.levelName = this.add.text(830, 50, "The Seafood Path", {font: "26px Handlee"});
+        this.input.onDown.add(this.checkTargetTileSelected, this);
+
+        // UI score elements
+        this.scoreText = this.add.text(30-15, 25, "Players Collected", {font: "bold 30px Handlee"});
+        this.scoreHandler = new PlayerScores(this.game);
+
+        this.levelName = this.add.text(830+this.offsetUI, 50, "Recipe's name", {font: "26px Handlee"});
 
         this.music = this.game.add.audio('bgMusic');
         this.music.loop = true;
-        this.music.play();
+        //this.music.play();
         this.music.volume = 0.1;
-        this.btn_musicOff = this.add.button(1180, 30, 'soundoff', this.muteSound, this);
+        this.btn_musicOff = this.add.button(1180+this.offsetUI, 30, 'soundoff', this.muteSound, this);
         this.musicHandle = this.music;
         this.btn_musicOff.input.useHandCursor = true;
 
@@ -193,6 +201,7 @@ roboCook.Game.prototype = {
         this.easystar = new EasyStar.js();
         this.easystar.setGrid(this.mapData.tileMap);
         this.easystar.setAcceptableTiles([1,2,3,4,5,6,7,8,9,10]);
+        this.easystar.enableDiagonals();
         this.boundFound = this.pathFound.bind(this);
 
         this.kitchenStart = this.game.add.sprite( this.targetTiles["target-1"].x, this.targetTiles["target-1"].y-10, "kitchen-start");
@@ -229,23 +238,39 @@ roboCook.Game.prototype = {
         
         if(newDiceResult) {
             newDiceResult = false;
+            pendingMove=true;
+            this.endTiles = [];
             const startTile = playersTurn==1? this.player1.currentTile : this.player2.currentTile;
             this.isoGroup.forEach(t => { t.tint = 0xffffff});
             this.isoGroup.forEach(t => {
                 const tile = t;
-                this.checkPaths = checkPath.bind(this);
-                this.easystar.findPath(startTile.Xtable, startTile.Ytable, tile.Xtable, tile.Ytable, this.checkPaths);
+                this.highlightPaths = highlightPath.bind(this);
+                this.easystar.findPath(startTile.Xtable, startTile.Ytable, tile.Xtable, tile.Ytable, this.highlightPaths);
                 this.easystar.calculate();
             });
-            function checkPath(path){
+            function highlightPath(path){
                 if (path != null && total == path.length-1)
                     this.isoGroup.forEach(t => {
-                        const subtile = t;       
+                        const subtile = t;
                         const inPath = path.some(point => point.x === subtile.Xtable && point.y === subtile.Ytable);
                         if (inPath) {
-                            subtile.tint = 0x39ff14;
+                            subtile.tint = this.pathColor;
+                        }
+                        if(path[path.length-1].x==subtile.Xtable && path[path.length-1].y==subtile.Ytable){
+                            subtile.tint = this.endPathColor;
+                            this.game.add.tween(subtile).to({ isoZ: 12 }, 300, Phaser.Easing.Quadratic.InOut, true).yoyo(true, 300);
+                            this.endTiles.push(subtile);
                         }
                     });
+            }
+            this.playersTurnText.setText("Player #"+playersTurn+" turn")
+            //console.log(this.endTiles);
+            if(playersTurn==1){
+                this.player1.markerScale = this.game.add.tween(this.player1.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
+                this.player1.markerScale.yoyo(true, 300);
+            }else{
+                this.player2.markerScale = this.game.add.tween(this.player2.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
+                this.player2.markerScale.yoyo(true, 300);
             }
         }
 
@@ -256,88 +281,87 @@ roboCook.Game.prototype = {
         }
 
         // the cursor follows the mouse
-        this.cursor.body.velocity.setTo(0,0);
         this.cursor.position.x = this.input.position.x;
         this.cursor.position.y = this.input.position.y;
-        //this.physics.arcade.moveToPointer(this.player, 800);
         
-        // update UI elements
+        // update UI elements  -- ToDO: implement updating of the progress-badges
         this.diceSum.setText("Dice Sum: " + total);
         this.progressBar1.width = this.cursor.healthP1;
         this.progressBar2.width = this.cursor.healthP2;
 
-        // calculate fresh "A-star" paths
+        if(playersTurn==1)
+            this.game.world.bringToTop(this.player1);
+        else
+            this.game.world.bringToTop(this.player2);
+        //calculate new "A-star" paths
         //this.easystar.calculate();
+    },
+
+    checkTargetTileSelected: function(){
+        //console.log(pendingMove);
+        if(pendingMove && playerMoving==false)
+            this.endTiles.forEach(clickedTile => {
+                var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
+                if(inBounds){
+                    //console.log("End-tile selected!");
+                    if(playersTurn==1)
+                        this.movePlayer(this.player1, clickedTile);
+                    else
+                        this.movePlayer(this.player2, clickedTile);
+                }
+            });
+    },
+
+    movePlayer: function(sprite, targetTile){
+        playerMoving = true;
+        sprite.tween = this.add.tween(sprite).to({x: targetTile.position.x, y: targetTile.position.y}, 900, Phaser.Easing.Sinusoidal.InOut);
+        sprite.tween.start();
+        
+        sprite.tween.onComplete.add(function() {
+            sprite.currentTile = targetTile;
+            /**   TODO 
+                1 - fire the popUp() question
+                2 - change game's state and tiles accordingly
+            */
+            if(targetTile.key.includes("path-q")){
+                targetTile.questpop.popUpQuestion( targetTile.questNum);
+                if(playersTurn==1)
+                    targetTile.occupant = this.player1;
+                else
+                    targetTile.occupant = this.player2;
+            }
+            else{
+                if(targetTile.key.includes("quest"))
+                    this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"))
+                pendingMove = false;
+                if(playersTurn==1){
+                    targetTile.occupant = this.player1;
+                    playersTurn = 2;
+                }
+                else{
+                    targetTile.occupant = this.player2;
+                    playersTurn = 1;
+                }
+            }
+            this.player1.input.draggable = false;
+            this.player2.input.draggable = false;
+            sprite.markerScale.stop();
+            sprite.marker.scale.setTo(0.08, 0.08);
+            playerMoving = false;
+        }, this);
+
     },
     
     onDragStart: function(sprite, pointer) {
         // sprite.playerStartPos = { x: sprite.x , y: sprite.y};
-        // console.log(sprite)
-        sprite.markerScale = this.game.add.tween(sprite.marker.scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
-        sprite.markerScale.yoyo(true, 500);
+        //sprite.markerScale = this.game.add.tween(sprite.marker.scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
+        //sprite.markerScale.yoyo(true, 500);
     },
     
     onDragStop: function(sprite, pointer) {
-        cargs = {player: sprite, retTile: null};
-        this.isoGroup.forEach(this.findStopTile, this, false, cargs);
-        // calculate if player's chosen position is valid according to your Dice
-        if(cargs.retTile==null || cargs.retTile.key=="empty"){
-            // sprite.input.enabled = false;
-            sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
-            sprite.tween.start();
-            sprite.markerScale.stop();
-            sprite.marker.scale.setTo(0.1, 0.1);
-        }
-        this.boundFound = checkPath.bind(this);
-        this.easystar.findPath(sprite.currentTile.Xtable, sprite.currentTile.Ytable, cargs.retTile.Xtable, cargs.retTile.Ytable, this.boundFound);
-        this.easystar.calculate();
 
-        function checkPath(path){
-
-            this.badMove = false;
-            if (path === null)
-                this.badMove = true;
-            else if (total != path.length-1)
-                this.badMove = true;
-
-            if(cargs.retTile==null || cargs.retTile.key=="empty" || this.badMove){
-                // sprite.input.enabled = false;
-                sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
-                sprite.tween.start();
-                sprite.markerScale.stop();
-                sprite.marker.scale.setTo(0.1, 0.1);
-            }
-            else{
-                sprite.position.x = cargs.retTile.position.x;
-                sprite.position.y = cargs.retTile.position.y;
-                sprite.currentTile = cargs.retTile;
-                if(cargs.retTile.key.includes("path-q")){
-                    // console.log(cargs.retTile);
-                    cargs.retTile.questpop.popUpQuestion( cargs.retTile.questNum);
-                }else{
-                    if(cargs.retTile.key.includes("quest")){
-                        this.targetTiles[cargs.retTile.ingredient].loadTexture(cargs.retTile.ingredient.replace("target", "progress"))
-                    }
-                    pendingMove = false;
-                }
-
-                if(playersTurn==1){
-                    cargs.retTile.occupant = this.player1;
-                    playersTurn = 2
-                }
-                else{
-                    cargs.retTile.occupant = this.player2;
-                    playersTurn = 1
-                } 
-                this.player1.input.draggable = false;
-                this.player2.input.draggable = false;
-                
-                this.playersTurnText.setText("Player #"+playersTurn+" turn")
-                
-                sprite.markerScale.stop();
-                sprite.marker.scale.setTo(0.08, 0.08);
-            }
-        }
+        sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
+        sprite.tween.start();
     },
 
     findStopTile: function(tile, args){
@@ -354,7 +378,7 @@ roboCook.Game.prototype = {
         if (!tile.selected && inBounds) {
             //console.log(tile.key);
             tile.selected = true;
-            if(tile.tint != 0x39ff14)
+            if(tile.tint != this.pathColor && tile.tint != this.endPathColor)
                 tile.tint = 0x86bfda;
             this.game.add.tween(tile).to({ isoZ: 10 }, 200, Phaser.Easing.Quadratic.InOut, true);
             if (tile.occupant)
@@ -365,7 +389,7 @@ roboCook.Game.prototype = {
         // If not, revert back to how it was.
         else if (tile.selected && !inBounds) {
             tile.selected = false;
-            if(tile.tint != 0x39ff14)
+            if(tile.tint != this.pathColor && tile.tint != this.endPathColor)
                 tile.tint = 0xffffff;
             this.game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
             if (tile.occupant)
@@ -401,14 +425,6 @@ roboCook.Game.prototype = {
 	    }
     },
 
-    pathDone: function(player){
-        //player.sourceTile.questpop.openWindow();
-        var questType = player.sourceTile.questNum % 3;
-        player.sourceTile.questpop.popUpQuestion(questType);
-        //console.log(player.sourceTile);
-        console.log("PATH FINISHED!");
-    },
-
     getPlayerPosition: function() {
         return this.cursor.position;
     },
@@ -427,7 +443,7 @@ roboCook.Game.prototype = {
 
     spawnTiles: function() {
 
-  		var size = 65;
+  		var size = 50;
   		var map_width = this.mapData.tileMap[0].length - 1;
   		var map_height = this.mapData.tileMap.length - 1;
 
@@ -441,9 +457,8 @@ roboCook.Game.prototype = {
                 var tileName = this.mapData.tileNames[tileNumber];
 
                 tile = this.game.add.isoSprite(x*size, y*size, 0, tileName, 0, this.isoGroup);
-                tile.scale.setTo(1.25, 1.25);
+                tile.scale.setTo(1.1, 1.1);
                 tile.anchor.set(0.5, 0);
-                tile.buyable = (tileNumber == 1) ? true : false;
                 tile.Xtable = x;
                 tile.Ytable = y;
                 tile.occupant = null;
@@ -453,9 +468,11 @@ roboCook.Game.prototype = {
                     tile.ingredient = this.ingredients.shift();
                 }
                 if(tileName == "path-simple"){
-                    tile.alpha = 0.35;
+                    tile.alpha = 0.55;
+                    tile.scale.setTo(0.75, 0.75);
                 }
                 if(tileName.includes("path-q")){
+                    tile.scale.setTo(0.75, 0.75);
                     tile.alpha = 0.85;
                     tile.questNum = parseInt(tileName[tileName.length-1])-1;
                     tile.questpop = new QuestPopUp(this, tile.position.x, tile.position.y, tileName+"-info");

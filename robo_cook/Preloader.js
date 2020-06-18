@@ -59,7 +59,7 @@ roboCook.Preloader.prototype = {
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue.png', 180, 296);
+        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-orange.png', 180, 296);
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
         this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
         this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
@@ -80,13 +80,26 @@ roboCook.Preloader.prototype = {
         this.load.image('red-bar', 'assets/questions/red-bar.png');
         this.load.image('right', 'assets/questions/right.png');
         this.load.image('wrong', 'assets/questions/wrong.png');
+        this.load.image('question-form', 'assets/questions/question-form.png');
+        this.load.image('quest-frame-title','assets/questions/question-head.png');
         //this.load.image('clock-running', 'assets/questions/clock-running.gif');
+
+        this.load.image('badge-tips','assets/questions/badges/tips.png');
+        this.load.image('badge-forbid','assets/questions/badges/forbid.png');
+        this.load.image('badge-scale','assets/questions/badges/scale.png');
+        this.load.image('score-frame1','assets/questions/badges/score-frame-2.png');
+        this.load.image('score-frame2','assets/questions/badges/score-frame-1.png');
 
         // load the Dice assets
         this.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
         this.load.script("BlurX", path + "assets/scripts/BlurX.js");
         this.load.script("BlurY", path + "assets/scripts/BlurY.js");
         this.load.pack('level1', 'assets/assetPack.json', null, this);
+
+        this.load.image('recipe1', 'assets/recipes/shepherds-pie-cartoon.jpg');
+        this.load.image('recipe2', 'assets/recipes/apple-crumble-custard.jpg');
+        this.load.image('protein-logo', 'assets/images/protein-logo-2.png');
+        this.load.image('game-instructions', 'assets/images/game-instructions.png');
 
         //console.log("GOT HERE!")
         //staaaart loading

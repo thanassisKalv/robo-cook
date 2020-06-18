@@ -57,7 +57,7 @@
 		{
 			"questions": [
 				{
-					"question": "Does the recipe seems is not rich in:",
+					"question": "Is the recipe NOT rich in:",
 					"choices": [
 						"Protein",
 						"Oily Fat",
@@ -74,7 +74,7 @@
 						"Lamb",
 						"Sandwich with bacon"
 					],
-					"answer": 2,
+					"answer": 1,
 					"image": "unprocessed_red_meat.jpg",
 					"answer_image": "unprocessed_red_meat_answer.JPG"
 				}

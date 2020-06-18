@@ -9,7 +9,7 @@
         {
             "type": "image",
             "key": "quest",
-            "url": "assets/tileset/quest-ingre.png",
+            "url": "assets/tileset/quest-recipe.png",
             "overwrite": false
         },
         {
@@ -27,25 +27,31 @@
         {
             "type": "image",
             "key": "path-simple",
-            "url": "assets/tileset/path-simple.png",
+            "url": "assets/tileset/path-simple-bg.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q1",
-            "url": "assets/tileset/path-quest-1.png",
+            "url": "assets/tileset/path-quest-advice.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q2",
-            "url": "assets/tileset/path-quest-2.png",
+            "url": "assets/tileset/path-quest-compare.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q3",
-            "url": "assets/tileset/path-quest-3.png",
+            "url": "assets/tileset/path-quest-avoid.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "path-exchange",
+            "url": "assets/tileset/path-quest-exchange.png",
             "overwrite": false
         },
         {

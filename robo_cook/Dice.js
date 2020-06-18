@@ -50,13 +50,13 @@ Dice.prototype.rollComplete = function() {
             this.player1.input.draggable = true;
             this.player2.input.draggable = false;
             //playersTurn = 2;      // this was moved to the --onDragStop-- callback
-            pendingMove = true;
+            //pendingMove = true;
         }
         else {
             this.player2.input.draggable = true;
             this.player1.input.draggable = false;
             //playersTurn = 1;
-            pendingMove = true;
+            //pendingMove = true;
         }
 };
 
