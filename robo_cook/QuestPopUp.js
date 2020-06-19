@@ -206,7 +206,7 @@ class QuestPopUp extends Phaser.Sprite {
     addChoiceGroup(title, isRightAnswer){
         var button = this.game.add.button(0,0, 'button', this.onButtonChoiceClicked, {context:this, isRightAnswer:isRightAnswer}, 2, 1, 0);
         button.scale.set(0.5);
-        var text = this.game.add.text(0,0,title, {font: "16pt Audiowide", fill: "#000000", wordWrap: false,  align: "left",  });
+        var text = this.game.add.text(0,0,title, {font: "16pt Audiowide", fill: "#000000", wordWrap: true,  align: "left",  wordWrapWidth: 320 });
         text.alignTo(button, Phaser.RIGHT_CENTER, 0);
         var group = this.game.add.group();
         group.add(button);
@@ -226,8 +226,8 @@ class QuestPopUp extends Phaser.Sprite {
             this.context.correctMusic.play();
             this.context.closeQuestionUI(this.context);
             this.context.showResultAnswer(this.context, this.isRightAnswer);
-            pendingMove = false;
             this.context.groupButtons.destroy();
+            
         }
         else{
             if(playersTurn==1)
@@ -243,7 +243,6 @@ class QuestPopUp extends Phaser.Sprite {
             this.context.showResultAnswer(this.context, this.isRightAnswer);
             if(this.context.countDownMusic.isPlaying)
                 this.context.countDownMusic.stop();
-            pendingMove = false;
             this.context.groupButtons.destroy();
         }
     }
@@ -256,9 +255,11 @@ class QuestPopUp extends Phaser.Sprite {
         if (timeLeft <= 0) {
             timeLeft = 0;
             this.timeOver = true;
+            console.log("TIME IS UP!");
             this.closeQuestionUI(this);
         }
-        this.timeBar.scale.setTo(timeLeft / this.tLimit, 1);
+        else
+            this.timeBar.scale.setTo(timeLeft / this.tLimit, 1);
     }
 
     // clear the questions assets with a smooth close-scale tween
@@ -267,10 +268,11 @@ class QuestPopUp extends Phaser.Sprite {
         context.qtween.onComplete.add(function() { context.questComponents.destroy(); }, this);
         context.bgBar.destroy();
         context.timeBar.destroy();
+        context.timeBar = null;
         context.timeClock.destroy();
         context.timeLabel.destroy();
         context.game.time.events.remove(context.musicEvent);
-        context.timeOver == false
+        context.timeOver == true;
         pendingMove = false;
         if(context.countDownMusic.isPlaying)
             context.countDownMusic.stop();

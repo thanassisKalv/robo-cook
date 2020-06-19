@@ -1,5 +1,5 @@
  {
-  	"tileNames": [ "empty", "quest", "path-simple", "start", "path-q1", "path-q2", "path-q3", "target-1", "target-2", "target-3", "target-4", "path-exchange"],
+  	"tileNames": [ "empty", "quest", "path-simple", "start", "path-q1", "path-q2", "path-q3", "target-1", "target-2", "target-3", "target-4", "path-q4"],
   	"tileMap": [
 		[ 0,0,0,0,0,0,0,11,0,0,0,0,0,0 ],
 		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],

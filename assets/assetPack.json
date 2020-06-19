@@ -50,8 +50,8 @@
         },
         {
             "type": "image",
-            "key": "path-exchange",
-            "url": "assets/tileset/path-quest-exchange.png",
+            "key": "path-q4",
+            "url": "assets/tileset/path-quest-exchang.png",
             "overwrite": false
         },
         {

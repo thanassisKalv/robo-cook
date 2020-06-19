@@ -10,18 +10,18 @@ roboCook.MainMenu.prototype = {
 
     create: function () {
 
-        this.recipeImage1 = this.add.image(this.game.width/2-250, this.game.height/2-150, "recipe1");
+        this.recipeImage1 = this.add.image(this.game.width/2-450, this.game.height/2-250, "recipe1");
         this.recipeImage1.anchor.setTo(0.5, 0.5);
         this.recipeImage1.scale.setTo(0.5, 0.5);
 
-	    this.playButton = this.add.button(this.game.width/2-250, this.game.height/2-150, "buttons", this.startGameRecipe1, this, 
+	    this.playButton = this.add.button(this.game.width/2-450, this.game.height/2-250, "buttons", this.startGameRecipe1, this, 
                                           "green_button00.png", "green_button00.png", 
                                           "green_button02.png", "green_button00.png");
         this.playButton.anchor.setTo(0.5, 0.5);
         this.playButton.scale.setTo(1.5, 1.5);
         this.playButton.alpha = 0.85;
 
-        this.proteinLogo = this.add.image(this.game.width/2-300, this.game.height/2+400, "protein-logo");
+        this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+400, "protein-logo");
         this.proteinLogo.scale.setTo(0.33, 0.33);
         this.proteinLogo.anchor.setTo(0.5, 0.5);
 

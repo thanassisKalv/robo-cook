@@ -52,156 +52,6 @@
         },
         {
             "type": "image",
-            "key": "image_question_0_5",
-            "url": "assets/images_questions/5_power_by_0_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_5",
-            "url": "assets/images_questions/5_power_by_0_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_6",
-            "url": "assets/images_questions/atlantic.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_6",
-            "url": "assets/images_questions/pacific_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_7",
-            "url": "assets/images_questions/venus.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_7",
-            "url": "assets/images_questions/venus_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_8",
-            "url": "assets/images_questions/spider.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_8",
-            "url": "assets/images_questions/spider_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_9",
-            "url": "assets/images_questions/magnet.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_9",
-            "url": "assets/images_questions/magnet_answer.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_10",
-            "url": "assets/images_questions/Milky-Way-Galaxy-Desktop-Wallpaper.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_10",
-            "url": "assets/images_questions/Milky-Way-Galaxy-Desktop-Wallpaper.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_11",
-            "url": "assets/images_questions/keyboard.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_11",
-            "url": "assets/images_questions/keyboard_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_12",
-            "url": "assets/images_questions/earth_source_energy.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_12",
-            "url": "assets/images_questions/sun_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_13",
-            "url": "assets/images_questions/gold.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_13",
-            "url": "assets/images_questions/gold_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_14",
-            "url": "assets/images_questions/scratch.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_14",
-            "url": "assets/images_questions/scratch.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_15",
-            "url": "assets/images_questions/69-33.PNG"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_15",
-            "url": "assets/images_questions/36.PNG"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_16",
-            "url": "assets/images_questions/12.PNG"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_16",
-            "url": "assets/images_questions/60.JPG"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_17",
-            "url": "assets/images_questions/scratch.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_17",
-            "url": "assets/images_questions/scratch_answer.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_18",
-            "url": "assets/images_questions/python.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_18",
-            "url": "assets/images_questions/python_answer.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_19",
-            "url": "assets/images_questions/java.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_19",
-            "url": "assets/images_questions/java_answer.jpg"
-        },
-        {
-            "type": "image",
             "key": "image_question_1_0",
             "url": "assets/images_questions/fish-chips.jpg"
         },
@@ -312,56 +162,6 @@
         },
         {
             "type": "image",
-            "key": "image_question_1_11",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_11",
-            "url": "assets/images_questions/redandgreen.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_12",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_12",
-            "url": "assets/images_questions/cold.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_13",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_13",
-            "url": "assets/images_questions/16.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_14",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_14",
-            "url": "assets/images_questions/xxxiv.JPG"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_15",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_15",
-            "url": "assets/images_questions/4000.JPG"
-        },
-        {
-            "type": "image",
             "key": "image_question_2_0",
             "url": "assets/images_questions/fish-chips-new.png"
         },
@@ -379,6 +179,26 @@
             "type": "image",
             "key": "image_answer_2_1",
             "url": "assets/images_questions/answer2.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_0",
+            "url": "assets/images_questions/all-fats.png"
+        },
+        {
+            "type": "image",
+            "key": "image_answer_3_0",
+            "url": "assets/images_questions/answer-fats-1.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_1",
+            "url": "assets/images_questions/all-fats.png"
+        },
+        {
+            "type": "image",
+            "key": "image_answer_3_1",
+            "url": "assets/images_questions/answer-fats-2.png"
         }
     ],
     "meta": {
@@ -386,6 +206,6 @@
         "app": "Phaser Asset Packer",
         "url": "http://phaser.io",
         "version": "1.0",
-        "copyright": "Photon Storm Ltd. 2014"
+        "copyright": "Photon Storm Ltd."
     }
 }

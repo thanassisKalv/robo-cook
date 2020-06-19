@@ -54,7 +54,6 @@ roboCook.Preloader.prototype = {
         this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.image('bg', path+'assets/robo-cook/background-scene-1.png');
         this.load.image("player", path+"assets/chars/green_sprite.png");
-        this.load.image("circle", path+"assets/dashed_circle.png");
         this.load.image("monster", path+"assets/chars/blue_monster.png");
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
@@ -99,7 +98,7 @@ roboCook.Preloader.prototype = {
         this.load.image('recipe1', 'assets/recipes/shepherds-pie-cartoon.jpg');
         this.load.image('recipe2', 'assets/recipes/apple-crumble-custard.jpg');
         this.load.image('protein-logo', 'assets/images/protein-logo-2.png');
-        this.load.image('game-instructions', 'assets/images/game-instructions.png');
+        this.load.image('game-instructions', 'assets/images/instructions-new.png');
 
         //console.log("GOT HERE!")
         //staaaart loading

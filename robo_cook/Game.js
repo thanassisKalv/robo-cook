@@ -200,7 +200,7 @@ roboCook.Game.prototype = {
         // pathfinding with  **EasyStar.js** library
         this.easystar = new EasyStar.js();
         this.easystar.setGrid(this.mapData.tileMap);
-        this.easystar.setAcceptableTiles([1,2,3,4,5,6,7,8,9,10]);
+        this.easystar.setAcceptableTiles([1,2,3,4,5,6,7,8,9,10,11]);
         this.easystar.enableDiagonals();
         this.boundFound = this.pathFound.bind(this);
 
@@ -238,10 +238,10 @@ roboCook.Game.prototype = {
         
         if(newDiceResult) {
             newDiceResult = false;
-            pendingMove=true;
+            pendingMove = true;
             this.endTiles = [];
             const startTile = playersTurn==1? this.player1.currentTile : this.player2.currentTile;
-            this.isoGroup.forEach(t => { t.tint = 0xffffff});
+            //this.isoGroup.forEach(t => { t.tint = 0xffffff});
             this.isoGroup.forEach(t => {
                 const tile = t;
                 this.highlightPaths = highlightPath.bind(this);
@@ -298,7 +298,7 @@ roboCook.Game.prototype = {
     },
 
     checkTargetTileSelected: function(){
-        //console.log(pendingMove);
+        //console.log(pendingMove,playerMoving);
         if(pendingMove && playerMoving==false)
             this.endTiles.forEach(clickedTile => {
                 var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
@@ -333,7 +333,6 @@ roboCook.Game.prototype = {
             else{
                 if(targetTile.key.includes("quest"))
                     this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"))
-                pendingMove = false;
                 if(playersTurn==1){
                     targetTile.occupant = this.player1;
                     playersTurn = 2;
@@ -342,12 +341,15 @@ roboCook.Game.prototype = {
                     targetTile.occupant = this.player2;
                     playersTurn = 1;
                 }
+                pendingMove = false;
             }
+            playerMoving = false;
             this.player1.input.draggable = false;
             this.player2.input.draggable = false;
             sprite.markerScale.stop();
             sprite.marker.scale.setTo(0.08, 0.08);
-            playerMoving = false;
+            this.isoGroup.forEach(t => { t.tint = 0xffffff});
+    
         }, this);
 
     },
