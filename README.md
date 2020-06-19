@@ -19,3 +19,6 @@ robo-cook's path  -  board game in Phaser.js
  - IMPORTANT: added pathfind() verification on dice-total after onDragStop - *11/06*
  - added new target-frame of tiles on middle (tile per ingredient) - *11/06*
  - added highlighting to board tiles after dice roll - *12/06*
+ - changed movement from draggable to clicked-tile move - *17/06*
+ - changed/added badges for player's progress & added PlayerScores.js class for handling them - *17/06*
+ - fixed bug in playerturn change & added a new instructions page on start menu - *19/06*
