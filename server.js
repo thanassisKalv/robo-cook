@@ -9,7 +9,7 @@ const port = 8080;
 const IP = "localhost";
 
 
-var ServerEvent = /** @class */ (function () {
+var ServerEvent = (function () {
     function ServerEvent() {
     }
     ServerEvent.connected = "connection";
@@ -17,7 +17,7 @@ var ServerEvent = /** @class */ (function () {
     return ServerEvent;
 }());
 
-var GameEvent = /** @class */ (function () {
+var GameEvent =  (function () {
     function GameEvent() {
     }
     GameEvent.authentication = "authentication:successful";
@@ -25,17 +25,14 @@ var GameEvent = /** @class */ (function () {
     return GameEvent;
 }());
 
-var PlayerEvent = /** @class */ (function () {
+var PlayerEvent = (function () {
     function PlayerEvent() {
     }
     PlayerEvent.joined = "player:joined";
-    PlayerEvent.protagonist = "player:protagonist";
     PlayerEvent.players = "actors:collection";
     PlayerEvent.quit = "player:left";
     PlayerEvent.assignID = "player:assignID";
     PlayerEvent.newDiceResult = "player:newDiceResult";
-    PlayerEvent.pickup = "player:pickup";
-    PlayerEvent.hit = "player:hit";
     PlayerEvent.coordinates = "player:coordinates";
     PlayerEvent.opponentAnswered = "player:opponentAnswered";
     return PlayerEvent;
