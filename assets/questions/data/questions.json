@@ -7,8 +7,8 @@
 					"question": "Makes your salad omega-3 rich?",
 					"choices": [
 						"Mayonnaise",
-						"Salmon",
-						"Olive Oil"
+						"Tuna",
+						"Sunflower Oil"
 					],
 					"answer": 1,
 					"image": "salad.jpg",
@@ -65,7 +65,7 @@
 					],
 					"answer": 2,
 					"image": "recipe.png",
-					"answer_image": "answer1.JPG"
+					"answer_image": "answer1.png"
 				},
 				{
 					"question": "Unprocessed red meats can be part of a healthy diet. Choose an appropriate meal",

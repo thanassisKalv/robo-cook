@@ -12,7 +12,7 @@ class RoboCook extends Phaser.Sprite {
         //this.physicsBodyType = Phaser.Physics.ARCADE;
         this.input.draggable = false;
         this.anchor.setTo(0.5, 0.5);
-        this.scale.setTo(0.33, 0.33);
+        this.scale.setTo(0.4, 0.4);
         this.currentTile = startTile;
 
         //  add a tweening marker below robo-cook character

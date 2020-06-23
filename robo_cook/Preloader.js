@@ -58,7 +58,7 @@ roboCook.Preloader.prototype = {
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-orange.png', 180, 296);
+        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue-new.png', 180, 296);
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
         this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
         this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
@@ -98,7 +98,7 @@ roboCook.Preloader.prototype = {
         this.load.image('recipe1', 'assets/recipes/shepherds-pie-cartoon.jpg');
         this.load.image('recipe2', 'assets/recipes/apple-crumble-custard.jpg');
         this.load.image('protein-logo', 'assets/images/protein-logo-2.png');
-        this.load.image('game-instructions', 'assets/images/instructions-new.png');
+        this.load.image('game-instructions', 'assets/images/instructions-fixed.png');
 
         //console.log("GOT HERE!")
         //staaaart loading

@@ -8,7 +8,7 @@
         {
             "type": "image",
             "key": "image_answer_0_0",
-            "url": "assets/images_questions/batery.jpg"
+            "url": "assets/images_questions/batery.png"
         },
         {
             "type": "image",
@@ -22,16 +22,6 @@
         },
         {
             "type": "image",
-            "key": "image_question_0_2",
-            "url": "assets/images_questions/shark.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_2",
-            "url": "assets/images_questions/shark.jpg"
-        },
-        {
-            "type": "image",
             "key": "image_question_0_3",
             "url": "assets/images_questions/million.png"
         },
@@ -42,18 +32,8 @@
         },
         {
             "type": "image",
-            "key": "image_question_0_4",
-            "url": "assets/images_questions/negative_2.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_0_4",
-            "url": "assets/images_questions/negative_2.png"
-        },
-        {
-            "type": "image",
             "key": "image_question_1_0",
-            "url": "assets/images_questions/fish-chips.jpg"
+            "url": "assets/images_questions/fish-chips-icon.png"
         },
         {
             "type": "image",
@@ -72,103 +52,13 @@
         },
         {
             "type": "image",
-            "key": "image_question_1_2",
-            "url": "assets/images_questions/daily-calories-source.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_2",
-            "url": "assets/images_questions/8bits.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_3",
-            "url": "assets/images_questions/daily-calories-source.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_3",
-            "url": "assets/images_questions/notebook.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_4",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_4",
-            "url": "assets/images_questions/html.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_5",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_5",
-            "url": "assets/images_questions/print.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_6",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_6",
-            "url": "assets/images_questions/binary.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_7",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_7",
-            "url": "assets/images_questions/steve.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_8",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_8",
-            "url": "assets/images_questions/board.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_9",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_9",
-            "url": "assets/images_questions/network.png"
-        },
-        {
-            "type": "image",
-            "key": "image_question_1_10",
-            "url": "assets/images_questions/question.png"
-        },
-        {
-            "type": "image",
-            "key": "image_answer_1_10",
-            "url": "assets/images_questions/1122.jpg"
-        },
-        {
-            "type": "image",
             "key": "image_question_2_0",
             "url": "assets/images_questions/fish-chips-new.png"
         },
         {
             "type": "image",
             "key": "image_answer_2_0",
-            "url": "assets/images_questions/answer1.JPG"
+            "url": "assets/images_questions/answer1.png"
         },
         {
             "type": "image",

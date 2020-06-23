@@ -1,7 +1,7 @@
 class QuestPopUp extends Phaser.Sprite {
 
-	constructor(game, xpos, ypos, qtype) {
-		super(game, xpos, ypos, qtype);
+	constructor(game, xpos, ypos) {
+		super(game, xpos, ypos);
 
 		this.x = 210;
 		this.y = 370;
@@ -34,9 +34,15 @@ class QuestPopUp extends Phaser.Sprite {
 
     }
     
-     randomIntFromInterval(min, max) { // min and max included 
+    randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min);
-      }
+    }
+
+    waitOtherPlayer(){
+        this.game.waiting_other = this.game.add.text(this.x-50, this.y, 'Wait other player to answer',  {font: "bold 26px Handlee"});
+        this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
+        this.game.waiting_other.anchor.set(0.5,0.5);
+    }
 
     openWindow() {
         if ((this.tween !== null && this.tween.isRunning) || this.qpop.scale.x === 1)
@@ -73,7 +79,7 @@ class QuestPopUp extends Phaser.Sprite {
 
         this.categoryIndexSelected = qType;
         this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[qType].questions.length-1);
-        console.log(this.categoryIndexSelected, this.currentQuestionIndex);
+        //console.log(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showImageQuestion(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showImageAnswer(this.categoryIndexSelected, this.currentQuestionIndex);
         
@@ -224,22 +230,20 @@ class QuestPopUp extends Phaser.Sprite {
                 this.context.game.scoreHandler.increaseScore_P2(this.context.categoryIndexSelected);
             //console.log("CHECKED CORRECT ANSWER!");
             this.context.correctMusic.play();
-            this.context.closeQuestionUI(this.context);
+            this.context.closeQuestionUI(this.context, true, this.context.categoryIndexSelected);
             this.context.showResultAnswer(this.context, this.isRightAnswer);
             this.context.groupButtons.destroy();
             
         }
         else{
             if(playersTurn==1)
-                if(this.context.game.player1score1>1)
-                    this.context.game.scoreHandler.decreaseScore_P1(this.context.categoryIndexSelected);
+                this.context.game.scoreHandler.decreaseScore_P1(this.context.categoryIndexSelected);
             else
-                if(this.context.game.player2score1>1)
-                    this.context.game.scoreHandler.decreaseScore_P2(this.context.categoryIndexSelected);
+                this.context.game.scoreHandler.decreaseScore_P2(this.context.categoryIndexSelected);
 
             //console.log("CHECKED WRONG ANSWER!");
             this.context.incorrectMusic.play();
-            this.context.closeQuestionUI(this.context);
+            this.context.closeQuestionUI(this.context, false, this.context.categoryIndexSelected);
             this.context.showResultAnswer(this.context, this.isRightAnswer);
             if(this.context.countDownMusic.isPlaying)
                 this.context.countDownMusic.stop();
@@ -247,23 +251,23 @@ class QuestPopUp extends Phaser.Sprite {
         }
     }
 
-    displayTimeRemaining() {
+    displayTimeRemaining(){
         var time = Math.floor(this.game.time.totalElapsedSeconds());
         var timeLeft = this.timeLimit - time;
     
         // detect when the countdown is over
-        if (timeLeft <= 0) {
+        if (timeLeft <= 0){
             timeLeft = 0;
             this.timeOver = true;
             console.log("TIME IS UP!");
-            this.closeQuestionUI(this);
+            this.closeQuestionUI(this, false, this.categoryIndexSelected);
         }
         else
             this.timeBar.scale.setTo(timeLeft / this.tLimit, 1);
     }
 
     // clear the questions assets with a smooth close-scale tween
-    closeQuestionUI(context){
+    closeQuestionUI(context, answer, ctgry){
         context.qtween = context.game.add.tween(context.questComponents.scale).to( { x: 0.01, y: 0.01 }, 400, Phaser.Easing.Elastic.In, true);
         context.qtween.onComplete.add(function() { context.questComponents.destroy(); }, this);
         context.bgBar.destroy();
@@ -274,13 +278,13 @@ class QuestPopUp extends Phaser.Sprite {
         context.game.time.events.remove(context.musicEvent);
         context.timeOver == true;
         pendingMove = false;
+        window.socket.emit(PlayerEvent.opponentAnswered, {correct:answer, category:ctgry});
         if(context.countDownMusic.isPlaying)
             context.countDownMusic.stop();
         if(playersTurn==1)
             playersTurn = 2
         else
             playersTurn = 1
-            
     }
 
     update(){

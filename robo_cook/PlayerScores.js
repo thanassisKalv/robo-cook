@@ -94,30 +94,30 @@ class PlayerScores {
 
 
     decreaseScore_P1(category) {
-      if(category==0){
+      if(category==0 && this.game.player1score1>0){
          this.game.player1score1 --;
          this.game.player1score1Text.setText(": "+this.game.player1score1);
       }
-      if(category==1){
+      if(category==1 && this.game.player1score2>0){
          this.game.player1score2 --;
          this.game.player1score2Text.setText(": "+this.game.player1score2);
       }
-      if(category==2){
+      if(category==2 && this.game.player1score3>0){
          this.game.player1score3 --;
          this.game.player1score3Text.setText(": "+this.game.player1score3);
       }
     }
 
     decreaseScore_P2(category) {
-      if(category==0){
+      if(category==0 && this.game.player2score1>0){
          this.game.player2score1 --;
          this.game.player2score1Text.setText(": "+this.game.player2score1);
       }
-      if(category==1){
+      if(category==1 && this.game.player2score2>0){
          this.game.player2score2 --;
          this.game.player2score2Text.setText(": "+this.game.player2score2);
       }
-      if(category==2){
+      if(category==2 && this.game.player2score3>0){
          this.game.player2score3 --;
          this.game.player2score3Text.setText(": "+this.game.player2score3);
       }

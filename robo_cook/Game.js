@@ -81,6 +81,7 @@ var pendingMove = false;
 var newDiceResult = false;
 var playerMoveLength;
 var playerMoving=false;
+var opponentMoving=false;
 
 roboCook.Game.prototype = {
 
@@ -90,7 +91,7 @@ roboCook.Game.prototype = {
         this.bg = this.add.sprite(350,0,'bg');
         this.bg.fixedToCamera =true;
         // change the title according to level
-        document.title = "Robo-Cook Path - Seafood Path"
+        document.title = "Robo-Cook Path - Discover Recipe"
         this.ingredients = ["target-1", "target-2", "target-3", "target-4"];
         this.proteinLogo = this.add.image(150, this.game.height/2+380, "protein-logo");
         this.proteinLogo.scale.setTo(0.3, 0.3);
@@ -184,7 +185,7 @@ roboCook.Game.prototype = {
         this.scoreText = this.add.text(30-15, 25, "Players Collected", {font: "bold 30px Handlee"});
         this.scoreHandler = new PlayerScores(this.game);
 
-        this.levelName = this.add.text(830+this.offsetUI, 50, "Recipe's name", {font: "26px Handlee"});
+        this.levelName = this.add.text(830+this.offsetUI, 50, "<Level's Name>", {font: "26px Handlee"});
 
         this.music = this.game.add.audio('bgMusic');
         this.music.loop = true;
@@ -228,6 +229,22 @@ roboCook.Game.prototype = {
             dice.player2 = this.player2;
             dice.playersTurnText = this.playersTurnText;
         }, this);
+
+        var _this = this;
+        this.game.socket.on(PlayerEvent.coordinates, function (playerMove) {
+            //console.log(playerMove);
+            _this.moveOtherPlayer(playerMove);
+        });
+
+        this.game.socket.on(PlayerEvent.newDiceResult, function (diceResult) {
+            newDiceResult = true;
+            total = diceResult.diceTotal;
+        });
+        
+        this.game.socket.on(PlayerEvent.opponentAnswered, function (data) {
+            _this.otherPlayerAnswered(data);
+        });
+        
     },
     
     update: function () {
@@ -288,6 +305,7 @@ roboCook.Game.prototype = {
         this.diceSum.setText("Dice Sum: " + total);
         this.progressBar1.width = this.cursor.healthP1;
         this.progressBar2.width = this.cursor.healthP2;
+        this.game.world.bringToTop(this.cursor);
 
         if(playersTurn==1)
             this.game.world.bringToTop(this.player1);
@@ -295,6 +313,43 @@ roboCook.Game.prototype = {
             this.game.world.bringToTop(this.player2);
         //calculate new "A-star" paths
         //this.easystar.calculate();
+    },
+
+    // opponent has made a valid position
+    moveOtherPlayer: function(playerMove){
+        var cargs = {newPos:playerMove.playersTile, dirTile:""};
+        this.isoGroup.forEach(this.findDirTile, this, false, cargs);
+
+        if(playerMove.player==1)
+            this.movePlayer(this.player1, cargs.dirTile, false);
+        if(playerMove.player==2)
+            this.movePlayer(this.player2, cargs.dirTile, false);
+    },
+
+    findDirTile: function(tile, cargs){
+        if(tile.Xtable==cargs.newPos.x && tile.Ytable==cargs.newPos.y){
+            cargs.dirTile = tile;
+        }
+    },
+
+    otherPlayerAnswered: function(data){
+        this.waiting_other.destroy();
+        pendingMove = false;
+
+        if(playersTurn==1){
+            if(data.correct)
+                this.scoreHandler.increaseScore_P1(data.category);
+            else
+                this.scoreHandler.decreaseScore_P1(data.category);
+            playersTurn = 2
+        }
+        else{
+            if(data.correct)
+                this.scoreHandler.increaseScore_P2(data.category);
+            else
+                this.scoreHandler.decreaseScore_P2(data.category);
+            playersTurn = 1
+        }
     },
 
     checkTargetTileSelected: function(){
@@ -305,26 +360,29 @@ roboCook.Game.prototype = {
                 if(inBounds){
                     //console.log("End-tile selected!");
                     if(playersTurn==1)
-                        this.movePlayer(this.player1, clickedTile);
+                        this.movePlayer(this.player1, clickedTile, true);
                     else
-                        this.movePlayer(this.player2, clickedTile);
+                        this.movePlayer(this.player2, clickedTile, true);
                 }
             });
     },
 
-    movePlayer: function(sprite, targetTile){
+    movePlayer: function(sprite, targetTile, manually){
         playerMoving = true;
         sprite.tween = this.add.tween(sprite).to({x: targetTile.position.x, y: targetTile.position.y}, 900, Phaser.Easing.Sinusoidal.InOut);
         sprite.tween.start();
-        
+        if(manually)
+            this.game.socket.emit(PlayerEvent.coordinates,  { player: playersTurn, diceTotal: total, playersTile: {x: targetTile.Xtable, y: targetTile.Ytable}});
+
         sprite.tween.onComplete.add(function() {
             sprite.currentTile = targetTile;
-            /**   TODO 
-                1 - fire the popUp() question
-                2 - change game's state and tiles accordingly
-            */
+
             if(targetTile.key.includes("path-q")){
-                targetTile.questpop.popUpQuestion( targetTile.questNum);
+                if(manually)
+                    targetTile.questpop.popUpQuestion( targetTile.questNum);
+                else
+                    targetTile.questpop.waitOtherPlayer(  /* empty-for-now */);
+
                 if(playersTurn==1)
                     targetTile.occupant = this.player1;
                 else
@@ -343,11 +401,13 @@ roboCook.Game.prototype = {
                 }
                 pendingMove = false;
             }
+
             playerMoving = false;
             this.player1.input.draggable = false;
             this.player2.input.draggable = false;
             sprite.markerScale.stop();
             sprite.marker.scale.setTo(0.08, 0.08);
+            
             this.isoGroup.forEach(t => { t.tint = 0xffffff});
     
         }, this);
@@ -355,13 +415,10 @@ roboCook.Game.prototype = {
     },
     
     onDragStart: function(sprite, pointer) {
-        // sprite.playerStartPos = { x: sprite.x , y: sprite.y};
-        //sprite.markerScale = this.game.add.tween(sprite.marker.scale).to( { x: 0.18, y: 0.18 }, 500, Phaser.Easing.Quadratic.Out, true).loop(true);
-        //sprite.markerScale.yoyo(true, 500);
+        console.log("Move by dragging is deprecated!")
     },
     
     onDragStop: function(sprite, pointer) {
-
         sprite.tween = this.add.tween(sprite).to({x: sprite.currentTile.position.x, y: sprite.currentTile.position.y}, 300, Phaser.Easing.Sinusoidal.InOut);
         sprite.tween.start();
     },
@@ -466,7 +523,7 @@ roboCook.Game.prototype = {
                 tile.occupant = null;
 
                 if(tileName == "quest"){
-                    tile.questpop = new QuestPopUp(this, tile.position.x, tile.position.y, "path-q1-info");
+                    tile.questpop = new QuestPopUp(this, tile.position.x, tile.position.y);
                     tile.ingredient = this.ingredients.shift();
                 }
                 if(tileName == "path-simple"){
@@ -477,7 +534,7 @@ roboCook.Game.prototype = {
                     tile.scale.setTo(0.75, 0.75);
                     tile.alpha = 0.85;
                     tile.questNum = parseInt(tileName[tileName.length-1])-1;
-                    tile.questpop = new QuestPopUp(this, tile.position.x, tile.position.y, tileName+"-info");
+                    tile.questpop = new QuestPopUp(this, tile.position.x, tile.position.y);
                 }
                 if(tileName == "target-1"){
                     this.playerStart = {x: tile.position.x, y: tile.position.y}
