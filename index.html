@@ -7,13 +7,16 @@
 
   <body>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Handlee">
-    <script type="text/javascript" src="libs/socket.io.js"></script>
-    <script type="text/javascript" src="libs/phaser-2.6.min.js"></script>
+    <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/uuid-random@1.3.2/index.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript" src="libs/socket-v2.3.0.io.js"></script>
+    <script type="text/javascript" src="libs/phaser-2.7.9.min.js"></script>
     <script type="text/javascript" src="libs/easystar-0.2.1.min.js"></script>
     <script type="text/javascript" src="libs/phaser-plugin-isometric.min.js"></script>
     <script type="text/javascript" src="robo_cook/Boot.js"></script>
     <script type="text/javascript" src="robo_cook/Preloader.js"></script>
     <script type="text/javascript" src="robo_cook/socketEvents.js"></script>
+    <script type="text/javascript" src="robo_cook/UiModals.js"></script>
     <script type="text/javascript" src="robo_cook/Dice.js"></script>
     <script type="text/javascript" src="robo_cook/RoboCook.js"></script>
     <script type="text/javascript" src="robo_cook/PlayerScores.js"></script>
@@ -25,39 +28,39 @@
     
     <script type="text/javascript" id="script">
       
-      window.onload = function() {
+        window.onload = function() {
 
-      window.socket = io.connect();
-      //	Create your Phaser game and inject it into the gameContainer div.
-      //	We did it in a window.onload event, but you can do it anywhere 
-      // (requireJS load, anonymous function, jQuery dom ready, - whatever floats your boat)
-      var game = new Phaser.Game(1736, 1000, Phaser.CANVAS, "demo");
-      
-      game.connectedPlayers = {"discover-recipe":[], "discover-diet":[]};
-      game.socket = window.socket;
-      game.myID = "-";
+            window.socket = io.connect();
 
-      game.socket.on(PlayerEvent.joined, function (player) {
-           console.log(player)
-           game.connectedPlayers[player[0].level].push(player);
-      });
+            // (requireJS load, anonymous function, jQuery dom ready, - whatever floats your boat)
+            var game = new Phaser.Game(1736, 1000, Phaser.CANVAS, "demo");
+            
+            game.connectedPlayers = {"discover-recipe":[], "discover-diet":[]};
+            game.socket = window.socket;
+            game.myID = "-";
 
-      game.socket.on(PlayerEvent.players, (players) => {
-           // players.map(player => {
-           //     game.connectedPlayers[player.level].push(player);
-           // });
-      });
+            game.socket.on(PlayerEvent.joined, function (player) {
+                console.log(player)
+                game.connectedPlayers[player[0].level].push(player);
+            });
+
+            game.socket.on(PlayerEvent.players, (players) => {
+                // players.map(player => {
+                //     game.connectedPlayers[player.level].push(player);
+                // });
+            });
 
 
-      game.state.add('Boot', roboCook.Boot);
-      game.state.add('Preloader', roboCook.Preloader);
-      game.state.add('MainMenu', roboCook.MainMenu);
-      game.state.add('Game', roboCook.Game);
+            // add the states of your game
+            game.state.add('Boot', roboCook.Boot);
+            game.state.add('Preloader', roboCook.Preloader);
+            game.state.add('MainMenu', roboCook.MainMenu);
+            game.state.add('Game', roboCook.Game);
 
-      //	Now start the Boot state.
-      game.state.start('Boot');
-      
-      };
+            //	Now start the Boot state.
+            game.state.start('Boot');
+        
+        };
       
     </script>
     </div>

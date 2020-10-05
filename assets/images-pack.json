@@ -22,18 +22,26 @@
         },
         {
             "type": "image",
-            "key": "image_question_0_3",
-            "url": "assets/images_questions/million.png"
+            "key": "image_question_0_2",
+            "url": "/assets/images_questions/oil-to-salad.png"
         },
         {
             "type": "image",
-            "key": "image_answer_0_3",
-            "url": "assets/images_questions/million-answer.png"
+            "key": "image_question_0_3",
+            "url": "/assets/images_questions/question.png"
         },
+        {
+            "type": "image",
+            "key": "image_question_0_4",
+            "url": "/assets/images_questions/citrus-family.jpg"
+        },
+
+
+
         {
             "type": "image",
             "key": "image_question_1_0",
-            "url": "assets/images_questions/fish-chips-icon.png"
+            "url": "/assets/images_questions/seasonality-circle.png"
         },
         {
             "type": "image",
@@ -43,7 +51,7 @@
         {
             "type": "image",
             "key": "image_question_1_1",
-            "url": "assets/images_questions/question.png"
+            "url": "/assets/images_questions/seasonality-circle.png"
         },
         {
             "type": "image",
@@ -52,8 +60,51 @@
         },
         {
             "type": "image",
+            "key": "image_question_1_2",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_3",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_4",
+            "url": "/assets/images_questions/rice-varieties.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_5",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_6",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_7",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_8",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_1_9",
+            "url": "/assets/images_questions/seasonality-circle.png"
+        },
+
+
+
+        {
+            "type": "image",
             "key": "image_question_2_0",
-            "url": "assets/images_questions/fish-chips-new.png"
+            "url": "assets/images_questions/food-pyramid.png"
         },
         {
             "type": "image",
@@ -63,13 +114,72 @@
         {
             "type": "image",
             "key": "image_question_2_1",
-            "url": "assets/images_questions/unprocessed_red_meat.png"
+            "url": "assets/images_questions/food-pyramid.png"
         },
         {
             "type": "image",
             "key": "image_answer_2_1",
             "url": "assets/images_questions/answer2.png"
         },
+        {
+            "type": "image",
+            "key": "image_question_2_2",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_3",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_4",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_5",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_6",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_7",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_8",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_9",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_10",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_11",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_12",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+
+
+
+
         {
             "type": "image",
             "key": "image_question_3_0",

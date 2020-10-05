@@ -10,7 +10,7 @@ class PlayerScores {
       this.game.player1text = this.game.add.text(30-15, 70+15, "P1 ", {font: "bold 30px Handlee"});
       this.game.player1badge1 = this.game.add.image(110-30, 90+15, "buttons", "green_button07.png");
       this.game.player1badge1.anchor.setTo(0.5);
-      this.game.player1tips = this.game.add.image(110-30, 90+15, "badge-tips");
+      this.game.player1tips = this.game.add.image(110-30, 90+15, "badge-food-recipes");
       this.game.player1tips.scale.setTo(0.23);
       this.game.player1tips.anchor.setTo(0.5);
       this.game.player1score1Text = this.game.add.text(110, 70+15, ": ", {font: "bold 30px Handlee"});
@@ -18,18 +18,19 @@ class PlayerScores {
       this.game.player1score2 = 0;
       this.game.player1badge2 = this.game.add.image(210-30, 90+15, "buttons", "green_button07.png");
       this.game.player1badge2.anchor.setTo(0.5);
-      this.game.player1scale = this.game.add.image(210-30, 90+15, "badge-scale");
-      this.game.player1scale.scale.setTo(0.18);
+      this.game.player1scale = this.game.add.image(210-30, 90+15, "badge-seasonality");
+      this.game.player1scale.scale.setTo(0.055);
       this.game.player1scale.anchor.setTo(0.5);
       this.game.player1score2Text = this.game.add.text(210, 70+15, ": ", {font: "bold 30px Handlee"});
 
       this.game.player1score3 = 0;
       this.game.player1badge3 = this.game.add.image(310-30, 90+15, "buttons", "green_button07.png");
       this.game.player1badge3.anchor.setTo(0.5);
-      this.game.player1forbid = this.game.add.image(310-30, 90+15, "badge-forbid");
-      this.game.player1forbid.scale.setTo(0.09);
+      this.game.player1forbid = this.game.add.image(310-30, 90+15, "badge-principles");
+      this.game.player1forbid.scale.setTo(0.1);
       this.game.player1forbid.anchor.setTo(0.5);
       this.game.player1score3Text = this.game.add.text(310, 70+15, ": ", {font: "bold 30px Handlee"});
+
 
       this.game.scoreFrame2 = this.game.add.image(6, 150, "score-frame2");
       this.game.scoreFrame2.scale.setTo(0.9);
@@ -39,7 +40,7 @@ class PlayerScores {
       this.game.player2text = this.game.add.text(30-15, 130+40, "P2 ", {font: "bold 30px Handlee"});
       this.game.player2badge1 = this.game.add.image(110-30, 150+40, "buttons", "green_button07.png");
       this.game.player2badge1.anchor.setTo(0.5);
-      this.game.player2tips = this.game.add.image(110-30, 150+40, "badge-tips");
+      this.game.player2tips = this.game.add.image(110-30, 150+40, "badge-food-recipes");
       this.game.player2tips.scale.setTo(0.23);
       this.game.player2tips.anchor.setTo(0.5);
       this.game.player2score1Text = this.game.add.text(110, 130+40, ": ", {font: "bold 30px Handlee"});
@@ -47,16 +48,16 @@ class PlayerScores {
       this.game.player2score2 = 0;
       this.game.player2badge2 = this.game.add.image(210-30, 150+40, "buttons", "green_button07.png");
       this.game.player2badge2.anchor.setTo(0.5);
-      this.game.player2scale = this.game.add.image(210-30, 150+40, "badge-scale");
-      this.game.player2scale.scale.setTo(0.18);
+      this.game.player2scale = this.game.add.image(210-30, 150+40, "badge-seasonality");
+      this.game.player2scale.scale.setTo(0.055);
       this.game.player2scale.anchor.setTo(0.5);
       this.game.player2score2Text = this.game.add.text(210, 130+40, ": ", {font: "bold 30px Handlee"});
 
       this.game.player2score3 = 0;
       this.game.player2badge3 = this.game.add.image(310-30, 150+40, "buttons", "green_button07.png");
       this.game.player2badge3.anchor.setTo(0.5);
-      this.game.player2forbid = this.game.add.image(310-30, 150+40, "badge-forbid");
-      this.game.player2forbid.scale.setTo(0.09);
+      this.game.player2forbid = this.game.add.image(310-30, 150+40, "badge-principles");
+      this.game.player2forbid.scale.setTo(0.1);
       this.game.player2forbid.anchor.setTo(0.5);
       this.game.player2score3Text = this.game.add.text(310, 130+40, ": ", {font: "bold 30px Handlee"});
 

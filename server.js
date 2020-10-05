@@ -1,3 +1,4 @@
+
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -8,6 +9,9 @@ var uuid = require("uuid");
 const port = 8080;
 const IP = "localhost";
 
+//var connection_string = "mongodb://127.0.0.1:27017/robocook_v01";
+//const db = require("monk")(connection_string);
+//const collection_players = db.get("PlayersInGame");
 
 var ServerEvent = (function () {
     function ServerEvent() {
@@ -33,8 +37,10 @@ var PlayerEvent = (function () {
     PlayerEvent.quit = "player:left";
     PlayerEvent.assignID = "player:assignID";
     PlayerEvent.newDiceResult = "player:newDiceResult";
+    PlayerEvent.gotDiceResult = "player:gotDiceResult";
     PlayerEvent.coordinates = "player:coordinates";
     PlayerEvent.opponentAnswered = "player:opponentAnswered";
+    PlayerEvent.playerSynced = "player:playerSynced";
     return PlayerEvent;
 }());
 
@@ -80,6 +86,8 @@ class GameServer {
 
         this.addDiceResultListener(socket);
 
+        this.addOpponentConfirmedMove(socket);
+
         this.addPlayerAnswered(socket);
     };
 
@@ -87,7 +95,7 @@ class GameServer {
         var _this = this;
         socket.on(GameEvent.authentication, function (playerMessage) {
             if(socket.player){
-                console.log("Already awaiting opponent!");
+                console.log("Already awaiting opponent for level: "+playerMessage.level);
                 return;
             }
             // inform the new player about the awaiting connected players
@@ -97,7 +105,9 @@ class GameServer {
             var newPlayer = _this.createPlayer(socket, playerMessage);
             socket.emit(PlayerEvent.assignID, newPlayer);
 
-            console.log("Level-"+playerMessage.level + " contains " + _this.levels[playerMessage.level]);
+            console.log("Level-"+playerMessage.level + " contains: ");
+            console.log(_this.levels[playerMessage.level]);
+            
             if(_this.levels[playerMessage.level].length>1){
                 var players_in_Level = _this.getConnectedPlayers(playerMessage.level);
                 socket.broadcast.emit(PlayerEvent.players, _this.levels );
@@ -105,6 +115,17 @@ class GameServer {
             }
         });
         
+    };
+
+    createPlayer (socket, msg) {
+        socket.player = {
+            level: msg.level,
+            id: uuid()
+        };
+        //collection_players.insert({playerID:socket.player.id})
+
+        this.levels[msg.level].push(socket.player);
+        return socket.player;
     };
 
     addSignOutListener(socket) {
@@ -141,9 +162,20 @@ class GameServer {
             if(socket.player){
                 console.log(diceResult);
                 socket.broadcast.emit(PlayerEvent.newDiceResult, diceResult );
+                socket.emit(PlayerEvent.gotDiceResult, diceResult );
             }
         });
     };
+
+    addOpponentConfirmedMove(socket){
+        var _this = this;
+        socket.on(PlayerEvent.playerSynced, function (confirmMessage) {
+            if(socket.player){
+                console.log(confirmMessage);
+                socket.broadcast.emit(PlayerEvent.playerSynced, confirmMessage );
+            }
+        });
+    }
 
     addPlayerAnswered (socket) {
         var _this = this;
@@ -152,15 +184,6 @@ class GameServer {
                 socket.broadcast.emit(PlayerEvent.opponentAnswered, dataAnswer );
             }
         });
-    };
-
-    createPlayer (socket, msg) {
-        socket.player = {
-            level: msg.level,
-            id: uuid()
-        };
-        this.levels[msg.level].push(socket.player);
-        return socket.player;
     };
 
     getConnectedPlayers(level){

@@ -24,7 +24,9 @@ var PlayerEvent = (function () {
     PlayerEvent.players = "actors:collection";
     PlayerEvent.quit = "player:left";
     PlayerEvent.newDiceResult = "player:newDiceResult";
+    PlayerEvent.gotDiceResult = "player:gotDiceResult";
     PlayerEvent.coordinates = "player:coordinates";
+    PlayerEvent.playerSynced = "player:playerSynced";
     PlayerEvent.assignID = "player:assignID";
     PlayerEvent.opponentAnswered = "player:opponentAnswered";
     return PlayerEvent;

@@ -4,82 +4,331 @@
 		{
 			"questions": [
 				{
-					"question": "Makes your salad omega-3 rich?",
+					"question": "To make pasta, you need it:",
 					"choices": [
-						"Mayonnaise",
-						"Tuna",
-						"Sunflower Oil"
+						"grains",
+						"fruit",
+						"sugars"
 					],
-					"answer": 1,
-					"image": "salad.jpg",
-					"answer_image": "salad.jpg"
+					"answer": 0,
+					"image": "/assets/images_questions/pasta_production.jpg",
+					"answer_image": "grain-to-pasta.jpg"
 				},
 				{
-					"question": "Choose the appropriate ingredient to add protein to your pasta without so much fat?",
+					"question": "To make bread or pizza you need them:",
 					"choices": [
-						"Tuna",
-						"Grated cheese",
-						"Μinced pork"
+						"water and salt",
+						"water, salt, flour and yeast",
+						"water, sugar, milk and yeast"
 					],
 					"answer": 1,
-					"image": "pasta.jpg",
+					"image": "/assets/images_questions/pasta.png",
 					"answer_image": "pasta.jpg"
+				},
+				{
+					"question": "The oil is produced:",
+					"choices": [
+						"from the pressing of exotic fruit stones",
+						"from the pressing of grapes",
+						"from pressing olives"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/oil-to-salad.png",
+					"answer_image": "olives.jpg"
+				},
+				{
+					"question": "What is rice?",
+					"choices": [
+						"a cereal",
+						"a farinaceous",
+						"a seed"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/question.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "In the citrus family we find:",
+					"choices": [
+						"tangerines, lemons, oranges, clementines",
+						"watermelon and cucumber",
+						"all berries"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/citrus-family.jpg",
+					"answer_image": "cereals.jpg"
 				}
 
 			]
 		},
+
 		{
 			"questions": [
 				{
-					"question": "High in fat due to?",
+					"question": "Among the listed foods, which are those that mature naturally and are consumed in winter?",
 					"choices": [
-						"Boiling",
-						"Frying",
-						"Raw"
-					],
-					"answer": 1,
-					"image": "question.jpg",
-					"answer_image": "cd.png"
-				},
-				{
-					"question": "One gram of protein provides us?",
-					"choices": [
-						"4 calories",
-						"8 calories",
-						"12 calories"
+						"broccoli - persimmons - oranges",
+						"tomato - courgettes - green beans",
+						"Strawberries - apples - spinach"
 					],
 					"answer": 0,
-					"image": "protein-cal.png",
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "frying.png"
+				},
+				{
+					"question": "Among the listed foods, which are those that mature naturally and are consumed in summer?",
+					"choices": [
+						"persimmon - black cabbage - grapefruit",
+						"Broccoli - pears - pumpkin",
+						"aubergines - tomato - watermelon"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Among the listed foods, which are those that mature naturally and are consumed in autumn?",
+					"choices": [
+						"apricots - prickly pears - peaches",
+						"pumpkin - chestnut - mushrooms",
+						"Courgette - apricots - prickly pears"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Among the listed foods, which are those that mature naturally and are consumed in spring?",
+					"choices": [
+						"Strawberries - artichokes - asparagus",
+						"Cherries - watermelon - turnip greens",
+						"Peppers - aubergines - cauliflowers"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Where did the rice come from? Where is it grown?",
+					"choices": [
+						"from Italy",
+						"from abroad",
+						"from Italy and abroad"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/rice-varieties.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Is it appropriate to eat summer vegetables in winter too?",
+					"choices": [
+						"No, because in winter we need protein-rich vegetables",
+						"Yes, because the way we live affects our diet",
+						"It's indifferent because vegetables are always good for you"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "What kind of fruit can you eat in the summer?",
+					"choices": [
+						"Watermelon - melon - berries - cherries - strawberries",
+						"walnuts - peanuts - cashews - apples - pears",
+						"almonds - peanuts - pumpkin seeds"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "What fruit can you eat in winter?",
+					"choices": [
+						"kiwi - bananas - apples - pears - oranges",
+						"grapes - bananas - apples - pears - persimmons",
+						"Oranges - tangerines / mandarins - grapefruit - apples - pears - kiwis"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Zucchini are a typical vegetable in:",
+					"choices": [
+						"in winter",
+						"in spring",
+						"in summer"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "protein-cal.png"
+				},
+				{
+					"question": "Citrus fruits are best eaten:",
+					"choices": [
+						"in summer",
+						"in winter",
+						"in the autumn"
+						
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "protein-cal.png"
 				}
 			]
 		},
+		
+
+
 		{
 			"questions": [
 				{
-					"question": "Is the recipe NOT rich in:",
+					"question": "What nutrients do meat and fish provide?",
 					"choices": [
-						"Protein",
-						"Oily Fat",
-						"Vitamin C"
+						"proteins",
+						"mineral salts",
+						"mineral salts and proteins"
 					],
 					"answer": 2,
-					"image": "recipe.png",
+					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Unprocessed red meats can be part of a healthy diet. Choose an appropriate meal",
+					"question": "What is the function of meat in our diet?",
 					"choices": [
-						"Hot Dog",
-						"Lamb",
-						"Sandwich with bacon"
+						"It helps the cells of our body to reproduce",
+						"provides us with the proteins necessary for muscle growth",
+						"provides us with the calories we need to get the energy"
 					],
 					"answer": 1,
-					"image": "unprocessed_red_meat.jpg",
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Vegetables are a food that must always be present in the diet, why?",
+					"choices": [
+						"They are rich in minerals and vitamins",
+						"they are digestible",
+						"they are always available to us because they are also grown in winter in greenhouses"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "What is the food pyramid?",
+					"choices": [
+						"A way to plate food",
+						"the graph describing how organisms depend on each other for food (plants, herbivores, carnivores)",
+						"the graphic representation of a suggested healthy nutrition"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "What is meant by nutrition?",
+					"choices": [
+						"the way of cooking food to make it good and nutritious",
+						"the intake by the body of food essential to its metabolism and daily vital functions",
+						"the recommended diet for losing weight"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What substance is not nutritious?",
+					"choices": [
+						"water",
+						"fats",
+						"carbon dioxide"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What is the function that carbohydrates (bread, pasta, etc.) have for the body?",
+					"choices": [
+						"regulatory function",
+						"protective",
+						"energy"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "Which food does not contain carbohydrates or sugars?",
+					"choices": [
+						"pasta",
+						"beans",
+						"olive oil"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What is the name of the sugar in potatoes?",
+					"choices": [
+						"fructose",
+						"starch",
+						"sucrose"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": " What's the name of the table sugar?",
+					"choices": [
+						"glucose",
+						"sucrose",
+						"fructose"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What is the main function of proteins?",
+					"choices": [
+						"energy",
+						"protective",
+						"Plastic"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What food has no protein?",
+					"choices": [
+						"milk",
+						"fish",
+						"wine"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "unprocessed_red_meat_answer.JPG"
+				},
+				{
+					"question": "What foods do we find protein in?",
+					"choices": [
+						"in water",
+						"in meat and eggs",
+						"In milk, meat, fish, eggs and legumes"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "unprocessed_red_meat_answer.JPG"
 				}
 			]
 		},
+
+
 		{
 			"questions": [
 				{
@@ -90,7 +339,7 @@
 						"Unsaturated"
 					],
 					"answer": 0,
-					"image": "all-fats.jpg",
+					"image": "/assets/images_questions/all-fats.png",
 					"answer_image": "answer-fats-1.jpg"
 				},
 				{
@@ -101,7 +350,7 @@
 						"No all of them are important"
 					],
 					"answer": 1,
-					"image": "all-fats.jpg",
+					"image": "/assets/images_questions/all-fats.png",
 					"answer_image": "answer-fats-2.jpg"
 				}
 			]

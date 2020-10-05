@@ -33,19 +33,19 @@
         {
             "type": "image",
             "key": "path-q1",
-            "url": "assets/tileset/path-quest-advice.png",
+            "url": "assets/tileset/path-quest-food-recipes.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q2",
-            "url": "assets/tileset/path-quest-compare.png",
+            "url": "assets/tileset/path-quest-seasonality.png",
             "overwrite": false
         },
         {
             "type": "image",
             "key": "path-q3",
-            "url": "assets/tileset/path-quest-avoid.png",
+            "url": "assets/tileset/path-quest-principles.png",
             "overwrite": false
         },
         {

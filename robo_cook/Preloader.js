@@ -58,7 +58,7 @@ roboCook.Preloader.prototype = {
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue-new.png', 180, 296);
+        this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue.png', 180, 296);
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
         this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
         this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
@@ -83,9 +83,9 @@ roboCook.Preloader.prototype = {
         this.load.image('quest-frame-title','assets/questions/question-head.png');
         //this.load.image('clock-running', 'assets/questions/clock-running.gif');
 
-        this.load.image('badge-tips','assets/questions/badges/tips.png');
-        this.load.image('badge-forbid','assets/questions/badges/forbid.png');
-        this.load.image('badge-scale','assets/questions/badges/scale.png');
+        this.load.image('badge-food-recipes','assets/questions/badges/foods-recipes.png');
+        this.load.image('badge-principles','assets/questions/badges/principles-badge.gif');
+        this.load.image('badge-seasonality','assets/questions/badges/seasonality-badge-empty.gif');
         this.load.image('score-frame1','assets/questions/badges/score-frame-2.png');
         this.load.image('score-frame2','assets/questions/badges/score-frame-1.png');
 
@@ -95,10 +95,11 @@ roboCook.Preloader.prototype = {
         this.load.script("BlurY", path + "assets/scripts/BlurY.js");
         this.load.pack('level1', 'assets/assetPack.json', null, this);
 
-        this.load.image('recipe1', 'assets/recipes/shepherds-pie-cartoon.jpg');
-        this.load.image('recipe2', 'assets/recipes/apple-crumble-custard.jpg');
+        this.load.image('recipe1', 'assets/mainMenu/baby-level-2.png');
+        this.load.image('recipe2', 'assets/mainMenu/intermediate-level-2.png');
         this.load.image('protein-logo', 'assets/images/protein-logo-2.png');
         this.load.image('game-instructions', 'assets/images/instructions-fixed.png');
+        this.load.image('bubble', 'assets/particles/points-1.png');
 
         //console.log("GOT HERE!")
         //staaaart loading

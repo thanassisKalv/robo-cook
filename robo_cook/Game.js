@@ -28,7 +28,9 @@ roboCook.Game = function (game) {
 
     this.cursor;       // our player
     this.progressBar;
-    this.levelName;   // player health
+    this.levelsName;   // level's Title
+    this.levelsNameTxt;   // level's Title text element
+
     this.dest;         // where our player is moving to
 
     this.rotation;     // angle of target with respect to player    
@@ -51,13 +53,14 @@ roboCook.Game = function (game) {
     this.playersTurnText;
     this.playerStartPos;
     this.player2Pos;
+    this.currentTargetTile
 
     this.soldierTime = 400;
     this.selectedTile;
     this.gameTiles = [];
 
-    this.maxHeightImageQuestion = 210;
-    this.maxWidthImageQuestion = 340;
+    this.maxHeightImageQuestion = 2*210;
+    this.maxWidthImageQuestion = 2*300;
     
     this.questNum = 0;
     this.ingredients = [];
@@ -75,7 +78,7 @@ roboCook.Game = function (game) {
 var diceGroup;
 var total = 0;
 var playDice;
-var playersTurn = 1;
+var playersTurn=1;
 var rollMusic;
 var pendingMove = false;
 var newDiceResult = false;
@@ -83,10 +86,18 @@ var playerMoveLength;
 var playerMoving=false;
 var opponentMoving=false;
 
+window.socket = io.connect();
+
 roboCook.Game.prototype = {
 
-    create: function () {
+    init: function(argLevelName, myPlayer) {
+        //console.log(myPlayer)
+        this.controllingPlayer = myPlayer+1;
+        this.levelsName = argLevelName;
+    },
 
+    create: function () {
+        
         this.mapData =  this.game.cache.getJSON('mapdata');
         this.bg = this.add.sprite(350,0,'bg');
         this.bg.fixedToCamera =true;
@@ -110,6 +121,7 @@ roboCook.Game.prototype = {
         this.time.deltaCap = 1/30;
         this.playBoard = new Phaser.Rectangle(0, 0, 1175, 974);
         this.time.advancedTiming = true;
+        this.stage.disableVisibilityChange = true;
 
         // This is used to set a game canvas-based offset for the (0, 0, 0) isometric coordinate - by default
         // this point would be at screen coordinates 0, 0 (top left) which is usually undesirable.
@@ -171,7 +183,7 @@ roboCook.Game.prototype = {
         // roll the dice when a mouse button is clicked
         this.input.onDown.add(
             function() {
-                if(playDice && pendingMove==false && playerMoving==false){
+                if(playDice && pendingMove==false && playerMoving==false && playersTurn==this.controllingPlayer){
                     total=0;
                     rollMusic.play();
                     diceGroup.callAll("roll", null);
@@ -182,10 +194,11 @@ roboCook.Game.prototype = {
         this.input.onDown.add(this.checkTargetTileSelected, this);
 
         // UI score elements
-        this.scoreText = this.add.text(30-15, 25, "Players Collected", {font: "bold 30px Handlee"});
+        this.scoreText = this.add.text(30-15, 25, "Cook's Progress", {font: "bold 30px Handlee"});
         this.scoreHandler = new PlayerScores(this.game);
+        this.UiModalsHandler = new UiModalsManager(this.game);
 
-        this.levelName = this.add.text(830+this.offsetUI, 50, "<Level's Name>", {font: "26px Handlee"});
+        this.levelsNameTxt = this.add.text(830+this.offsetUI, 50, this.levelsName, {font: "26px Handlee"});
 
         this.music = this.game.add.audio('bgMusic');
         this.music.loop = true;
@@ -205,9 +218,13 @@ roboCook.Game.prototype = {
         this.easystar.enableDiagonals();
         this.boundFound = this.pathFound.bind(this);
 
-        this.kitchenStart = this.game.add.sprite( this.targetTiles["target-1"].x, this.targetTiles["target-1"].y-10, "kitchen-start");
+        this.kitchenStart = this.game.add.sprite(this.targetTiles["target-1"].x, this.targetTiles["target-1"].y-10, "kitchen-start");
         this.kitchenStart.scale.setTo(0.15);
         this.kitchenStart.anchor.setTo(0.5, 0.5);
+
+        // communication server-client tokens for sockets
+        this.uuidSend = uuid();
+        this.uuidReceived = uuid();
 
         // add our robo-cook characters
         this.player1 = new RoboCook(this.game, this.playerStart.x-30, this.playerStart.y, "robots-blue", this.startTile, 'red-mark');
@@ -218,6 +235,9 @@ roboCook.Game.prototype = {
         this.player2.events.onDragStart.add(this.onDragStart, this);
         this.player2.events.onDragStop.add(this.onDragStop, this);
         this.player2.currentTile = this.startTile;
+
+        // score-graphics points-emitter
+        this.emitter = this.addPointsEmitter("bubble");
 
         // follow the 1st player
         this.game.camera.follow(this.player1);
@@ -231,21 +251,46 @@ roboCook.Game.prototype = {
         }, this);
 
         var _this = this;
-        this.game.socket.on(PlayerEvent.coordinates, function (playerMove) {
+        window.socket.on(PlayerEvent.coordinates, function (playerMove) {
             //console.log(playerMove);
+            _this.uuidReceived = playerMove.uuidToken;
             _this.moveOtherPlayer(playerMove);
         });
 
-        this.game.socket.on(PlayerEvent.newDiceResult, function (diceResult) {
+        window.socket.on(PlayerEvent.newDiceResult, function (diceResult) {
             newDiceResult = true;
             total = diceResult.diceTotal;
+            _this.addMarkerScale();
+        });
+
+        window.socket.on(PlayerEvent.gotDiceResult, function (diceResult) {
+            _this.addMarkerScale();
         });
         
-        this.game.socket.on(PlayerEvent.opponentAnswered, function (data) {
+        window.socket.on(PlayerEvent.playerSynced, function (syncData){
+            _this.uuidReceived = syncData.uuidToken;
+
+            if(_this.waitingSync){
+                console.log(syncData);
+
+                _this.waitingSync = false;
+                Swal.close();
+                _this.currentTargetTile.questpop.popUpQuestion(_this.currentTargetTile.questNum);
+            }
+        });
+
+        window.socket.on(PlayerEvent.opponentAnswered, function (data) {
             _this.otherPlayerAnswered(data);
         });
         
+        window.socket.on(PlayerEvent.quit, function (playerID) {
+            console.log("Your opponent with ID has quitted: " + playerID );
+            _this.music.stop();
+            _this.state.start('MainMenu');
+        });
+        
     },
+    
     
     update: function () {
 
@@ -269,7 +314,7 @@ roboCook.Game.prototype = {
                 if (path != null && total == path.length-1)
                     this.isoGroup.forEach(t => {
                         const subtile = t;
-                        const inPath = path.some(point => point.x === subtile.Xtable && point.y === subtile.Ytable);
+                        const inPath = path.some(point => point.x == subtile.Xtable && point.y == subtile.Ytable);
                         if (inPath) {
                             subtile.tint = this.pathColor;
                         }
@@ -282,26 +327,19 @@ roboCook.Game.prototype = {
             }
             this.playersTurnText.setText("Player #"+playersTurn+" turn")
             //console.log(this.endTiles);
-            if(playersTurn==1){
-                this.player1.markerScale = this.game.add.tween(this.player1.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
-                this.player1.markerScale.yoyo(true, 300);
-            }else{
-                this.player2.markerScale = this.game.add.tween(this.player2.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
-                this.player2.markerScale.yoyo(true, 300);
-            }
         }
 
-        if (this.dice1play.contains(this.input.activePointer.x,this.input.activePointer.y)){
+        if (this.dice1play.contains(this.input.activePointer.x,this.input.activePointer.y))
             playDice = true;
-        }else{
+        else
             playDice = false;
-        }
+        
 
         // the cursor follows the mouse
         this.cursor.position.x = this.input.position.x;
         this.cursor.position.y = this.input.position.y;
         
-        // update UI elements  -- ToDO: implement updating of the progress-badges
+        // update UI elements  -- todo: implement updating function of the progress-badges
         this.diceSum.setText("Dice Sum: " + total);
         this.progressBar1.width = this.cursor.healthP1;
         this.progressBar2.width = this.cursor.healthP2;
@@ -315,6 +353,15 @@ roboCook.Game.prototype = {
         //this.easystar.calculate();
     },
 
+    waitPlayerSync: function(){
+        this.waitingSync = true;
+        if(playersTurn==1)
+            this.UiModalsHandler.waitingModal(2);
+        else
+            this.UiModalsHandler.waitingModal(1);
+           
+    },
+
     // opponent has made a valid position
     moveOtherPlayer: function(playerMove){
         var cargs = {newPos:playerMove.playersTile, dirTile:""};
@@ -324,6 +371,27 @@ roboCook.Game.prototype = {
             this.movePlayer(this.player1, cargs.dirTile, false);
         if(playerMove.player==2)
             this.movePlayer(this.player2, cargs.dirTile, false);
+
+    },
+
+    addMarkerScale: function(){
+        if(playersTurn==1){
+            this.player1.markerScale = this.game.add.tween(this.player1.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
+            this.player1.markerScale.yoyo(true, 300);
+        }else{
+            this.player2.markerScale = this.game.add.tween(this.player2.marker.scale).to( { x: 0.18, y: 0.18 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true);
+            this.player2.markerScale.yoyo(true, 300);
+        }
+    },
+
+    addPointsEmitter: function(pointType){
+        var newEmitter = this.add.emitter(this.x, this.y, 2000);
+        newEmitter.makeParticles('bubble');
+        newEmitter.setRotation(0, 0);
+        newEmitter.setAlpha(0.4, 0.9, 2000);
+        newEmitter.setScale(1.5, 0.1, 1.5, 0.1, 2000, Phaser.Easing.Quintic.Out);
+        newEmitter.particleBringToTop = true;
+        return newEmitter;
     },
 
     findDirTile: function(tile, cargs){
@@ -341,20 +409,20 @@ roboCook.Game.prototype = {
                 this.scoreHandler.increaseScore_P1(data.category);
             else
                 this.scoreHandler.decreaseScore_P1(data.category);
-            playersTurn = 2
+            playersTurn=2
         }
         else{
             if(data.correct)
                 this.scoreHandler.increaseScore_P2(data.category);
             else
                 this.scoreHandler.decreaseScore_P2(data.category);
-            playersTurn = 1
+            playersTurn=1
         }
     },
 
     checkTargetTileSelected: function(){
         //console.log(pendingMove,playerMoving);
-        if(pendingMove && playerMoving==false)
+        if(pendingMove && playerMoving==false && playersTurn==this.controllingPlayer)
             this.endTiles.forEach(clickedTile => {
                 var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
                 if(inBounds){
@@ -369,19 +437,33 @@ roboCook.Game.prototype = {
 
     movePlayer: function(sprite, targetTile, manually){
         playerMoving = true;
-        sprite.tween = this.add.tween(sprite).to({x: targetTile.position.x, y: targetTile.position.y}, 900, Phaser.Easing.Sinusoidal.InOut);
-        sprite.tween.start();
-        if(manually)
-            this.game.socket.emit(PlayerEvent.coordinates,  { player: playersTurn, diceTotal: total, playersTile: {x: targetTile.Xtable, y: targetTile.Ytable}});
+        sprite.moveTween = this.add.tween(sprite).to({x: targetTile.position.x, y: targetTile.position.y}, 900, Phaser.Easing.Sinusoidal.InOut);
+        sprite.moveTween.start();
+        this.currentTargetTile = targetTile
 
-        sprite.tween.onComplete.add(function() {
+        if(manually){
+            this.uuidSend = uuid();
+            console.log(this.uuidSend)
+            window.socket.emit(PlayerEvent.coordinates,  { uuidToken: this.uuidSend, player: playersTurn, diceTotal: total, playersTile: {x: targetTile.Xtable, y: targetTile.Ytable}});
+        }
+        else{
+            console.log(this.uuidReceived)
+        }
+
+        sprite.moveTween.onComplete.add(function() {
             sprite.currentTile = targetTile;
 
             if(targetTile.key.includes("path-q")){
-                if(manually)
-                    targetTile.questpop.popUpQuestion( targetTile.questNum);
-                else
-                    targetTile.questpop.waitOtherPlayer(  /* empty-for-now */);
+                if(manually){
+                    if(this.uuidSend==this.uuidReceived)
+                        targetTile.questpop.popUpQuestion(targetTile.questNum);
+                    else
+                        setTimeout( this.waitPlayerSync(), 200)
+                }
+                else{
+                    window.socket.emit(PlayerEvent.playerSynced, {uuidToken: this.uuidReceived});
+                    targetTile.questpop.waitOtherPlayer( /* empty-for-now */);
+                }
 
                 if(playersTurn==1)
                     targetTile.occupant = this.player1;
@@ -393,11 +475,11 @@ roboCook.Game.prototype = {
                     this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"))
                 if(playersTurn==1){
                     targetTile.occupant = this.player1;
-                    playersTurn = 2;
+                    playersTurn=2;
                 }
                 else{
                     targetTile.occupant = this.player2;
-                    playersTurn = 1;
+                    playersTurn=1;
                 }
                 pendingMove = false;
             }
@@ -405,7 +487,8 @@ roboCook.Game.prototype = {
             playerMoving = false;
             this.player1.input.draggable = false;
             this.player2.input.draggable = false;
-            sprite.markerScale.stop();
+            if (typeof sprite.markerScale !== 'undefined')
+                sprite.markerScale.stop();
             sprite.marker.scale.setTo(0.08, 0.08);
             
             this.isoGroup.forEach(t => { t.tint = 0xffffff});
