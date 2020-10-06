@@ -22,3 +22,4 @@ robo-cook's path  -  board game in Phaser.js
  - changed movement from draggable to clicked-tile move - *17/06*
  - changed/added badges for player's progress & added PlayerScores.js class for handling them - *17/06*
  - fixed bug in playerturn change & added a new instructions page on start menu - *19/06*
+ - MAJOR: implement the multiple-choice questions' popup-card with nicer UI using [sweetalert2](https://sweetalert2.github.io/) - *27/09*
