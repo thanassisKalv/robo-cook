@@ -28,6 +28,7 @@ class UiModalsManager {
      */
     questionImageModal(optionList, imgUrl, questionText, rightAnswer, playersTurn, context){
 
+        // event-tags returned by SweetAlert2 after answer is chosen
         const answersDict = { 0:"isConfirmed", 1:"isDenied", 2:"isDismissed"};
 
         Swal.fire({
@@ -40,7 +41,7 @@ class UiModalsManager {
 
             showDenyButton: true,
             showCancelButton: true,
-            position: 'center-start',
+            position: 'center',
 
             confirmButtonText: optionList[0],
             denyButtonText: optionList[1],

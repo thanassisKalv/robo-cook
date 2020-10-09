@@ -11,8 +11,8 @@ class QuestPopUp extends Phaser.Sprite {
         this.answerComponents = this.game.add.group();
 
         // global variables
-        this.timeLimit = 20;        // timeLimit for countdown in seconds
-        this.tLimit = 20;  
+        this.timeLimit = 60;        // timeLimit for countdown in seconds
+        this.tLimit = 60;  
         this.timeOver = false;      // set to false at start
         this.timeBar = null;        // bar-display time remaining
 
@@ -32,11 +32,8 @@ class QuestPopUp extends Phaser.Sprite {
         //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
 
-        this.badgeTargetX = 80;
-        this.badgeTargetY = 105;
-        //this.emitter = game.add.emitter(this.x, this.y, 1000);
-        //this.emitter.makeParticles('bubble');
-        //this.emitter.gravity = 100;
+        this.badgeTargetX = { 1:{0:80+30, 1:180+30, 2: 280+30}, 2: {0:80+30, 1:180+30, 2: 280+30}};
+        this.badgeTargetY = { 1:{0:105-20, 1:105-20, 2: 105-20}, 2: {0:190-20, 1:190-20, 2: 190-20}};
     }
     
     randomIntFromInterval(min, max) { // min and max included 
@@ -91,10 +88,7 @@ class QuestPopUp extends Phaser.Sprite {
         // this.livesGroups = this.showLives(this.remainingLives);   --  TODO: add related element for scoreUI
         var questionItem = this.getQuestionItem(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showQuestion(questionItem);
-        // if(this.y+this.questComponents.height > this.game.playBoard.height+200){
-        //     var fixHeight = (this.y+this.questComponents.height)-(this.game.playBoard.height+200);
-        //     this.questComponents.children[0].position.y = this.questComponents.children[0].position.y - fixHeight;
-        // }
+
         if(this.y+this.answerComponents.height > this.game.playBoard.height+200){
             var fixHeight = (this.y+this.answerComponents.height)-(this.game.playBoard.height+200);
             this.answerComponents.children[0].position.y = this.answerComponents.children[0].position.y - fixHeight;
@@ -117,7 +111,8 @@ class QuestPopUp extends Phaser.Sprite {
 
     showQuestion(questionItem){
         this.addQuestionTitle(questionItem.question);
-        this.addButtonsChoice(questionItem.question, questionItem.choices, questionItem.answer, questionItem.image);
+        //this.addButtonsChoice(questionItem.question, questionItem.choices, questionItem.answer, questionItem.image);
+        this.game.UiModalsHandler.questionImageModal(questionItem.choices, questionItem.image, questionItem.question, questionItem.answer, playersTurn, this);
     }
 
     showImageQuestion(categoryIndex, questionIndex){
@@ -137,10 +132,6 @@ class QuestPopUp extends Phaser.Sprite {
         if(this.image_question.width > this.game.maxWidthImageQuestion){
             scale2 = this.game.maxWidthImageQuestion/this.image_question.width;      
         }
-        //if(scale1 < scale2)
-        //    this.image_question.scale.set(scale1);
-        //else
-        //    this.image_question.scale.set(scale2);
 
         if(scale1 < scale2){
             this.scaledHeight = this.image_question.height*scale1;
@@ -169,20 +160,6 @@ class QuestPopUp extends Phaser.Sprite {
         return this.image_answer;
     }
 
-    showResultAnswer(context, isRightAnswer){
-        var imageName = context.getAnswerImage(isRightAnswer);
-        // var imageAnswer = context.game.add.image(0,200, imageName);
-        // imageAnswer.alignTo(context.image_answer, Phaser.BOTTOM_CENTER);
-        // context.answerComponents.add(imageAnswer);
-        var checkButton = context.game.add.button(0,0, 'gotit', this.onCheckClicked, {context:context}, 2, 1, 0);
-        context.answerComponents.add(checkButton);
-        checkButton.alignTo(context.image_answer, Phaser.BOTTOM_CENTER, 0);
-        context.answerComponents.scale.set(1.0);
-    }
-
-    onCheckClicked(){
-        this.context.answerComponents.destroy();
-    }
 
     getAnswerImage(isRightAnswer){
         if(isRightAnswer){
@@ -209,66 +186,6 @@ class QuestPopUp extends Phaser.Sprite {
         //console.log(this.questionTitleElement.width);
     }
 
-    addButtonsChoice(questionText, choicesText, answerIndex, questImage){
-        this.groupButtons = this.game.add.group();
-        var previousGroup;
-        for(var index=0; index<choicesText.length; index++){
-            var isRightAnswer = (index===answerIndex);
-            var group = this.addChoiceGroup(choicesText[index], isRightAnswer);
-            if(previousGroup){
-                group.alignTo(previousGroup, Phaser.BOTTOM_LEFT, 0);
-            }
-            previousGroup = group;
-            this.groupButtons.add(group);
-        }
-        this.groupButtons.alignTo(this.questionTitleElement, Phaser.BOTTOM_CENTER, 0);
-        this.questComponents.add(this.groupButtons);
-
-        this.game.UiModalsHandler.questionImageModal(choicesText, questImage, questionText, answerIndex, playersTurn, this);
-    }
-
-    addChoiceGroup(title, isRightAnswer){
-        var button = this.game.add.button(0, 0, 'button', this.onButtonChoiceClicked, {context:this, isRightAnswer:isRightAnswer}, 2, 1, 0);
-        button.scale.set(0.5);
-        var text = this.game.add.text(0, 0, title, {font: "16pt Audiowide", fill: "#000000", wordWrap: true,  align: "left",  wordWrapWidth: 320 });
-        text.alignTo(button, Phaser.RIGHT_CENTER, 0);
-        var group = this.game.add.group();
-        group.add(button);
-        group.add(text);
-        return group;
-    }
-
-    onButtonChoiceClicked(){
-        // Handle the user's answer - show to him an image-answer-hint
-        if(this.isRightAnswer){
-            // increase the score of the playing player
-            if(playersTurn==1)
-                this.context.game.scoreHandler.increaseScore_P1(this.context.categoryIndexSelected);
-            else
-                this.context.game.scoreHandler.increaseScore_P2(this.context.categoryIndexSelected);
-            //console.log("CHECKED CORRECT ANSWER!");
-            this.context.correctMusic.play();
-            this.context.closeQuestionUI(this.context, true, this.context.categoryIndexSelected);
-            this.context.showResultAnswer(this.context, this.isRightAnswer);
-            this.context.groupButtons.destroy();
-            console.log(this.context.emitter);
-        }
-        else{
-            if(playersTurn==1)
-                this.context.game.scoreHandler.decreaseScore_P1(this.context.categoryIndexSelected);
-            else
-                this.context.game.scoreHandler.decreaseScore_P2(this.context.categoryIndexSelected);
-
-            //console.log("CHECKED WRONG ANSWER!");
-            this.context.incorrectMusic.play();
-            this.context.closeQuestionUI(this.context, false, this.context.categoryIndexSelected);
-            this.context.showResultAnswer(this.context, this.isRightAnswer);
-            if(this.context.countDownMusic.isPlaying)
-                this.context.countDownMusic.stop();
-            this.context.groupButtons.destroy();
-        }
-    }
-
     displayTimeRemaining(){
         var time = Math.floor(this.game.time.totalElapsedSeconds());
         var timeLeft = this.timeLimit - time;
@@ -285,14 +202,14 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
 
-    displayPointsEarned(context, player){
+    displayPointsEarned(context, player, ctgry, pls){
         context.game.emitter.emitX = player.x;
         context.game.emitter.emitY = player.y;
-        var dirX = context.badgeTargetX - player.x;
-        var dirY = context.badgeTargetY - player.y;
-        context.game.emitter.setXSpeed(dirX-20, dirX+20);
-        context.game.emitter.setYSpeed(dirY-20, dirY+20);
-        context.game.emitter.flow(2000, 25, 1, 12, true);
+        var dirX = context.badgeTargetX[pls][ctgry] - player.x;
+        var dirY = context.badgeTargetY[pls][ctgry] - player.y;
+        context.game.emitter.setXSpeed(dirX, dirX);
+        context.game.emitter.setYSpeed(dirY, dirY);
+        context.game.emitter.flow(1300, 25, 1, 10, true);
     }
 
     // clear the questions assets with a smooth close-scale tween
@@ -300,9 +217,9 @@ class QuestPopUp extends Phaser.Sprite {
         context.game.UiModalsHandler.closeModal();
         if(answer){
             if(playersTurn==1)
-                context.displayPointsEarned(context,context.game.player1)
+                context.displayPointsEarned(context, context.game.player1, ctgry, 1)
             else
-                context.displayPointsEarned(context,context.game.player2)
+                context.displayPointsEarned(context, context.game.player2, ctgry, 2)
             //console.log(context.game.emitter);
         }
 

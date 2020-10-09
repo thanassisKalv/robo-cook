@@ -136,20 +136,11 @@ roboCook.Game.prototype = {
         this.allies = this.game.add.group(this.isoChars);
 
         // player's cursor
-        this.cursor = this.add.sprite(400,300,"player");
+        this.cursor = this.add.sprite(400,300,"cursor");
         this.cursor.scale.setTo(0.5, 0.5);
         this.cursor.anchor.setTo(0.5, 0.5);
         this.cursor.healthP1 = 1;
         this.cursor.healthP2 = 1;
-
-        this.progressBar1 = this.add.sprite(90, 70, "pixels");
-        this.progressBar1.frame = 1;
-        this.progressBar1.height = 15;
-        this.progressBar1.width = this.cursor.healthP1;
-        this.progressBar2 = this.add.sprite(90, 100, "pixels");
-        this.progressBar2.frame = 3;
-        this.progressBar2.height = 15;
-        this.progressBar2.width = this.cursor.healthP2;
 
         this.cursor.invincible = false;
                                                   
@@ -166,9 +157,16 @@ roboCook.Game.prototype = {
         this.player2button = this.game.add.sprite( 1210+this.offsetUI, 250, "handBlue");
         this.player1button.anchor.setTo(0.5, 0.5);
         this.player2button.anchor.setTo(0.5, 0.5);
-        this.player1button.scale.setTo(0.25, 0.25);
-        this.player2button.scale.setTo(0.25, 0.25);
+        //this.player1button.scale.setTo(0.25, 0.25);
+        //this.player2button.scale.setTo(0.25, 0.25);
+        if(playersTurn==this.controllingPlayer)
+            this.handDiceTween = this.game.add.tween(this.player1button.scale).to( { x: 0.80, y: 0.80 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true).yoyo(true, 300);
+        else{
+            this.handDiceTween = this.game.add.tween(this.player2button.scale).to( { x: 0.80, y: 0.80 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true).yoyo(true, 300);
+            this.handDiceTween.pause();
+        }
         
+
         this.playersTurnText = this.add.text(1080+this.offsetUI, 90, "Player #"+playersTurn+" turn", {font: "bold 30px Handlee"})
         this.playersTurnText.fontSize = 30;
         this.playersTurnText.tween = this.add.tween(this.playersTurnText).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
@@ -237,7 +235,7 @@ roboCook.Game.prototype = {
         this.player2.currentTile = this.startTile;
 
         // score-graphics points-emitter
-        this.emitter = this.addPointsEmitter("bubble");
+        this.emitter = this.addPointsGainEmitter("bubble");
 
         // follow the 1st player
         this.game.camera.follow(this.player1);
@@ -325,14 +323,28 @@ roboCook.Game.prototype = {
                         }
                     });
             }
-            this.playersTurnText.setText("Player #"+playersTurn+" turn")
+            if(this.controllingPlayer==playersTurn){
+                this.handDiceTween.pause();
+                if(playersTurn==1)
+                    this.player1button.scale.setTo(1, 1);
+                else
+                    this.player2button.scale.setTo(1, 1);
+            }
+            this.playersTurnText.setText("Player #"+playersTurn+" turn");
+            
             //console.log(this.endTiles);
         }
 
-        if (this.dice1play.contains(this.input.activePointer.x,this.input.activePointer.y))
-            playDice = true;
-        else
-            playDice = false;
+        if(playersTurn==1)
+            if (this.dice1play.contains(this.input.activePointer.x, this.input.activePointer.y))
+                playDice = true;
+            else
+                playDice = false;
+        if(playersTurn==2)
+            if (this.dice2play.contains(this.input.activePointer.x, this.input.activePointer.y))
+                playDice = true;
+            else
+                playDice = false;
         
 
         // the cursor follows the mouse
@@ -341,8 +353,6 @@ roboCook.Game.prototype = {
         
         // update UI elements  -- todo: implement updating function of the progress-badges
         this.diceSum.setText("Dice Sum: " + total);
-        this.progressBar1.width = this.cursor.healthP1;
-        this.progressBar2.width = this.cursor.healthP2;
         this.game.world.bringToTop(this.cursor);
 
         if(playersTurn==1)
@@ -359,7 +369,6 @@ roboCook.Game.prototype = {
             this.UiModalsHandler.waitingModal(2);
         else
             this.UiModalsHandler.waitingModal(1);
-           
     },
 
     // opponent has made a valid position
@@ -384,12 +393,12 @@ roboCook.Game.prototype = {
         }
     },
 
-    addPointsEmitter: function(pointType){
-        var newEmitter = this.add.emitter(this.x, this.y, 2000);
+    addPointsGainEmitter: function(pointType){
+        var newEmitter = this.add.emitter(this.x, this.y, 1300);
         newEmitter.makeParticles('bubble');
         newEmitter.setRotation(0, 0);
-        newEmitter.setAlpha(0.4, 0.9, 2000);
-        newEmitter.setScale(1.5, 0.1, 1.5, 0.1, 2000, Phaser.Easing.Quintic.Out);
+        newEmitter.setAlpha(0.6, 0.8, 1600);
+        newEmitter.setScale(1.5, 0.2, 1.5, 0.2, 1600, Phaser.Easing.Quintic.Out);
         newEmitter.particleBringToTop = true;
         return newEmitter;
     },
@@ -402,6 +411,8 @@ roboCook.Game.prototype = {
 
     otherPlayerAnswered: function(data){
         this.waiting_other.destroy();
+        this.handDiceTween.resume();
+
         pendingMove = false;
 
         if(playersTurn==1){
@@ -481,6 +492,8 @@ roboCook.Game.prototype = {
                     targetTile.occupant = this.player2;
                     playersTurn=1;
                 }
+                if(playersTurn==this.controllingPlayer)
+                    this.handDiceTween.resume();
                 pendingMove = false;
             }
 

@@ -53,15 +53,15 @@ roboCook.Preloader.prototype = {
 
         this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.image('bg', path+'assets/robo-cook/background-scene-1.png');
-        this.load.image("player", path+"assets/chars/green_sprite.png");
+        this.load.image("cursor", path+"assets/chars/dot_a.png");
         this.load.image("monster", path+"assets/chars/blue_monster.png");
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
         this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue.png', 180, 296);
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
-        this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
-        this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
+        this.load.image('handPink', path+'assets/robo-cook/tool-p1.png');
+        this.load.image('handBlue', path+'assets/robo-cook/tool-p2.png');
         this.load.image('kitchen-start', path+'assets/robo-cook/kitchen-icon-big.png');
         this.load.image('soundoff', path+'assets/images/sound-off.png')
         this.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
@@ -83,11 +83,11 @@ roboCook.Preloader.prototype = {
         this.load.image('quest-frame-title','assets/questions/question-head.png');
         //this.load.image('clock-running', 'assets/questions/clock-running.gif');
 
-        this.load.image('badge-food-recipes','assets/questions/badges/foods-recipes.png');
-        this.load.image('badge-principles','assets/questions/badges/principles-badge.gif');
-        this.load.image('badge-seasonality','assets/questions/badges/seasonality-badge-empty.gif');
-        this.load.image('score-frame1','assets/questions/badges/score-frame-2.png');
-        this.load.image('score-frame2','assets/questions/badges/score-frame-1.png');
+        this.load.image('badge-food-recipes','assets/badges/foods-recipes.png');
+        this.load.image('badge-principles','assets/badges/principles-badge.gif');
+        this.load.image('badge-seasonality','assets/badges/seasonality-badge-empty.gif');
+        this.load.image('score-frame1','assets/badges/score-frame-2.png');
+        this.load.image('score-frame2','assets/badges/score-frame-1.png');
 
         // load the Dice assets
         this.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
