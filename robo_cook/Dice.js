@@ -44,19 +44,21 @@ Dice.prototype.rollComplete = function() {
     this.filters = null;
     this.frame = this.game.rnd.pick([0,1,2,4,5,6]);
     total += this.value();
-    if(this.id==1)
+    newDiceResult = true;
+    if(this.id==1){
+        // **** SOCKET-EMIT inform other player for dice-results **** //
+        this.game.socket.emit(PlayerEvent.newDiceResult, {diceTotal:total});
+        // **** /SOCKET **** //
         if(playersTurn==1){
             this.player1.input.draggable = true;
             this.player2.input.draggable = false;
             //playersTurn = 2;      // this was moved to the --onDragStop-- callback
-            pendingMove = true;
         }
         else {
             this.player2.input.draggable = true;
             this.player1.input.draggable = false;
-            //playersTurn = 1;
-            pendingMove = true;
         }
+    }
 };
 
 Dice.prototype.update = function() {

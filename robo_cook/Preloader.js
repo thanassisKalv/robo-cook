@@ -53,16 +53,15 @@ roboCook.Preloader.prototype = {
 
         this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.image('bg', path+'assets/robo-cook/background-scene-1.png');
-        this.load.image("player", path+"assets/chars/green_sprite.png");
-        this.load.image("circle", path+"assets/dashed_circle.png");
+        this.load.image("cursor", path+"assets/chars/dot_a.png");
         this.load.image("monster", path+"assets/chars/blue_monster.png");
         this.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
         this.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
         this.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue.png', 180, 296);
         this.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
-        this.load.image('handPink', path+'assets/robo-cook/hand-pink.png');
-        this.load.image('handBlue', path+'assets/robo-cook/hand-blue.png');
+        this.load.image('handPink', path+'assets/robo-cook/tool-p1.png');
+        this.load.image('handBlue', path+'assets/robo-cook/tool-p2.png');
         this.load.image('kitchen-start', path+'assets/robo-cook/kitchen-icon-big.png');
         this.load.image('soundoff', path+'assets/images/sound-off.png')
         this.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
@@ -80,13 +79,27 @@ roboCook.Preloader.prototype = {
         this.load.image('red-bar', 'assets/questions/red-bar.png');
         this.load.image('right', 'assets/questions/right.png');
         this.load.image('wrong', 'assets/questions/wrong.png');
+        this.load.image('question-form', 'assets/questions/question-form.png');
+        this.load.image('quest-frame-title','assets/questions/question-head.png');
         //this.load.image('clock-running', 'assets/questions/clock-running.gif');
+
+        this.load.image('badge-food-recipes','assets/badges/foods-recipes.png');
+        this.load.image('badge-principles','assets/badges/principles-badge.gif');
+        this.load.image('badge-seasonality','assets/badges/seasonality-badge-empty.gif');
+        this.load.image('score-frame1','assets/badges/score-frame-2.png');
+        this.load.image('score-frame2','assets/badges/score-frame-1.png');
 
         // load the Dice assets
         this.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
         this.load.script("BlurX", path + "assets/scripts/BlurX.js");
         this.load.script("BlurY", path + "assets/scripts/BlurY.js");
         this.load.pack('level1', 'assets/assetPack.json', null, this);
+
+        this.load.image('recipe1', 'assets/mainMenu/baby-level-2.png');
+        this.load.image('recipe2', 'assets/mainMenu/intermediate-level-2.png');
+        this.load.image('protein-logo', 'assets/images/protein-logo-2.png');
+        this.load.image('game-instructions', 'assets/images/instructions-fixed.png');
+        this.load.image('bubble', 'assets/particles/points-1.png');
 
         //console.log("GOT HERE!")
         //staaaart loading
