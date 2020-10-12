@@ -3,9 +3,9 @@ robo-cook's path  -  board game in Phaser.js
 
 
 ### to do
- - IMPORTANT: add cameraFollow() of playing character
  - add fixedCamera frame UI
- - fix ongoing little bugs (items positioning etc.)
+ - add cameraFollow() of playing character
+ - fix ongoing little bugs (items positioning because of isometric world etc.)
 
 ### done
  - fixed the robo-cook's position return - *03/06*
