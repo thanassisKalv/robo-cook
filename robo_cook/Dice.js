@@ -25,10 +25,9 @@ Dice = function (game, x, y, id) {
     this.anim.onComplete.add(this.rollComplete, this); 
 
     this.frame = 1;
-
     game.add.existing(this);
+    //game.panelRight.addChild(this);
     this.game = game;
-    
 };
 
 Dice.prototype = Object.create(Phaser.Sprite.prototype);
@@ -46,18 +45,10 @@ Dice.prototype.rollComplete = function() {
     total += this.value();
     newDiceResult = true;
     if(this.id==1){
-        // **** SOCKET-EMIT inform other player for dice-results **** //
+        // **** /SOCKET inform other player for dice-results **** //
         this.game.socket.emit(PlayerEvent.newDiceResult, {diceTotal:total});
         // **** /SOCKET **** //
-        if(playersTurn==1){
-            this.player1.input.draggable = true;
-            this.player2.input.draggable = false;
-            //playersTurn = 2;      // this was moved to the --onDragStop-- callback
-        }
-        else {
-            this.player2.input.draggable = true;
-            this.player1.input.draggable = false;
-        }
+        console.log(total);
     }
 };
 

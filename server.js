@@ -6,8 +6,10 @@ var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var uuid = require("uuid");
 
-const port = 8080;
+const port = 8000;
 const IP = "localhost";
+
+const PLAYERS_PER_LEVEL = 3;
 
 //var connection_string = "mongodb://127.0.0.1:27017/robocook_v01";
 //const db = require("monk")(connection_string);
@@ -41,6 +43,11 @@ var PlayerEvent = (function () {
     PlayerEvent.coordinates = "player:coordinates";
     PlayerEvent.opponentAnswered = "player:opponentAnswered";
     PlayerEvent.playerSynced = "player:playerSynced";
+    PlayerEvent.getPlayerTurn = "player:getPlayerTurn";
+    PlayerEvent.startSynced = "player:startSynced";
+    PlayerEvent.diceBonus = "player:diceBonus";
+    PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
+    PlayerEvent.sendHelp = "player:sendHelp";
     return PlayerEvent;
 }());
 
@@ -52,7 +59,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-//app.listen(port, IP, () => console.log(`\nRobo-Cook listening on ${IP}:${port}!`))
 
 class GameServer {
  
@@ -60,6 +66,11 @@ class GameServer {
         this.gameHasStarted = false;
         this.hasComet = false;
         this.levels = {"discover-recipe":[], "discover-diet":[]};
+        this.levelsPlayingNow = {"discover-recipe":1, "discover-diet":1};
+        this.syncedPlayersStart = {};
+        this.uuidTable = {};
+        this.questionsAnswered = {};
+        this.playerAnsweringSocket = {};
         this.socketEvents();
     }
     connect (port) {
@@ -80,7 +91,7 @@ class GameServer {
         
         this.addSignOnListener(socket);
 
-        this.addPlayerMoveListener(socket);
+        this.addPlayerMovementListener(socket);
 
         this.addSignOutListener(socket);
 
@@ -89,7 +100,32 @@ class GameServer {
         this.addOpponentConfirmedMove(socket);
 
         this.addPlayerAnswered(socket);
+        
+        this.addSyncPlayersTurn(socket);
+
+        this.addStartSynced(socket);
+
+        this.addGetBonusDice(socket);
+
+        this.addHelpMeAnswer(socket);
+
+        this.addHelpSender(socket);
     };
+
+    togglePlayerTurn(level){
+       var playersTurn = this.levelsPlayingNow[level];
+
+        playersTurn = playersTurn + 1;
+        if(playersTurn>PLAYERS_PER_LEVEL)
+            playersTurn = 1;
+            
+        this.levelsPlayingNow[level] = playersTurn;
+    };
+
+    resetPlayerTurn(level){
+        this.levelsPlayingNow[level] = 1;
+        this.syncedPlayersStart[level] = 0;
+     };
 
     addSignOnListener (socket) {
         var _this = this;
@@ -107,7 +143,7 @@ class GameServer {
 
             console.log("Level-"+playerMessage.level + " contains: ");
             console.log(_this.levels[playerMessage.level]);
-            
+
             if(_this.levels[playerMessage.level].length>1){
                 var players_in_Level = _this.getConnectedPlayers(playerMessage.level);
                 socket.broadcast.emit(PlayerEvent.players, _this.levels );
@@ -117,14 +153,26 @@ class GameServer {
         
     };
 
-    createPlayer (socket, msg) {
+    createPlayer (socket, msg, team) {
+        var chooseTeam;
+        if (this.levels[msg.level].length % 2 == 0)
+            chooseTeam = 1;
+        else
+            chooseTeam = 2;
+
         socket.player = {
             level: msg.level,
+            team: chooseTeam,
             id: uuid()
         };
         //collection_players.insert({playerID:socket.player.id})
-
         this.levels[msg.level].push(socket.player);
+        if(this.levels[msg.level].length == 1)
+            this.syncedPlayersStart[socket.player.level] = 0
+            
+        if(this.levels[msg.level].length == PLAYERS_PER_LEVEL)
+            this.questionsAnswered = {1:[], 2:[]};
+
         return socket.player;
     };
 
@@ -134,25 +182,84 @@ class GameServer {
         socket.on(ServerEvent.disconnected, () => {
             if (socket.player) {
                 socket.broadcast.emit(PlayerEvent.quit, socket.player.id);
+
                 var activePlayers = _this.levels[socket.player.level];
                 for (var i = 0; i <  activePlayers.length; i++) {
                     if(activePlayers[i].id == socket.player.id)
                         _this.levels[socket.player.level].splice(i, 1);
                 }
-                console.log(_this.levels[socket.player.level]);
+                this.resetPlayerTurn(socket.player.level);
+                console.log("PLAYER-QUITED");
             }
         });
-        }
+     }
 
+    addSyncPlayersTurn(socket){
+        var _this = this;
+        socket.on(PlayerEvent.getPlayerTurn, function (msg) {
+            if(socket.player){
+                socket.emit(PlayerEvent.getPlayerTurn, _this.levelsPlayingNow[socket.player.level] );
+            }
+        });
+    }
 
-    addPlayerMoveListener (socket) {
+    addGetBonusDice(socket){
+        socket.on(PlayerEvent.diceBonus, function (msg) {
+            if(socket.player){
+                socket.broadcast.emit(PlayerEvent.diceBonus, msg);
+                socket.emit(PlayerEvent.diceBonus, msg);
+            }
+        });
+    }
+
+    addHelpMeAnswer(socket){
+        var _this = this;
+        socket.on(PlayerEvent.helpMeAnswer, function (msg) {
+            if(socket.player){
+                _this.playerAnsweringSocket = socket; 
+                socket.broadcast.emit(PlayerEvent.helpMeAnswer, msg);
+            }
+        });
+    }
+
+    addHelpSender(socket){
+        var _this = this;
+        socket.on(PlayerEvent.sendHelp, function(msg){
+            if(socket.player){
+                console.log(msg);
+                _this.playerAnsweringSocket.emit(PlayerEvent.sendHelp, msg);
+            }
+        })
+    }
+
+    addStartSynced(socket){
+        var _this = this;
+        socket.on(PlayerEvent.startSynced, function (msg) {
+            if(socket.player){
+                _this.syncedPlayersStart[socket.player.level] ++;
+
+                if(_this.syncedPlayersStart[socket.player.level] == PLAYERS_PER_LEVEL){
+                    console.log(_this.syncedPlayersStart[socket.player.level]);
+                    socket.broadcast.emit(PlayerEvent.startSynced, "synced");
+                    socket.emit(PlayerEvent.startSynced, "synced");
+                }
+            }
+        });
+    }
+
+    addPlayerMovementListener (socket) {
         var _this = this;
         socket.on(PlayerEvent.coordinates, function (playerMoveMessage) {
             if(socket.player){
                 playerMoveMessage.playerID = socket.player.id;
                 console.log(playerMoveMessage);
                 socket.broadcast.emit(PlayerEvent.coordinates, playerMoveMessage );
+
+                // the moving player has already the unique token
+                _this.uuidTable[playerMoveMessage.uuidToken] = 1;
             }
+            if(socket.player)
+                _this.togglePlayerTurn(socket.player.level);
         });
     };
 
@@ -171,8 +278,9 @@ class GameServer {
         var _this = this;
         socket.on(PlayerEvent.playerSynced, function (confirmMessage) {
             if(socket.player){
-                console.log(confirmMessage);
-                socket.broadcast.emit(PlayerEvent.playerSynced, confirmMessage );
+                _this.uuidTable[confirmMessage.uuidToken]++;
+                if(_this.levels[socket.player.level].length == _this.uuidTable[confirmMessage.uuidToken])
+                    socket.broadcast.emit(PlayerEvent.playerSynced, confirmMessage );
             }
         });
     }
@@ -180,9 +288,13 @@ class GameServer {
     addPlayerAnswered (socket) {
         var _this = this;
         socket.on(PlayerEvent.opponentAnswered, function (dataAnswer) {
+            // dataAnswer[correct: Boolean, category: Int, quIndex: Int]
             if(socket.player){
-                socket.broadcast.emit(PlayerEvent.opponentAnswered, dataAnswer );
+                if(dataAnswer.correct)
+                    _this.questionsAnswered[socket.player.team].push(dataAnswer.category+'-'+dataAnswer.quIndex);
+                socket.broadcast.emit(PlayerEvent.opponentAnswered, dataAnswer);
             }
+            console.log(_this.questionsAnswered);
         });
     };
 

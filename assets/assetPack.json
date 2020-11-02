@@ -9,7 +9,7 @@
         {
             "type": "image",
             "key": "quest",
-            "url": "assets/tileset/quest-recipe.png",
+            "url": "assets/tileset/quest-item-collect.png",
             "overwrite": false
         },
         {
@@ -56,26 +56,8 @@
         },
         {
             "type": "image",
-            "key": "arrow",
-            "url": "assets/images/sprites/arrow.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
             "key": "bg",
             "url": "assets/images/background-scene-1.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "gamebg",
-            "url": "assets/images/defenseBG.jpg",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "moneyholder",
-            "url": "assets/images/moneyholder.png",
             "overwrite": false
         },
         {
@@ -92,49 +74,13 @@
         },
         {
             "type": "image",
-            "key": "btnAgain",
-            "url": "assets/images/btnAgain.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "btnBegin",
-            "url": "assets/images/btnBegin.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "gameoverText",
-            "url": "assets/images/gameoverText.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q1-info",
-            "url": "assets/questions/path-q1.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q2-info",
-            "url": "assets/questions/path-q2.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q3-info",
-            "url": "assets/questions/path-q3.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
             "key": "target-1",
             "url": "assets/tileset/riverNE.png",
             "overwrite": false
         },
         {
             "type": "image",
-            "key": "target-2",
+            "key": "target-2-player",
             "url": "assets/tileset/riverNW.png",
             "overwrite": false
         },
@@ -146,7 +92,31 @@
         },
         {
             "type": "image",
-            "key": "target-4",
+            "key": "target-4-player",
+            "url": "assets/tileset/riverES.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-5",
+            "url": "assets/tileset/riverNE.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-6-player",
+            "url": "assets/tileset/riverNW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-7",
+            "url": "assets/tileset/riverSW.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "target-8-player",
             "url": "assets/tileset/riverES.png",
             "overwrite": false
         },
@@ -158,7 +128,7 @@
         },
         {
             "type": "image",
-            "key": "progress-2",
+            "key": "progress-2-player",
             "url": "assets/tileset/progressNW.png",
             "overwrite": false
         },
@@ -170,7 +140,7 @@
         },
         {
             "type": "image",
-            "key": "progress-4",
+            "key": "progress-4-player",
             "url": "assets/tileset/progressES.png",
             "overwrite": false
         },
@@ -193,18 +163,16 @@
             "overwrite": false
         },
         {
-            "type": "spritesheet",
-            "key": "human",
-            "url": "assets/images/sprites/Human/human_regular_hair.png",
-            "frameWidth": 60,
-            "frameHeight": 60
+            "type": "image",
+            "key": "green-mark",
+            "url": "assets/robo-cook/green-mark-big.png",
+            "overwrite": false
         },
         {
-            "type": "spritesheet",
-            "key": "baldguy",
-            "url": "assets/images/sprites/Human/human_regular_bald.png",
-            "frameWidth": 60,
-            "frameHeight": 60
+            "type": "image",
+            "key": "yellow-mark",
+            "url": "assets/robo-cook/yellow-mark-big.png",
+            "overwrite": false
         },
         {
             "type": "spritesheet",
@@ -223,7 +191,7 @@
         {
             "type": "json",
             "key": "mapdata",
-            "url": "assets/isotiles.json"
+            "url": "assets/isotiles-maps/isotiles-board.json"
         }
     ],
     "meta": {

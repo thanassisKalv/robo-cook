@@ -2,6 +2,7 @@ class PlayerScores {
     constructor(game) {
       this.game = game;
   
+      // --- Team-1 scoreframe elements ---
       this.game.player1score1 = 0;
       this.game.scoreFrame1 = this.game.add.image(6, 65, "score-frame1");
       this.game.scoreFrame1.scale.setTo(0.9);
@@ -31,7 +32,7 @@ class PlayerScores {
       this.game.player1forbid.anchor.setTo(0.5);
       this.game.player1score3Text = this.game.add.text(310, 70+15, ": ", {font: "bold 30px Handlee"});
 
-
+      // --- Team-2 scoreframe elements ---
       this.game.scoreFrame2 = this.game.add.image(6, 150, "score-frame2");
       this.game.scoreFrame2.scale.setTo(0.9);
       this.game.scoreFrame2.alpha = 0.55;
@@ -61,8 +62,54 @@ class PlayerScores {
       this.game.player2forbid.anchor.setTo(0.5);
       this.game.player2score3Text = this.game.add.text(310, 130+40, ": ", {font: "bold 30px Handlee"});
 
+      this.addOnRightPanel();
     }
+
+   addOnRightPanel(){
+      this.game.panelLeft.addChild(this.game.scoreFrame1);
+      this.game.panelLeft.addChild(this.game.player1text);
+      this.game.panelLeft.addChild(this.game.player1badge1);
+      this.game.panelLeft.addChild(this.game.player1tips);
+      this.game.panelLeft.addChild(this.game.player1score1Text);
+      this.game.panelLeft.addChild(this.game.player1text);
+      this.game.panelLeft.addChild(this.game.player1badge2);
+      this.game.panelLeft.addChild(this.game.player1scale);
+      this.game.panelLeft.addChild(this.game.player1score2Text);
+      this.game.panelLeft.addChild(this.game.player1text);
+      this.game.panelLeft.addChild(this.game.player1badge3);
+      this.game.panelLeft.addChild(this.game.player1forbid);
+      this.game.panelLeft.addChild(this.game.player1score3Text);
+
+      this.game.panelLeft.addChild(this.game.scoreFrame2);
+      this.game.panelLeft.addChild(this.game.player2text);
+      this.game.panelLeft.addChild(this.game.player2badge1);
+      this.game.panelLeft.addChild(this.game.player2tips);
+      this.game.panelLeft.addChild(this.game.player2score1Text);
+      this.game.panelLeft.addChild(this.game.player2text);
+      this.game.panelLeft.addChild(this.game.player2badge2);
+      this.game.panelLeft.addChild(this.game.player2scale);
+      this.game.panelLeft.addChild(this.game.player2score2Text);
+      this.game.panelLeft.addChild(this.game.player2text);
+      this.game.panelLeft.addChild(this.game.player2badge3);
+      this.game.panelLeft.addChild(this.game.player2forbid);
+      this.game.panelLeft.addChild(this.game.player2score3Text);
+   }
   
+   updateScore(category, correct=true, teamPlaying){
+       if(teamPlaying==1)
+         if(correct)
+            this.increaseScore_P1(category);
+         else
+            this.decreaseScore_P1(category);
+      
+      else{
+         if(correct)
+            this.increaseScore_P2(category);
+         else
+            this.decreaseScore_P2(category);
+      }
+   }
+
     increaseScore_P1(category) {
        if(category==0){
         this.game.player1score1 ++;

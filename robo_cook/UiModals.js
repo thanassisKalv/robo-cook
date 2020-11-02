@@ -7,24 +7,56 @@ class UiModalsManager {
     waitingModal(player){
 
         Swal.fire({
-            title: 'Please wait player #'+player+' to sync!',
+            title: 'Please wait other players to sync!',
             //timer: 500,
             //timerProgressBar: true,
             allowOutsideClick: false,
+            background: '#00000000 url(/assets/images/waiting.png)',
             position: 'center',
-            onBeforeOpen: () => {
+            "willOpen": () => {
                 Swal.showLoading()
             },
-            onClose: () => {
+            "willClose": () => {
                 //clearInterval(timerInterval)
             }
         })
     }
     
+
+    questionImageModal_asTeam(imgUrl, questionText, rightAnswer, fromPlayer, scaledWidth, scaledHeight, gamesocket){
+        Swal.fire({
+            title: questionText,
+
+            backdrop: true,
+            //allowOutsideClick: false,
+            background: "#ece4e4",
+            width: 600,
+            position: 'center',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+              },
+            showCancelButton: true,
+            confirmButtonText: 'Send Help',
+            showLoaderOnConfirm: true,
+            
+            imageUrl: imgUrl,
+            imageWidth: scaledWidth,
+            imageHeight: scaledHeight,
+            imageAlt: 'Answer image',
+            preConfirm: (helpText) => {
+                console.log(helpText);
+                window.socket.emit(PlayerEvent.sendHelp, {helpText:helpText, fromPlayer: fromPlayer-1});
+              },
+            allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+
+          })
+    }
     /*
-         optionList: a list of 3 text elements for the possible answers
-         imgURL: url string for the question's image
-         questionText: the question's actual text
+        optionList: a list of 3 text elements for the possible answers
+        imgURL: url string for the question's image
+        questionText: the question's actual text
      */
     questionImageModal(optionList, imgUrl, questionText, rightAnswer, playersTurn, context){
 
@@ -57,25 +89,19 @@ class UiModalsManager {
             imageAlt: 'Answer image',
 
             }).then((result) => {
-                //console.log(result);
-                if (result.value != null || result.dismiss=="cancel")
+
+                if (result.value != null || result.dismiss=="cancel"){
                     if( result[answersDict[rightAnswer]]){
                         context.correctMusic.play();
-                        context.closeQuestionUI(context, true, context.categoryIndexSelected);
-                        if(playersTurn==1)
-                            context.game.scoreHandler.increaseScore_P1(context.categoryIndexSelected);
-                        else
-                            context.game.scoreHandler.increaseScore_P2(context.categoryIndexSelected);
+                        context.closeQuestionUI(context, true, context.categoryIndexSelected, context.currentQuestionIndex);
+                        context.game.scoreHandler.updateScore(context.categoryIndexSelected, true, teamsTurn[playersTurn])
                     }
                     else{
-                        context.closeQuestionUI(context, false, context.categoryIndexSelected);
                         context.incorrectMusic.play();
-                        if(playersTurn==1)
-                            context.game.scoreHandler.decreaseScore_P1(context.categoryIndexSelected);
-                        else
-                            context.game.scoreHandler.decreaseScore_P2(context.categoryIndexSelected);
+                        context.closeQuestionUI(context, false, context.categoryIndexSelected, context.currentQuestionIndex);
+                        context.game.scoreHandler.updateScore(context.categoryIndexSelected, false, teamsTurn[playersTurn])
                     }
-
+                }
           })
 
     }

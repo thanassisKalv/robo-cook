@@ -29,5 +29,10 @@ var PlayerEvent = (function () {
     PlayerEvent.playerSynced = "player:playerSynced";
     PlayerEvent.assignID = "player:assignID";
     PlayerEvent.opponentAnswered = "player:opponentAnswered";
+    PlayerEvent.getPlayerTurn = "player:getPlayerTurn";
+    PlayerEvent.startSynced = "player:startSynced";
+    PlayerEvent.diceBonus = "player:diceBonus";
+    PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
+    PlayerEvent.sendHelp = "player:sendHelp";
     return PlayerEvent;
 }());

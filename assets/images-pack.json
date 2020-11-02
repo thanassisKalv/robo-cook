@@ -35,7 +35,16 @@
             "key": "image_question_0_4",
             "url": "/assets/images_questions/citrus-family.jpg"
         },
-
+        {
+            "type": "image",
+            "key": "image_question_0_5",
+            "url": "/assets/images_questions/butters.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_6",
+            "url": "/assets/images_questions/citrus-family.jpg"
+        },
 
 
         {
@@ -119,7 +128,7 @@
         {
             "type": "image",
             "key": "image_answer_2_1",
-            "url": "assets/images_questions/answer2.png"
+            "url": "assets/images_questions/answer1.png"
         },
         {
             "type": "image",
@@ -176,8 +185,11 @@
             "key": "image_question_2_12",
             "url": "assets/images_questions/food-pyramid.png"
         },
-
-
+        {
+            "type": "image",
+            "key": "image_question_2_13",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
 
 
         {

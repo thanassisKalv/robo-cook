@@ -11,8 +11,8 @@ class QuestPopUp extends Phaser.Sprite {
         this.answerComponents = this.game.add.group();
 
         // global variables
-        this.timeLimit = 60;        // timeLimit for countdown in seconds
-        this.tLimit = 60;  
+        this.timeLimit = 30;        // timeLimit for countdown in seconds
+        this.tLimit = 30;  
         this.timeOver = false;      // set to false at start
         this.timeBar = null;        // bar-display time remaining
 
@@ -32,8 +32,10 @@ class QuestPopUp extends Phaser.Sprite {
         //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
 
-        this.badgeTargetX = { 1:{0:80+30, 1:180+30, 2: 280+30}, 2: {0:80+30, 1:180+30, 2: 280+30}};
-        this.badgeTargetY = { 1:{0:105-20, 1:105-20, 2: 105-20}, 2: {0:190-20, 1:190-20, 2: 190-20}};
+        this.badgeTargetX = { 1:{0: game.player1score1Text.x, 1: game.player1score2Text.x, 2: game.player1score3Text.x}, 
+                                2: {0: game.player2score1Text.x, 1: game.player2score2Text.x, 2: game.player2score3Text.x}};
+        this.badgeTargetY = { 1:{0: game.player1score1Text.y, 1: game.player1score2Text.y, 2: game.player1score3Text.y}, 
+                                2: {0: game.player2score1Text.y, 1: game.player2score2Text.y, 2: game.player2score3Text.y}};
     }
     
     randomIntFromInterval(min, max) { // min and max included 
@@ -41,9 +43,13 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     waitOtherPlayer(){
-        this.game.waiting_other = this.game.add.text(this.x-50, this.y, 'Wait other player to answer',  {font: "bold 26px Handlee"});
-        this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
+        this.game.waiting_other = this.game.add.text(170, 270, 'WAITING TEAMPLAYER TO ANSWER!',  {font: "bold 25px Handlee"});
+        this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 1000);
         this.game.waiting_other.anchor.set(0.5,0.5);
+        this.game.waiting_other.addColor('#4400ff', 0);
+        this.game.waiting_other.wordWrap = true;      
+        this.game.waiting_other.wordWrapWidth = 300;
+        this.game.panelLeft.addChild(this.game.waiting_other);
     }
 
     openWindow() {
@@ -66,73 +72,66 @@ class QuestPopUp extends Phaser.Sprite {
         this.timeOver = false;
         // change position if needed (but use same position for both images)
         var musicTimer = this.countDownMusic;
-        this.musicEvent = this.game.time.events.add(10000, this.playTimerMusic, this, musicTimer);
+        //this.musicEvent = this.game.time.events.add(20000, this.playTimerMusic, this, musicTimer);
 
-        this.bgBar = this.game.add.image(1100+this.game.offsetUI, 555, 'red-bar');
-        this.timeBar = this.game.add.image(1100+this.game.offsetUI, 555, 'green-bar');
-        this.timeClock = this.game.add.sprite(1120+this.game.offsetUI, 600, 'clock-running', 0);
+        this.bgBar = this.game.add.image(60, 555, 'red-bar');
+        this.timeBar = this.game.add.image(60, 555, 'green-bar');
+        this.timeClock = this.game.add.sprite(25, 555, 'clock-running', 0);
         this.timeClock.animations.add('run', [0,1,2,3,4,5,6,7]);
 		this.timeClock.animations.play('run', 4, true);
         this.timeClock.anchor.set(0.5,0.5);
         this.timeClock.scale.set(0.3);
         // add text label to left of bar
-        this.timeLabel = this.game.add.text(1100+this.game.offsetUI, 525, 'Time Remaining',  {font: "22px Handlee"});
+        this.timeLabel = this.game.add.text(60, 525, 'Time Remaining',  {font: "22px Handlee"});
         this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + this.tLimit;
 
         this.categoryIndexSelected = qType;
         this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[qType].questions.length-1);
         //console.log(this.categoryIndexSelected, this.currentQuestionIndex);
-        this.showImageQuestion(this.categoryIndexSelected, this.currentQuestionIndex);
+        this.prepareQuestionImage(this.categoryIndexSelected, this.currentQuestionIndex);
         //this.showImageAnswer(this.categoryIndexSelected, this.currentQuestionIndex);
+        this.game.panelRight.addChild(this.bgBar);
+        this.game.panelRight.addChild(this.timeBar);
+        this.game.panelRight.addChild(this.timeClock);
+        this.game.panelRight.addChild(this.timeLabel);
         
-        // this.livesGroups = this.showLives(this.remainingLives);   --  TODO: add related element for scoreUI
+
         var questionItem = this.getQuestionItem(this.categoryIndexSelected, this.currentQuestionIndex);
         this.showQuestion(questionItem);
 
-        if(this.y+this.answerComponents.height > this.game.playBoard.height+200){
-            var fixHeight = (this.y+this.answerComponents.height)-(this.game.playBoard.height+200);
-            this.answerComponents.children[0].position.y = this.answerComponents.children[0].position.y - fixHeight;
-        }
-        if(this.x-this.answerComponents.width/2 < 0){
-            var fixWidth = (this.x+this.answerComponents.width/2);
-            this.answerComponents.children[0].position.x = this.answerComponents.children[0].position.x + fixWidth/2;
-        }
-
         // present the questItem with a smooth open-up pop
-        //this.questComponents.scale.set(0.01);
         this.questComponents.visible = false;
         this.answerComponents.scale.set(0.01);
-        //this.qtween = this.game.add.tween(this.questComponents.scale).to( { x: 1.0, y: 1.0 }, 400, Phaser.Easing.Elastic.Out, true);
     }
 
     playTimerMusic(musicTimer) {
+        console.log(musicTimer);
         musicTimer.play();
     }
 
     showQuestion(questionItem){
-        this.addQuestionTitle(questionItem.question);
-        //this.addButtonsChoice(questionItem.question, questionItem.choices, questionItem.answer, questionItem.image);
+        //this.addQuestionTitle(questionItem.question);
+        window.socket.emit(PlayerEvent.helpMeAnswer, {image: questionItem.image, question: questionItem.question, answer: questionItem.answer, playersTurn: playersTurn, w: this.scaledWidth, h: this.scaledHeight});
         this.game.UiModalsHandler.questionImageModal(questionItem.choices, questionItem.image, questionItem.question, questionItem.answer, playersTurn, this);
+        this.game.msgReceiver.msgAlertTween.resume();
     }
 
-    showImageQuestion(categoryIndex, questionIndex){
-        this.image_frame = this.game.add.image(this.x, this.y, "quest-frame-title");
-        this.image_frame.scale.setTo(1.3);
-        this.image_frame.anchor.set(0.5,0.3);
-        this.questComponents.add(this.image_frame);
+    showQuestionAsTeamHelp(questionItem){
+        this.game.UiModalsHandler.questionImageModal_asTeam( questionItem.image, questionItem.question, questionItem.answer, this.game.controllingPlayer, questionItem.w, questionItem.h);
+    }
 
+
+    prepareQuestionImage(categoryIndex, questionIndex){
         var key = ['image_question', categoryIndex, questionIndex].join('_');
         this.image_question = this.game.add.image(this.x, this.y, key);
         
-        var scale1 = 1.0;
-        var scale2 = 1.0;
+        var scale1 = 1.0, scale2 = 1.0;
         if(this.image_question.height > this.game.maxHeightImageQuestion){
             scale1 = this.game.maxHeightImageQuestion/this.image_question.height;      
         }
         if(this.image_question.width > this.game.maxWidthImageQuestion){
             scale2 = this.game.maxWidthImageQuestion/this.image_question.width;      
         }
-
         if(scale1 < scale2){
             this.scaledHeight = this.image_question.height*scale1;
             this.scaledWidth = this.image_question.width*scale1;
@@ -146,20 +145,6 @@ class QuestPopUp extends Phaser.Sprite {
         this.questComponents.add(this.image_question);
         return this.image_question;
     }
-    
-    showImageAnswer(categoryIndex, questionIndex){
-        var key = ['image_answer', categoryIndex, questionIndex].join('_');
-        this.image_answer = this.game.add.image(this.x, this.y, key);
-        var scale = 1.0;
-        if(this.image_answer.height > this.game.maxHeightImageQuestion){
-            scale = this.game.maxHeightImageQuestion/this.image_answer.height;      
-        }
-        this.image_answer.scale.set(scale);
-        this.image_answer.anchor.set(0.5);
-        this.answerComponents.add(this.image_answer);
-        return this.image_answer;
-    }
-
 
     getAnswerImage(isRightAnswer){
         if(isRightAnswer){
@@ -173,56 +158,50 @@ class QuestPopUp extends Phaser.Sprite {
         //return this.listQuestionsByCategory(categoryIndex)[questionIndex];
     }
 
-    addQuestionTitle(textContent){
-        this.questionTitleElement = this.game.add.text(0,0,textContent, {
-            font: "20pt Audiowide", 
-            fill: "#FF0000", 
-            wordWrap: true,  
-            wordWrapWidth: 320,
-            align: "left"
-        });
-        this.questionTitleElement.alignTo(this.image_question, Phaser.BOTTOM_CENTER);
-        this.questComponents.add(this.questionTitleElement);
-        //console.log(this.questionTitleElement.width);
-    }
 
     displayTimeRemaining(){
         var time = Math.floor(this.game.time.totalElapsedSeconds());
         var timeLeft = this.timeLimit - time;
-    
-        // detect when the countdown is over
+        if (timeLeft == 10)
+            if (this.countDownMusic.isPlaying==false)
+                this.countDownMusic.play()
+        
+        // check if the countdown is over
         if (timeLeft <= 0){
             timeLeft = 0;
             this.timeOver = true;
             console.log("TIME IS UP!");
-            this.closeQuestionUI(this, false, this.categoryIndexSelected);
+            this.closeQuestionUI(this, false, this.categoryIndexSelected, this.currentQuestionIndex);
         }
         else
             this.timeBar.scale.setTo(timeLeft / this.tLimit, 1);
     }
 
 
-    displayPointsEarned(context, player, ctgry, pls){
+    displayPointsEarned(context, ctgry, plTurn){
+        var player = context.game.playersActive[plTurn-1];
+        //console.log(context.game.player2score3Text, context.game.player1score3Text, player.sprite);
+        var dirX = context.badgeTargetX[teamsTurn[plTurn]][ctgry] - player.worldPosition.x;
+        var dirY = context.badgeTargetY[teamsTurn[plTurn]][ctgry] - player.worldPosition.y;
+
         context.game.emitter.emitX = player.x;
         context.game.emitter.emitY = player.y;
-        var dirX = context.badgeTargetX[pls][ctgry] - player.x;
-        var dirY = context.badgeTargetY[pls][ctgry] - player.y;
         context.game.emitter.setXSpeed(dirX, dirX);
         context.game.emitter.setYSpeed(dirY, dirY);
-        context.game.emitter.flow(1300, 25, 1, 10, true);
+        context.game.emitter.flow(1000, 25, 1, 10, true);
+        context.game.emitter.particleBringToTop = true;
+        context.game.world.bringToTop(context.game.emitter);
     }
 
     // clear the questions assets with a smooth close-scale tween
-    closeQuestionUI(context, answer, ctgry){
+    closeQuestionUI(context, answer, ctgry, quIndex){
+        //console.log(answer, ctgry, quIndex);
+        questionAwaiting = false;
         context.game.UiModalsHandler.closeModal();
         if(answer){
-            if(playersTurn==1)
-                context.displayPointsEarned(context, context.game.player1, ctgry, 1)
-            else
-                context.displayPointsEarned(context, context.game.player2, ctgry, 2)
+            context.displayPointsEarned(context, ctgry, playersTurn)
             //console.log(context.game.emitter);
         }
-
         context.qtween = context.game.add.tween(context.questComponents.scale).to( { x: 0.01, y: 0.01 }, 400, Phaser.Easing.Elastic.In, true);
         context.qtween.onComplete.add(function() { context.questComponents.destroy(); }, this);
         context.bgBar.destroy();
@@ -233,13 +212,18 @@ class QuestPopUp extends Phaser.Sprite {
         context.game.time.events.remove(context.musicEvent);
         context.timeOver == true;
         pendingMove = false;
-        window.socket.emit(PlayerEvent.opponentAnswered, {correct:answer, category:ctgry});
+        window.socket.emit(PlayerEvent.opponentAnswered, {correct:answer, category:ctgry, quIndex:quIndex });
+        context.game.msgReceiver.msgAlertTween.pause();
+        context.game.msgReceiver.msgAlertTween.tint = 0xffffff;
+
+        setTimeout( function(){
+            for(var i=0; i<context.game.helpClouds.length; i++)
+                context.game.helpClouds[i].destroy();
+            } , 400);
+        
         if(context.countDownMusic.isPlaying)
             context.countDownMusic.stop();
-        if(playersTurn==1)
-            playersTurn = 2
-        else
-            playersTurn = 1
+        togglePlayerTurn();
     }
 
     update(){

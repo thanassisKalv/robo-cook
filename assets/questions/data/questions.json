@@ -48,13 +48,24 @@
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "In the citrus family we find:",
+					"question": "Butter mostly consists of?",
 					"choices": [
-						"tangerines, lemons, oranges, clementines",
-						"watermelon and cucumber",
-						"all berries"
+						"fat",
+						"combusted fruits",
+						"sugar"
 					],
 					"answer": 0,
+					"image": "/assets/images_questions/butters.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What ingredient contributes mostly on taste and flavor of croissants, biscuits, pastries?",
+					"choices": [
+						"the milk",
+						"the butter",
+						"the cooked eggs"
+					],
+					"answer": 1,
 					"image": "/assets/images_questions/citrus-family.jpg",
 					"answer_image": "cereals.jpg"
 				}
@@ -84,7 +95,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Among the listed foods, which are those that mature naturally and are consumed in autumn?",
@@ -95,7 +106,7 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Among the listed foods, which are those that mature naturally and are consumed in spring?",
@@ -106,7 +117,7 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Where did the rice come from? Where is it grown?",
@@ -117,7 +128,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/rice-varieties.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Is it appropriate to eat summer vegetables in winter too?",
@@ -128,7 +139,7 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What kind of fruit can you eat in the summer?",
@@ -139,7 +150,7 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What fruit can you eat in winter?",
@@ -150,7 +161,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Zucchini are a typical vegetable in:",
@@ -161,7 +172,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Citrus fruits are best eaten:",
@@ -173,7 +184,7 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "protein-cal.png"
+					"answer_image": "placeholder-answer.png"
 				}
 			]
 		},
@@ -235,7 +246,7 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What substance is not nutritious?",
@@ -246,7 +257,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What is the function that carbohydrates (bread, pasta, etc.) have for the body?",
@@ -257,7 +268,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "Which food does not contain carbohydrates or sugars?",
@@ -268,7 +279,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What is the name of the sugar in potatoes?",
@@ -279,7 +290,7 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": " What's the name of the table sugar?",
@@ -290,7 +301,7 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What is the main function of proteins?",
@@ -301,7 +312,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What food has no protein?",
@@ -312,7 +323,7 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
 				},
 				{
 					"question": "What foods do we find protein in?",
@@ -323,7 +334,18 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "unprocessed_red_meat_answer.JPG"
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Is food mainly just a source of calories?",
+					"choices": [
+						"yes that's the most important!",
+						"yes food and some water are enough!",
+						"No, food provides our bodies with essential nutrients (proteins, fats, carbs, vitamins, and minerals)"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
 				}
 			]
 		},

@@ -1,17 +1,14 @@
-var roboCook = {};
 
-roboCook.Boot = function (game) {
-};
 
-roboCook.Boot.prototype = {
+class Boot extends Phaser.State {
 
-    preload: function () {
+    preload () {
         //  Here we load the assets required for our preloader (in this case a background and a loading bar)
         // this.load.image('preloaderBackground', 'images/preloader_background.jpg');
         // this.load.image('preloaderBar', 'images/preloadr_bar.png');
-    },
+    }
 
-    create: function () {
+    create () {
         var myScript = document.getElementById("script");
 
         //  Unless you specifically know your game needs to support multi-touch I would recommend setting this to 1

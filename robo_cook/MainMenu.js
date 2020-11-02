@@ -1,14 +1,7 @@
 
-roboCook.MainMenu = function (game) {
+class MainMenu extends Phaser.State {
 
-    //this.music = null;
-    //this.level1Button = null;
-
-};
-
-roboCook.MainMenu.prototype = {
-
-    create: function () {
+    create () {
 
         this.stage.disableVisibilityChange = true;
 
@@ -64,9 +57,6 @@ roboCook.MainMenu.prototype = {
         this.textWait.x = this.level1Button.x;
         this.textWait.y = this.level1Button.y+60;
         this.textWait.fill = "#191970";
-
-        this.stage.backgroundColor = '#8abaae';
-        this.stage.backgroundColor = '#dddddd';
         this.textWait.tween = this.add.tween(this.textWait).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
 
 
@@ -90,8 +80,7 @@ roboCook.MainMenu.prototype = {
         this.textWait2.y = this.level2Button.y+60;
         this.textWait2.fill = "#191970";
 
-        this.stage.backgroundColor = '#8abaae';
-        this.stage.backgroundColor = '#dddddd';
+        this.game.stage.backgroundColor = '#d7ffcf';
         this.textWait2.tween = this.add.tween(this.textWait2).to({alpha:0.1}, 1500, Phaser.Easing.Bounce.InOut, true, 0, 3);
 
 
@@ -103,39 +92,43 @@ roboCook.MainMenu.prototype = {
 
         this.game.socket.on(PlayerEvent.assignID, function (playerID) {
             _this.game.myID = playerID.id;
+            _this.game.myTeam = playerID.team;
             console.log("Player got a unique ID: " +  _this.game.myID );
         });
 
 
-    },
+    }
 
-    update: function () {
+    update () {
 	    //	Maybe add some nice main-menu effect here
-    },
+    }
 
-    emptyLevel: function(){
+    emptyLevel(){
         console.log("Sorry the level is currently under construction!")
         this.textWait2.setText("Sorry the level is currently under construction!");
-    },
+    }
 
-    joinGame1: function (pointer) {
+    joinGame1 (pointer) {
         console.log(this.game.connectedPlayers);
         this.textWait.setText("Waiting for other players to join...");
         this.wsocket.emit(GameEvent.authentication, { level: "discover-recipe" });
-    },
+    }
 
-    startGame1: function (players, _this){
-        if(players["discover-recipe"].length>1)
-            for (i = 0; i < players["discover-recipe"].length; i++) {
-                if (players["discover-recipe"][i].id == _this.game.myID){ 
-                    this.state.start('Game', true, false, "Beginer Cook", i);
+    startGame1 (players, _this){
+
+        if(players["discover-recipe"].length==3)
+            for (var i = 0; i < players["discover-recipe"].length; i++) 
+            {
+                if (players["discover-recipe"][i].id == _this.game.myID)
+                {
+                    this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.myTeam);
                     break; 
                 }
             }
-    },
+    }
     
-    startGameRecipe2: function (pointer) {
-        this.state.start('Game');
+    startGameRecipe2 (pointer) {
+        this.state.start('GameState');
     }
 
 };
