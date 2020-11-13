@@ -22,8 +22,7 @@ robo-cook's path  -  board game in Phaser.js
  - changed/added badges for player's progress & added PlayerScores.js class for handling them - *17/06*
  - fixed bug in playerturn change & added a new instructions page on start menu - *19/06*
  - MAJOR: implement the multiple-choice questions' popup-card with nicer UI using [sweetalert2](https://sweetalert2.github.io/) - *27/09*
- 
-  - added left and right fixedCamera frame UIs - *24/10*
-  - added mechanisms and graphics for RPG - *24/10*
-  - team-players now help the answering player (see the question without options) - *24/10*
-  - manage answered questions [server and frontend] to not appear again till all answers have been given for a category - *10/11*
+ - added left and right fixedCamera frame UIs - *24/10*
+ - added mechanisms and graphics for RPG - *24/10*
+ - team-players now help the answering player (see the question without options) - *24/10*
+ - manage answered questions [server and frontend] to not appear again till all answers have been given for a category - *10/11*
