@@ -1,8 +1,83 @@
 
+class PointsFrame {
+
+      constructor(game, newStep, panelBack, objPosY, objective){
+
+            this.game = game;
+            const badges = ["badge-seasonality-sm", "badge-food-recipes-sm", "badge-principles-sm"];
+            const objPosX = [85, 155, 225];
+            const scales = [0.7,0.8,0.7];
+
+            this.pointsFrame = game.add.image(170, objPosY, "obj-points");
+            this.pointsFrame.anchor.setTo(0.5);
+            panelBack.addChild(this.pointsFrame);
+
+            this.pointsBadges = [];
+            this.pointsTxtFields = [];
+            // a triplet of points required to unlock this step
+            for(var i=0; i<3; i++){
+                  var newBadge = game.add.image(objPosX[i], objPosY, badges[i]);
+                  newBadge.scale.setTo(scales[i]);
+                  newBadge.anchor.setTo(0.5);
+                  this.pointsBadges.push(newBadge);
+                  panelBack.addChild(newBadge);
+                  var newPointTxt = game.add.text(objPosX[i]+35, objPosY, "x"+newStep["points"][i], {font: "bold 20px Handlee"});
+                  newPointTxt.addColor("rgb(255, 255, 255)", 0);
+                  newPointTxt.anchor.setTo(0.5);
+                  this.pointsTxtFields.push(newPointTxt);
+                  panelBack.addChild(newPointTxt);
+            }
+      }
+
+      tweenFrame(){
+            this.game.add.tween(this.pointsFrame.scale).to( {x:1.15, y:1.15}, 400, Phaser.Easing.Quadratic.Out, true).loop(true).yoyo(true, 300);
+      }
+
+      selfDestroy(){
+            this.pointsFrame.destroy();
+            for(var i=0; i<3; i++){
+                  this.pointsBadges[i].destroy();
+                  this.pointsTxtFields[i].destroy();
+            }
+      }
+}
+
+
+function addRecipeActions(game, objcvs, i){
+
+      if(game.roles[game.controllingPlayer]=="Cook"){
+            objcvs.action1  = game.add.sprite(90, -130, "rcpAction-1");
+            objcvs.action1.name =  game.stepsCook[i]["actions"][0];
+            objcvs.action1.visible = false;
+            objcvs.action1.alpha = 0.6;
+            objcvs.action1.scale.setTo(0.8);
+            objcvs.action2  = game.add.sprite(320, -130, "rcpAction-2");
+            objcvs.action2.name =  game.stepsCook[i]["actions"][1];
+            objcvs.action2.alpha = 0.6;
+            objcvs.action2.scale.setTo(0.8);
+            objcvs.action2.visible = false;
+            objcvs.addChild(objcvs.action1);
+            objcvs.addChild(objcvs.action2);
+      }
+      if(game.roles[game.controllingPlayer]=="Shopper"){
+            objcvs.action1  = game.add.sprite(90, -130, "rcpAction-1");
+            objcvs.action1.name =  game.stepsShopper[i]["actions"][0];
+            objcvs.action1.visible = false;
+            objcvs.action1.alpha = 0.6;
+            objcvs.action1.scale.setTo(0.8);
+            objcvs.action2  = game.add.sprite(320, -130, "rcpAction-2");
+            objcvs.action2.name =  game.stepsShopper[i]["actions"][1];
+            objcvs.action2.alpha = 0.6;
+            objcvs.action2.scale.setTo(0.8);
+            objcvs.action2.visible = false;
+            objcvs.addChild(objcvs.action1);
+            objcvs.addChild(objcvs.action2);
+      }
+}
+
 function createPanelL(game){
 
       game.panelBack = game.add.sprite(0,0,'panelL');
-      //game.panelBack.anchor.setTo(0.5, 0.5);
       game.panelBack.fixedToCamera = true;
       game.panelBack.alpha = 0.9;
 
@@ -10,58 +85,31 @@ function createPanelL(game){
       game.proteinLogo.anchor.setTo(0.5, 0.5);
       game.panelBack.addChild(game.proteinLogo);
 
+      // make the left panel interactive, make it almost invinsible when user points-over
       game.panelBack.inputEnabled = true;
 
-      game.objectivesFrame = game.add.sprite(15, 300, "objectives");
+      game.objectivesFrame = game.add.sprite(25, 350, "objectives");
       game.panelBack.addChild(game.objectivesFrame);
-
-      game.scoreText = game.add.text(15, 25, "Items Got", {font: "bold 30px Handlee"});
-      game.panelBack.addChild(game.scoreText);
-
-      const objPos = [340, 450];
-      game.objs = [];
-      game.objsTxt = [];
+      const objPosY = [440, 600];
+      game.objcvs = [];
+      game.objcvsTxt = [];
       for(var i=0; i<2; i++){
-            game.objs.push(game.add.sprite(45, objPos[i], "noActiveObj"));
-            game.objs[i].scale.setTo(0.4);
-            game.objsTxt.push(game.add.text(58, objPos[i]+5, "Waiting for instructor's move", {font: "bold 22px Handlee"}))
-            game.objsTxt[i].fontSize = 20;
-            game.objsTxt[i].wordWrap = true;
-            game.objsTxt[i].wordWrapWidth = 270;
-            game.objsTxt[i].addColor("rgb(180, 175, 172)", 0);
-            game.objsTxt[i].addFontStyle('italic', 0);
+            game.objcvs.push(game.add.sprite(45, objPosY[i], "noActiveObj"));
+            game.objcvs[i].scale.setTo(0.4);
+            if(game.roles[game.controllingPlayer]=="Instructor")
+                  game.objcvsTxt.push(game.add.text(63, objPosY[i]+5, game.stepsInstructor[i]["step"].substring(0, 12)+"...", {font: "italic 22px Handlee"}));
+            else
+                  game.objcvsTxt.push(game.add.text(63, objPosY[i]+5, "Wait instructor...", {font: "italic 22px Handlee"}));
+            game.objcvsTxt[i].wordWrap = true;
+            game.objcvsTxt[i].wordWrapWidth = 250;
+            game.objcvsTxt[i].addColor("rgb(180, 175, 172)", 0);
+            game.objcvs[i].pointsFrame = new PointsFrame(game, game.stepsInstructor[i], game.panelBack, objPosY[i]+65, game.objcvs[i]);
+            addRecipeActions(game, game.objcvs[i], i);
 
-            game.panelBack.addChild(game.objs[i]);
-            game.panelBack.addChild(game.objsTxt[i]);
+            game.panelBack.addChild(game.objcvs[i]);
+            game.panelBack.addChild(game.objcvsTxt[i]);
       }
 
-      // game.obj1 = game.add.sprite(45, 340, "noActiveObj");
-      // game.obj2 = game.add.sprite(45, 450, "noActiveObj");
-      // game.obj3 = game.add.sprite(45, 520, "noActiveObj");
-      // game.obj4 = game.add.sprite(45, 590, "noActiveObj");
-      // game.obj1.scale.setTo(0.4);
-      // game.obj2.scale.setTo(0.4);
-      // game.obj3.scale.setTo(0.4);
-      // game.obj4.scale.setTo(0.4);
-      // game.panelBack.addChild(game.obj1);
-      // game.panelBack.addChild(game.obj2);
-      // game.panelBack.addChild(game.obj3);
-      // game.panelBack.addChild(game.obj4);
-
-      // var obj1 = game.steps.shift();
-      // game.ob1_txt = game.add.text(70, 340, obj1, {font: "bold 30px Handlee"})
-      // game.ob1_txt.fontSize = 20;
-      // game.ob1_txt.wordWrap = true;      
-      // game.ob1_txt.wordWrapWidth = 270;
-      // game.panelBack.addChild(game.ob1_txt);
-
-      // game.ob2_txt = game.add.text(45, 450, "...", {font: "bold 30px Handlee"})
-      // game.ob3_txt = game.add.text(45, 520, "...", {font: "bold 30px Handlee"})
-      // game.ob4_txt = game.add.text(45, 590, "...", {font: "bold 30px Handlee"})
-      // game.panelBack.addChild(game.ob2_txt);
-      // game.panelBack.addChild(game.ob3_txt);
-      // game.panelBack.addChild(game.ob4_txt);
-      
       return game.panelBack;
 }
 
@@ -71,21 +119,25 @@ function createPanelL(game){
 function createPanelR(game){
 
       game.panelBackR = game.add.sprite(1520,0,'panelR');
-      //game.panelBack.anchor.setTo(0.5, 0.5);
       game.panelBackR.fixedToCamera = true;
       game.panelBackR.alpha = 0.9;
 
       game.dice1play = new Phaser.Circle(1520+66, 250, 70);
       game.dice2play = new Phaser.Circle(1520+156, 250, 70);
-      // game.panelBackR.addChild(game.dice1play);
-      // game.panelBackR.addChild(game.dice2play);
 
-      game.playingNowText = game.add.text(26, 90, "Player #"+playersTurn+" turn", {font: "bold 30px Handlee"})
-      game.playingNowText.fontSize = 30;
-      game.playingNowText.tween = game.add.tween(game.playingNowText).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
-      game.playingNowText.addColor('#ff0000', 7);
-      game.playingNowText.addColor('#000000', 9);
+      game.playingNowText = game.add.text(20, 60, game.roles[playersTurn]+"'s", {font: "bold 30px Handlee"})
+      game.playingNowText.addColor('#ff0000', 0);
+      game.turnText = game.add.text(20, 90, "turn", {font: "bold 30px Handlee"})
+      game.playingRoleIcon = game.add.image(140, 120, game.rolesIcon[playersTurn]);
+      game.playingRoleIcon.scale.setTo(0.5);
+      game.playingRoleIcon.anchor.setTo(0.5);
+      game.playingRoleIcon.tween = game.add.tween(game.playingRoleIcon.scale).to({x:0.35,y:0.35}, 600, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 400);
+      game.playingRoleIcon.tween.pause();
       game.panelBackR.addChild(game.playingNowText);
+      game.panelBackR.addChild(game.turnText);
+      game.panelBackR.addChild(game.playingRoleIcon);
+      if(playersTurn == game.controllingPlayer)
+            game.playingRoleIcon.tween.resume();
       
       // dices
       game.diceSum = game.add.text(26, 340, "Dice Sum: -");

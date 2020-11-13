@@ -48,7 +48,7 @@ Dice.prototype.rollComplete = function() {
         // **** /SOCKET inform other player for dice-results **** //
         this.game.socket.emit(PlayerEvent.newDiceResult, {diceTotal:total});
         // **** /SOCKET **** //
-        console.log(total);
+        //console.log(total);
     }
 };
 

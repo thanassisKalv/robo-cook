@@ -211,6 +211,16 @@
             "type": "image",
             "key": "image_answer_3_1",
             "url": "assets/images_questions/answer-fats-2.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_2",
+            "url": "assets/images_questions/salads_variety.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_3",
+            "url": "assets/images_questions/weightloss-diet.jpg"
         }
     ],
     "meta": {

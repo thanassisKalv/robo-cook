@@ -1,0 +1,23 @@
+
+{
+    "recipeLevels":[
+        {
+            "recipe":{
+                "0":{ "step": "Stir the eggs and season them well with salt and pepper.", "points":[1,1,1] },
+                "1":{ "step": "Heat the oil and butter in a non-stick frying pan over a medium-low heat", "points" :[2,2,2] },
+                "2":["Wait until the butter has melted and is foaming"],
+                "3":["Pour the eggs into the pan, tilt the pan ever so slightly from one side to another to allow the eggs to swirl and cover the surface of the pan completely"]
+            },
+
+            "recipe_cook":{
+                "0":["-|- the eggs and -|- them well with salt and pepper."],
+                "1":["-|- the oil and butter in a non-stick -|- pan over a medium-low heat"]
+            },
+
+            "recipe_shopper":{
+                "0":["Stir the -|- and season them well with -|- and -|-."],
+                "1":["Heat the -|- in a non-stick frying -|- over a medium-low heat"]
+            }
+        }
+    ]
+}

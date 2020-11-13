@@ -11,11 +11,13 @@
 						"sugars"
 					],
 					"answer": 0,
-					"image": "/assets/images_questions/pasta_production.jpg",
-					"answer_image": "grain-to-pasta.jpg"
+					"image": "/assets/images_questions/pasta_making.jpg",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Are fruits typical in a pasta recipe?"
 				},
 				{
-					"question": "To make bread or pizza you need them:",
+					"question": "To make bread or pizza you surely need them:",
 					"choices": [
 						"water and salt",
 						"water, salt, flour and yeast",
@@ -23,7 +25,9 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/pasta.png",
-					"answer_image": "pasta.jpg"
+					"answer_image": "pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Is milk an ingredient of bread?"
 				},
 				{
 					"question": "The oil is produced:",
@@ -34,18 +38,22 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/oil-to-salad.png",
-					"answer_image": "olives.jpg"
+					"answer_image": "olives.jpg",
+					"hqExist": true,
+					"helpQuestion": "Think of those trees that are typical around Mediterranean?"
 				},
 				{
 					"question": "What is rice?",
 					"choices": [
 						"a cereal",
-						"a farinaceous",
+						"a vegetable",
 						"a seed"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/question.png",
-					"answer_image": "cereals.jpg"
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Family of vegetables includes alikes of cucumber"
 				},
 				{
 					"question": "Butter mostly consists of?",
@@ -56,7 +64,9 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/butters.png",
-					"answer_image": "cereals.jpg"
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "For example, butter is main ingredient of peanut-butter and makes it rich in?"
 				},
 				{
 					"question": "What ingredient contributes mostly on taste and flavor of croissants, biscuits, pastries?",
@@ -67,7 +77,9 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/citrus-family.jpg",
-					"answer_image": "cereals.jpg"
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Sugar makes them sweet but what gives them 'creamy' taste and texture?"
 				}
 
 			]
@@ -194,7 +206,7 @@
 		{
 			"questions": [
 				{
-					"question": "What nutrients do meat and fish provide?",
+					"question": "What nutrients do meat and fish mostly provide?",
 					"choices": [
 						"proteins",
 						"mineral salts",
@@ -373,6 +385,28 @@
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Can we say that all salads healthy-made?",
+					"choices": [
+						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
+						"All salads are very healthy, just don't add too much salt",
+						"No, it is common to add so many not-so-healthy ingredients"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/salads_variety.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "People follow diets with the purpose to lose weight?",
+					"choices": [
+						"Yes, that's the normal way",
+						"Not always, some diets are not designed for losing weight",
+						"Following diets is not a healthy idea"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/weightloss-diet.jpg",
 					"answer_image": "answer-fats-2.jpg"
 				}
 			]

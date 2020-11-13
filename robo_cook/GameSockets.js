@@ -1,6 +1,8 @@
 
 function registerSocketListeners(_this, window)
 {
+    const roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
+    const rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     window.socket.on(PlayerEvent.coordinates, function (playerMove) {
         _this.uuidReceived = playerMove.uuidToken;
         _this.moveOtherPlayer(playerMove);
@@ -21,14 +23,24 @@ function registerSocketListeners(_this, window)
 
     window.socket.on(PlayerEvent.getPlayerTurn, function (syncPlayersTurn) {
         playersTurn = syncPlayersTurn;
-        _this.game.playingNowText.setText("Player #"+playersTurn+" turn");
-        if(playersTurn == _this.game.controllingPlayer)
+        _this.game.playingNowText.setText(roles[playersTurn]+"'s");
+        _this.game.playingRoleIcon.loadTexture(rolesIcon[playersTurn]);
+
+        if(playersTurn == _this.game.controllingPlayer){
             _this.game.handDiceTween.resume();
+            _this.game.playingRoleIcon.tween.resume();
+        }
+        else{
+            _this.game.playingRoleIcon.tween.pause();
+            _this.game.playingRoleIcon.scale.setTo(0.5);
+        }
 
         //_this.game.camera.follow(_this.game.playersActive[playersTurn-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
         _this.game.world.bringToTop(_this.game.panelLeft);
         _this.game.world.bringToTop(_this.game.panelRight);
-        _this.game.world.bringToTop(_this.game.emitter);
+        _this.game.world.bringToTop(_this.game.ptEmitters[0]);
+        _this.game.world.bringToTop(_this.game.ptEmitters[1]);
+        _this.game.world.bringToTop(_this.game.ptEmitters[2]);
 
         for(var i=0; i<_this.game.playersActive.length; i++)
             if(playersTurn-1 != i)
@@ -70,38 +82,43 @@ function registerSocketListeners(_this, window)
 
     window.socket.on(PlayerEvent.opponentAnswered, function (data) {
         _this.otherPlayerAnswered(data);
+        _this.game.questionsAnswered = data.updatedQuestions;
         Swal.close();
     });
     
+    window.socket.on(PlayerEvent.updateQuestions, function (updatedQuestions) {
+        _this.game.questionsAnswered = updatedQuestions;
+    });
 
     window.socket.on(PlayerEvent.helpMeAnswer, function (questionItem) {
         //console.log(questionItem);
         _this.game.tileToHelp.questpop.showQuestionAsTeamHelp(questionItem)
     });
 
-    window.socket.on(PlayerEvent.sendHelp, function (helpText) {
-        console.log(helpText);
+    window.socket.on(PlayerEvent.sendHelp, function (helpMessage) {
 
         var helpCloudX = _this.game.msgReceiver.x;
         var helpCloudY = _this.game.msgReceiver.y;
         if(_this.game.helpClouds.length==0)
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX-100, helpCloudY-50, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+60, helpCloudY-150, 'help-message-cloud');
         else
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX+100, helpCloudY-50, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+85, helpCloudY-50, 'help-message-cloud');
+        
         _this.game.helpClouds.push(msgHelpMsg);
+        msgΗelpText = _this.game.add.text(-70, -20, helpMessage.helpText, {font: "26px Handlee"});
+        msgHelpMsg.addChild(msgΗelpText);
         msgHelpMsg.visible = false;
         msgHelpMsg.anchor.setTo(0.5, 0.5);
-        msgHelpMsg.scale.setTo(0.75);
+        msgHelpMsg.scale.setTo(0.2);
 
         if(_this.game.helpClouds.length==2){
             for (var i=0; i< _this.game.helpClouds.length; i++){
                 _this.game.helpClouds[i].visible = true;
-                _this.game.add.tween(_this.game.helpClouds[i].scale).to( {x:1.5,y:1.5}, 400, Phaser.Easing.Quadratic.Out, true);
+                _this.game.add.tween(_this.game.helpClouds[i].scale).to( {x:0.9, y:0.9}, 400, Phaser.Easing.Quadratic.Out, true);
                 _this.game.panelBackR.addChild( _this.game.helpClouds[i] );
             }
         }
     });
-
 
     //  ******   PLAYER HAS QUITTED  -->  RESET STATE VARIABLES & RESTART SCENE
     window.socket.on(PlayerEvent.quit, function (playerID) {

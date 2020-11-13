@@ -19,7 +19,7 @@ WebFontConfig = {
 
     //  The Google Fonts we want to load (specify as many as you like in the array)
     google: {
-        families: ['Handlee']
+        families: ['Handlee', 'Revalia']
     }
 };
 
@@ -45,17 +45,13 @@ WebFontConfig = {
 
         this.game.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.game.load.image('bg', path+'assets/robo-cook/background-scene-2.png');
-        this.game.load.image("cursor", path+"assets/chars/dot_a.png");
-        this.game.load.image("cursorPlaying", path+"assets/chars/can-play.png");
-        this.game.load.image("monster", path+"assets/chars/blue_monster.png");
+        this.game.load.image("cursor", path+"assets/menus/dot_a.png");
+        this.game.load.image("cursorPlaying", path+"assets/menus/can-play.png");
         this.game.load.atlas("pixels", path+"assets/pixels.png", path+"assets/pixels.json");
-        this.game.load.atlasXML("buttons", path+"assets/ui/greenButtons.png", path+"assets/ui/greenButtons.xml");
+        this.game.load.atlasXML("buttons", path+"assets/menus/ui/greenButtons.png", path+"assets/menus/ui/greenButtons.xml");
         this.game.load.script('webfont', 'libs/webfont.js');
 
         //this.game.load.spritesheet('robots-blue', path+'assets/robo-cook/robots-blue.png', 180, 296);
-        //this.game.load.spritesheet('robots-pink', path+'assets/robo-cook/robots-pink.png', 180, 296);
-        // this.game.load.spritesheet('robots-green', path+'assets/robo-cook/robots-green.png', 180, 296);
-        //this.game.load.spritesheet('robots-yellow', path+'assets/robo-cook/robots-yellow.png', 180, 296);
         this.game.load.spritesheet('robots-blue-new', path+'assets/robo-cook/alternative/robocook_blue_frames.png', 115, 154);
         this.game.load.spritesheet('robots-red-new', path+'assets/robo-cook/alternative/robocook_red_frames.png', 115, 154);
         this.game.load.spritesheet('robots-green-new', path+'assets/robo-cook/alternative/robocook_green_frames.png', 115, 154);
@@ -74,7 +70,6 @@ WebFontConfig = {
         this.game.load.json('questions', path+'assets/questions/data/questions.json');
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.game.load.image('button', 'assets/questions/button.png');
-        this.game.load.image('gotit', 'assets/questions/got-answer.png');
         // change asset keys and folder/filenames if necessary
         this.game.load.image('help-message-cloud', 'assets/questions/help-message-cloud.png');
         this.game.load.image('receiver-icon', 'assets/questions/receiver-icon.png');
@@ -88,13 +83,27 @@ WebFontConfig = {
         this.game.load.image('badge-food-recipes','assets/badges/foods-recipes.png');
         this.game.load.image('badge-principles','assets/badges/principles-badge.gif');
         this.game.load.image('badge-seasonality','assets/badges/seasonality-badge-empty.gif');
-        this.game.load.image('score-frame1','assets/badges/score-frame-2.png');
-        this.game.load.image('score-frame2','assets/badges/score-frame-1.png');
+        this.game.load.image('badge-food-recipes-sm','assets/badges/small/food-recipe.png');
+        this.game.load.image('badge-principles-sm','assets/badges/small/principles.gif');
+        this.game.load.image('badge-seasonality-sm','assets/badges/small/seasonality.gif');
+        this.game.load.image('obj-points','assets/badges/obj-points.png');
+
+        this.game.load.image('learning-icon', 'assets/badges/knowledge-item.gif')
+        this.game.load.image('research-icon', 'assets/badges/research-badge.gif')
+        this.game.load.image('bg-score','assets/badges/scoreframe/bg-score.png');
+        this.game.load.image('table-score','assets/badges/scoreframe/table-score.png');
+        this.game.load.image('element-score','assets/badges/scoreframe/score-element.png');
+        this.game.load.image('star-score','assets/badges/scoreframe/star-element.png');
+
         this.game.load.image('team-1-bonus', 'assets/badges/team-1-bonus.png');
         this.game.load.image('team-2-bonus', 'assets/badges/team-2-bonus.png');
-        this.game.load.image('objectives', "assets/badges/objectives-frame.png");
+        this.game.load.image('objectives', "assets/badges/objectives-frame-xl.png");
         this.game.load.image('activeObj', "assets/badges/active.png");
         this.game.load.image('noActiveObj', "assets/badges/active-no.png");
+
+        this.game.load.image('badge-chef','assets/badges/roles/chef-icon.gif');
+        this.game.load.image('badge-cook','assets/badges/roles/cook-icon.gif');
+        this.game.load.image('badge-shopper','assets/badges/roles/shopper-icon.gif');
 
         // load the Dice assets
         this.game.load.spritesheet("dice", path + "assets/diceRed.png", 64, 64);
@@ -107,10 +116,19 @@ WebFontConfig = {
         this.game.load.image('protein-logo', 'assets/menus/protein-logo-2.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('game-instructions', 'assets/menus/instructions-fixed.png');
-        this.game.load.image('bubble', 'assets/particles/points-1.png');
+        this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
+        this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
+        this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
 
         this.game.load.image('tree-brown', 'assets/sprites/tree-brown.png');
         this.game.load.image('tree-green', 'assets/sprites/tree-green.png');
+
+        this.game.load.image('rcpAction-1', 'assets/recipe-items/recipe-1.gif');
+        this.game.load.image('rcpAction-2', 'assets/recipe-items/recipe-2.gif');
+        this.game.load.image('eggs-recipe', 'assets/recipe-items/eggs.png');
+        this.game.load.image('salt & pepper-recipe', 'assets/recipe-items/salt-pepper.png');
+        this.game.load.image('stir-recipe', 'assets/recipe-items/stir-action.gif');
+        this.game.load.image('season-recipe', 'assets/recipe-items/season-action.gif');
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         this.game.load.atlas('char', charImage, charData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
@@ -130,7 +148,7 @@ WebFontConfig = {
   }
 
   onLoadComplete() {
-    console.log("complete load");
+    //console.log("loading complete");
     this.ready = true;
   }
 

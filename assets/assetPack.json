@@ -9,7 +9,7 @@
         {
             "type": "image",
             "key": "quest",
-            "url": "assets/tileset/quest-item-collect.png",
+            "url": "assets/tileset/path-recipe-step.png",
             "overwrite": false
         },
         {
@@ -56,20 +56,14 @@
         },
         {
             "type": "image",
-            "key": "bg",
-            "url": "assets/images/background-scene-1.png",
+            "key": "path-cook-action",
+            "url": "assets/tileset/path-cook-action.png",
             "overwrite": false
         },
         {
             "type": "image",
-            "key": "healthholder",
-            "url": "assets/images/healthHolder.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "title",
-            "url": "assets/images/title.png",
+            "key": "path-shop-action",
+            "url": "assets/tileset/path-shop-action.png",
             "overwrite": false
         },
         {
@@ -93,30 +87,6 @@
         {
             "type": "image",
             "key": "target-4-player",
-            "url": "assets/tileset/riverES.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "target-5",
-            "url": "assets/tileset/riverNE.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "target-6-player",
-            "url": "assets/tileset/riverNW.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "target-7",
-            "url": "assets/tileset/riverSW.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "target-8-player",
             "url": "assets/tileset/riverES.png",
             "overwrite": false
         },
@@ -191,7 +161,7 @@
         {
             "type": "json",
             "key": "mapdata",
-            "url": "assets/isotiles-maps/isotiles-board.json"
+            "url": "assets/isotiles-maps/board.json"
         }
     ],
     "meta": {

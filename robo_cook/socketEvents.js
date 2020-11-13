@@ -34,5 +34,7 @@ var PlayerEvent = (function () {
     PlayerEvent.diceBonus = "player:diceBonus";
     PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
     PlayerEvent.sendHelp = "player:sendHelp";
+    PlayerEvent.updateQuestions = "player:updateQuestions";
+    PlayerEvent.levelFull = "PlayerEvent.levelFull";
     return PlayerEvent;
 }());

@@ -5,11 +5,12 @@ var path = require('path');
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var uuid = require("uuid");
-
+var fs = require('fs');
 const port = 8000;
 const IP = "localhost";
 
 const PLAYERS_PER_LEVEL = 3;
+const gameLevels = JSON.parse(fs.readFileSync('gameLevels.json', 'utf8'));
 
 //var connection_string = "mongodb://127.0.0.1:27017/robocook_v01";
 //const db = require("monk")(connection_string);
@@ -48,6 +49,8 @@ var PlayerEvent = (function () {
     PlayerEvent.diceBonus = "player:diceBonus";
     PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
     PlayerEvent.sendHelp = "player:sendHelp";
+    PlayerEvent.updateQuestions = "player:updateQuestions";
+    PlayerEvent.levelFull = "PlayerEvent.levelFull";
     return PlayerEvent;
 }());
 
@@ -69,8 +72,9 @@ class GameServer {
         this.levelsPlayingNow = {"discover-recipe":1, "discover-diet":1};
         this.syncedPlayersStart = {};
         this.uuidTable = {};
-        this.questionsAnswered = {};
+        this.questionsAnswered = {0:[], 1:[], 2:[]};
         this.playerAnsweringSocket = {};
+        this.totalQuests = {0:6, 1:10, 2:14};
         this.socketEvents();
     }
     connect (port) {
@@ -137,17 +141,22 @@ class GameServer {
             // inform the new player about the awaiting connected players
             //socket.emit(PlayerEvent.players, _this.getConnectedPlayers(playerMessage.level));
 
-            // create a new player and broadcast it to previously connected players
-            var newPlayer = _this.createPlayer(socket, playerMessage);
-            socket.emit(PlayerEvent.assignID, newPlayer);
+            if(_this.levels[playerMessage.level].length == PLAYERS_PER_LEVEL){
+                socket.emit(PlayerEvent.levelFull, {});
+            }
+            else{
+                // create a new player and broadcast it to previously connected players
+                var newPlayer = _this.createPlayer(socket, playerMessage);
+                socket.emit(PlayerEvent.assignID, newPlayer);
 
-            console.log("Level-"+playerMessage.level + " contains: ");
-            console.log(_this.levels[playerMessage.level]);
+                console.log("Level-"+playerMessage.level + " contains: ");
+                console.log(_this.levels[playerMessage.level]);
 
-            if(_this.levels[playerMessage.level].length>1){
-                var players_in_Level = _this.getConnectedPlayers(playerMessage.level);
-                socket.broadcast.emit(PlayerEvent.players, _this.levels );
-                socket.emit(PlayerEvent.players, _this.levels );
+                if(_this.levels[playerMessage.level].length>1){
+                    var players_in_Level = _this.getConnectedPlayers(playerMessage.level);
+                    socket.broadcast.emit(PlayerEvent.players, _this.levels );
+                    socket.emit(PlayerEvent.players, _this.levels );
+                }
             }
         });
         
@@ -171,7 +180,7 @@ class GameServer {
             this.syncedPlayersStart[socket.player.level] = 0
             
         if(this.levels[msg.level].length == PLAYERS_PER_LEVEL)
-            this.questionsAnswered = {1:[], 2:[]};
+            this.questionsAnswered = {0:[], 1:[], 2:[]};
 
         return socket.player;
     };
@@ -290,9 +299,15 @@ class GameServer {
         socket.on(PlayerEvent.opponentAnswered, function (dataAnswer) {
             // dataAnswer[correct: Boolean, category: Int, quIndex: Int]
             if(socket.player){
-                if(dataAnswer.correct)
-                    _this.questionsAnswered[socket.player.team].push(dataAnswer.category+'-'+dataAnswer.quIndex);
+                if(dataAnswer.correct){
+                    _this.questionsAnswered[dataAnswer.category].push(dataAnswer.quIndex);
+                    // RESET the list when the team has all answered correctly all questions of this category
+                    if(_this.questionsAnswered[dataAnswer.category].length == _this.totalQuests[dataAnswer.category])
+                        _this.questionsAnswered[dataAnswer.category] = [];
+                }
+                dataAnswer.updatedQuestions = _this.questionsAnswered;
                 socket.broadcast.emit(PlayerEvent.opponentAnswered, dataAnswer);
+                socket.emit(PlayerEvent.updateQuestions, dataAnswer.updatedQuestions);
             }
             console.log(_this.questionsAnswered);
         });
@@ -304,11 +319,14 @@ class GameServer {
             if (player && player.level==level) {
                 acc.push(player);
             }
-            console.log(acc);
+            //console.log(acc);
             return acc;
         }, []);
     }
 };
+
+
+console.log(gameLevels.recipeLevels[0].recipe_cook);
 
 var gameSession = new GameServer();
 gameSession.connect(port);

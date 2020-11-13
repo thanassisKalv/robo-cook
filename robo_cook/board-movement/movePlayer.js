@@ -1,14 +1,14 @@
 function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice, bonus)
 {
     playerMoving = true;
-    sprite.moveTween = _this.game.add.tween(sprite).to({isoX: targetTile.isoX, isoY: targetTile.isoY}, 400, Phaser.Easing.Sinusoidal.InOut);
+    sprite.moveTween = _this.game.add.tween(sprite).to({isoX: targetTile.isoX, isoY: targetTile.isoY}, 600, Phaser.Easing.Sinusoidal.InOut);
     sprite.moveTween.start();
     sprite.alpha = 0.55;
     _this.currentTargetTile = targetTile;
+    
     if(finishedDice==false){
         window.socket.emit(PlayerEvent.diceBonus, {team:teamsTurn[playersTurn], bonus:bonus})
     }
-
     if(controlling){
         _this.uuidSend = uuid();
         //console.log(_this.uuidSend)
@@ -17,10 +17,11 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
     //else
         //console.log(_this.uuidReceived)
     sprite.moveTween.onComplete.add(function() {
+        sprite.currentTile.occupant = null;
         sprite.currentTile = targetTile;
         sprite.alpha = 1;
 
-        if(targetTile.key.includes("path-q")){
+        if(targetTile.key.includes("path-q") || (targetTile.key.includes("-action") && targetTile.activated)){
             if(controlling){
                 if(_this.uuidSend==_this.uuidReceived)
                     targetTile.questpop.popUpQuestion(targetTile.questNum);
@@ -35,8 +36,12 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
             targetTile.occupant = _this.game.playersActive[playersTurn-1];
         }
         else{
-            if(targetTile.key.includes("quest"))
-                _this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"))
+            /* if player is "Instruction" -> then change the board's main tiles color (similar to trivial pursuit graphics)
+               and reveal the recipe steps  */
+            if(targetTile.key.includes("quest") && _this.game.scoreHandler.hasUnlockedStep()){
+                _this.game.scoreHandler.getUnlockedStep();
+                _this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"));
+            }
 
             targetTile.occupant = _this.game.playersActive[playersTurn-1];
 

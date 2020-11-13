@@ -10,6 +10,7 @@ var pendingMove = false;
 var playerMoving = false;
 var diceGroup;
 var teamsDiceBonus = { 1:0, 2:0};
+var rcpItemDropping = false;
 
 function togglePlayerTurn(){
     window.socket.emit(PlayerEvent.getPlayerTurn, {});
@@ -65,11 +66,19 @@ class GameState extends Phaser.State {
     this.game.stepsCook = this.mapData.recipe_cook;
     this.game.stepsShopper = this.mapData.recipe_shopper;
 
+    this.data = this.game.cache.getJSON('questions');
+    console.log("qlen",this.data.categories[0].questions.length);
+    console.log("qlen",this.data.categories[1].questions.length);
+    console.log("qlen",this.data.categories[2].questions.length);
+    this.game.questionsAnswered = {0:[], 1:[], 2:[]};
+
     this.startPositions = [];
     this.boardGameTiles = [];
     this.startingTiles = [];
     this.game.helpClouds = [];
     this.game.playersActive = [];
+    this.game.roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
+    this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     //this.diceGroup = [];
     this.startSynced = false;
     diceGroup = this.add.group();
@@ -80,12 +89,13 @@ class GameState extends Phaser.State {
     this.easystar = new EasyStar.js(); // eslint-disable-line new-cap
     this.finding = false;
     this.water = [];
+    this.isoGroup = this.game.add.group();  
 
     // Place a "fixed-to-camera" info-frame at the right side
     this.game.panelLeft = createPanelL(this.game);
     this.game.panelRight = createPanelR(this.game);
 
-    this.game.scoreHandler = new PlayerScores(this.game);
+    this.game.scoreHandler = new PlayerScores(this.game, this.isoGroup);
     this.game.UiModalsHandler = new UiModalsManager(this.game);
     this.game.tileToHelp = null;
 
@@ -117,21 +127,23 @@ class GameState extends Phaser.State {
     this.input.onDown.add(this.checkTargetTileSelected, this);
 
     const alevel = new Level(this);
-    this.game.emitter = this.addPointsGainEmitter("bubble");
+    this.game.ptEmitters = [];
+    this.game.ptEmitters.push(this.addPointsGainEmitter("bubble1"));
+    this.game.ptEmitters.push(this.addPointsGainEmitter("bubble2"));
+    this.game.ptEmitters.push(this.addPointsGainEmitter("bubble3"));
 
     //this.easystar.setGrid(alevel.walkable);
     //this.easystar.setAcceptableTiles([1]);
     this.easystar.setGrid(this.mapData.tileMap);
     this.easystar.setAcceptableTiles([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
     this.easystar.enableDiagonals();
-
-    this.isoGroup = this.game.add.group();        
+      
     this.spawnBoardGame();
     // player's cursor marker
-    this.cursor = this.add.sprite(400,300,"cursor");
-    this.cursor.scale.setTo(0.5, 0.5);
-    this.cursor.anchor.setTo(0.5, 0.5);
-    this.cursor.invincible = false;
+    this.game.cursor = this.add.sprite(400,300,"cursor");
+    this.game.cursor.scale.setTo(0.5, 0.5);
+    this.game.cursor.anchor.setTo(0.5, 0.5);
+    this.game.cursor.invincible = false;
 
     // add our RoboCook characters
     var playerMarks = ["blue-mark", "green-mark", "red-mark",];
@@ -194,6 +206,7 @@ class GameState extends Phaser.State {
     this.game.world.bringToTop(this.game.panelRight);
     // firstly make the camera to follow the active player
     this.game.camera.follow(this.game.playersActive[this.game.controllingPlayer-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+    this.game.world.bringToTop(this.game.playersActive[this.game.controllingPlayer-1]);
 
      // a startup tile animation with a socket-io syncing function
     this.isoGroup.forEach(this.startGameEffect, this, false);
@@ -205,12 +218,12 @@ class GameState extends Phaser.State {
   }
 
   addPointsGainEmitter(pointType){
-    var newEmitter = this.game.add.emitter(this.x, this.y, 1000);
-    newEmitter.makeParticles('bubble');
-    newEmitter.setAlpha(0.6, 0.8, 1600);
-    newEmitter.setScale(1.5, 0.2, 1.5, 0.2, 1600, Phaser.Easing.Quintic.Out);
-    newEmitter.particleBringToTop = true;
-    return newEmitter;
+    var ptEmitter = this.game.add.emitter(this.x, this.y, 1000);
+    ptEmitter.makeParticles(pointType);
+    ptEmitter.setAlpha(0.6, 0.8, 1600);
+    ptEmitter.setScale(1.5, 0.2, 1.5, 0.2, 1600, Phaser.Easing.Quintic.Out);
+    ptEmitter.particleBringToTop = true;
+    return ptEmitter;
   }
 
   // ** UPDATE Starndard FUNCTION **//
@@ -228,7 +241,7 @@ class GameState extends Phaser.State {
     // Loop through all ground-tiles
     //this.groundGroup.forEach(this.checkGroundTile, this, false);
     // Generate the water-wave effect
-    this.water.forEach(this.waveWaterTiles, this, false);
+    //this.water.forEach(this.waveWaterTiles, this, false);
 
     if (this.isMoving && questionAwaiting==false) {
       this.isMoving=false;
@@ -277,26 +290,26 @@ class GameState extends Phaser.State {
         else
             this.game.player2button.scale.setTo(1, 1);
       }
-      this.game.playingNowText.setText("Player #"+playersTurn+" turn");
-      //console.log(this.endTiles);
     }
+
+    this.checkRcpActionDropped();
 
     if(playersTurn==1 || playersTurn==3)
       if (this.game.dice1play.contains(this.input.activePointer.x, this.input.activePointer.y)){
-        this.cursor.loadTexture("cursorPlaying")
+        this.game.cursor.loadTexture("cursorPlaying")
         playDice = true;
       }
       else{
-        this.cursor.loadTexture("cursor")
+        this.game.cursor.loadTexture("cursor")
         playDice = false;
       }
     else
       if (this.game.dice2play.contains(this.input.activePointer.x, this.input.activePointer.y)){
-        this.cursor.loadTexture("cursorPlaying")
+        this.game.cursor.loadTexture("cursorPlaying")
         playDice = true;
       }
       else{
-        this.cursor.loadTexture("cursor")
+        this.game.cursor.loadTexture("cursor")
         playDice = false;
       }
 
@@ -308,12 +321,11 @@ class GameState extends Phaser.State {
       this.game.panelLeft.alpha = 0.9;
 
     // the cursor overlaps the actual user's mouse
-    this.cursor.position.x = this.input.worldX;
-    this.cursor.position.y = this.input.worldY;
+    this.game.cursor.position.x = this.input.worldX;
+    this.game.cursor.position.y = this.input.worldY;
 
     this.game.diceSum.setText("Dice Sum: " + total);
-    this.game.world.bringToTop(this.game.playersActive[playersTurn-1]);
-    this.game.world.bringToTop(this.cursor);
+    this.game.world.bringToTop(this.game.cursor);
 
   }
   // ** /UPDATE Starndard FUNCTION **//
@@ -335,32 +347,38 @@ class GameState extends Phaser.State {
               tile = this.game.add.isoSprite(x*size, y*size, 0, tileName, 0, this.isoGroup);
               tile.scale.setTo(1.0, 1.0);
               tile.anchor.set(0.5, 0);
+              tile.alpha = 0.9;
               tile.Xtable = x;
               tile.Ytable = y;
               tile.occupant = null;
+              tile.activated = false;
 
               if(tileName == "quest"){
-                  tile.questpop = new QuestPopUp(this.game, tile.position.x, tile.position.y);
+                  tile.questpop = new QuestPopUp(this.game, false, false, -1, tile.position.x, tile.position.y);
                   tile.ingredient = this.ingredients.shift();
                   tile.scale.setTo(1.2, 1.2);
-              }
-              if(tileName == "path-simple"){
-                  tile.alpha = 0.9;
-                  //tile.scale.setTo(0.75, 0.75);
+                  tile.alpha = 1.0;
               }
               if(tileName.includes("path-q")){
                   //tile.scale.setTo(0.75, 0.75);
-                  tile.alpha = 0.9;
-                  tile.questNum = parseInt(tileName[tileName.length-1])-1;
-                  tile.questpop = new QuestPopUp(this.game, tile.position.x, tile.position.y);
+                  var questNum = parseInt(tileName[tileName.length-1])-1;
+                  tile.questpop = new QuestPopUp(this.game, false, false, questNum, tile.position.x, tile.position.y);
               }
               if(tileName.includes("target-")){
                   this.startingTiles.push(tile);
                   this.startPositions.push({x: x*size, y: y*size});
-              }
-              if(tileName.includes("target-"))
                   this.targetTiles[tileName] = tile;
-
+                  tile.alpha = 1.0;
+              }
+              if(tileName.includes("cook-")){
+                tile.questpop = new QuestPopUp(this.game, true, false, -1, tile.position.x, tile.position.y);
+                tile.alpha = 0.6;
+              }
+              if(tileName.includes("shop-")){
+                tile.questpop = new QuestPopUp(this.game, false, true, -1, tile.position.x, tile.position.y);
+                tile.alpha = 0.6;
+              }
+              
               /* TODO -- maybe use an effect like hoping "target-tiles" like (tween for tile.isoZ = 64;) */
               this.boardGameTiles[y][x] = tile;
           }
@@ -439,17 +457,24 @@ class GameState extends Phaser.State {
   }
 
   checkTargetTileSelected(){
+    var myRole = this.game.roles[this.game.controllingPlayer];
     if(pendingMove && playerMoving==false && playersTurn==this.game.controllingPlayer)
         this.endTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-                movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, true, 0);
+                if(clickedTile.activated && myRole=="Instructor")
+                  return;
+                else
+                  movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, true, 0);
             }
         });
     if(pendingMove && playerMoving==false && playersTurn==this.game.controllingPlayer)
         this.midTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
+              if(clickedTile.activated && myRole=="Instructor")
+                return;
+              else
                 movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, false, total-clickedTile.tileMoves);
             }
         });
@@ -495,7 +520,8 @@ class GameState extends Phaser.State {
         this.game.waiting_other.destroy();
 
     pendingMove = false;
-    this.game.scoreHandler.updateScore(data.category, data.correct, teamsTurn[playersTurn])
+    if(data.rcpAction==false)
+      this.game.scoreHandler.updateScore(data.category, data.correct, teamsTurn[playersTurn]);
     togglePlayerTurn();
   }
 
@@ -518,6 +544,11 @@ class GameState extends Phaser.State {
     playingPlayer.markerScale.resume();
   }
 
+  checkRcpActionDropped(){
+    if(rcpItemDropping){
+      this.game.scoreHandler.checkRcpActionOverlap()
+    }
+  }
 
   resetGlobalState(){
     total = 0;

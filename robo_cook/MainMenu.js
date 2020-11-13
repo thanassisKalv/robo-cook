@@ -42,13 +42,15 @@ class MainMenu extends Phaser.State {
         this.text = new Phaser.Text(this.game, 0, 0, "Begin with Basic stuff", {font: "22px Handlee"});
         //this.text2 = new Phaser.Text(this.game, 0, 0, "Apple crumble & custard", {font: "22px Handlee"});
         this.textWait = new Phaser.Text(this.game, 0, 0, "", {font: "17px Calibri"});
+        this.textRoleAssign = new Phaser.Text(this.game, 0, 0, "", {font: "20px Calibri"});
         this.add.existing(this.text);
-        //this.add.existing(this.text2);
         this.add.existing(this.textWait);
+        this.add.existing(this.textRoleAssign);
         
         this.text.anchor.setTo(0.5, 0.5);
         //this.text2.anchor.setTo(0.5, 0.5);
         this.textWait.anchor.setTo(0.5, 0.5);
+        this.textRoleAssign.anchor.setTo(0.5, 0.5);
 
         this.text.x = this.level1Button.x;
         this.text.y = this.level1Button.y;
@@ -58,6 +60,9 @@ class MainMenu extends Phaser.State {
         this.textWait.y = this.level1Button.y+60;
         this.textWait.fill = "#191970";
         this.textWait.tween = this.add.tween(this.textWait).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
+        this.textRoleAssign.x = this.level1Button.x;
+        this.textRoleAssign.y = this.level1Button.y+90;
+        this.textRoleAssign.fill = "#00ff99";
 
 
         // Text for 2nd level's button
@@ -83,6 +88,7 @@ class MainMenu extends Phaser.State {
         this.game.stage.backgroundColor = '#d7ffcf';
         this.textWait2.tween = this.add.tween(this.textWait2).to({alpha:0.1}, 1500, Phaser.Easing.Bounce.InOut, true, 0, 3);
 
+        this.roles = ["Instructor", "Shopper", "Cook"];
 
         var _this = this;
         this.game.socket.on(PlayerEvent.players, function (players) {
@@ -96,6 +102,10 @@ class MainMenu extends Phaser.State {
             console.log("Player got a unique ID: " +  _this.game.myID );
         });
 
+        this.game.socket.on(PlayerEvent.levelFull, function (warning) {
+            _this.textWait.setText("Sorry the level is full at the moment");
+            _this.textWait.fill = "#ff0000";
+        });
 
     }
 
@@ -119,12 +129,20 @@ class MainMenu extends Phaser.State {
         if(players["discover-recipe"].length==3)
             for (var i = 0; i < players["discover-recipe"].length; i++) 
             {
-                if (players["discover-recipe"][i].id == _this.game.myID)
-                {
+                if (players["discover-recipe"][i].id == _this.game.myID){
                     this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.myTeam);
                     break; 
                 }
             }
+        else{
+            for (var i = 0; i < players["discover-recipe"].length; i++) 
+            {
+                if (players["discover-recipe"][i].id == _this.game.myID){
+                    this.textRoleAssign.setText("Your role is: " + this.roles[i]);
+                    break; 
+                }
+            }
+        }
     }
     
     startGameRecipe2 (pointer) {
