@@ -71,7 +71,7 @@ WebFontConfig = {
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.game.load.image('button', 'assets/questions/button.png');
         // change asset keys and folder/filenames if necessary
-        this.game.load.image('help-message-cloud', 'assets/questions/help-message-cloud.png');
+        this.game.load.image('help-message-cloud', 'assets/questions/help-message.png');
         this.game.load.image('receiver-icon', 'assets/questions/receiver-icon.png');
         this.game.load.image('green-bar', 'assets/questions/green-bar.png');
         this.game.load.image('red-bar', 'assets/questions/red-bar.png');
@@ -94,6 +94,7 @@ WebFontConfig = {
         this.game.load.image('table-score','assets/badges/scoreframe/table-score.png');
         this.game.load.image('element-score','assets/badges/scoreframe/score-element.png');
         this.game.load.image('star-score','assets/badges/scoreframe/star-element.png');
+         this.game.load.image('controlling-player','assets/menus/controlling-player.png');
 
         this.game.load.image('team-1-bonus', 'assets/badges/team-1-bonus.png');
         this.game.load.image('team-2-bonus', 'assets/badges/team-2-bonus.png');
@@ -113,8 +114,9 @@ WebFontConfig = {
 
         this.game.load.image('recipe1', 'assets/menus/baby-level-2.png');
         this.game.load.image('recipe2', 'assets/menus/intermediate-level-2.png');
-        this.game.load.image('protein-logo', 'assets/menus/protein-logo-2.png');
+        this.game.load.image('protein-logo', 'assets/menus/protein-logo-with-flag.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
+        this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
         this.game.load.image('game-instructions', 'assets/menus/instructions-fixed.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
@@ -125,10 +127,15 @@ WebFontConfig = {
 
         this.game.load.image('rcpAction-1', 'assets/recipe-items/recipe-1.gif');
         this.game.load.image('rcpAction-2', 'assets/recipe-items/recipe-2.gif');
+        this.game.load.image('rcpAction-complete', 'assets/recipe-items/step-completed.png');
         this.game.load.image('eggs-recipe', 'assets/recipe-items/eggs.png');
         this.game.load.image('salt & pepper-recipe', 'assets/recipe-items/salt-pepper.png');
+        this.game.load.image('heat-recipe', 'assets/recipe-items/heating-action.jpg');
         this.game.load.image('stir-recipe', 'assets/recipe-items/stir-action.gif');
         this.game.load.image('season-recipe', 'assets/recipe-items/season-action.gif');
+        this.game.load.image('frying-recipe', 'assets/recipe-items/frying-pan-action.png');
+        this.game.load.image('pan-recipe', 'assets/recipe-items/frying-pan-action.png');
+        this.game.load.image('oil-recipe', 'assets/recipe-items/oil.png');
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         this.game.load.atlas('char', charImage, charData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);

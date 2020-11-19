@@ -10,6 +10,7 @@ const port = 8000;
 const IP = "localhost";
 
 const PLAYERS_PER_LEVEL = 3;
+const ACTIONS_PER_STEP = 2;
 const gameLevels = JSON.parse(fs.readFileSync('gameLevels.json', 'utf8'));
 
 //var connection_string = "mongodb://127.0.0.1:27017/robocook_v01";
@@ -50,7 +51,9 @@ var PlayerEvent = (function () {
     PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
     PlayerEvent.sendHelp = "player:sendHelp";
     PlayerEvent.updateQuestions = "player:updateQuestions";
-    PlayerEvent.levelFull = "PlayerEvent.levelFull";
+    PlayerEvent.levelFull = "PlayerEvent:levelFull";
+    PlayerEvent.stepCompleted = "PlayerEvent:stepCompleted";
+    PlayerEvent.actionsCompleted = "PlayerEvent:actionsCompleted";
     return PlayerEvent;
 }());
 
@@ -75,6 +78,8 @@ class GameServer {
         this.questionsAnswered = {0:[], 1:[], 2:[]};
         this.playerAnsweringSocket = {};
         this.totalQuests = {0:6, 1:10, 2:14};
+        this.levelsCurrentStep = {"discover-recipe":0, "discover-diet":0};
+        this.levelsActionsCounter = {"discover-recipe":0, "discover-diet":0};
         this.socketEvents();
     }
     connect (port) {
@@ -114,6 +119,8 @@ class GameServer {
         this.addHelpMeAnswer(socket);
 
         this.addHelpSender(socket);
+
+        this.addStepCompleted(socket);
     };
 
     togglePlayerTurn(level){
@@ -129,6 +136,8 @@ class GameServer {
     resetPlayerTurn(level){
         this.levelsPlayingNow[level] = 1;
         this.syncedPlayersStart[level] = 0;
+        this.levelsCurrentStep[level] = 0;
+        this.levelsActionsCounter[level] = 0;
      };
 
     addSignOnListener (socket) {
@@ -290,6 +299,20 @@ class GameServer {
                 _this.uuidTable[confirmMessage.uuidToken]++;
                 if(_this.levels[socket.player.level].length == _this.uuidTable[confirmMessage.uuidToken])
                     socket.broadcast.emit(PlayerEvent.playerSynced, confirmMessage );
+            }
+        });
+    }
+
+    addStepCompleted(socket){
+        var _this = this;
+        socket.on(PlayerEvent.actionsCompleted, function (confirmMessage) {
+            if(socket.player){
+                _this.levelsActionsCounter[socket.player.level] ++;
+                if(_this.levelsActionsCounter[socket.player.level] == ACTIONS_PER_STEP){
+                    _this.levelsActionsCounter[socket.player.level] = 0;
+                    socket.broadcast.emit(PlayerEvent.stepCompleted, "next-step");
+                    socket.emit(PlayerEvent.stepCompleted, "next-step");
+                }
             }
         });
     }

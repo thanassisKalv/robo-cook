@@ -7,7 +7,7 @@ class UiModalsManager {
     waitingModal(player){
 
         Swal.fire({
-            title: 'Please wait other players to sync!',
+            title: 'Περίμενε τους συμπαίκτες σου να συγχρονιστούν!',
             //timer: 500,
             //timerProgressBar: true,
             allowOutsideClick: false,
@@ -23,11 +23,12 @@ class UiModalsManager {
         })
     }
     
-    questionOfActions(options, bgColor, actionTitle, context){
+    questionOfActions(options, optionsEng, currentStep, bgColor, actionTitle, context){
 
-        const items = {"0": options[0], "1":options[1], "2": options[2]};
+        const items = {"0": optionsEng[0], "1":optionsEng[1], "2": optionsEng[2]};
         Swal.fire({
             title: actionTitle,
+            html:  '<div style="color:#2196f3;font-size: 24px;font-family:Handlee;font-weight:bold;">' + currentStep.replaceAll("-?-", '<img class="inline-img" src="assets/recipe-items/recipe-inline.png">') + '</div>',
             backdrop: true,
             allowOutsideClick: false,
             background: bgColor,
@@ -62,11 +63,11 @@ class UiModalsManager {
         Swal.fire({
             title: questionText,
             html: helpExists? '<div style="color:coral;font-size: 21px;font-family:Handlee;"><i class="fa fa-info-circle"></i> ' +
-                                    helpQuText + "</div>" : 'You can use <b>some helper question?</b>',
+                                    helpQuText + "</div>" : 'Μπορείς να βασιστείς <b>σε μια βοηθητική ερώτηση</b>',
             backdrop: true,
             //allowOutsideClick: false,
             background: "#ece4e4",
-            width: 600,
+            width: 800,
             position: 'center',
             input: 'text',
             inputAttributes: {
@@ -74,8 +75,8 @@ class UiModalsManager {
               },
             showCancelButton: true,
             showDenyButton: true,
-            confirmButtonText: 'Send Help',
-            denyButtonText: 'Send Help (low confidence)',
+            confirmButtonText: 'Send your help',
+            denyButtonText: 'Send your help (low confidence)',
             cancelButtonText: "Don't send",
             confirmButtonColor: "#27c437",
             denyButtonColor: '#f4ba36ad',
@@ -115,7 +116,7 @@ class UiModalsManager {
             backdrop: true,
             allowOutsideClick: false,
             background: "#eccf75",
-            width: 600,
+            width: 800,
 
             showDenyButton: true,
             showCancelButton: true,

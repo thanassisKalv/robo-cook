@@ -43,36 +43,27 @@ class PointsFrame {
 }
 
 
-function addRecipeActions(game, objcvs, i){
+function addRecipeActions(game, objcvs, j){
+      const Xpos = [90, 320];
+      if(game.roles[game.controllingPlayer]=="Shopper")
+            var stepsRole = game.stepsShopper;
+      else
+            var stepsRole = game.stepsCook;
+      objcvs.actions = [];
+      for (var i=0; i<2; i++){
+            var action = game.add.sprite(Xpos[i], -130, "rcpAction-"+(i+1));
+            action.name =  stepsRole[j]["actions"][i];
+            action.visible = false;
+            action.alpha = 0.6;
+            action.scale.setTo(0.8);
+            objcvs.addChild(action);
+            objcvs.actions.push(action);
+      }
+      objcvs.completedBadge = game.add.sprite(Xpos[0]/2+Xpos[1]/2, -110, "rcpAction-complete");
+      objcvs.completedBadge.visible = false;
+      objcvs.completedBadge.scale.setTo(0.8);
+      objcvs.addChild(objcvs.completedBadge);
 
-      if(game.roles[game.controllingPlayer]=="Cook"){
-            objcvs.action1  = game.add.sprite(90, -130, "rcpAction-1");
-            objcvs.action1.name =  game.stepsCook[i]["actions"][0];
-            objcvs.action1.visible = false;
-            objcvs.action1.alpha = 0.6;
-            objcvs.action1.scale.setTo(0.8);
-            objcvs.action2  = game.add.sprite(320, -130, "rcpAction-2");
-            objcvs.action2.name =  game.stepsCook[i]["actions"][1];
-            objcvs.action2.alpha = 0.6;
-            objcvs.action2.scale.setTo(0.8);
-            objcvs.action2.visible = false;
-            objcvs.addChild(objcvs.action1);
-            objcvs.addChild(objcvs.action2);
-      }
-      if(game.roles[game.controllingPlayer]=="Shopper"){
-            objcvs.action1  = game.add.sprite(90, -130, "rcpAction-1");
-            objcvs.action1.name =  game.stepsShopper[i]["actions"][0];
-            objcvs.action1.visible = false;
-            objcvs.action1.alpha = 0.6;
-            objcvs.action1.scale.setTo(0.8);
-            objcvs.action2  = game.add.sprite(320, -130, "rcpAction-2");
-            objcvs.action2.name =  game.stepsShopper[i]["actions"][1];
-            objcvs.action2.alpha = 0.6;
-            objcvs.action2.scale.setTo(0.8);
-            objcvs.action2.visible = false;
-            objcvs.addChild(objcvs.action1);
-            objcvs.addChild(objcvs.action2);
-      }
 }
 
 function createPanelL(game){
@@ -104,7 +95,9 @@ function createPanelL(game){
             game.objcvsTxt[i].wordWrapWidth = 250;
             game.objcvsTxt[i].addColor("rgb(180, 175, 172)", 0);
             game.objcvs[i].pointsFrame = new PointsFrame(game, game.stepsInstructor[i], game.panelBack, objPosY[i]+65, game.objcvs[i]);
-            addRecipeActions(game, game.objcvs[i], i);
+
+            if(game.roles[game.controllingPlayer]!="Instructor")
+                  addRecipeActions(game, game.objcvs[i], i);
 
             game.panelBack.addChild(game.objcvs[i]);
             game.panelBack.addChild(game.objcvsTxt[i]);
@@ -118,9 +111,14 @@ function createPanelL(game){
 
 function createPanelR(game){
 
-      game.panelBackR = game.add.sprite(1520,0,'panelR');
+      game.panelBackR = game.add.image(1520,0);
+      game.panelBackR.inputEnabled = true;
+
+      //game.panelBackR_hid = game.add.sprite(1520,0,'panelR');
+      game.panelBackR.panelTexture = game.add.sprite(0,0,'panelR');
       game.panelBackR.fixedToCamera = true;
       game.panelBackR.alpha = 0.9;
+      game.panelBackR.addChild(game.panelBackR.panelTexture);
 
       game.dice1play = new Phaser.Circle(1520+66, 250, 70);
       game.dice2play = new Phaser.Circle(1520+156, 250, 70);
@@ -140,7 +138,7 @@ function createPanelR(game){
             game.playingRoleIcon.tween.resume();
       
       // dices
-      game.diceSum = game.add.text(26, 340, "Dice Sum: -");
+      game.diceSum = game.add.text(26, 340, "Ζάρια: -");
       game.diceSum.font = "Handlee";
       game.diceSum.fontSize = 30;
       game.panelBackR.addChild(game.diceSum);
@@ -155,6 +153,8 @@ function createPanelR(game){
       game.panelBackR.addChild(game.dicePlusTeam2);
       game.panelBackR.addChild(game.dicePlusText1);
       game.panelBackR.addChild(game.dicePlusText2);
+      game.dicePlusTeam1.visible = false; game.dicePlusTeam2.visible = false; 
+      game.dicePlusText1.visible = false; game.dicePlusText2.visible = false;
 
       game.player1button = game.add.sprite( 66, 250, "handPink",);
       game.player2button = game.add.sprite( 156, 250, "handBlue");
@@ -162,6 +162,11 @@ function createPanelR(game){
       game.player2button.anchor.setTo(0.5, 0.5);
       game.panelBackR.addChild(game.player1button);
       game.panelBackR.addChild(game.player2button);
+
+      game.controllingBadge = game.add.sprite(5, 0, "controlling-player");
+      game.controllPlayerText = game.add.text(53, 15, "Ελέγχεις τον παίκτη\n "+game.roles[game.controllingPlayer],  {font: "bold 15px Handlee"});
+      game.panelBackR.addChild(game.controllingBadge);
+      game.panelBackR.addChild(game.controllPlayerText);
 
       if(playersTurn==game.controllingPlayer)
             game.handDiceTween = game.add.tween(game.player1button.scale).to( { x: 0.80, y: 0.80 }, 400, Phaser.Easing.Quadratic.Out, true).loop(true).yoyo(true, 300);
@@ -175,6 +180,7 @@ function createPanelR(game){
       }
 
       game.msgReceiver = game.add.sprite( 26, 850, "receiver-icon");
+      game.msgReceiver.inputEnabled = true;
       game.msgReceiver.scale.setTo(0.7);
       game.msgReceiver.msgAlertTween = game.add.tween(game.msgReceiver).to({tint: 0xff0000}, 500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true,500);
       game.msgReceiver.msgAlertTween.pause();

@@ -35,6 +35,8 @@ var PlayerEvent = (function () {
     PlayerEvent.helpMeAnswer = "player:helpMeAnswer";
     PlayerEvent.sendHelp = "player:sendHelp";
     PlayerEvent.updateQuestions = "player:updateQuestions";
-    PlayerEvent.levelFull = "PlayerEvent.levelFull";
+    PlayerEvent.levelFull = "PlayerEvent:levelFull";
+    PlayerEvent.stepCompleted = "PlayerEvent:stepCompleted";
+    PlayerEvent.actionsCompleted = "PlayerEvent:actionsCompleted";
     return PlayerEvent;
 }());

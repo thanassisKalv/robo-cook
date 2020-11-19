@@ -5,6 +5,7 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
     sprite.moveTween.start();
     sprite.alpha = 0.55;
     _this.currentTargetTile = targetTile;
+    _this.myRole = _this.game.roles[_this.game.controllingPlayer];
     
     if(finishedDice==false){
         window.socket.emit(PlayerEvent.diceBonus, {team:teamsTurn[playersTurn], bonus:bonus})
@@ -36,9 +37,9 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
             targetTile.occupant = _this.game.playersActive[playersTurn-1];
         }
         else{
-            /* if player is "Instruction" -> then change the board's main tiles color (similar to trivial pursuit graphics)
+            /* if player is "Instructor" -> then change the board's main tiles color (similar to trivial pursuit graphics)
                and reveal the recipe steps  */
-            if(targetTile.key.includes("quest") && _this.game.scoreHandler.hasUnlockedStep()){
+            if(targetTile.key.includes("quest") && _this.game.scoreHandler.hasUnlockedStep() && sprite.roleName=="Instructor" ){
                 _this.game.scoreHandler.getUnlockedStep();
                 _this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"));
             }

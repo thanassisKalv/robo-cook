@@ -95,29 +95,32 @@ function registerSocketListeners(_this, window)
         _this.game.tileToHelp.questpop.showQuestionAsTeamHelp(questionItem)
     });
 
+    window.socket.on(PlayerEvent.stepCompleted, function (msgEmpty) {
+        _this.game.scoreHandler.updateRecipeProgress();
+    });
+
     window.socket.on(PlayerEvent.sendHelp, function (helpMessage) {
 
         var helpCloudX = _this.game.msgReceiver.x;
         var helpCloudY = _this.game.msgReceiver.y;
         if(_this.game.helpClouds.length==0)
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX+60, helpCloudY-150, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+35, helpCloudY-40, 'help-message-cloud');
         else
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX+85, helpCloudY-50, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+20, helpCloudY-170, 'help-message-cloud');
         
         _this.game.helpClouds.push(msgHelpMsg);
-        msgΗelpText = _this.game.add.text(-70, -20, helpMessage.helpText, {font: "26px Handlee"});
+        var msgΗelpText = _this.game.add.text(-90, -40, helpMessage.helpText, {font: "21px Handlee"});
+        msgΗelpText.wordWrap = true;
+        msgΗelpText.wordWrapWidth = 200;
         msgHelpMsg.addChild(msgΗelpText);
         msgHelpMsg.visible = false;
         msgHelpMsg.anchor.setTo(0.5, 0.5);
-        msgHelpMsg.scale.setTo(0.2);
+        msgHelpMsg.scale.setTo(0.3);
 
-        if(_this.game.helpClouds.length==2){
-            for (var i=0; i< _this.game.helpClouds.length; i++){
-                _this.game.helpClouds[i].visible = true;
-                _this.game.add.tween(_this.game.helpClouds[i].scale).to( {x:0.9, y:0.9}, 400, Phaser.Easing.Quadratic.Out, true);
-                _this.game.panelBackR.addChild( _this.game.helpClouds[i] );
-            }
-        }
+        var i = _this.game.helpClouds.length-1;
+        _this.game.helpClouds[i].visible = true;
+        _this.game.add.tween(_this.game.helpClouds[i].scale).to( {x:0.9, y:0.9}, 400, Phaser.Easing.Quadratic.Out, true);
+        _this.game.panelBackR.addChild( _this.game.helpClouds[i] );
     });
 
     //  ******   PLAYER HAS QUITTED  -->  RESET STATE VARIABLES & RESTART SCENE

@@ -30,19 +30,25 @@ class MainMenu extends Phaser.State {
         this.level2Button.scale.setTo(1.5, 1.5);
         this.level2Button.alpha = 0.45;
 
-        this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+400, "protein-logo");
-        this.proteinLogo.scale.setTo(0.33, 0.33);
+        this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+270, "protein-logo");
         this.proteinLogo.anchor.setTo(0.5, 0.5);
+        this.reqsFrame = this.add.image(this.game.width/2-450, this.game.height/2+420, "system-reqs");
+        this.reqsFrame.anchor.setTo(0.5, 0.5);
+        this.reqsText = new Phaser.Text(this.game, 0, 0, "►Συνιστάται η πρόσβαση μέσω Chrome ή Chromium Browser \n►Το παιχνίδι απαιτεί οθόνη ανάλυσης 1920x1080", {font: "16px Calibri"});
+        this.reqsText.x = this.reqsFrame.x;
+        this.reqsText.y = this.reqsFrame.y+20;
+        this.reqsText.anchor.set(0.5);
+        this.add.existing(this.reqsText);
 
         this.gameInstructions = this.add.image(this.game.width/2+350, this.game.height/2+30, "game-instructions");
         this.gameInstructions.anchor.setTo(0.5, 0.5);
 
 
         // Text for 1st level's button
-        this.text = new Phaser.Text(this.game, 0, 0, "Begin with Basic stuff", {font: "22px Handlee"});
+        this.text = new Phaser.Text(this.game, 0, 0, "Game of Easy Questions \n    Omelette Recipe", {font: "21px Handlee"});
         //this.text2 = new Phaser.Text(this.game, 0, 0, "Apple crumble & custard", {font: "22px Handlee"});
         this.textWait = new Phaser.Text(this.game, 0, 0, "", {font: "17px Calibri"});
-        this.textRoleAssign = new Phaser.Text(this.game, 0, 0, "", {font: "20px Calibri"});
+        this.textRoleAssign = new Phaser.Text(this.game, 0, 0, "", {font: "20px Handlee"});
         this.add.existing(this.text);
         this.add.existing(this.textWait);
         this.add.existing(this.textRoleAssign);
@@ -62,11 +68,11 @@ class MainMenu extends Phaser.State {
         this.textWait.tween = this.add.tween(this.textWait).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1);
         this.textRoleAssign.x = this.level1Button.x;
         this.textRoleAssign.y = this.level1Button.y+90;
-        this.textRoleAssign.fill = "#00ff99";
+        this.textRoleAssign.fill = "#0088ff";
 
 
         // Text for 2nd level's button
-        this.text2 = new Phaser.Text(this.game, 0, 0, "More interesting stuff", {font: "22px Handlee"});
+        this.text2 = new Phaser.Text(this.game, 0, 0, "Game of Difficult Questions", {font: "21px Handlee"});
         //this.text2 = new Phaser.Text(this.game, 0, 0, "Apple crumble & custard", {font: "22px Handlee"});
         this.textWait2 = new Phaser.Text(this.game, 0, 0, "", {font: "17px Calibri"});
         this.add.existing(this.text2);

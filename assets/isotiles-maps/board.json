@@ -66,20 +66,20 @@
   	],
 	  
 	  "recipe":{
-		"0":{ "step": "Stir the eggs and season them well with salt and pepper.", "points":[10,10,10] },
-		"1":{ "step": "Heat the oil and butter in a non-stick frying pan over a medium-low heat", "points" :[20,20,20] },
-		"2":["Wait until the butter has melted and is foaming"],
-		"3":["Pour the eggs into the pan, tilt the pan ever so slightly from one side to another to allow the eggs to swirl and cover the surface of the pan completely"]
+		"0":{ "step": "Ανακατέψτε τα αυγά και καρυκεύστε τα καλά με αλάτι και πιπέρι.", "points":[10,10,10] },
+		"1":{ "step": "Ζεστάνετε το λάδι και το βούτυρο σε ένα αντικολλητικό τηγάνι πάνω σε μέτρια-χαμηλή φωτιά", "points" :[20,20,20] },
+		"2":[ "Περιμένετε μέχρι να λιώσει το βούτυρο και αφρίζει" ],
+		"3":[ "Ρίχνουμε τα αυγά στο τηγάνι, γείρετε το τηγάνι τόσο ελαφρά από τη μία πλευρά στην άλλη ώστε τα αυγά να στροβιλίζονται και να καλύπτεται πλήρως η επιφάνεια του τηγανιού"]
 	  },
 
 	  "recipe_cook":{
-		"0":{ "step": "-?- the eggs and -?- them well with salt and pepper.", "actions":["stir","season"]},
-		"1":{ "step": "-?- the oil and butter in a non-stick -?- pan over a medium-low heat", "actions":["heat","frying"] }
+		"0":{ "step": "-?- τα αυγά και -?- τα καλά με αλάτι και πιπέρι.", "actions":["stir","season"]},
+		"1":{ "step": "-?- το λάδι και το βούτυρο σε ένα -?- πάνω σε μέτρια-χαμηλή φωτιά",  "actions":["heat","frying"] }
 	  },
 
 	  "recipe_shopper":{
-		"0":{ "step": "Stir the -?- and season them well with -?-.",  "actions":["eggs","salt & pepper"]},
-		"1":{ "step": "Heat the -?- in a non-stick frying -?- over a medium-low heat",  "actions":["oil","pan"]}
+		"0":{ "step": "Ανακατέψτε τα -?- και καρυκεύστε τα καλά με -?-.", "actions":["eggs","salt & pepper"]},
+		"1":{ "step": "Ζεστάνετε το -?- και το βούτυρο σε ένα αντικολλητικό -?- πάνω σε μέτρια-χαμηλή φωτιά",  "actions":["oil","pan"]}
 	  },
 
 

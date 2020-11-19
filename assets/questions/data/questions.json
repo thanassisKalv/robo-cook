@@ -4,82 +4,82 @@
 		{
 			"questions": [
 				{
-					"question": "To make pasta, you need it:",
+					"question": "Για να φτιάξεις ζυμαρικά, χρειάζεσαι:",
 					"choices": [
-						"grains",
-						"fruit",
-						"sugars"
+						"σιτηρά",
+						"φρούτα",
+						"ζάχαρα"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/pasta_making.jpg",
 					"answer_image": "grain-to-pasta.jpg",
 					"hqExist": true,
-					"helpQuestion": "Are fruits typical in a pasta recipe?"
+					"helpQuestion": "Θα χρησιμοποιούσαμε φρούτα σε μια συνταγή ζυμαρικών;"
 				},
 				{
-					"question": "To make bread or pizza you surely need them:",
+					"question": "Για να φτιάξετε ψωμί ή πίτσα σίγουρα τα χρειάζεσαι:",
 					"choices": [
-						"water and salt",
-						"water, salt, flour and yeast",
-						"water, sugar, milk and yeast"
+						"νερό και αλάτι",
+						"νερό, αλάτι, αλεύρι και μαγιά",
+						"νερό, ζάχαρη, γάλα και μαγιά"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/pasta.png",
 					"answer_image": "pasta.jpg",
 					"hqExist": true,
-					"helpQuestion": "Is milk an ingredient of bread?"
+					"helpQuestion": "Σου φαίνετααι πως είναι το γάλα συστατικό του ψωμιού;"
 				},
 				{
-					"question": "The oil is produced:",
+					"question": "Το λάδι παράγεται:",
 					"choices": [
-						"from the pressing of exotic fruit stones",
-						"from the pressing of grapes",
-						"from pressing olives"
+						"από το πάτημα εξωτικών λίθων φρούτων",
+						"από τη συμπίεση των σταφυλιών",
+						"από τη συμπίεση των ελιών"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/oil-to-salad.png",
 					"answer_image": "olives.jpg",
 					"hqExist": true,
-					"helpQuestion": "Think of those trees that are typical around Mediterranean?"
+					"helpQuestion": "Σκέψου εκείνα τα δέντρα που είναι τόσο συνηθισμένα στη Μεσόγειο;"
 				},
 				{
-					"question": "What is rice?",
+					"question": "Σε ποια κατηγορία ανήκει το ρύζι;",
 					"choices": [
-						"a cereal",
-						"a vegetable",
-						"a seed"
+						"στα δημητριακά",
+						"στα λαχανικά",
+						"στους σπόρος"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/question.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "Family of vegetables includes alikes of cucumber"
+					"helpQuestion": "Π.χ. σκέψου ότι η οικογένεια των λαχανικών περιλαμβάνει αγγούρια κολοκυθάκια μαρούκια"
 				},
 				{
-					"question": "Butter mostly consists of?",
+					"question": "Το βούτυρο αποτελείται κυρίως από;",
 					"choices": [
-						"fat",
-						"combusted fruits",
-						"sugar"
+						"λιπαρά",
+						"κομπόστα φρούτων",
+						"σάκχαρα"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/butters.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "For example, butter is main ingredient of peanut-butter and makes it rich in?"
+					"helpQuestion": "Για παράδειγμα, το βούτυρο είναι το κύριο συστατικό του φυστικοβούτυρου και το κάνει πλούσιο σε; "
 				},
 				{
-					"question": "What ingredient contributes mostly on taste and flavor of croissants, biscuits, pastries?",
+					"question": "Ποιο συστατικό συμβάλλει πολύ στη γεύση και την υφή των κρουασάν, των σοκολατένιων μπισκότων; ",
 					"choices": [
-						"the milk",
-						"the butter",
-						"the cooked eggs"
+						"το γάλα",
+						"το βούτυρο",
+						"τα αυγά"
 					],
 					"answer": 1,
-					"image": "/assets/images_questions/citrus-family.jpg",
+					"image": "/assets/images_questions/croissant-biscuits.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "Sugar makes them sweet but what gives them 'creamy' taste and texture?"
+					"helpQuestion": "Η ζάχαρη τα κάνει γλυκά, αλλά τι τους δίνει κρεμώδη γεύση και υφή;"
 				}
 
 			]
@@ -88,111 +88,116 @@
 		{
 			"questions": [
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in winter?",
+					"question": "Μεταξύ των επόμενων ομάδων τροφών, ποια είναι αυτά που ωριμάζουν φυσικά και καταναλώνονται το χειμώνα;",
 					"choices": [
-						"broccoli - persimmons - oranges",
-						"tomato - courgettes - green beans",
-						"Strawberries - apples - spinach"
+						"μπρόκολο - λωτούς - πορτοκάλια",
+						"ντομάτα - κολοκυθάκια - πράσινα φασόλια",
+						"Φράουλες - μήλα - σπανάκι"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "frying.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Το χειμώνα θα προτιμούσες μια σαλάτα από μπρόκολο ή από ντομάτες;"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in summer?",
+					"question": "Μεταξύ των αναφερόμενων τροφίμων, ποια είναι αυτά που ωριμάζουν φυσικά και καταναλώνονται το καλοκαίρι;",
 					"choices": [
-						"persimmon - black cabbage - grapefruit",
-						"Broccoli - pears - pumpkin",
-						"aubergines - tomato - watermelon"
+						"λωτός - μαύρο λάχανο - γκρέιπφρουτ",
+						"Μπρόκολο - αχλάδια - κολοκύθα",
+						"μελιτζάνες - ντομάτα - καρπούζι"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Τον Αύγουστο θα σκεφτοσουν μια σαλάτα από με ντομάτες ή με μπρόκολα;"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in autumn?",
+					"question": "Μεταξύ των επόμενων ομάδων τροφών, ποια είναι αυτά που ωριμάζουν φυσικά και καταναλώνονται το φθινόπωρο;",
 					"choices": [
-						"apricots - prickly pears - peaches",
-						"pumpkin - chestnut - mushrooms",
-						"Courgette - apricots - prickly pears"
+						"βερίκοκα - φραγκοσυκιές - ροδάκινα",
+						"κολοκύθα - κάστανο - μανιτάρια",
+						"Κολοκύθι - βερίκοκα - φραγκοσυκιές"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in spring?",
+					"question": "Μεταξύ των επόμενων ομάδων τροφών, ποια είναι αυτά που ωριμάζουν φυσικά και καταναλώνονται την άνοιξη;",
 					"choices": [
-						"Strawberries - artichokes - asparagus",
-						"Cherries - watermelon - turnip greens",
-						"Peppers - aubergines - cauliflowers"
+						"Φράουλες - αγκινάρες - σπαράγγια",
+						"Κεράσια - καρπούζι - γογγύλια",
+						"Πιπεριές - μελιτζάνες - κουνουπίδια"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Where did the rice come from? Where is it grown?",
+					"question": "Από πού προήλθε το ρύζι; Πού καλλιεργείται;",
 					"choices": [
-						"from Italy",
-						"from abroad",
-						"from Italy and abroad"
+						"από την Ελλάδα",
+						"από το εξωτερικό",
+						"από την Ελλάδα και το εξωτερικό"
 					],
 					"answer": 2,
-					"image": "/assets/images_questions/rice-varieties.png",
-					"answer_image": "placeholder-answer.png"
+					"image": "/assets/images_questions/rice-varieties.jpg",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Θα συμφωνούσες ότι το ρύζι είναι 'παγκόσμιο' τρόφιμο;"
 				},
 				{
-					"question": "Is it appropriate to eat summer vegetables in winter too?",
+					"question": "Είναι κατάλληλο να τρώμε και καλοκαιρινά λαχανικά και το χειμώνα;",
 					"choices": [
-						"No, because in winter we need protein-rich vegetables",
-						"Yes, because the way we live affects our diet",
-						"It's indifferent because vegetables are always good for you"
+						"Όχι, γιατί το χειμώνα χρειαζόμαστε πλούσια σε πρωτεΐνες λαχανικά",
+						"Ναι, γιατί ο τρόπος που ζούμε επηρεάζει τη διατροφή μας",
+						"Είναι αδιάφορο γιατί τα λαχανικά είναι πάντα καλά για εσάς"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What kind of fruit can you eat in the summer?",
+					"question": "Τι είδους φρέσκα φρούτα και καρπούς μπορείτε να φάτε το καλοκαίρι;",
 					"choices": [
-						"Watermelon - melon - berries - cherries - strawberries",
-						"walnuts - peanuts - cashews - apples - pears",
-						"almonds - peanuts - pumpkin seeds"
+						"Καρπούζι - πεπόνι - μούρα - κεράσια - φράουλες",
+						"καρύδια - φιστίκια - κάσιους - μήλα - αχλάδια",
+						"αμύγδαλα - φιστίκια - σπόροι κολοκύθας"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What fruit can you eat in winter?",
+					"question": "Τι φρούτα μπορείτε να φάτε το χειμώνα;",
 					"choices": [
-						"kiwi - bananas - apples - pears - oranges",
-						"grapes - bananas - apples - pears - persimmons",
-						"Oranges - tangerines / mandarins - grapefruit - apples - pears - kiwis"
+						"ακτινίδιο - μπανάνες - μήλα - αχλάδια - πορτοκάλια",
+						"σταφύλια - μπανάνες - μήλα - αχλάδια - λωτού",
+						"Πορτοκάλια - μανταρίνια / μανταρίνια - γκρέιπφρουτ - μήλα - αχλάδια - ακτινίδια"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Zucchini are a typical vegetable in:",
+					"question": "Τα κολοκυθάκια είναι ένα τυπικό λαχανικό:",
 					"choices": [
-						"in winter",
-						"in spring",
-						"in summer"
+						"κατά τον χειμώνα",
+						"κατά την άνοιξη",
+						"κατά το καλοκαίρι"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Citrus fruits are best eaten:",
+					"question": "Τα εσπεριδοειδή τρώγονται καλύτερα:",
 					"choices": [
-						"in summer",
-						"in winter",
-						"in the autumn"
-						
+						"το καλοκαίρι",
+						"το χειμώνα",
+						"το φθινόπωρο"	
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/seasonality-circle.png",
@@ -206,154 +211,154 @@
 		{
 			"questions": [
 				{
-					"question": "What nutrients do meat and fish mostly provide?",
+					"question": "Τι θρεπτικά συστατικά παρέχουν κυρίως το κρέας και τα ψάρια;",
 					"choices": [
-						"proteins",
-						"mineral salts",
-						"mineral salts and proteins"
+						"πρωτεΐνες",
+						"ανόργανα άλατα",
+						"ανόργανα άλατα και πρωτεΐνες"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is the function of meat in our diet?",
+					"question": "Ποια είναι η κύρια συμβολή του κρέατος στη διατροφή των ανθρώπων;",
 					"choices": [
-						"It helps the cells of our body to reproduce",
-						"provides us with the proteins necessary for muscle growth",
-						"provides us with the calories we need to get the energy"
+						"βοηθά τα κύτταρα του σώματός να αναπαράγονται",
+						"παρέχει τις απαραίτητες πρωτεΐνες για την ανάπτυξη των μυών",
+						"παρέχει τις θερμίδες που απαιτούνται για την παραγωγή ενέργεια"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Vegetables are a food that must always be present in the diet, why?",
+					"question": "Τα λαχανικά είναι ένα φαγητό που πρέπει πάντα να υπάρχει στην ανθρώπινη διατροφή, γιατί;",
 					"choices": [
-						"They are rich in minerals and vitamins",
-						"they are digestible",
-						"they are always available to us because they are also grown in winter in greenhouses"
+						"είναι εύπεπτα",
+						"είναι πλούσια σε μέταλλα και βιταμίνες",
+						"είναι πάντα διαθέσιμοι σε εμάς γιατί καλλιεργούνται επίσης το χειμώνα σε θερμοκήπια"
 					],
-					"answer": 0,
+					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is the food pyramid?",
+					"question": "Τι δείχνει η τροφική πυραμίδα;",
 					"choices": [
-						"A way to plate food",
-						"the graph describing how organisms depend on each other for food (plants, herbivores, carnivores)",
-						"the graphic representation of a suggested healthy nutrition"
+						"Ένας τρόπος να φτιάξεις φαγητό",
+						"το γράφημα που περιγράφει πώς οι οργανισμοί εξαρτώνται ο ένας από τον άλλο για τα τρόφιμα (φυτά, φυτοφάγα, σαρκοφάγα)",
+						"η γραφική παράσταση μιας προτεινόμενης ισορροπημένης διατροφής"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is meant by nutrition?",
+					"question": "Τι εννοούμε με τον όρο 'διατροφή'",
 					"choices": [
-						"the way of cooking food to make it good and nutritious",
-						"the intake by the body of food essential to its metabolism and daily vital functions",
-						"the recommended diet for losing weight"
+						"ο τρόπος μαγειρέματος φαγητού για να είναι καλό και θρεπτικό",
+						"η πρόσληψη από το σώμα τροφής απαραίτητης για τον μεταβολισμό και τις καθημερινές ζωτικές λειτουργίες της",
+						"τις διάφορες δίαιτες για απώλεια βάρους"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What substance is not nutritious?",
+					"question": "Ποια ουσία δεν είναι θρεπτική;",
 					"choices": [
-						"water",
-						"fats",
-						"carbon dioxide"
+						"νερό",
+						"λιπαρά",
+						"διοξείδιο του άνθρακα"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the function that carbohydrates (bread, pasta, etc.) have for the body?",
+					"question": "Ποια είναι η λειτουργία των υδατανθράκων (ψωμί, ζυμαρικά κ.λπ.) για το σώμα;",
 					"choices": [
-						"regulatory function",
-						"protective",
-						"energy"
+						"ρυθμιστική λειτουργία",
+						"προστατευτική λειτουργία",
+						"παροχή ενέργειας"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Which food does not contain carbohydrates or sugars?",
+					"question": "Ποιά τροφή δεν περιέχει υδατάνθρακες ή σάκχαρα;",
 					"choices": [
-						"pasta",
-						"beans",
-						"olive oil"
+						"ζυμαρικά",
+						"φασόλια",
+						"ελαιόλαδο"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the name of the sugar in potatoes?",
+					"question": "Ποιο είναι το όνομα των σακχάρων στις πατάτες;",
 					"choices": [
-						"fructose",
-						"starch",
-						"sucrose"
+						"φρουκτόζη",
+						"άμυλο",
+						"σακχαρόζη"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": " What's the name of the table sugar?",
+					"question": "Ποιο είναι το επίσημο όνομα της επιτραπέζιας ζάχαρης;",
 					"choices": [
-						"glucose",
-						"sucrose",
-						"fructose"
+						"γλυκόζη",
+						"σακχαρόζη",
+						"φρουκτόζη"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the main function of proteins?",
+					"question": "Ποια είναι η κύρια λειτουργία των πρωτεϊνών;",
 					"choices": [
-						"energy",
-						"protective",
-						"Plastic"
+						"παροχή ενέργειας",
+						"προστατευτικός για το σώμα",
+						"συνθετική λειτουργία"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What food has no protein?",
+					"question": "Ποια τροφή δεν παρέχει πρωτεΐνες;",
 					"choices": [
-						"milk",
-						"fish",
-						"wine"
+						"το γάλα",
+						"το ψάρι",
+						"το κρασί"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What foods do we find protein in?",
+					"question": "Σε ποιες τροφές βρίσκουμε πρωτεΐνες;",
 					"choices": [
-						"in water",
-						"in meat and eggs",
-						"In milk, meat, fish, eggs and legumes"
+						"στο νερό",
+						"σε κρέας και αυγά",
+						"στο γάλα, το κρέας, τα ψάρια, τα αυγά και τα όσπρια"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Is food mainly just a source of calories?",
+					"question": "Είναι το φαγητό κυρίως πηγή θερμίδων για εμάς;",
 					"choices": [
-						"yes that's the most important!",
-						"yes food and some water are enough!",
-						"No, food provides our bodies with essential nutrients (proteins, fats, carbs, vitamins, and minerals)"
+						"ναι αυτό είναι το πιο σημαντικό που μας δίνει!",
+						"ναι, φαγητό και λίγο νερό είναι αρκετά για να ζήσεις!",
+						"Όχι, τα τρόφιμα παρέχουν στο σώμα μας διάφορα αναγκαία θρεπτικά συστατικά (πρωτεΐνες, λίπη, υδατάνθρακες, βιταμίνες και μέταλλα)"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
@@ -366,44 +371,44 @@
 		{
 			"questions": [
 				{
-					"question": "Which category of fats are mostly artificially made?",
+					"question": "Ποια κατηγορία λιπαρών κατασκευάζεται κυρίως τεχνητά;",
 					"choices": [
 						"Trans",
-						"Saturated",
-						"Unsaturated"
+						"Κορεσμένα",
+						"Ακόρεστα"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/all-fats.png",
 					"answer_image": "answer-fats-1.jpg"
 				},
 				{
-					"question": "Are all fats bad for our health?",
+					"question": "Είναι όλα τα λίπη κακά για την υγεία μας;",
 					"choices": [
-						"Yes all of them are useless",
-						"No, some of them are an essential part of a balanced diet",
-						"No all of them are important"
+						"Ναι όλα είναι άχρηστα",
+						"Όχι, μερικά από αυτά αποτελούν ουσιαστικό μέρος μιας ισορροπημένης διατροφής",
+						"Όχι όλα είναι σημαντικά"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/all-fats.png",
 					"answer_image": "answer-fats-2.jpg"
 				},
 				{
-					"question": "Can we say that all salads healthy-made?",
+					"question": "Μπορούμε να πούμε ότι όλες οι σαλάτες είναι υγιεινές;",
 					"choices": [
-						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
-						"All salads are very healthy, just don't add too much salt",
-						"No, it is common to add so many not-so-healthy ingredients"
+						"Ναι σίγουρα όλες οι σαλάτες είναι καλές, γιατί τα λαχανικά είναι πάντα καλά για εσάς!",
+						"Όλες οι σαλάτες είναι πολύ θρεπτικές, απλά αρκεί να μην προσθέτετε πολύ αλάτι",
+						"Όχι, είναι σύνηθες σε διάφορες σαλάτες να προσθέτουμε τόσα πολλά μη-υγιεινά συστατικά"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/salads_variety.png",
 					"answer_image": "answer-fats-2.jpg"
 				},
 				{
-					"question": "People follow diets with the purpose to lose weight?",
+					"question": "Οι άνθρωποι κυρίως ακολουθούν διατροφές με σκοπό να χάσουν βάρος;",
 					"choices": [
-						"Yes, that's the normal way",
-						"Not always, some diets are not designed for losing weight",
-						"Following diets is not a healthy idea"
+						"Ναι, αυτός είναι ο φυσιολογικός τρόπος",
+						"Όχι πάντα, ορισμένες διατροφές δεν έχουν σχεδιαστεί για να χάνεις βάρος",
+						"Το να κάνεις διατροφή γενικά δεν είναι καλή ιδέα"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/weightloss-diet.jpg",

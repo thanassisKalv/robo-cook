@@ -17,11 +17,6 @@
         },
         {
             "type": "image",
-            "key": "image_answer_0_1",
-            "url": "assets/images_questions/oxygen.png"
-        },
-        {
-            "type": "image",
             "key": "image_question_0_2",
             "url": "/assets/images_questions/oil-to-salad.png"
         },
@@ -33,17 +28,12 @@
         {
             "type": "image",
             "key": "image_question_0_4",
-            "url": "/assets/images_questions/citrus-family.jpg"
-        },
-        {
-            "type": "image",
-            "key": "image_question_0_5",
             "url": "/assets/images_questions/butters.png"
         },
         {
             "type": "image",
-            "key": "image_question_0_6",
-            "url": "/assets/images_questions/citrus-family.jpg"
+            "key": "image_question_0_5",
+            "url": "/assets/images_questions/croissant-biscuits.png"
         },
 
 
@@ -80,7 +70,7 @@
         {
             "type": "image",
             "key": "image_question_1_4",
-            "url": "/assets/images_questions/rice-varieties.png"
+            "url": "/assets/images_questions/rice-varieties.jpg"
         },
         {
             "type": "image",

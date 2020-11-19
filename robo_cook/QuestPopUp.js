@@ -19,10 +19,14 @@ class QuestPopUp extends Phaser.Sprite {
         this.shoptile = shoptile;
         this.qType = questNum;
 
-        if(cooktile)
-            this.cookActionOptions = ["stir", "season", "heat", "frying"];
-        if(shoptile)
-            this.shoppingActionOptions = ["eggs", "salt & pepper", "oil", "pan"];
+        this.cookActionOptions =  {0: ["ανακατέψτε","καρυκεύστε", "ζεστάνετε","τηγάνι"], 1: ["ζεστάνετε","τηγάνι", "καρυκεύστε"] }; // {0: ["stir", "season", "heat", "frying"], 1: ["heat", "frying", "season"] };
+        this.cookActionOptionsEng = {0: ["stir", "season", "heat", "frying"], 1: ["heat", "frying", "season"] };
+        this.shoppingActionOptions = { 0: ["αυγά", "αλατοπίπερο", "λάδι","τηγάνι"], 1: ["λάδι", "τηγάνι", "αυγά"] };  // { 0: ["eggs", "salt & pepper", "oil", "pan"], 1: ["oil", "pan", "eggs"] };
+        this.shoppingActionOptionsEng =  { 0: ["eggs", "salt & pepper", "oil", "pan"], 1: ["oil", "pan", "eggs"] };
+
+        this.recipe =  this.game.stepsInstructor;
+        this.recipe_shopper = this.game.stepsShopper;
+        this.recipe_cook = this.game.stepsCook;
 
         this.data = this.game.cache.getJSON('questions');
         //this.categoryIndexSelected = 1;
@@ -43,7 +47,7 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     waitOtherPlayer(){
-        this.game.waiting_other = this.game.add.text(80, 570, 'Waiting\n teamplayer...',  {font: "bold 25px Handlee"});
+        this.game.waiting_other = this.game.add.text(100, 570, 'Περιμένετε\n τον συμπαίκτη...',  {font: "bold 25px Handlee"});
         this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 1000);
         this.game.waiting_other.anchor.set(0.5,0.5);
         this.game.waiting_other.addColor('#4400ff', 0);
@@ -91,13 +95,15 @@ class QuestPopUp extends Phaser.Sprite {
         this.game.panelRight.addChild(this.timeLabel);
         
         if(this.cooktile){
-            this.displayCookActions(this.cookActionOptions);
+            var cstep = this.game.scoreHandler.getRcpStep();
+            this.displayCookActions(this.cookActionOptions[cstep], this.cookActionOptionsEng[cstep], this.recipe_cook[cstep].step );
         }
         else if (this.shoptile){
-            this.displayShopActions(this.shoppingActionOptions);
+            var cstep = this.game.scoreHandler.getRcpStep();
+            this.displayShopActions(this.shoppingActionOptions[cstep], this.shoppingActionOptionsEng[cstep], this.recipe_shopper[cstep].step );
         }
         else{
-            console.log(this.game.questionsAnswered);
+           // console.log(this.game.questionsAnswered);
             this.categoryIndexSelected = this.qType;
             this.currentQuestionIndex = this.randomIntFromInterval(0, this.data.categories[this.qType].questions.length-1, this.game.questionsAnswered[this.qType]);
             //console.log(this.categoryIndexSelected, this.currentQuestionIndex);
@@ -125,11 +131,11 @@ class QuestPopUp extends Phaser.Sprite {
         musicTimer.play();
     }
 
-    displayCookActions(){
-        this.game.UiModalsHandler.questionOfActions(this.cookActionOptions, "#de7373", "Choose recipe's cook actions", this);
+    displayCookActions(options, optionsEng, currentStep){
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Επιλέξτε μια ενέργεια για να ολοκληρώσετε τη συνταγή σας", this);
     }
-    displayShopActions(){
-        this.game.UiModalsHandler.questionOfActions(this.shoppingActionOptions, "#b8ec4a", "Choose recipe's items", this);
+    displayShopActions(options, optionsEng, currentStep){
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Επιλέξτε ένα αντικείμενο που λείπει από τη συνταγή σας", this);
     }
 
     showQuestion(questionItem){

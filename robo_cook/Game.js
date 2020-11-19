@@ -41,8 +41,8 @@ class GameState extends Phaser.State {
   }
 
   init(argLevelName, myPlayer, belongsTeam) {
-    this.game.maxHeightImageQuestion = 2*210;
-    this.game.maxWidthImageQuestion = 2*300;
+    this.game.maxHeightImageQuestion = 2*310;
+    this.game.maxWidthImageQuestion = 2*380;
     //console.log(myPlayer)
     this.game.controllingPlayer = myPlayer+1;
     this.levelsName = argLevelName;
@@ -67,9 +67,9 @@ class GameState extends Phaser.State {
     this.game.stepsShopper = this.mapData.recipe_shopper;
 
     this.data = this.game.cache.getJSON('questions');
-    console.log("qlen",this.data.categories[0].questions.length);
-    console.log("qlen",this.data.categories[1].questions.length);
-    console.log("qlen",this.data.categories[2].questions.length);
+    //console.log("qlen",this.data.categories[0].questions.length);
+    //console.log("qlen",this.data.categories[1].questions.length);
+    //console.log("qlen",this.data.categories[2].questions.length);
     this.game.questionsAnswered = {0:[], 1:[], 2:[]};
 
     this.startPositions = [];
@@ -150,6 +150,7 @@ class GameState extends Phaser.State {
     var playerColors = ["robots-blue-new", "robots-green-new", "robots-red-new"];
     for (var i=0; i < numOfPlayers; i++){
         var newPlayer = new RoboCook(this.game, this.startPositions[3-i].x, this.startPositions[3-i].y, playerColors[i], this.startingTiles[3-i], playerMarks[i]);
+        newPlayer.roleName = this.game.roles[i+1];
         this.startingTiles[3-i].occupant = newPlayer;
         this.addMarkerScale(newPlayer);
         this.game.playersActive.push(newPlayer);
@@ -210,6 +211,8 @@ class GameState extends Phaser.State {
 
      // a startup tile animation with a socket-io syncing function
     this.isoGroup.forEach(this.startGameEffect, this, false);
+
+    this.cursors = this.game.input.keyboard.createCursorKeys();
 
     // --- Register SOCKET listeners --- //
     var _this = this;
@@ -316,15 +319,34 @@ class GameState extends Phaser.State {
     this.game.iso.simpleSort(this.objectGroup);
 
     if (this.game.panelLeft.input.pointerOver())
-      this.game.panelLeft.alpha = 0.4;
+      this.game.panelLeft.alpha = 0.2;
     else
       this.game.panelLeft.alpha = 0.9;
+    if (this.game.panelRight.input.pointerOver())
+      this.game.panelRight.panelTexture.alpha = 0.2;
+    else
+      this.game.panelRight.panelTexture.alpha = 0.9;
 
     // the cursor overlaps the actual user's mouse
     this.game.cursor.position.x = this.input.worldX;
     this.game.cursor.position.y = this.input.worldY;
 
-    this.game.diceSum.setText("Dice Sum: " + total);
+    //if(this.input.activePointer.x>1700 || this.input.activePointer.y>900)
+    //  this.game.camera.follow(this.game.cursor, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+    //else 
+    //   this.game.camera.follow(this.game.playersActive[this.game.controllingPlayer-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+
+    if (this.cursors.up.isDown)
+      this.camera.y -= 80;
+    else if (this.cursors.down.isDown)
+      this.camera.y += 80;
+    if (this.cursors.left.isDown)
+      this.camera.x -= 80;
+    else if (this.cursors.right.isDown)
+      this.camera.x += 80;
+
+
+    this.game.diceSum.setText("Ζάρια: " + total);
     this.game.world.bringToTop(this.game.cursor);
 
   }
@@ -462,7 +484,7 @@ class GameState extends Phaser.State {
         this.endTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-                if(clickedTile.activated && myRole=="Instructor")
+                if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false))
                   return;
                 else
                   movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, true, 0);
@@ -472,7 +494,7 @@ class GameState extends Phaser.State {
         this.midTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-              if(clickedTile.activated && myRole=="Instructor")
+              if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false))
                 return;
               else
                 movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, false, total-clickedTile.tileMoves);

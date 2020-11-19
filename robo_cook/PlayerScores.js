@@ -98,11 +98,10 @@ class PlayerScores {
       this.rcpStepsPts = [this.recipe[0].points, this.recipe[1].points];
       this.rcpStepsCompleted = [false,false];
       this.unlockedStep = undefined;
+      this.stepInProgress = false;
    }
 
-   updateRecipeProgress(){
-      if(this.rcpStepsCompleted[this.rcpPrgrs]==false)
-         return;
+   checkStepsPrice(){
       var p1 = this.rcpStepsPts[this.rcpPrgrs][0];
       var p2 = this.rcpStepsPts[this.rcpPrgrs][1];
       var p3 = this.rcpStepsPts[this.rcpPrgrs][2];
@@ -111,9 +110,13 @@ class PlayerScores {
          this.game.objcvs[this.rcpPrgrs].pointsFrame.tweenFrame();
          console.log("Step-"+this.rcpPrgrs+" of recipe unlocked!");
          this.unlockedStep = this.rcpPrgrs;
-         this.rcpPrgrs++;
-         
+         this.stepInProgress = true;
       }
+   }
+
+   updateRecipeProgress(){
+      this.stepInProgress = false;
+      this.rcpPrgrs++;
    }
 
    adjustLeftPoints(step){
@@ -161,10 +164,10 @@ class PlayerScores {
       // The Shopper and the Cook, should select and drag-drop their recipe-action over the correct mark
       this.game.objcvs[this.unlockedStep].loadTexture("activeObj");
       if(myRole!="Instructor"){
-         this.game.objcvs[this.unlockedStep].action1.visible = true;
-         this.game.objcvs[this.unlockedStep].action2.visible = true;
-         this.game.objcvs[this.unlockedStep].action1.done = false;
-         this.game.objcvs[this.unlockedStep].action2.done = false;
+         this.game.objcvs[this.unlockedStep].actions[0].visible = true;
+         this.game.objcvs[this.unlockedStep].actions[1].visible = true;
+         this.game.objcvs[this.unlockedStep].actions[0].done = false;
+         this.game.objcvs[this.unlockedStep].actions[1].done = false;
          this.game.objcvs[this.unlockedStep].completed = false;
       }
       this.adjustLeftPoints(this.unlockedStep);
@@ -172,54 +175,49 @@ class PlayerScores {
       this.unlockedStep = undefined;
    }
 
-   // notice that roles of "Shopper" and "Cook" have to fulfill 2 actions per recipe-step
+   // RULE: the roles of "Shopper" and "Cook" have to fulfill 2 actions per recipe-step
    checkRcpActionOverlap(){
-      if(this.checkOverlap(this.game.cursor, this.game.objcvs[this.rcpPrgrs-1].action1) && this.game.objcvs[this.rcpPrgrs-1].action1.done==false){
-         //console.log("RcpItem was overlapped! "+ this.game.cursor.rcpItemKey+" - " + this.game.objcvs[this.rcpPrgrs-1].action1.name );
 
-         if( this.game.cursor.rcpItemKey == this.game.objcvs[this.rcpPrgrs-1].action1.name+"-recipe"){
-            window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
-            this.game.objcvs[this.rcpPrgrs-1].action1.alpha = 1.0;
-            this.game.objcvs[this.rcpPrgrs-1].action1.scale.setTo(1.0);
-            this.game.objcvs[this.rcpPrgrs-1].action1.done = true;
-            this.game.cursor.removeChildren();
-            this.game.correctMusic.play();
-            rcpItemDropping = false;
-         }else{
-            window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
-            this.game.cursor.removeChildren();
-            this.game.incorrectMusic.play();
-            rcpItemDropping = false;
+      for (var i=0; i<2; i++){
+         if(this.checkOverlap(this.game.cursor, this.game.objcvs[this.rcpPrgrs].actions[i]) && this.game.objcvs[this.rcpPrgrs].actions[i].done==false)
+         {
+            console.log("Recipes choices: ", this.game.cursor.rcpItemKey, this.game.objcvs[this.rcpPrgrs].actions[i].name);
+            if( this.game.cursor.rcpItemKey == this.game.objcvs[this.rcpPrgrs].actions[i].name+"-recipe"){
+               window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
+               this.game.objcvs[this.rcpPrgrs].actions[i].alpha = 1.0;
+               this.game.objcvs[this.rcpPrgrs].actions[i].scale.setTo(1.0);
+               this.game.objcvs[this.rcpPrgrs].actions[i].done = true;
+               this.game.cursor.removeChildren();
+               this.game.correctMusic.play();
+               rcpItemDropping = false;
+            }else{
+               window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
+               this.game.cursor.removeChildren();
+               this.game.incorrectMusic.play();
+               rcpItemDropping = false;
+            }
+            togglePlayerTurn();
          }
-         togglePlayerTurn();
-      }
-      if(this.checkOverlap(this.game.cursor, this.game.objcvs[this.rcpPrgrs-1].action2) && this.game.objcvs[this.rcpPrgrs-1].action2.done==false){
-         //console.log("RcpItem was overlapped! "+ this.game.cursor.rcpItemKey+" - " + this.game.objcvs[this.rcpPrgrs-1].action2.name );
-
-         if( this.game.cursor.rcpItemKey == this.game.objcvs[this.rcpPrgrs-1].action2.name+"-recipe"){
-            window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
-            this.game.objcvs[this.rcpPrgrs-1].action2.alpha = 1.0;
-            this.game.objcvs[this.rcpPrgrs-1].action2.scale.setTo(1.0);
-            this.game.objcvs[this.rcpPrgrs-1].action2.done = true;
-            this.game.cursor.removeChildren();
-            this.game.correctMusic.play();
-            rcpItemDropping = false;
-         }else{
-            this.game.cursor.removeChildren();
-            this.game.incorrectMusic.play();
-            window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
-            rcpItemDropping = false;
-         }
-         togglePlayerTurn();
       }
 
-      if(this.game.objcvs[this.rcpPrgrs-1].action1.done && this.game.objcvs[this.rcpPrgrs-1].action2.done){
-         this.game.objcvs[this.rcpPrgrs-1].completed = true;
-         this.game.objcvs[this.rcpPrgrs-1].action1.visible = false;
-         this.game.objcvs[this.rcpPrgrs-1].action2.visible = false;
-         this.game.objcvsTxt[this.rcpPrgrs-1].setText( this.recipe[this.rcpPrgrs-1].step );
+      if(this.game.objcvs[this.rcpPrgrs].actions[0].done && this.game.objcvs[this.rcpPrgrs].actions[1].done){
+         this.game.objcvs[this.rcpPrgrs].completed = true;
+         this.game.objcvs[this.rcpPrgrs].actions[0].visible = false;
+         this.game.objcvs[this.rcpPrgrs].actions[1].visible = false;
+         this.game.objcvs[this.rcpPrgrs].completedBadge.visible = true;
+         this.game.objcvsTxt[this.rcpPrgrs].setText( this.recipe[this.rcpPrgrs].step );
+         window.socket.emit(PlayerEvent.actionsCompleted, {/*empty*/});
       }
 
+   }
+
+   getRcpStep(){
+      return this.rcpPrgrs;
+   }
+
+   checkStepCompleted(){
+      console.log(this.game.objcvs[this.rcpPrgrs].completed);
+      return this.game.objcvs[this.rcpPrgrs].completed;
    }
 
    checkOverlap(spriteA, spriteB) {
@@ -235,8 +233,8 @@ class PlayerScores {
          else
             this.decreaseScore_P1(category);
 
-      if(this.rcpPrgrs<this.rcpStepsPts.length)
-         this.updateRecipeProgress();
+      if(this.rcpPrgrs<this.rcpStepsPts.length && this.stepInProgress==false)
+         this.checkStepsPrice();
    }
 
     increaseScore_P1(category) {
