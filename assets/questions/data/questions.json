@@ -27,12 +27,12 @@
 					"image": "/assets/images_questions/pasta.png",
 					"answer_image": "pasta.jpg",
 					"hqExist": true,
-					"helpQuestion": "Σου φαίνετααι πως είναι το γάλα συστατικό του ψωμιού;"
+					"helpQuestion": "Σου φαίνεται πως είναι το γάλα συστατικό του ψωμιού;"
 				},
 				{
 					"question": "Το λάδι παράγεται:",
 					"choices": [
-						"από το πάτημα εξωτικών λίθων φρούτων",
+						"από τη συμπίεση εξωτικών φρούτων",
 						"από τη συμπίεση των σταφυλιών",
 						"από τη συμπίεση των ελιών"
 					],
@@ -53,7 +53,7 @@
 					"image": "/assets/images_questions/question.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "Π.χ. σκέψου ότι η οικογένεια των λαχανικών περιλαμβάνει αγγούρια κολοκυθάκια μαρούκια"
+					"helpQuestion": "Π.χ. σκέψου ότι η οικογένεια των λαχανικών περιλαμβάνει αγγούρια,κολοκυθάκια,μαρούλια"
 				},
 				{
 					"question": "Το βούτυρο αποτελείται κυρίως από;",
@@ -133,7 +133,9 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Θυμάσαι να τρώνε καρπούζια τον Μάιο στην Ελλάδα;"
 				},
 				{
 					"question": "Από πού προήλθε το ρύζι; Πού καλλιεργείται;",
@@ -157,18 +159,22 @@
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Είναι όλο τον χρόνο όλα τα φρούτα κατάλληλα (ακόμα και τα κατεψυγμένα);"
 				},
 				{
 					"question": "Τι είδους φρέσκα φρούτα και καρπούς μπορείτε να φάτε το καλοκαίρι;",
 					"choices": [
-						"Καρπούζι - πεπόνι - μούρα - κεράσια - φράουλες",
+						"καρπούζι - πεπόνι - μούρα - κεράσια - φράουλες",
 						"καρύδια - φιστίκια - κάσιους - μήλα - αχλάδια",
 						"αμύγδαλα - φιστίκια - σπόροι κολοκύθας"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Σου θυμίζουν τα αχλάδια και τα μήλα τον Αύγουστο;"
 				},
 				{
 					"question": "Τι φρούτα μπορείτε να φάτε το χειμώνα;",
@@ -179,7 +185,9 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Σου θυμίζουν τα σταφύλια ή τα ακτινίδια χειμωνιάτικο καιρό;"
 				},
 				{
 					"question": "Τα κολοκυθάκια είναι ένα τυπικό λαχανικό:",
@@ -190,18 +198,22 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Ποιά εποχή είναι φρέσκα?"
 				},
 				{
-					"question": "Τα εσπεριδοειδή τρώγονται καλύτερα:",
+					"question": "Τα εσπεριδοειδή ποιά περίοδο είναι εκτός εποχής;",
 					"choices": [
 						"το καλοκαίρι",
 						"το χειμώνα",
 						"το φθινόπωρο"	
 					],
-					"answer": 1,
+					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Ποιούς μήνες τα πορτοκάλια σίγουρα δεν είναι φρέσκα?"
 				}
 			]
 		},
@@ -285,7 +297,9 @@
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
-					"answer_image": "placeholder-answer.png"
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Θα σκεφτόσουν πως το ψωμί ή τα μακαρόνια ενισχύουν στο ανοσοποιητικό;"
 				},
 				{
 					"question": "Ποιά τροφή δεν περιέχει υδατάνθρακες ή σάκχαρα;",

@@ -54,6 +54,9 @@ var PlayerEvent = (function () {
     PlayerEvent.levelFull = "PlayerEvent:levelFull";
     PlayerEvent.stepCompleted = "PlayerEvent:stepCompleted";
     PlayerEvent.actionsCompleted = "PlayerEvent:actionsCompleted";
+    PlayerEvent.subStepsCompleted = "PlayerEvent:subStepsCompleted";
+    PlayerEvent.updateRecipeItems = "PlayerEvent:updateRecipeItems";
+    PlayerEvent.showAnswer = "PlayerEvent:showAnswer";
     return PlayerEvent;
 }());
 
@@ -121,6 +124,10 @@ class GameServer {
         this.addHelpSender(socket);
 
         this.addStepCompleted(socket);
+
+        this.updateRecipeItems(socket);
+
+        this.addShowAnswerResult(socket);
     };
 
     togglePlayerTurn(level){
@@ -303,16 +310,38 @@ class GameServer {
         });
     }
 
+    addShowAnswerResult(socket){
+        var _this = this;
+        socket.on(PlayerEvent.showAnswer, function (msg) {
+            if(socket.player){
+                socket.broadcast.emit(PlayerEvent.showAnswer, msg );
+            }
+        });
+    }
+
     addStepCompleted(socket){
         var _this = this;
         socket.on(PlayerEvent.actionsCompleted, function (confirmMessage) {
             if(socket.player){
                 _this.levelsActionsCounter[socket.player.level] ++;
+                socket.broadcast.emit(PlayerEvent.subStepsCompleted, confirmMessage);
+
                 if(_this.levelsActionsCounter[socket.player.level] == ACTIONS_PER_STEP){
                     _this.levelsActionsCounter[socket.player.level] = 0;
                     socket.broadcast.emit(PlayerEvent.stepCompleted, "next-step");
                     socket.emit(PlayerEvent.stepCompleted, "next-step");
                 }
+            }
+        });
+    }
+
+    
+
+    updateRecipeItems(socket){
+        var _this = this;
+        socket.on(PlayerEvent.updateRecipeItems, function (msg) {
+            if(socket.player){
+                socket.broadcast.emit(PlayerEvent.updateRecipeItems, msg);
             }
         });
     }

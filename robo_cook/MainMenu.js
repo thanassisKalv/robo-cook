@@ -6,16 +6,17 @@ class MainMenu extends Phaser.State {
         this.stage.disableVisibilityChange = true;
 
         this.wsocket = this.game.socket;
-        this.levelImage1 = this.add.image(this.game.width/2-450, this.game.height/2-250, "recipe1");
+        this.levelImage1 = this.add.image(this.game.width/2-450, this.game.height/2-100, "recipe1");
         this.levelImage1.anchor.setTo(0.5, 0.5);
         this.levelImage1.scale.setTo(0.5, 0.5);
         this.levelImage2 = this.add.image(this.game.width/2-450, this.game.height/2, "recipe2");
         this.levelImage2.anchor.setTo(0.5, 0.5);
         this.levelImage2.scale.setTo(0.55, 0.55);
         this.levelImage2.alpha = 0.35;
+        this.levelImage2.visible = false;
 
 
-	    this.level1Button = this.add.button(this.game.width/2-450, this.game.height/2-250, "buttons", this.joinGame1, this, 
+	    this.level1Button = this.add.button(this.game.width/2-450, this.game.height/2-100, "buttons", this.joinGame1, this, 
                                           "green_button00.png", "green_button00.png", 
                                           "green_button02.png", "green_button00.png");
         this.level1Button.anchor.setTo(0.5, 0.5);
@@ -29,23 +30,32 @@ class MainMenu extends Phaser.State {
         this.level2Button.anchor.setTo(0.5, 0.5);
         this.level2Button.scale.setTo(1.5, 1.5);
         this.level2Button.alpha = 0.45;
+        this.level2Button.visible = false;
 
         this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+270, "protein-logo");
         this.proteinLogo.anchor.setTo(0.5, 0.5);
         this.reqsFrame = this.add.image(this.game.width/2-450, this.game.height/2+420, "system-reqs");
         this.reqsFrame.anchor.setTo(0.5, 0.5);
-        this.reqsText = new Phaser.Text(this.game, 0, 0, "►Συνιστάται η πρόσβαση μέσω Chrome ή Chromium Browser \n►Το παιχνίδι απαιτεί οθόνη ανάλυσης 1920x1080", {font: "16px Calibri"});
+        this.reqsText = new Phaser.Text(this.game, 0, 0, "►Συνιστάται η πρόσβαση μέσω Chrome ή Chromium Browser \n►Το παιχνίδι απαιτεί οθόνη με ανάλυση 1920x1080", {font: "16px Calibri"});
         this.reqsText.x = this.reqsFrame.x;
         this.reqsText.y = this.reqsFrame.y+20;
         this.reqsText.anchor.set(0.5);
         this.add.existing(this.reqsText);
 
-        this.gameInstructions = this.add.image(this.game.width/2+350, this.game.height/2+30, "game-instructions");
+        this.gameInstructions = this.add.image(this.game.width/2+350, this.game.height/2, "game-instructions");
         this.gameInstructions.anchor.setTo(0.5, 0.5);
-
+	    this.istructionsDetailButton = this.add.button(0, 200, "buttons", this.moreInstructionShow, this, 
+                                          "green_button00.png", "green_button00.png", 
+                                          "green_button02.png", "green_button00.png");
+        this.istructionsDetailButton.anchor.setTo(0.5, 0.5);
+        this.istructionsDetailButton.alpha = 0.80;
+        this.gameInstructions.addChild(this.istructionsDetailButton);
+        this.moreInstructionsText = this.add.text(0,0, "Λεπτομερείς Οδηγίες", {font: "bold 17px Comic Sans MS"});
+        this.moreInstructionsText.anchor.setTo(0.5);
+        this.istructionsDetailButton.addChild(this.moreInstructionsText);
 
         // Text for 1st level's button
-        this.text = new Phaser.Text(this.game, 0, 0, "Game of Easy Questions \n    Omelette Recipe", {font: "21px Handlee"});
+        this.text = new Phaser.Text(this.game, 0, 0, "        Start \nRobo-cook's Path", {font: "bold 21px Handlee"});
         //this.text2 = new Phaser.Text(this.game, 0, 0, "Apple crumble & custard", {font: "22px Handlee"});
         this.textWait = new Phaser.Text(this.game, 0, 0, "", {font: "17px Calibri"});
         this.textRoleAssign = new Phaser.Text(this.game, 0, 0, "", {font: "20px Handlee"});
@@ -86,6 +96,7 @@ class MainMenu extends Phaser.State {
         this.text2.x = this.level2Button.x;
         this.text2.y = this.level2Button.y;
         this.text2.fill = "#191970";
+        this.text2.visible = false;
 
         this.textWait2.x = this.level2Button.x;
         this.textWait2.y = this.level2Button.y+60;
@@ -117,6 +128,11 @@ class MainMenu extends Phaser.State {
 
     update () {
 	    //	Maybe add some nice main-menu effect here
+    }
+
+    moreInstructionShow(button){
+        button.visible = false;
+        this.gameInstructions.loadTexture("game-instructions-details");
     }
 
     emptyLevel(){

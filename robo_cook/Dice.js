@@ -42,14 +42,19 @@ Dice.prototype.roll = function() {
 Dice.prototype.rollComplete = function() {
     this.filters = null;
     this.frame = this.game.rnd.pick([0,1,2,4,5,6]);
+    diceFrames[this.id] = this.frame;
     total += this.value();
     newDiceResult = true;
     if(this.id==1){
         // **** /SOCKET inform other player for dice-results **** //
-        this.game.socket.emit(PlayerEvent.newDiceResult, {diceTotal:total});
+        this.game.socket.emit(PlayerEvent.newDiceResult, {diceTotal:total, frames:diceFrames });
         // **** /SOCKET **** //
         //console.log(total);
     }
+};
+
+Dice.prototype.updateFrame = function(fnum) {
+    this.frame = fnum;
 };
 
 Dice.prototype.update = function() {

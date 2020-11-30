@@ -1,6 +1,6 @@
 class RoboCook extends Phaser.Plugin.Isometric.IsoSprite {
 
-	constructor(game, x, y, roboType, startTile, markerColor) {  
+	constructor(game, x, y, roboType, startTile, markerColor, role) {  
 	  	super(game, x, y);
 
         //Phaser.Sprite.call(this, game, x, y, roboType, 1);
@@ -29,6 +29,10 @@ class RoboCook extends Phaser.Plugin.Isometric.IsoSprite {
         //this.robotFrame.anchor.setTo(0.5, 0.5);  --  older style robots 
         this.robotFrame.anchor.setTo(0.5, 0.8);
         this.addChild(this.robotFrame);
+
+        this.roleChar = this.game.add.text(-5, -75, role, {font: "bold 16px Comic Sans MS"} );
+        this.roleChar.addColor("rgb(174 109 54)", 0);
+        this.addChild(this.roleChar);
 
         this.game.add.existing(this);
 	}

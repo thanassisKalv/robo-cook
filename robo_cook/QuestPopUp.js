@@ -19,10 +19,11 @@ class QuestPopUp extends Phaser.Sprite {
         this.shoptile = shoptile;
         this.qType = questNum;
 
-        this.cookActionOptions =  {0: ["ανακατέψτε","καρυκεύστε", "ζεστάνετε","τηγάνι"], 1: ["ζεστάνετε","τηγάνι", "καρυκεύστε"] }; // {0: ["stir", "season", "heat", "frying"], 1: ["heat", "frying", "season"] };
-        this.cookActionOptionsEng = {0: ["stir", "season", "heat", "frying"], 1: ["heat", "frying", "season"] };
-        this.shoppingActionOptions = { 0: ["αυγά", "αλατοπίπερο", "λάδι","τηγάνι"], 1: ["λάδι", "τηγάνι", "αυγά"] };  // { 0: ["eggs", "salt & pepper", "oil", "pan"], 1: ["oil", "pan", "eggs"] };
-        this.shoppingActionOptionsEng =  { 0: ["eggs", "salt & pepper", "oil", "pan"], 1: ["oil", "pan", "eggs"] };
+        this.cookActionOptions =  {0: ["καρυκεύστε", "προθερμάνετε","κοσκινίστε"], 1: ["τηγάνιστε", "μπολ", "ανακατέψτε"], 2: ["λιώσει", "προσθέστε", "χτυπήστε"] }; 
+        this.cookActionOptionsEng = {0: ["season", "preheat","sieve"], 1: ["frying", "bowl","mix"],  2: ["melt", "add","mix"] }; 
+        this.shoppingActionOptions = { 0: ["αλατοπίπερο", "αλεύρι","κακάο"], 1: ["λάδι", "ζάχαρη", "αυγά"], 2: ["αλατοπίπερο", "αλεύρι", "αυγά"] };
+        this.shoppingActionOptionsEng =  { 0: [ "salt & pepper", "flour","cocoa"], 1: ["oil", "sugar","eggs"], 2: ["salt & pepper", "flour","eggs"] };
+        // "3":{ "step": "Γεμίστε την ομελέτα με ό,τι εξτρα θέλετε, διπλώστε απαλά στη μέση με τη σπάτουλα",  "points":[20,10,20] }
 
         this.recipe =  this.game.stepsInstructor;
         this.recipe_shopper = this.game.stepsShopper;
@@ -36,8 +37,11 @@ class QuestPopUp extends Phaser.Sprite {
         //this.qpop.scale.set(0.25);
         this.countDownMusic = this.game.add.audio('countdown');
         this.game.correctMusic = this.game.add.audio('correct');
+        this.game.pickupMusic = this.game.add.audio('pick-up');
         this.game.incorrectMusic = this.game.add.audio('incorrect');
-        this.game.incorrectMusic.volume = 0.5;
+        this.game.answerReveal = this.game.add.audio('correct_answer_reveal');
+        this.game.incorrectMusic.volume = 1.3;
+        this.game.pickupMusic.volume = 0.8;
         //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
 
@@ -47,7 +51,7 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     waitOtherPlayer(){
-        this.game.waiting_other = this.game.add.text(100, 570, 'Περιμένετε\n τον συμπαίκτη...',  {font: "bold 25px Handlee"});
+        this.game.waiting_other = this.game.add.text(100, 570, 'Περιμένετε \nτους συμπαίκτες...',  {font: "bold 20px Comic Sans MS"});
         this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 1000);
         this.game.waiting_other.anchor.set(0.5,0.5);
         this.game.waiting_other.addColor('#4400ff', 0);
@@ -132,10 +136,10 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     displayCookActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Επιλέξτε μια ενέργεια για να ολοκληρώσετε τη συνταγή σας", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Επιλέξτε μια ενέργεια για να ολοκληρώσετε τη συνταγή σας", "cook", this);
     }
     displayShopActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Επιλέξτε ένα αντικείμενο που λείπει από τη συνταγή σας", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Επιλέξτε ένα αντικείμενο που λείπει από τη συνταγή σας", "shop", this);
     }
 
     showQuestion(questionItem){
@@ -220,17 +224,19 @@ class QuestPopUp extends Phaser.Sprite {
 
         context.game.ptEmitters[ctgry].emitX = player.x;
         context.game.ptEmitters[ctgry].emitY = player.y;
-        context.game.ptEmitters[ctgry].setXSpeed(dirX, dirX);
-        context.game.ptEmitters[ctgry].setYSpeed(dirY, dirY);
-        context.game.ptEmitters[ctgry].flow(1000, 25, 1, 10, true);
+        context.game.ptEmitters[ctgry].setXSpeed(dirX*1.2, dirX*1.2);
+        context.game.ptEmitters[ctgry].setYSpeed(dirY*1.2, dirY*1.2);
+        context.game.ptEmitters[ctgry].flow(800, 15, 1, 9, true);
         context.game.ptEmitters[ctgry].particleBringToTop = true;
         context.game.world.bringToTop(context.game.ptEmitters[ctgry]);
     }
 
-    setDragDropItem(item){
+    setDragDropItem(answerItems){
         //this.game.cursor.loadTexture(item);
-        var rcpItem = this.game.add.sprite(0, 0, item+'-recipe');
+        var rcpItem = this.game.add.sprite(0, 0, answerItems[0]+'-recipe');
+        rcpItem.scale.set(1.2);
         this.game.cursor.rcpItemKey = rcpItem.key;
+        this.game.cursor.rcpItemName = answerItems[1];
         this.game.cursor.addChild(rcpItem);
         rcpItemDropping = true;
     }

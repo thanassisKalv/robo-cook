@@ -60,12 +60,18 @@ WebFontConfig = {
         this.game.load.image('handBlue', path+'assets/robo-cook/tool-p2.png');
         this.game.load.image('kitchen-team1', path+'assets/robo-cook/kitchen-team-1.png');
         this.game.load.image('kitchen-team2', path+'assets/robo-cook/kitchen-team-2.png');
-        this.game.load.image('soundoff', path+'assets/images/sound-off.png')
-        this.game.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
+        this.game.load.image('soundOff', path+'assets/images/sound-off.png')
+        this.game.load.image('soundOn', path+'assets/images/sound-on.png')
+        //this.game.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
         this.game.load.audio('rollDice', ['assets/audio/dice_roll.mp3']);
         this.game.load.audio('countdown', ['assets/audio/countdown10.mp3']);
-        this.game.load.audio('correct', ['assets/audio/correct-sound.mp3']);
-        this.game.load.audio('incorrect', ['assets/audio/incorrect-sound.mp3']);
+        this.game.load.audio('correct', ['assets/audio/new/correct_answer.mp3']);
+        this.game.load.audio('pick-up', ['assets/audio/pick-up-sound.mp3']);
+        this.game.load.audio('player-turn', ['assets/audio/new/next_player.mp3']);
+        this.game.load.audio('incorrect', ['assets/audio/new/wrong_answer.mp3']);
+        this.game.load.audio('move_bonus', ['assets/audio/new/teleportation.mp3']);
+        this.game.load.audio('step_done', ['assets/audio/new/step_finished.mp3']);
+        this.game.load.audio('correct_answer_reveal', ['assets/audio/new/agony_music.mp3']);
 
         this.game.load.json('questions', path+'assets/questions/data/questions.json');
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
@@ -94,7 +100,10 @@ WebFontConfig = {
         this.game.load.image('table-score','assets/badges/scoreframe/table-score.png');
         this.game.load.image('element-score','assets/badges/scoreframe/score-element.png');
         this.game.load.image('star-score','assets/badges/scoreframe/star-element.png');
-         this.game.load.image('controlling-player','assets/menus/controlling-player.png');
+        this.game.load.image('controlling-Instructor','assets/menus/controlling/instructor.png');
+        this.game.load.image('controlling-Shopper','assets/menus/controlling/shopper.png');
+        this.game.load.image('controlling-Cook','assets/menus/controlling/cook.png');
+        this.game.load.image("key-arrows", 'assets/menus/key-arrows.png');
 
         this.game.load.image('team-1-bonus', 'assets/badges/team-1-bonus.png');
         this.game.load.image('team-2-bonus', 'assets/badges/team-2-bonus.png');
@@ -117,7 +126,8 @@ WebFontConfig = {
         this.game.load.image('protein-logo', 'assets/menus/protein-logo-with-flag.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
-        this.game.load.image('game-instructions', 'assets/menus/instructions-fixed.png');
+        this.game.load.image('game-instructions', 'assets/menus/instructions-greek-short.png');
+        this.game.load.image('game-instructions-details', 'assets/menus/instructions-fixed-greek-v2.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
         this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
@@ -125,9 +135,11 @@ WebFontConfig = {
         this.game.load.image('tree-brown', 'assets/sprites/tree-brown.png');
         this.game.load.image('tree-green', 'assets/sprites/tree-green.png');
 
-        this.game.load.image('rcpAction-1', 'assets/recipe-items/recipe-1.gif');
-        this.game.load.image('rcpAction-2', 'assets/recipe-items/recipe-2.gif');
-        this.game.load.image('rcpAction-complete', 'assets/recipe-items/step-completed.png');
+        this.game.load.image('rcpAction-cook1', 'assets/recipe-items/recipe-1.gif');
+        this.game.load.image('rcpAction-cook2', 'assets/recipe-items/recipe-2.gif');
+        this.game.load.image('rcpAction-shop1', 'assets/recipe-items/shop-1.png');
+        this.game.load.image('rcpAction-shop2', 'assets/recipe-items/shop-2.png');
+        this.game.load.image('rcpAction-complete', 'assets/recipe-items/substeps-completed.png');
         this.game.load.image('eggs-recipe', 'assets/recipe-items/eggs.png');
         this.game.load.image('salt & pepper-recipe', 'assets/recipe-items/salt-pepper.png');
         this.game.load.image('heat-recipe', 'assets/recipe-items/heating-action.jpg');
@@ -135,7 +147,20 @@ WebFontConfig = {
         this.game.load.image('season-recipe', 'assets/recipe-items/season-action.gif');
         this.game.load.image('frying-recipe', 'assets/recipe-items/frying-pan-action.png');
         this.game.load.image('pan-recipe', 'assets/recipe-items/frying-pan-action.png');
+        this.game.load.image('butter-recipe', 'assets/recipe-items/butter.png');
+        this.game.load.image('tilt-recipe', 'assets/recipe-items/tilt-pan.png');
+        this.game.load.image('melt-recipe', 'assets/recipe-items/melt.gif');
         this.game.load.image('oil-recipe', 'assets/recipe-items/oil.png');
+        this.game.load.image('bowl-recipe', 'assets/recipe-items/bowl.png');
+        this.game.load.image('sugar-recipe', 'assets/recipe-items/sugar.gif');
+        this.game.load.image('flour-recipe', 'assets/recipe-items/flour.png');
+        this.game.load.image('cocoa-recipe', 'assets/recipe-items/cocoa.png');
+        this.game.load.image('preheat-recipe', 'assets/recipe-items/preheat-action.png');
+        this.game.load.image('sieve-recipe', 'assets/recipe-items/sieve-action.png');
+        this.game.load.image('add-recipe', 'assets/recipe-items/adding-action.png');
+        this.game.load.image('mix-recipe', 'assets/recipe-items/mix-action.png');
+
+        this.game.load.image('redX', 'assets/recipe-items/redX.png');
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         this.game.load.atlas('char', charImage, charData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);

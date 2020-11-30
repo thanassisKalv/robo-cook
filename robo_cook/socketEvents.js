@@ -38,5 +38,8 @@ var PlayerEvent = (function () {
     PlayerEvent.levelFull = "PlayerEvent:levelFull";
     PlayerEvent.stepCompleted = "PlayerEvent:stepCompleted";
     PlayerEvent.actionsCompleted = "PlayerEvent:actionsCompleted";
+    PlayerEvent.subStepsCompleted = "PlayerEvent:subStepsCompleted";
+    PlayerEvent.updateRecipeItems = "PlayerEvent:updateRecipeItems";
+    PlayerEvent.showAnswer = "PlayerEvent:showAnswer";
     return PlayerEvent;
 }());

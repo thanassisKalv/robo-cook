@@ -63,6 +63,8 @@ class PlayerScores {
       this.game.searchBadge.scale.setTo(0.3);
       this.game.panelBack.addChild(this.game.searchBadge);
 
+
+      this.game.stepDoneMusic = this.game.add.audio('step_done');
       this.setRecipeProgress(this.game.stepsInstructor,this.game.stepsShopper, this.game.stepsCook);
     }
 
@@ -95,7 +97,7 @@ class PlayerScores {
       this.recipe_shopper = recipeStepsShopper;
       this.recipe_cook = recipeStepsCook
       this.rcpPrgrs = 0;
-      this.rcpStepsPts = [this.recipe[0].points, this.recipe[1].points];
+      this.rcpStepsPts = [this.recipe[0].points, this.recipe[1].points, this.recipe[2].points];
       this.rcpStepsCompleted = [false,false];
       this.unlockedStep = undefined;
       this.stepInProgress = false;
@@ -107,16 +109,39 @@ class PlayerScores {
       var p3 = this.rcpStepsPts[this.rcpPrgrs][2];
       if(p1<=this.game.player1score1 && p2<=this.game.player1score2 && p3<=this.game.player1score3)
       {
-         this.game.objcvs[this.rcpPrgrs].pointsFrame.tweenFrame();
+         //this.game.objcvs[this.rcpPrgrs].pointsFrame.tweenFrame();
+         this.game.objcvsTxt[this.rcpPrgrs].visible = true;
+         this.game.objcvs[this.rcpPrgrs].pointsFrame.selfDestroy();
          console.log("Step-"+this.rcpPrgrs+" of recipe unlocked!");
          this.unlockedStep = this.rcpPrgrs;
+         this.game.teamProgrTxt[this.rcpPrgrs].setText("To "+(this.unlockedStep+1)+"o βήμα ενεργοποιήθηκε!");
+         this.game.teamProgrTxt[this.rcpPrgrs].y = this.game.teamProgrTxt[this.rcpPrgrs].y - 55;
+         this.game.teamProgrTxt[this.rcpPrgrs].visible = true;
          this.stepInProgress = true;
+         if(this.rcpPrgrs>0)
+            this.game.teamProgrTxt[this.rcpPrgrs-1].visible=false;
       }
    }
 
    updateRecipeProgress(){
+      var _this = this;
+      this.game.teamProgrTxt[this.rcpPrgrs].setText("\n\nTo "+(this.rcpPrgrs+1)+"o βήμα ολοκληρώθηκε!");
+      this.game.objcvsTxt[this.rcpPrgrs].visible = false;
       this.stepInProgress = false;
+      var x = this.rcpPrgrs;
+      setTimeout( function(){ 
+         _this.game.stepDoneMusic.play(); }, 1000);
+      setTimeout( function(){
+         _this.game.objcvs[x].visible = false;
+         _this.game.objcvs[x].pointsFrame.hide();
+         _this.game.objcvs[x].actions[2].visible = false;
+         _this.game.objcvs[x].nonActions[2].visible = false;}, 4000);
+
       this.rcpPrgrs++;
+      if(this.rcpPrgrs<this.rcpStepsPts.length){
+         this.game.objcvs[this.rcpPrgrs].pointsFrame.appear();
+         this.checkStepsPrice();
+      }
    }
 
    adjustLeftPoints(step){
@@ -145,8 +170,23 @@ class PlayerScores {
       }
     }
 
+    clearPrevStep(prevStep, currentStep){
+       if(prevStep>-1){
+         this.game.objcvsTxt[prevStep].visible = false;
+         this.game.objcvs[prevStep].visible = false;
+         this.game.objcvs[prevStep].pointsFrame.hide();
+         this.game.objcvs[prevStep].actions[2].visible = false;
+         this.game.objcvs[prevStep].nonActions[2].visible = false;
+
+         this.game.objcvsTxt[currentStep].visible = true;
+         this.game.objcvs[currentStep].visible = true;
+         this.game.objcvs[currentStep].pointsFrame.appear();
+       }
+    }
+
    getUnlockedStep(){
       this.isoGroup.forEach(this.activateRecipeTile, this, false);
+      this.clearPrevStep(this.unlockedStep-1, this.unlockedStep);
 
       var myRole = this.game.roles[this.game.controllingPlayer];
       if(myRole=="Instructor")
@@ -156,23 +196,38 @@ class PlayerScores {
       else 
          this.game.objcvsTxt[this.unlockedStep].setText( this.recipe_cook[this.unlockedStep].step );
       
-      this.game.objcvsTxt[this.unlockedStep].fontSize = 24;
+      this.game.objcvsTxt[this.unlockedStep].fontSize = 20;
       this.game.objcvsTxt[this.unlockedStep].fontStyle = 'normal';
       this.game.objcvsTxt[this.unlockedStep].fontWeight = "bold"
       this.game.objcvsTxt[this.unlockedStep].addColor("rgb(10, 225, 10)", 0);
       this.game.objcvs[this.unlockedStep].pointsFrame.selfDestroy();
+      this.game.teamProgrTxt[this.unlockedStep].setText( "Το "+(this.unlockedStep+1)+"ο βήμα συνταγής είναι ενεργό και ξεκλειδώθηκε (...σχεδόν)!" );
       // The Shopper and the Cook, should select and drag-drop their recipe-action over the correct mark
       this.game.objcvs[this.unlockedStep].loadTexture("activeObj");
-      if(myRole!="Instructor"){
+      //if(myRole!="Instructor"){
          this.game.objcvs[this.unlockedStep].actions[0].visible = true;
          this.game.objcvs[this.unlockedStep].actions[1].visible = true;
          this.game.objcvs[this.unlockedStep].actions[0].done = false;
          this.game.objcvs[this.unlockedStep].actions[1].done = false;
+         this.game.objcvs[this.unlockedStep].actions[2].visible = true;
+         this.game.objcvs[this.unlockedStep].nonActions[0].visible = true;
+         this.game.objcvs[this.unlockedStep].nonActions[1].visible = true;
+         this.game.objcvs[this.unlockedStep].nonActions[0].done = false;
+         this.game.objcvs[this.unlockedStep].nonActions[1].done = false;
+         this.game.objcvs[this.unlockedStep].nonActions[2].visible = true;
          this.game.objcvs[this.unlockedStep].completed = false;
-      }
+      
       this.adjustLeftPoints(this.unlockedStep);
       
       this.unlockedStep = undefined;
+   }
+
+   stepProgressUpdate(currentStep, partSolvedText){
+      var role = this.game.roles[this.game.controllingPlayer];
+      if(role=="Shopper")
+         this.game.stepsShopper[currentStep].step = partSolvedText;
+      else
+         this.game.stepsCook[currentStep].step = partSolvedText;
    }
 
    // RULE: the roles of "Shopper" and "Cook" have to fulfill 2 actions per recipe-step
@@ -184,15 +239,21 @@ class PlayerScores {
             console.log("Recipes choices: ", this.game.cursor.rcpItemKey, this.game.objcvs[this.rcpPrgrs].actions[i].name);
             if( this.game.cursor.rcpItemKey == this.game.objcvs[this.rcpPrgrs].actions[i].name+"-recipe"){
                window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
+               this.game.objcvsTxt[this.rcpPrgrs].setText( this.game.objcvs[this.rcpPrgrs].actions[i].solved[i] );
                this.game.objcvs[this.rcpPrgrs].actions[i].alpha = 1.0;
                this.game.objcvs[this.rcpPrgrs].actions[i].scale.setTo(1.0);
+               this.game.objcvs[this.rcpPrgrs].actions[i].loadTexture(this.game.cursor.rcpItemKey);
                this.game.objcvs[this.rcpPrgrs].actions[i].done = true;
+               this.stepProgressUpdate(this.rcpPrgrs, this.game.objcvs[this.rcpPrgrs].actions[i].solved[i]);
+               window.socket.emit(PlayerEvent.updateRecipeItems, {role:this.game.roles[this.game.controllingPlayer], i:i, rcpItemKey:this.game.cursor.rcpItemKey});
                this.game.cursor.removeChildren();
-               this.game.correctMusic.play();
+               this.game.pickupMusic.play();
                rcpItemDropping = false;
             }else{
+               var _this = this;
                window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
-               this.game.cursor.removeChildren();
+               this.game.cursor.getChildAt(0).loadTexture("redX");
+               setTimeout( function(){ _this.game.cursor.removeChildren();}, 700);
                this.game.incorrectMusic.play();
                rcpItemDropping = false;
             }
@@ -202,13 +263,39 @@ class PlayerScores {
 
       if(this.game.objcvs[this.rcpPrgrs].actions[0].done && this.game.objcvs[this.rcpPrgrs].actions[1].done){
          this.game.objcvs[this.rcpPrgrs].completed = true;
-         this.game.objcvs[this.rcpPrgrs].actions[0].visible = false;
-         this.game.objcvs[this.rcpPrgrs].actions[1].visible = false;
+         //this.game.objcvs[this.rcpPrgrs].actions[0].visible = false;
+         //this.game.objcvs[this.rcpPrgrs].actions[1].visible = false;
          this.game.objcvs[this.rcpPrgrs].completedBadge.visible = true;
          this.game.objcvsTxt[this.rcpPrgrs].setText( this.recipe[this.rcpPrgrs].step );
-         window.socket.emit(PlayerEvent.actionsCompleted, {/*empty*/});
+         this.game.objcvs[this.rcpPrgrs].actions[2].setText(this.game.objcvs[this.rcpPrgrs].actions[3]);
+         window.socket.emit(PlayerEvent.actionsCompleted, {role: this.game.roles[this.game.controllingPlayer]});
       }
 
+   }
+
+   updateRecipeItems(role, i, rcpItemKey){
+      this.game.pickupMusic.play();
+      if(this.game.roles[this.game.controllingPlayer]=="Instructor" && role=="Shopper"){
+         this.game.objcvs[this.rcpPrgrs].actions[i].loadTexture(rcpItemKey);
+         this.game.objcvs[this.rcpPrgrs].actions[i].alpha = 1.0;
+         this.game.objcvs[this.rcpPrgrs].actions[i].scale.setTo(1.0);
+      }
+      else{
+         this.game.objcvs[this.rcpPrgrs].nonActions[i].loadTexture(rcpItemKey);
+         this.game.objcvs[this.rcpPrgrs].nonActions[i].alpha = 1.0;
+         this.game.objcvs[this.rcpPrgrs].nonActions[i].scale.setTo(1.0);
+      }
+   }
+
+   updateOtherRolesProgress(role){
+      if(this.game.roles[this.game.controllingPlayer]=="Instructor" && role=="Shopper"){
+         this.game.objcvs[this.rcpPrgrs].completedBadge.visible = true;
+         this.game.objcvs[this.rcpPrgrs].actions[2].setText(this.game.objcvs[this.rcpPrgrs].actions[3]);
+      }else{
+         this.game.objcvs[this.rcpPrgrs].completedBadgeOther.visible = true;
+         this.game.objcvs[this.rcpPrgrs].nonActions[2].setText(this.game.objcvs[this.rcpPrgrs].nonActions[3]);
+      }
+      //this.game.objcvsTxt[this.rcpPrgrs].setText( this.recipe[this.rcpPrgrs].step );
    }
 
    getRcpStep(){
@@ -216,7 +303,7 @@ class PlayerScores {
    }
 
    checkStepCompleted(){
-      console.log(this.game.objcvs[this.rcpPrgrs].completed);
+      //console.log(this.game.objcvs[this.rcpPrgrs].completed);
       return this.game.objcvs[this.rcpPrgrs].completed;
    }
 
@@ -255,15 +342,15 @@ class PlayerScores {
 
     decreaseScore_P1(category) {
       if(category==0 && this.game.player1score1>0){
-         this.game.player1score1 -=10;
+         //this.game.player1score1 -=10;
          this.game.player1score1Text.setText(this.game.player1score1);
       }
       if(category==1 && this.game.player1score2>0){
-         this.game.player1score2 -=10;
+         //this.game.player1score2 -=10;
          this.game.player1score2Text.setText(this.game.player1score2);
       }
       if(category==2 && this.game.player1score3>0){
-         this.game.player1score3 -=10;
+         //this.game.player1score3 -=10;
          this.game.player1score3Text.setText(this.game.player1score3);
       }
     }

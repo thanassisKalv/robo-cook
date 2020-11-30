@@ -50,7 +50,7 @@
         },
         {
             "type": "image",
-            "key": "path-q4",
+            "key": "bonus-tile",
             "url": "assets/tileset/path-quest-exchang.png",
             "overwrite": false
         },
@@ -161,7 +161,7 @@
         {
             "type": "json",
             "key": "mapdata",
-            "url": "assets/isotiles-maps/board.json"
+            "url": "assets/isotiles-maps/board-cake.json"
         }
     ],
     "meta": {

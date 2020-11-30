@@ -11,6 +11,7 @@ var playerMoving = false;
 var diceGroup;
 var teamsDiceBonus = { 1:0, 2:0};
 var rcpItemDropping = false;
+var diceFrames = [0,0];
 
 function togglePlayerTurn(){
     window.socket.emit(PlayerEvent.getPlayerTurn, {});
@@ -59,7 +60,8 @@ class GameState extends Phaser.State {
                         "target-1", "target-2-player", "target-3", "target-4-player","target-1", "target-2-player", "target-3", "target-4-player"];
     this.targetTiles = [];
     this.pathColor = 0x95F985;
-    this.endPathColor = 0xbc544b;
+    this.endPathColor = 0x5fa32d;
+    this.startPathColor = 0xdb7f40;
 
     this.mapData =  this.game.cache.getJSON('mapdata');
     this.game.stepsInstructor = this.mapData.recipe;
@@ -101,10 +103,11 @@ class GameState extends Phaser.State {
 
     this.rollMusic = this.game.add.audio('rollDice');
     this.rollMusic.volume = 1.2;
-    // dice1: 1576;     dice1: 1666;    panel: 1520
+    this.moveBonusMusic = this.game.add.audio('move_bonus');
+    this.moveBonusMusic.volume = 1.2;
     
     for (var i=0; i < 2; i++) {
-        var adice = new Dice(this.game, 56+i*90, 190, i);
+        var adice = new Dice(this.game, 56+i*90, 210, i);
         //diceGroup.push(adice);
        // this.game.panelRight.addChild(adice);
         diceGroup.add(adice);
@@ -144,12 +147,15 @@ class GameState extends Phaser.State {
     this.game.cursor.scale.setTo(0.5, 0.5);
     this.game.cursor.anchor.setTo(0.5, 0.5);
     this.game.cursor.invincible = false;
+    this.game.changeTurnMusic = this.game.add.audio('player-turn');
+    this.game.changeTurnMusic.volume = 1.5;
 
     // add our RoboCook characters
+    var playerRoles = ["I", "S", "C",];
     var playerMarks = ["blue-mark", "green-mark", "red-mark",];
     var playerColors = ["robots-blue-new", "robots-green-new", "robots-red-new"];
     for (var i=0; i < numOfPlayers; i++){
-        var newPlayer = new RoboCook(this.game, this.startPositions[3-i].x, this.startPositions[3-i].y, playerColors[i], this.startingTiles[3-i], playerMarks[i]);
+        var newPlayer = new RoboCook(this.game, this.startPositions[3-i].x, this.startPositions[3-i].y, playerColors[i], this.startingTiles[3-i], playerMarks[i], playerRoles[i]);
         newPlayer.roleName = this.game.roles[i+1];
         this.startingTiles[3-i].occupant = newPlayer;
         this.addMarkerScale(newPlayer);
@@ -218,6 +224,8 @@ class GameState extends Phaser.State {
     var _this = this;
     registerSocketListeners(_this, window);
     // --- /Register SOCKET listeners --- //
+
+    //this.game.sound.mute = true;
   }
 
   addPointsGainEmitter(pointType){
@@ -272,12 +280,14 @@ class GameState extends Phaser.State {
                   const inPath = path.some(point => point.x == subtile.Xtable && point.y == subtile.Ytable);
                   if (inPath){
                       subtile.tint = this.pathColor;
-                      for(var i=0; i<path.length-1; i++){
+                      for(var i=1; i<path.length-1; i++){
                           if(path[i].x==subtile.Xtable && path[i].y==subtile.Ytable){
                               subtile.tileMoves = i;
                               this.midTiles.push(subtile);
                           }
                       }
+                     if(path[0].x==subtile.Xtable && path[0].y==subtile.Ytable)
+                      subtile.tint = this.startPathColor
                   }
                   if(path[path.length-1].x==subtile.Xtable && path[path.length-1].y==subtile.Ytable){
                       subtile.tint = this.endPathColor;
@@ -318,7 +328,7 @@ class GameState extends Phaser.State {
 
     this.game.iso.simpleSort(this.objectGroup);
 
-    if (this.game.panelLeft.input.pointerOver())
+    if (this.game.panelLeft.input.pointerOver() && rcpItemDropping==false)
       this.game.panelLeft.alpha = 0.2;
     else
       this.game.panelLeft.alpha = 0.9;
@@ -336,17 +346,25 @@ class GameState extends Phaser.State {
     //else 
     //   this.game.camera.follow(this.game.playersActive[this.game.controllingPlayer-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 
-    if (this.cursors.up.isDown)
-      this.camera.y -= 80;
-    else if (this.cursors.down.isDown)
-      this.camera.y += 80;
-    if (this.cursors.left.isDown)
-      this.camera.x -= 80;
-    else if (this.cursors.right.isDown)
-      this.camera.x += 80;
+    if (this.cursors.up.isDown){
+      this.camera.y -= 16;
+      this.game.camera.unfollow();
+    }
+    else if (this.cursors.down.isDown){
+      this.camera.y += 16;
+      this.game.camera.unfollow();
+    }
+    if (this.cursors.left.isDown){
+      this.camera.x -= 16;
+      this.game.camera.unfollow();
+    }
+    else if (this.cursors.right.isDown){
+      this.camera.x += 16;
+      this.game.camera.unfollow();
+    }
 
 
-    this.game.diceSum.setText("Ζάρια: " + total);
+    this.game.diceSum.setText("Ζαριά: " + total);
     this.game.world.bringToTop(this.game.cursor);
 
   }
@@ -431,6 +449,21 @@ class GameState extends Phaser.State {
         tile.questpop.update();
   }
 
+  makeGreenTile(tile){
+    if(tile.key.includes("bonus-tile")){
+      tile.tint = this.startPathColor;
+    }else{
+      tile.tint = this.pathColor;
+      this.midTiles.push(tile);
+    }
+  }
+
+  allTilesGreen(){
+    this.midTiles = [];
+    this.isoGroup.forEach(this.makeGreenTile, this, false);
+    this.moveBonusMusic.play();
+  }
+
   checkGroundTile(t){
       const tile = t;
       const x = tile.isoX / this.size;
@@ -464,11 +497,9 @@ class GameState extends Phaser.State {
         tile.questpop.update();
   }
 
-  dudePosition() {
-    return {
-      x: Math.round(this.dude.x / this.size + 0.5),
-      y: Math.round(this.dude.y / this.size + 0.5),
-    };
+  alignDiceFrames(playersDiceFrames) {
+    diceGroup.getChildAt(0).updateFrame(playersDiceFrames[0]);
+    diceGroup.getChildAt(1).updateFrame(playersDiceFrames[1]);
   }
 
   waveWaterTiles(w){
@@ -484,7 +515,8 @@ class GameState extends Phaser.State {
         this.endTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-                if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false))
+                if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false) ||
+                   (clickedTile.activated && (myRole=="Shopper" && clickedTile.questpop.cooktile)) || (clickedTile.activated && (myRole=="Cook" && clickedTile.questpop.shoptile)))
                   return;
                 else
                   movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, true, 0);
@@ -494,7 +526,8 @@ class GameState extends Phaser.State {
         this.midTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-              if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false))
+              if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false)||
+              (clickedTile.activated && (myRole=="Shopper" && clickedTile.questpop.cooktile)) || (clickedTile.activated && (myRole=="Cook" && clickedTile.questpop.shoptile)))
                 return;
               else
                 movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], clickedTile, true, false, total-clickedTile.tileMoves);

@@ -12,7 +12,8 @@ function registerSocketListeners(_this, window)
         newDiceResult = true;
         //console.log(diceResult);
         total = diceResult.diceTotal;
-        //_this.addMarkerScale();
+        
+        _this.alignDiceFrames(diceResult.frames);
         _this.resumeMarkerScale();
     });
 
@@ -34,8 +35,11 @@ function registerSocketListeners(_this, window)
             _this.game.playingRoleIcon.tween.pause();
             _this.game.playingRoleIcon.scale.setTo(0.5);
         }
+        setTimeout( function(){ 
+            _this.game.changeTurnMusic.play();} , 200);
+        setTimeout( function(){ 
+            _this.game.camera.follow(_this.game.playersActive[playersTurn-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1); } , 1100);
 
-        //_this.game.camera.follow(_this.game.playersActive[playersTurn-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
         _this.game.world.bringToTop(_this.game.panelLeft);
         _this.game.world.bringToTop(_this.game.panelRight);
         _this.game.world.bringToTop(_this.game.ptEmitters[0]);
@@ -52,7 +56,7 @@ function registerSocketListeners(_this, window)
         _this.uuidReceived = syncData.uuidToken;
         
         if(_this.waitingSync){
-            console.log(syncData);
+            //console.log(syncData);
             _this.waitingSync = false;
             Swal.close();
             if(playersTurn == _this.game.controllingPlayer)
@@ -97,6 +101,19 @@ function registerSocketListeners(_this, window)
 
     window.socket.on(PlayerEvent.stepCompleted, function (msgEmpty) {
         _this.game.scoreHandler.updateRecipeProgress();
+    });
+
+    window.socket.on(PlayerEvent.updateRecipeItems, function (msg) {
+        //{role:this.game.roles[this.game.controllingPlayer], i:i, rcpItemKey:this.game.cursor.rcpItemKey}
+        _this.game.scoreHandler.updateRecipeItems(msg.role, msg.i, msg.rcpItemKey);
+    });
+
+    window.socket.on(PlayerEvent.subStepsCompleted, function (msgEmpty) {
+        _this.game.scoreHandler.updateOtherRolesProgress(msgEmpty.role);
+    });
+
+    window.socket.on(PlayerEvent.showAnswer, function (msg) {
+        _this.game.UiModalsHandler.showTeamPlayerResult(msg.result, msg.quText, msg.answerText);
     });
 
     window.socket.on(PlayerEvent.sendHelp, function (helpMessage) {

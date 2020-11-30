@@ -36,6 +36,9 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
              }
             targetTile.occupant = _this.game.playersActive[playersTurn-1];
         }
+        else if(targetTile.key.includes("bonus-tile")){
+            _this.allTilesGreen();
+        }
         else{
             /* if player is "Instructor" -> then change the board's main tiles color (similar to trivial pursuit graphics)
                and reveal the recipe steps  */
@@ -53,12 +56,14 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
 
         playerMoving = false;
 
-        if (typeof sprite.markerScale !== 'undefined')
-            sprite.markerScale.pause();
-        sprite.marker.scale.setTo(0.08, 0.08);
-        
-        _this.isoGroup.forEach(t => { t.tint = 0xffffff});
-        setTimeout( _this.isoGroup.forEach(t => { t.tint = 0xffffff}), 700);
+        if(targetTile.key.includes("bonus-tile")==false){
+            if (typeof sprite.markerScale !== 'undefined')
+                sprite.markerScale.pause();
+            sprite.marker.scale.setTo(0.08, 0.08);
+            
+            _this.isoGroup.forEach(t => { t.tint = 0xffffff});
+            setTimeout( _this.isoGroup.forEach(t => { t.tint = 0xffffff}), 700);
+        }
 
     }, _this);
 
