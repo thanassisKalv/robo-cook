@@ -35,6 +35,42 @@
             "key": "image_question_0_5",
             "url": "/assets/images_questions/croissant-biscuits.png"
         },
+        {
+            "type": "image",
+            "key": "image_question_0_6",
+            "url": "/assets/images_questions/fried-foods.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_7",
+            "url": "/assets/images_questions/fish-chips-icon.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_8",
+            "url": "/assets/images_questions/organic-food.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_9",
+            "url": "/assets/images_questions/salad-vs-burger.jpg"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_10",
+            "url": "/assets/images_questions/home-vs-fast-food.jpg"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_11",
+            "url": "/assets/images_questions/citrus-family.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_12",
+            "url": "/assets/images_questions/citrus-family.png"
+        },
+
 
 
         {
@@ -180,6 +216,40 @@
             "key": "image_question_2_13",
             "url": "assets/images_questions/food-pyramid.png"
         },
+        {
+            "type": "image",
+            "key": "image_question_2_14",
+            "url": "assets/images_questions/all-fats.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_15",
+            "url": "assets/images_questions/exercise-carbs.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_16",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_17",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_18",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_19",
+            "url": "assets/images_questions/extended-pyramid.png"
+        },
+
+
+
+
 
 
         {

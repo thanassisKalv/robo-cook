@@ -54,7 +54,7 @@ class PlayerScores {
 
       this.addElementsOnRightPanel();
 
-      this.game.scoreText = this.game.add.text(95, 25, "Keep Learning", {font: "bold 30px Handlee"});
+      this.game.scoreText = this.game.add.text(115, 40, "Keep Learning", {font: "bold 23px Comic Sans MS"});
       this.game.panelBack.addChild(this.game.scoreText);
       this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
       this.game.learningBadge.scale.setTo(0.25);
@@ -65,6 +65,8 @@ class PlayerScores {
 
 
       this.game.stepDoneMusic = this.game.add.audio('step_done');
+      this.game.finaleMusic = this.game.add.audio('game_finished');
+      this.game.finaleMusic.volume = 1.5;
       this.setRecipeProgress(this.game.stepsInstructor,this.game.stepsShopper, this.game.stepsCook);
     }
 
@@ -97,7 +99,7 @@ class PlayerScores {
       this.recipe_shopper = recipeStepsShopper;
       this.recipe_cook = recipeStepsCook
       this.rcpPrgrs = 0;
-      this.rcpStepsPts = [this.recipe[0].points, this.recipe[1].points, this.recipe[2].points];
+      this.rcpStepsPts = [this.recipe[0].points, this.recipe[1].points, this.recipe[2].points, this.recipe[3].points];
       this.rcpStepsCompleted = [false,false];
       this.unlockedStep = undefined;
       this.stepInProgress = false;
@@ -114,7 +116,7 @@ class PlayerScores {
          this.game.objcvs[this.rcpPrgrs].pointsFrame.selfDestroy();
          console.log("Step-"+this.rcpPrgrs+" of recipe unlocked!");
          this.unlockedStep = this.rcpPrgrs;
-         this.game.teamProgrTxt[this.rcpPrgrs].setText("To "+(this.unlockedStep+1)+"o βήμα ενεργοποιήθηκε!");
+         this.game.teamProgrTxt[this.rcpPrgrs].setText("Step "+(this.unlockedStep+1)+" is activated!");
          this.game.teamProgrTxt[this.rcpPrgrs].y = this.game.teamProgrTxt[this.rcpPrgrs].y - 55;
          this.game.teamProgrTxt[this.rcpPrgrs].visible = true;
          this.stepInProgress = true;
@@ -125,11 +127,12 @@ class PlayerScores {
 
    updateRecipeProgress(){
       var _this = this;
-      this.game.teamProgrTxt[this.rcpPrgrs].setText("\n\nTo "+(this.rcpPrgrs+1)+"o βήμα ολοκληρώθηκε!");
+      this.game.teamProgrTxt[this.rcpPrgrs].setText("\n\nStep "+(this.rcpPrgrs+1)+" is complete!");
       this.game.objcvsTxt[this.rcpPrgrs].visible = false;
       this.stepInProgress = false;
       var x = this.rcpPrgrs;
       setTimeout( function(){ 
+         _this.game.UiModalsHandler.showStepFinished(x, _this.recipe[x].step);
          _this.game.stepDoneMusic.play(); }, 1000);
       setTimeout( function(){
          _this.game.objcvs[x].visible = false;
@@ -141,6 +144,16 @@ class PlayerScores {
       if(this.rcpPrgrs<this.rcpStepsPts.length){
          this.game.objcvs[this.rcpPrgrs].pointsFrame.appear();
          this.checkStepsPrice();
+      }
+      else{
+         var _this = this;
+         this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nRECIPE IS READY!");
+         setTimeout( function(){ 
+            _this.game.finaleMusic.play();}, 2000);
+         setTimeout(function(){
+            var xc = _this.game.startPositions[0].x/2+_this.game.startPositions[2].x/2;
+            var yc = _this.game.startPositions[0].y/2+_this.game.startPositions[2].y/2;
+            _this.game.finaleBadge = _this.game.add.image(xc, yc, "cake-complete"); }, 4000);
       }
    }
 
@@ -196,12 +209,12 @@ class PlayerScores {
       else 
          this.game.objcvsTxt[this.unlockedStep].setText( this.recipe_cook[this.unlockedStep].step );
       
-      this.game.objcvsTxt[this.unlockedStep].fontSize = 20;
+      this.game.objcvsTxt[this.unlockedStep].fontSize = 15;
       this.game.objcvsTxt[this.unlockedStep].fontStyle = 'normal';
       this.game.objcvsTxt[this.unlockedStep].fontWeight = "bold"
       this.game.objcvsTxt[this.unlockedStep].addColor("rgb(10, 225, 10)", 0);
       this.game.objcvs[this.unlockedStep].pointsFrame.selfDestroy();
-      this.game.teamProgrTxt[this.unlockedStep].setText( "Το "+(this.unlockedStep+1)+"ο βήμα συνταγής είναι ενεργό και ξεκλειδώθηκε (...σχεδόν)!" );
+      this.game.teamProgrTxt[this.unlockedStep].setText( "Step "+(this.unlockedStep+1)+" is enabled and revealed (...almost)!" );
       // The Shopper and the Cook, should select and drag-drop their recipe-action over the correct mark
       this.game.objcvs[this.unlockedStep].loadTexture("activeObj");
       //if(myRole!="Instructor"){
@@ -234,7 +247,7 @@ class PlayerScores {
    checkRcpActionOverlap(){
 
       for (var i=0; i<2; i++){
-         if(this.checkOverlap(this.game.cursor, this.game.objcvs[this.rcpPrgrs].actions[i]) && this.game.objcvs[this.rcpPrgrs].actions[i].done==false)
+         if(this.checkOverlap(this.game.cursor, this.game.objcvs[this.rcpPrgrs].actions[i].pointBody) && this.game.objcvs[this.rcpPrgrs].actions[i].done==false)
          {
             console.log("Recipes choices: ", this.game.cursor.rcpItemKey, this.game.objcvs[this.rcpPrgrs].actions[i].name);
             if( this.game.cursor.rcpItemKey == this.game.objcvs[this.rcpPrgrs].actions[i].name+"-recipe"){
@@ -254,7 +267,7 @@ class PlayerScores {
                window.socket.emit(PlayerEvent.opponentAnswered, {correct:undefined, category:-1, quIndex:-1, rcpAction:true});
                this.game.cursor.getChildAt(0).loadTexture("redX");
                setTimeout( function(){ _this.game.cursor.removeChildren();}, 700);
-               this.game.incorrectMusic.play();
+               this.game.wrongActionMusic.play();
                rcpItemDropping = false;
             }
             togglePlayerTurn();

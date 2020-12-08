@@ -32,13 +32,14 @@ class MainMenu extends Phaser.State {
         this.level2Button.alpha = 0.45;
         this.level2Button.visible = false;
 
-        this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+270, "protein-logo");
+        this.proteinLogo = this.add.image(this.game.width/2-450, this.game.height/2+210, "protein-logo");
         this.proteinLogo.anchor.setTo(0.5, 0.5);
-        this.reqsFrame = this.add.image(this.game.width/2-450, this.game.height/2+420, "system-reqs");
+        this.reqsFrame = this.add.image(this.game.width/2-450, this.game.height/2+380, "system-reqs");
         this.reqsFrame.anchor.setTo(0.5, 0.5);
-        this.reqsText = new Phaser.Text(this.game, 0, 0, "►Συνιστάται η πρόσβαση μέσω Chrome ή Chromium Browser \n►Το παιχνίδι απαιτεί οθόνη με ανάλυση 1920x1080", {font: "16px Calibri"});
+        this.reqsText = new Phaser.Text(this.game, 0, 0, "►Access is recommended with Chrome or Chromium browser\n►Please use an updated version of your browser \n"+
+                                                            "►Game requires screen resolution at least 1920x1080", {font: "16px Calibri"});
         this.reqsText.x = this.reqsFrame.x;
-        this.reqsText.y = this.reqsFrame.y+20;
+        this.reqsText.y = this.reqsFrame.y+10;
         this.reqsText.anchor.set(0.5);
         this.add.existing(this.reqsText);
 
@@ -50,7 +51,7 @@ class MainMenu extends Phaser.State {
         this.istructionsDetailButton.anchor.setTo(0.5, 0.5);
         this.istructionsDetailButton.alpha = 0.80;
         this.gameInstructions.addChild(this.istructionsDetailButton);
-        this.moreInstructionsText = this.add.text(0,0, "Λεπτομερείς Οδηγίες", {font: "bold 17px Comic Sans MS"});
+        this.moreInstructionsText = this.add.text(0,0, "Detailed Instructions", {font: "bold 17px Comic Sans MS"});
         this.moreInstructionsText.anchor.setTo(0.5);
         this.istructionsDetailButton.addChild(this.moreInstructionsText);
 
@@ -116,6 +117,7 @@ class MainMenu extends Phaser.State {
         this.game.socket.on(PlayerEvent.assignID, function (playerID) {
             _this.game.myID = playerID.id;
             _this.game.myTeam = playerID.team;
+            _this.game.recipeData = playerID.recipeData;
             console.log("Player got a unique ID: " +  _this.game.myID );
         });
 
@@ -152,7 +154,7 @@ class MainMenu extends Phaser.State {
             for (var i = 0; i < players["discover-recipe"].length; i++) 
             {
                 if (players["discover-recipe"][i].id == _this.game.myID){
-                    this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.myTeam);
+                    this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.myTeam, _this.game.recipeData);
                     break; 
                 }
             }

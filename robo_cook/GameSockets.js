@@ -112,6 +112,10 @@ function registerSocketListeners(_this, window)
         _this.game.scoreHandler.updateOtherRolesProgress(msgEmpty.role);
     });
 
+    window.socket.on(PlayerEvent.revealMusicPlay, function (msg) {
+        _this.game.answerReveal.play();
+    });
+
     window.socket.on(PlayerEvent.showAnswer, function (msg) {
         _this.game.UiModalsHandler.showTeamPlayerResult(msg.result, msg.quText, msg.answerText);
     });
@@ -121,9 +125,9 @@ function registerSocketListeners(_this, window)
         var helpCloudX = _this.game.msgReceiver.x;
         var helpCloudY = _this.game.msgReceiver.y;
         if(_this.game.helpClouds.length==0)
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX+35, helpCloudY-40, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+35, helpCloudY-40, 'help-message-'+helpMessage.confident);
         else
-            var msgHelpMsg = _this.game.add.sprite(helpCloudX+20, helpCloudY-170, 'help-message-cloud');
+            var msgHelpMsg = _this.game.add.sprite(helpCloudX+20, helpCloudY-170, 'help-message-'+helpMessage.confident);
         
         _this.game.helpClouds.push(msgHelpMsg);
         var msgΗelpText = _this.game.add.text(-90, -40, helpMessage.helpText, {font: "21px Handlee"});
@@ -148,5 +152,6 @@ function registerSocketListeners(_this, window)
         //_this.music.stop();
         _this.game.world.removeAll(true);
         _this.state.start('MainMenu', true, false);
+        location.reload();
     });
 }

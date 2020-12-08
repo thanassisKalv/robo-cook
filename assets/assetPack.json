@@ -116,6 +116,12 @@
         },
         {
             "type": "image",
+            "key": "cake-finished",
+            "url": "assets/tileset/cake-finish.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
             "key": "close",
             "url": "assets/questions/x-mark.png",
             "overwrite": false
@@ -161,7 +167,7 @@
         {
             "type": "json",
             "key": "mapdata",
-            "url": "assets/isotiles-maps/board-cake.json"
+            "url": "assets/isotiles-maps/board-salad.json"
         }
     ],
     "meta": {

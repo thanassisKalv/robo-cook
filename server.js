@@ -57,6 +57,7 @@ var PlayerEvent = (function () {
     PlayerEvent.subStepsCompleted = "PlayerEvent:subStepsCompleted";
     PlayerEvent.updateRecipeItems = "PlayerEvent:updateRecipeItems";
     PlayerEvent.showAnswer = "PlayerEvent:showAnswer";
+    PlayerEvent.revealMusicPlay = "PlayerEvent:revealMusicPlay";
     return PlayerEvent;
 }());
 
@@ -80,9 +81,10 @@ class GameServer {
         this.uuidTable = {};
         this.questionsAnswered = {0:[], 1:[], 2:[]};
         this.playerAnsweringSocket = {};
-        this.totalQuests = {0:6, 1:10, 2:14};
+        this.totalQuests = {0:13, 1:10, 2:20};
         this.levelsCurrentStep = {"discover-recipe":0, "discover-diet":0};
         this.levelsActionsCounter = {"discover-recipe":0, "discover-diet":0};
+        this.levelRecipe = 0;
         this.socketEvents();
     }
     connect (port) {
@@ -128,6 +130,8 @@ class GameServer {
         this.updateRecipeItems(socket);
 
         this.addShowAnswerResult(socket);
+
+        this.addRevealMusicPlay(socket);
     };
 
     togglePlayerTurn(level){
@@ -145,6 +149,7 @@ class GameServer {
         this.syncedPlayersStart[level] = 0;
         this.levelsCurrentStep[level] = 0;
         this.levelsActionsCounter[level] = 0;
+        this.levelRecipe = 0;
      };
 
     addSignOnListener (socket) {
@@ -157,16 +162,18 @@ class GameServer {
             // inform the new player about the awaiting connected players
             //socket.emit(PlayerEvent.players, _this.getConnectedPlayers(playerMessage.level));
 
+
             if(_this.levels[playerMessage.level].length == PLAYERS_PER_LEVEL){
                 socket.emit(PlayerEvent.levelFull, {});
             }
             else{
                 // create a new player and broadcast it to previously connected players
                 var newPlayer = _this.createPlayer(socket, playerMessage);
+                //newPlayer.recipeData = gameLevels.levels[1];
                 socket.emit(PlayerEvent.assignID, newPlayer);
 
                 console.log("Level-"+playerMessage.level + " contains: ");
-                console.log(_this.levels[playerMessage.level]);
+                //console.log(_this.levels[playerMessage.level]);
 
                 if(_this.levels[playerMessage.level].length>1){
                     var players_in_Level = _this.getConnectedPlayers(playerMessage.level);
@@ -179,15 +186,14 @@ class GameServer {
     };
 
     createPlayer (socket, msg, team) {
-        var chooseTeam;
-        if (this.levels[msg.level].length % 2 == 0)
-            chooseTeam = 1;
-        else
-            chooseTeam = 2;
+        var chooseTeam = 1;
+        if (this.levels[msg.level].length  == 0)
+            this.levelRecipe = this.randomIntFromInterval(0,1);
 
         socket.player = {
             level: msg.level,
             team: chooseTeam,
+            recipeData: gameLevels.levels[this.levelRecipe],
             id: uuid()
         };
         //collection_players.insert({playerID:socket.player.id})
@@ -319,6 +325,15 @@ class GameServer {
         });
     }
 
+    addRevealMusicPlay(socket){
+        var _this = this;
+        socket.on(PlayerEvent.revealMusicPlay, function (msg) {
+            if(socket.player){
+                socket.broadcast.emit(PlayerEvent.revealMusicPlay, msg );
+            }
+        });
+    }
+
     addStepCompleted(socket){
         var _this = this;
         socket.on(PlayerEvent.actionsCompleted, function (confirmMessage) {
@@ -375,10 +390,16 @@ class GameServer {
             return acc;
         }, []);
     }
+
+    randomIntFromInterval(min, max) { // min and max included 
+        var randInt = Math.floor(Math.random() * (max - min + 1) + min);
+    
+        return randInt;
+    };
 };
 
 
-console.log(gameLevels.recipeLevels[0].recipe_cook);
+//console.log(gameLevels);
 
 var gameSession = new GameServer();
 gameSession.connect(port);

@@ -9,7 +9,6 @@ var objectData = 'assets/sprites/object.json';
 class Preloader extends Phaser.State {
 
 
-
 //  The Google WebFont Loader will look for this object, so create it before loading the script.
 WebFontConfig = {
     //  'active' means all requested fonts have finished loading
@@ -23,12 +22,25 @@ WebFontConfig = {
     }
 };
 
-
     preload() {
+      this.ready = false;
+      this.load.image('loading_bg', 'assets/images/loading_bg.jpg');
+    }
+
+
+    create() {
+      
 	//	This sets the preloadBar sprite as a loader sprite.
 	//	What that does is automatically crop the sprite from 0 to full-width
 	//	as the files below are loaded in.
-	// this.game.load.setPreloadSprite(this.preloadBar);
+  // this.game.load.setPreloadSprite(this.preloadBar);
+        this.bgload = this.add.sprite(this.game.width/2,this.game.height/2, "loading_bg");
+        this.bgload.anchor.set(0.5);
+
+        this.preloadAsset = this.add.sprite(this.game.width/2,this.game.height/2, 'preloader');
+        this.preloadAsset.anchor.setTo(0.5, 0.5);
+        this.game.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+        this.game.load.setPreloadSprite(this.preloadAsset);
 
         var path;
         if (typeof window.path === "undefined") {
@@ -38,12 +50,10 @@ WebFontConfig = {
             path = window.path;
         }
 
-        this.ready = false;
         // button sprites taken from opengameart.org/content/ui-pack
         // chars/green_sprite taken from opengameart.org/content/platformer-art-more-animations-and-enemies
         // credit to Kenny.nl
 
-        this.game.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.game.load.image('bg', path+'assets/robo-cook/background-scene-2.png');
         this.game.load.image("cursor", path+"assets/menus/dot_a.png");
         this.game.load.image("cursorPlaying", path+"assets/menus/can-play.png");
@@ -66,18 +76,22 @@ WebFontConfig = {
         this.game.load.audio('rollDice', ['assets/audio/dice_roll.mp3']);
         this.game.load.audio('countdown', ['assets/audio/countdown10.mp3']);
         this.game.load.audio('correct', ['assets/audio/new/correct_answer.mp3']);
-        this.game.load.audio('pick-up', ['assets/audio/pick-up-sound.mp3']);
+        this.game.load.audio('pick-up', ['assets/audio/new/correct_action.mp3']);
+        this.game.load.audio('wrong-action', ['assets/audio/new/wrong_action.mp3']);
         this.game.load.audio('player-turn', ['assets/audio/new/next_player.mp3']);
         this.game.load.audio('incorrect', ['assets/audio/new/wrong_answer.mp3']);
         this.game.load.audio('move_bonus', ['assets/audio/new/teleportation.mp3']);
         this.game.load.audio('step_done', ['assets/audio/new/step_finished.mp3']);
         this.game.load.audio('correct_answer_reveal', ['assets/audio/new/agony_music.mp3']);
+        this.game.load.audio('game_finished', ['assets/audio/new/game_finished.mp3']);
+        this.game.load.audio('bg_track', ['assets/audio/new/bg_track_0.mp3']);
 
         this.game.load.json('questions', path+'assets/questions/data/questions.json');
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.game.load.image('button', 'assets/questions/button.png');
         // change asset keys and folder/filenames if necessary
-        this.game.load.image('help-message-cloud', 'assets/questions/help-message.png');
+        this.game.load.image('help-message-sure', 'assets/questions/help-message.png');
+        this.game.load.image('help-message-doubt', 'assets/questions/help-message-doubt.gif');
         this.game.load.image('receiver-icon', 'assets/questions/receiver-icon.png');
         this.game.load.image('green-bar', 'assets/questions/green-bar.png');
         this.game.load.image('red-bar', 'assets/questions/red-bar.png');
@@ -107,6 +121,7 @@ WebFontConfig = {
 
         this.game.load.image('team-1-bonus', 'assets/badges/team-1-bonus.png');
         this.game.load.image('team-2-bonus', 'assets/badges/team-2-bonus.png');
+        this.game.load.image('recipe-title', "assets/badges/title-frame.png");
         this.game.load.image('objectives', "assets/badges/objectives-frame-xl.png");
         this.game.load.image('activeObj', "assets/badges/active.png");
         this.game.load.image('noActiveObj', "assets/badges/active-no.png");
@@ -126,8 +141,8 @@ WebFontConfig = {
         this.game.load.image('protein-logo', 'assets/menus/protein-logo-with-flag.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
-        this.game.load.image('game-instructions', 'assets/menus/instructions-greek-short.png');
-        this.game.load.image('game-instructions-details', 'assets/menus/instructions-fixed-greek-v2.png');
+        this.game.load.image('game-instructions', 'assets/menus/instructions-eng-short.png');
+        this.game.load.image('game-instructions-details', 'assets/menus/instructions-fixed-eng-v2.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
         this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
@@ -140,6 +155,7 @@ WebFontConfig = {
         this.game.load.image('rcpAction-shop1', 'assets/recipe-items/shop-1.png');
         this.game.load.image('rcpAction-shop2', 'assets/recipe-items/shop-2.png');
         this.game.load.image('rcpAction-complete', 'assets/recipe-items/substeps-completed.png');
+        this.game.load.image('cake-complete', 'assets/recipe-items/cake-complete.png');
         this.game.load.image('eggs-recipe', 'assets/recipe-items/eggs.png');
         this.game.load.image('salt & pepper-recipe', 'assets/recipe-items/salt-pepper.png');
         this.game.load.image('heat-recipe', 'assets/recipe-items/heating-action.jpg');
@@ -159,7 +175,21 @@ WebFontConfig = {
         this.game.load.image('sieve-recipe', 'assets/recipe-items/sieve-action.png');
         this.game.load.image('add-recipe', 'assets/recipe-items/adding-action.png');
         this.game.load.image('mix-recipe', 'assets/recipe-items/mix-action.png');
-
+        this.game.load.image('pour-recipe', 'assets/recipe-items/pour-action.png');
+        this.game.load.image('bake-recipe', 'assets/recipe-items/bake-action.png');
+        this.game.load.image('mixture-recipe', 'assets/recipe-items/mixture-action.png');
+        this.game.load.image('vanilla-recipe', 'assets/recipe-items/vanilla.png');
+        this.game.load.image('oregano-recipe', 'assets/recipe-items/oregano.png');
+        this.game.load.image('saucepan-recipe', 'assets/recipe-items/saucepan.png');
+        this.game.load.image('beans-recipe', 'assets/recipe-items/beans.png');
+        this.game.load.image('strain-recipe', 'assets/recipe-items/strain-action.png');
+        this.game.load.image('peppers-recipe', 'assets/recipe-items/peppers.png');
+        this.game.load.image('cheese-recipe', 'assets/recipe-items/cheese.png');
+        this.game.load.image('grate-recipe', 'assets/recipe-items/grate.png');
+        this.game.load.image('boil-recipe', 'assets/recipe-items/boil-action.png');
+        this.game.load.image('cut-recipe', 'assets/recipe-items/chop-action.png');
+        this.game.load.image('salt-recipe', 'assets/recipe-items/salt.png');
+        this.game.load.image('vinaigrette-recipe', 'assets/recipe-items/vinaigrette.png')
         this.game.load.image('redX', 'assets/recipe-items/redX.png');
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);

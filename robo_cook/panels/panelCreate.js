@@ -68,10 +68,12 @@ function addRecipeActions(game, objcvs, role, stepsRole, Ypos, j){
             action.visible = false;
             action.alpha = 0.6;
             action.scale.setTo(0.8);
+            action.pointBody = game.add.sprite(45, 45, "");
+            action.addChild(action.pointBody);
             objcvs.addChild(action);
             objcvs.actions.push(action);
       }
-      var actionTxt = game.add.text(45, Ypos[2], stepsRole["purpose"], {font: "bold 15px Comic Sans MS"});
+      var actionTxt = game.add.text(45, Ypos[2], stepsRole["purpose"], {font: "bold 16px Comic Sans MS"});
       actionTxt.addColor("rgb(0, 0, 255)", 0);
       actionTxt.visible = false;
       actionTxt.wordWrap = true;
@@ -99,7 +101,7 @@ function addRecipeNonActions(game, objcvs, role, stepsRole, Ypos, j){
             objcvs.addChild(action);
             objcvs.nonActions.push(action);
       }
-      var actionTxt = game.add.text(45, Ypos[2], stepsRole["purpose"], {font: "bold 18px Comic Sans MS"});
+      var actionTxt = game.add.text(45, Ypos[2], stepsRole["purpose"], {font: "bold 16px Comic Sans MS"});
       actionTxt.addColor("rgb(0, 0, 255)", 0);
       actionTxt.visible = false;
       actionTxt.wordWrap = true;
@@ -131,17 +133,22 @@ function createPanelL(game){
 
       game.objectivesFrame = game.add.sprite(25, 380, "objectives");
       game.panelBack.addChild(game.objectivesFrame);
-      const objPosY = [420, 420, 420];  // eite [420, 420, 420]; gia 3-steps
+      game.rcpTitleFrame = game.add.sprite(45, 360, 'recipe-title');
+      game.panelBack.addChild(game.rcpTitleFrame);
+      game.rcpTitle = game.add.text(85, 365, game.rcpTitle, {font: "bold 17px Comic Sans MS"});
+      game.rcpTitle.addColor("rgb(0, 222, 55)", 0);
+      game.panelBack.addChild(game.rcpTitle);
+      const objPosY = [420, 420, 420, 420];  // eite [420, 420, 420]; gia 3-steps
       game.objcvs = [];
       game.objcvsTxt = [];
       game.teamProgrTxt = [];
-      for(var i=0; i<3; i++){
+      for(var i=0; i<game.totalSteps; i++){
             game.objcvs.push(game.add.sprite(45, objPosY[i], "noActiveObj"));
             game.objcvs[i].scale.setTo(0.4);
             game.objcvs[i].visible = false;
             //if(game.roles[game.controllingPlayer]=="Instructor")
             //    game.objcvsTxt.push(game.add.text(63, objPosY[i]+5, game.stepsInstructor[i]["step"].substring(0, 12)+"...", {font: "italic 22px Handlee"}));
-            game.objcvsTxt.push(game.add.text(55, objPosY[i]+85, "Ο εκπαιδευτής να πάει στο σωστό πλακίδιο για να αποκαλύψει το επόμενο βήμα...", {font: "bold 20px Comic Sans MS"}));
+            game.objcvsTxt.push(game.add.text(55, objPosY[i]+85, "Instructor must go to the correct tile to reveal the recipe step...", {font: "bold 20px Comic Sans MS"}));
 
             game.objcvsTxt[i].wordWrap = true;
             game.objcvsTxt[i].wordWrapWidth = 250;
@@ -151,7 +158,7 @@ function createPanelL(game){
             game.objcvs[i].pointsFrame = new PointsFrame(game, game.stepsInstructor[i], game.panelBack, objPosY[i]+10, game.objcvs[i]);
             game.objcvs[i].pointsFrame.hide();
             
-            game.teamProgrTxt.push( game.add.text(65, objPosY[i]+45, "πόντοι για να ενεργοποιήσετε το 1ο βήμα", {font: "bold 18px Comic Sans MS"}) );
+            game.teamProgrTxt.push( game.add.text(65, objPosY[i]+45, "points to enable recipe step", {font: "bold 18px Comic Sans MS"}) );
             //game.teamProgrTxt[i].anchor.setTo(0.5);
             game.teamProgrTxt[i].wordWrap = true;
             game.teamProgrTxt[i].wordWrapWidth = 240;
@@ -160,11 +167,11 @@ function createPanelL(game){
 
             //if(game.roles[game.controllingPlayer]!="Instructor")
             if( game.roles[game.controllingPlayer]=="Cook" ){
-                  addRecipeNonActions(game, game.objcvs[i], "shop", game.stepsShopper, [340+50, 480+50, 580+50 ], i);
-                  addRecipeActions(game, game.objcvs[i], "cook", game.stepsCook, [630+50, 780+50, 680+50 ], i);
+                  addRecipeNonActions(game, game.objcvs[i], "shop", game.stepsShopper, [340+50, 480+50, 580+20 ], i);
+                  addRecipeActions(game, game.objcvs[i], "cook", game.stepsCook, [630+50, 780+50, 680+20 ], i);
             }else{
-                  addRecipeNonActions(game, game.objcvs[i],"cook", game.stepsCook, [340+50, 480+50, 580+50 ], i);
-                  addRecipeActions(game, game.objcvs[i], "shop", game.stepsShopper, [630+50, 780+50, 680+50 ], i);
+                  addRecipeNonActions(game, game.objcvs[i],"cook", game.stepsCook, [340+50, 480+50, 580+20 ], i);
+                  addRecipeActions(game, game.objcvs[i], "shop", game.stepsShopper, [630+50, 780+50, 680+20 ], i);
             }
 
             game.panelBack.addChild(game.objcvs[i]);
@@ -195,16 +202,16 @@ function createPanelR(game){
       game.panelBackR.addChild(game.panelBackR.panelTexture);
 
       game.controllingBadge = game.add.sprite(5, 0, "controlling-"+game.roles[game.controllingPlayer]);
-      game.controllPlayerText = game.add.text(53, 15, "Ελέγχεις τον παίκτη\n "+game.roles[game.controllingPlayer],  {font: "bold 15px Handlee"});
+      game.controllPlayerText = game.add.text(53, 15, "Your control player\n "+game.roles[game.controllingPlayer],  {font: "bold 15px Handlee"});
       game.panelBackR.addChild(game.controllingBadge);
       game.panelBackR.addChild(game.controllPlayerText);
 
       game.dice1play = new Phaser.Circle(1630, 250, 160);
       game.dice2play = new Phaser.Circle(1630, 250, 160);
 
-      game.playingNowText = game.add.text(20, 80, game.roles[playersTurn]+"'s", {font: "bold 30px Handlee"})
+      game.playingNowText = game.add.text(20, 80, game.roles[playersTurn], {font: "bold 30px Handlee"})
       game.playingNowText.addColor('#ff0000', 0);
-      game.turnText = game.add.text(20, 110, "turn", {font: "bold 30px Handlee"})
+      game.turnText = game.add.text(20, 110, "turn", {font: "bold 30px Comic Sans MS"})
       game.playingRoleIcon = game.add.image(140, 140, game.rolesIcon[playersTurn]);
       game.playingRoleIcon.scale.setTo(0.5);
       game.playingRoleIcon.anchor.setTo(0.5);
@@ -217,7 +224,7 @@ function createPanelR(game){
             game.playingRoleIcon.tween.resume();
       
       // dices
-      game.diceSum = game.add.text(26, 360, "Ζάρια: -", {font: "28px Comic Sans MS"});
+      game.diceSum = game.add.text(26, 360, "Dice: -", {font: "28px Comic Sans MS"});
       game.panelBackR.addChild(game.diceSum);
 
       game.dicePlusTeam1 = game.add.sprite( 26, 420, "team-1-bonus");
@@ -262,7 +269,7 @@ function createPanelR(game){
       game.keyArrows.anchor.setTo(0.5);
       game.keyArrows.scale.setTo(0.8);
       game.keyArrows.alpha = 0.8;
-      game.keyArrowsText = game.add.text(105, 790, "Περιηγήσου στο ταμπλό", {font: "15px Consolas"});
+      game.keyArrowsText = game.add.text(105, 790, "Navigate the board", {font: "15px Consolas"});
       game.keyArrowsText.anchor.setTo(0.5);
       game.panelBackR.addChild(game.keyArrows);
       game.panelBackR.addChild(game.keyArrowsText);

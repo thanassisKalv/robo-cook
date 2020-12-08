@@ -41,13 +41,15 @@ class GameState extends Phaser.State {
     this.game.iso.anchor.setTo(0.5, 0.5);
   }
 
-  init(argLevelName, myPlayer, belongsTeam) {
+  init(argLevelName, myPlayer, belongsTeam, recipeData) {
     this.game.maxHeightImageQuestion = 2*310;
     this.game.maxWidthImageQuestion = 2*380;
     //console.log(myPlayer)
     this.game.controllingPlayer = myPlayer+1;
     this.levelsName = argLevelName;
     this.myTeam = belongsTeam;
+    this.game.recipeData = recipeData;
+    console.log(this.game.recipeData);
   }
 
   create() {
@@ -64,14 +66,13 @@ class GameState extends Phaser.State {
     this.startPathColor = 0xdb7f40;
 
     this.mapData =  this.game.cache.getJSON('mapdata');
-    this.game.stepsInstructor = this.mapData.recipe;
-    this.game.stepsCook = this.mapData.recipe_cook;
-    this.game.stepsShopper = this.mapData.recipe_shopper;
+    this.game.stepsInstructor = this.game.recipeData.recipe;
+    this.game.stepsCook = this.game.recipeData.recipe_cook;
+    this.game.stepsShopper = this.game.recipeData.recipe_shopper;
+    this.game.totalSteps = this.game.recipeData.total_steps;
+    this.game.rcpTitle = this.game.recipeData.recipe_name;
 
     this.data = this.game.cache.getJSON('questions');
-    //console.log("qlen",this.data.categories[0].questions.length);
-    //console.log("qlen",this.data.categories[1].questions.length);
-    //console.log("qlen",this.data.categories[2].questions.length);
     this.game.questionsAnswered = {0:[], 1:[], 2:[]};
 
     this.startPositions = [];
@@ -79,6 +80,7 @@ class GameState extends Phaser.State {
     this.startingTiles = [];
     this.game.helpClouds = [];
     this.game.playersActive = [];
+    this.game.startPositions = [];
     this.game.roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     //this.diceGroup = [];
@@ -105,6 +107,13 @@ class GameState extends Phaser.State {
     this.rollMusic.volume = 1.2;
     this.moveBonusMusic = this.game.add.audio('move_bonus');
     this.moveBonusMusic.volume = 1.2;
+    this.game.pickupMusic = this.game.add.audio('pick-up');
+    this.game.wrongActionMusic = this.game.add.audio('wrong-action');
+    this.game.pickupMusic.volume = 0.8;
+    this.game.wrongActionMusic.volume = 0.8;
+    this.bgTrackMusic = this.game.add.audio('bg_track', 1, true);
+    this.bgTrackMusic.volume = 0.75;
+    this.bgTrackMusic.play();
     
     for (var i=0; i < 2; i++) {
         var adice = new Dice(this.game, 56+i*90, 210, i);
@@ -341,11 +350,6 @@ class GameState extends Phaser.State {
     this.game.cursor.position.x = this.input.worldX;
     this.game.cursor.position.y = this.input.worldY;
 
-    //if(this.input.activePointer.x>1700 || this.input.activePointer.y>900)
-    //  this.game.camera.follow(this.game.cursor, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
-    //else 
-    //   this.game.camera.follow(this.game.playersActive[this.game.controllingPlayer-1], Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
-
     if (this.cursors.up.isDown){
       this.camera.y -= 16;
       this.game.camera.unfollow();
@@ -364,7 +368,7 @@ class GameState extends Phaser.State {
     }
 
 
-    this.game.diceSum.setText("Ζαριά: " + total);
+    this.game.diceSum.setText("Dice: " + total);
     this.game.world.bringToTop(this.game.cursor);
 
   }
@@ -408,6 +412,7 @@ class GameState extends Phaser.State {
                   this.startingTiles.push(tile);
                   this.startPositions.push({x: x*size, y: y*size});
                   this.targetTiles[tileName] = tile;
+                  this.game.startPositions.push({x: x*size, y: y*size});
                   tile.alpha = 1.0;
               }
               if(tileName.includes("cook-")){
@@ -458,7 +463,7 @@ class GameState extends Phaser.State {
     }
   }
 
-  allTilesGreen(){
+  moveEverywhere(){
     this.midTiles = [];
     this.isoGroup.forEach(this.makeGreenTile, this, false);
     this.moveBonusMusic.play();

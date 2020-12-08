@@ -11,18 +11,18 @@ class QuestPopUp extends Phaser.Sprite {
         this.answerComponents = this.game.add.group();
 
         // global variables
-        this.timeLimit = 40;        // timeLimit for countdown in seconds
-        this.tLimit = 40;  
+        this.timeLimit = 50;        // timeLimit for countdown in seconds
+        this.tLimit = 50;  
         this.timeOver = false;      // set to false at start
         this.timeBar = null;        // bar-display time remaining
         this.cooktile = cooktile;
         this.shoptile = shoptile;
         this.qType = questNum;
 
-        this.cookActionOptions =  {0: ["καρυκεύστε", "προθερμάνετε","κοσκινίστε"], 1: ["τηγάνιστε", "μπολ", "ανακατέψτε"], 2: ["λιώσει", "προσθέστε", "χτυπήστε"] }; 
-        this.cookActionOptionsEng = {0: ["season", "preheat","sieve"], 1: ["frying", "bowl","mix"],  2: ["melt", "add","mix"] }; 
-        this.shoppingActionOptions = { 0: ["αλατοπίπερο", "αλεύρι","κακάο"], 1: ["λάδι", "ζάχαρη", "αυγά"], 2: ["αλατοπίπερο", "αλεύρι", "αυγά"] };
-        this.shoppingActionOptionsEng =  { 0: [ "salt & pepper", "flour","cocoa"], 1: ["oil", "sugar","eggs"], 2: ["salt & pepper", "flour","eggs"] };
+        this.cookActionOptions =   this.game.recipeData.cookActionOptions;
+        this.cookActionOptionsEng =  this.game.recipeData.cookActionOptionsEng;
+        this.shoppingActionOptions =  this.game.recipeData.shoppingActionOptions
+        this.shoppingActionOptionsEng =   this.game.recipeData.shoppingActionOptionsEng;
         // "3":{ "step": "Γεμίστε την ομελέτα με ό,τι εξτρα θέλετε, διπλώστε απαλά στη μέση με τη σπάτουλα",  "points":[20,10,20] }
 
         this.recipe =  this.game.stepsInstructor;
@@ -37,11 +37,9 @@ class QuestPopUp extends Phaser.Sprite {
         //this.qpop.scale.set(0.25);
         this.countDownMusic = this.game.add.audio('countdown');
         this.game.correctMusic = this.game.add.audio('correct');
-        this.game.pickupMusic = this.game.add.audio('pick-up');
         this.game.incorrectMusic = this.game.add.audio('incorrect');
         this.game.answerReveal = this.game.add.audio('correct_answer_reveal');
         this.game.incorrectMusic.volume = 1.3;
-        this.game.pickupMusic.volume = 0.8;
         //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
 
@@ -51,7 +49,7 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     waitOtherPlayer(){
-        this.game.waiting_other = this.game.add.text(100, 570, 'Περιμένετε \nτους συμπαίκτες...',  {font: "bold 20px Comic Sans MS"});
+        this.game.waiting_other = this.game.add.text(100, 570, 'Wait \nteamplayers...',  {font: "bold 20px Comic Sans MS"});
         this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 1000);
         this.game.waiting_other.anchor.set(0.5,0.5);
         this.game.waiting_other.addColor('#4400ff', 0);
@@ -90,7 +88,7 @@ class QuestPopUp extends Phaser.Sprite {
         this.timeClock.anchor.set(0.5,0.5);
         this.timeClock.scale.set(0.3);
         // add text label to left of bar
-        this.timeLabel = this.game.add.text(60, 525, 'Time Remaining',  {font: "22px Handlee"});
+        this.timeLabel = this.game.add.text(60, 500, 'Time\nremaining',  {font: "19px Comic Sans MS"});
         this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + this.tLimit;
         //this.showImageAnswer(this.categoryIndexSelected, this.currentQuestionIndex);
         this.game.panelRight.addChild(this.bgBar);
@@ -136,13 +134,41 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     displayCookActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Επιλέξτε μια ενέργεια για να ολοκληρώσετε τη συνταγή σας", "cook", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Choose a cooking action to complete your recipe", "cook", this);
     }
     displayShopActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Επιλέξτε ένα αντικείμενο που λείπει από τη συνταγή σας", "shop", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Choose an ingredient that is missing from your recipe", "shop", this);
+    }
+
+    shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+      }
+    
+    randomizeOptions(questionItem){
+        var correctAnswer = questionItem.choices[questionItem.answer];
+        this.shuffle(questionItem.choices);
+        for(var i=0; i<questionItem.choices.length; i++)
+            if(questionItem.choices[i]==correctAnswer)
+                questionItem.answer = i;
+        
     }
 
     showQuestion(questionItem){
+        this.randomizeOptions(questionItem);
         //this.addQuestionTitle(questionItem.question);
         window.socket.emit(PlayerEvent.helpMeAnswer, {image: questionItem.image, question: questionItem.question, 
                                                         hqExist:questionItem.hqExist, helpQuestion:questionItem.helpQuestion, playersTurn: playersTurn, 

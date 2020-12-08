@@ -1,0 +1,106 @@
+ {
+	  "tileNames": [ "empty", "quest", "path-simple", "start", "path-q1", "path-q2", "path-q3", 
+				"target-1", "target-2-player", "target-3", "target-4-player", "bonus-tile", "path-cook-action", "path-shop-action"],
+  	"tileMapOld": [
+		[ 0,0,0,0,0,0,0,15,0,0,0,0,0,0 , 0,0,0,0,0,0,0,15,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 , 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ,  0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,5,6,4,2,2,0,2,6,5,4,0,0 , 0,0,5,6,4,2,2,0,2,6,5,4,0,0 ],
+  		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+  		[ 4,0,6,0,0,0,0,0,0,0,0,6,0,6 ,4,0,6,0,0,0,0,0,0,0,0,6,0,6],
+  		[ 5,0,0,5,0,0,0,0,0,9,8,0,0,4 , 5,0,0,5,0,0,0,0,0,9,8,0,0,4],
+  		[ 6,0,0,0,4,0,0,0,0,10,7,0,0,5 , 6,0,0,0,4,0,0,0,0,10,7,0,0,5],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 2,0,0,0,0,0,15,2,0,0,0,0,0,2 , 2,0,0,0,0,0,15,2,0,0,0,0,0,2],
+		[ 2,0,0,0,0,0,2,15,0,0,0,0,0,2 , 2,0,0,0,0,0,2,15,0,0,0,0,0,2],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 4,0,0,13,12,0,0,0,0,4,0,0,0,4 , 4,0,0,13,12,0,0,0,0,4,0,0,0,4],
+		[ 6,0,0,14,11,0,0,0,0,0,5,0,0,5 , 6,0,0,14,11,0,0,0,0,0,5,0,0,5],
+		[ 5,0,6,0,0,0,0,0,0,0,0,6,0,6 , 5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+		[ 0,0,4,5,6,2,0,2,2,4,5,6,0,0 ,  0,0,4,5,6,2,0,2,2,4,5,6,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0, 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0 , 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,15,0,0,0,0,0,0 , 0,0,0,0,0,0,0,15,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 , 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ,  0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,5,6,4,2,2,0,2,6,5,4,0,0 , 0,0,5,6,4,2,2,0,2,6,5,4,0,0 ],
+  		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+  		[ 4,0,6,0,0,0,0,0,0,0,0,6,0,6 ,4,0,6,0,0,0,0,0,0,0,0,6,0,6],
+  		[ 5,0,0,5,0,0,0,0,0,9,8,0,0,4 , 5,0,0,5,0,0,0,0,0,9,8,0,0,4],
+  		[ 6,0,0,0,4,0,0,0,0,10,7,0,0,5 , 6,0,0,0,4,0,0,0,0,10,7,0,0,5],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 2,0,0,0,0,0,15,2,0,0,0,0,0,2 , 2,0,0,0,0,0,15,2,0,0,0,0,0,2],
+		[ 2,0,0,0,0,0,2,15,0,0,0,0,0,2 , 2,0,0,0,0,0,2,15,0,0,0,0,0,2],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 4,0,0,13,12,0,0,0,0,4,0,0,0,4 , 4,0,0,13,12,0,0,0,0,4,0,0,0,4],
+		[ 6,0,0,14,11,0,0,0,0,0,5,0,0,5 , 6,0,0,14,11,0,0,0,0,0,5,0,0,5],
+		[ 5,0,6,0,0,0,0,0,0,0,0,6,0,6 , 5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+		[ 0,0,4,5,6,2,0,2,2,4,5,6,0,0 ,  0,0,4,5,6,2,0,2,2,4,5,6,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0, 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0 , 0,0,0,0,0,0,2,0,0,0,0,0,0,0]
+	  ],
+
+	  "tileMap": [
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,0,0,0,0,0,5,6,4,2,12,0,13,6,5,4,0,0 ],
+  		[ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0 ],
+  		[ 0,0,0,0,0,4,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+  		[ 0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,13,0,0,4 ],
+  		[ 0,0,0,0,0,6,0,0,0,4,0,0,0,0,12,0,0,0,5 ],
+		[ 0,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,0,0,2 ],
+		[ 0,0,0,0,0,12,0,0,0,0,0,9,8,0,0,0,0,0,13 ],
+		[ 0,0,0,0,0,13,0,0,0,0,0,10,7,0,0,0,0,0,12],
+		[ 0,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,0,0,2 ],
+		[ 0,0,0,0,0,4,0,0,0,13,0,0,0,0,4,0,0,0,4 ],
+		[ 0,0,0,0,0,6,0,0,12,0,0,0,0,0,0,5,0,0,5 ],
+		[ 0,0,0,0,0,5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0 ],
+		[ 0,0,0,0,0,0,0,4,5,6,13,0,12,2,4,5,6,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0 ]
+  	],
+	  "total_steps": 4,
+
+	  "recipe_name": "Salad with green beans!",
+
+	  "recipe":{
+		"0":{ "step": "In a saucepan with boiling water, put green beans, add salt and boil for 10-15 minutes", "points": [10,10,10] },
+		"1":{ "step": "Strain the beans, put them in the bowl with vinaigrette dressing and salt & pepper and mix them well", "points": [10,10,10] },
+		"2":{ "step": "Cut the yellow and red peppers into thin strips and add them to the bowl with the beans", "points": [10,10,10] },
+		"3":{ "step": "Grate the goat cheese, cut the cherry tomatoes in half and serve with oregano garnish", "points": [10,10,10] }
+	  },
+
+	  "recipe_cook":{
+		"purpose": "Cook must go to the correct tile to reveal cooking actions",
+		"done": "Cook done!",
+		"0":{ "step": "In a -?- with boiling water, put green beans, add salt and -?- for 10-15 minutes.", "actions":["saucepan","boil"]},
+		"1":{ "step": "-?- the beans, put them in the bowl with vinaigrette dressing and salt & pepper and -?- them well", "actions":["strain","mix"]},
+		"2":{ "step": "-?- the yellow and red peppers into thin strips and -?- them to the bowl with the beans", "actions":["cut","add"]},
+		"3":{ "step": "-?- the goat cheese, -?- the cherry tomatoes in half and serve with oregano garnish", "actions":["grate","cut"]},
+
+		"0-solved": { "0": "In a saucepan with boiling water, put green beans, add salt and -?- for 10-15 minutes", "1":"In a -?- with boiling water, put green beans, add salt and boil for 10-15 minutes"},
+		"1-solved": { "0": "Strain the beans, put them in the bowl with vinaigrette dressing and salt & pepper and -?- them well", "1": "-?- the beans, put them in the bowl with vinaigrette dressing and salt & pepper and mix them well"},
+		"2-solved": { "0": "Cut the yellow and red peppers into thin strips and -?- them to the bowl with the beans", "1": "-?- the yellow and red peppers into thin strips and add them to the bowl with the beans."},
+		"3-solved":{ "0": "Grate the goat cheese, -?- the cherry tomatoes in half and serve with oregano garnish", "1": "-?- the goat cheese, cut the cherry tomatoes in half and serve with oregano garnish"}
+	},
+
+	  "recipe_shopper":{
+		"purpose": "Shopper must go to the correct tile to gather ingredients",
+		"done": "Shopper done!",
+		"0":{ "step": "In a saucepan with boiling water, put green -?-, add -?- and boil for 10-15 minutes.", "actions":["beans","salt"]},
+		"1":{ "step": "Strain the beans, put them in the bowl with -?- dressing and -?- and mix them well",  "actions":["vinaigrette", "salt & pepper"] },
+		"2":{ "step": "Cut the yellow and red -?- into thin strips and add them to the -?- with the beans.",  "actions":["peppers","bowl"] },
+		"3":{ "step": "Grate the goat -?-, cut the cherry tomatoes in half and serve with -?- garnish.",  "actions":["cheese","oregano"] },
+
+		"0-solved": { "0": "In a saucepan with boiling water, put green beans, add -?- and boil for 10-15 minutes", "1":"In a saucepan with boiling water, put green -?-, add salt and boil for 10-15 minutes"},
+		"1-solved": { "0": "Strain the beans, put them in the bowl with vinaigrette dressing and -?- and mix them well", "1": "Strain the beans, put them in the bowl with -?- dressing and salt & pepper and mix them well"},
+		"2-solved": { "0": "Cut the yellow and red peppers into thin strips and add them to the -?- with the beans", "1": "Cut the yellow and red -?- into thin strips and add them to the bowl with the beans."},
+		"3-solved":{ "0": "Grate the goat cheese, cut the cherry tomatoes in half and serve with -?- garnish", "1": "Grate the goat -?-, cut the cherry tomatoes in half and serve with oregano garnish"}
+	}
+
+}

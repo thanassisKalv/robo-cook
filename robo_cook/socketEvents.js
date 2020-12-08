@@ -41,5 +41,6 @@ var PlayerEvent = (function () {
     PlayerEvent.subStepsCompleted = "PlayerEvent:subStepsCompleted";
     PlayerEvent.updateRecipeItems = "PlayerEvent:updateRecipeItems";
     PlayerEvent.showAnswer = "PlayerEvent:showAnswer";
+    PlayerEvent.revealMusicPlay = "PlayerEvent:revealMusicPlay";
     return PlayerEvent;
 }());

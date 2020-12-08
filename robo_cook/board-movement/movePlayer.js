@@ -37,7 +37,7 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
             targetTile.occupant = _this.game.playersActive[playersTurn-1];
         }
         else if(targetTile.key.includes("bonus-tile")){
-            _this.allTilesGreen();
+            _this.moveEverywhere();
         }
         else{
             /* if player is "Instructor" -> then change the board's main tiles color (similar to trivial pursuit graphics)

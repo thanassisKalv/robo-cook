@@ -7,7 +7,7 @@ class UiModalsManager {
     waitingModal(player){
 
         Swal.fire({
-            title: 'Περίμενε τους συμπαίκτες σου να συγχρονιστούν!',
+            title: 'Wait for your teammates to sync!',
             //timer: 500,
             //timerProgressBar: true,
             allowOutsideClick: false,
@@ -26,6 +26,7 @@ class UiModalsManager {
     questionOfActions(options, optionsEng, currentStep, bgColor, actionTitle, role, context){
 
         const items = {"0": optionsEng[0], "1":optionsEng[1], "2": optionsEng[2]};
+        console.log(currentStep);
         Swal.fire({
             title: actionTitle,
             html:  '<div style="color:#2196f3;font-size: 24px;font-family:Handlee;font-weight:bold;">' + currentStep.replaceAll("-?-", '<img class="inline-img" src="assets/recipe-items/recipe-inline-'+role+'.png">') + '</div>',
@@ -75,8 +76,8 @@ class UiModalsManager {
               },
             showCancelButton: true,
             showDenyButton: true,
-            confirmButtonText: 'Send your help',
-            denyButtonText: 'Send your help (low confidence)',
+            confirmButtonText: 'Help your teammate',
+            denyButtonText: 'Help (low confidence)',
             cancelButtonText: "Don't send",
             confirmButtonColor: "#27c437",
             denyButtonColor: '#f4ba36ad',
@@ -89,11 +90,11 @@ class UiModalsManager {
             imageAlt: 'Answer image',
             preConfirm: (helpText) => {
                 console.log(helpText);
-                window.socket.emit(PlayerEvent.sendHelp, {helpText:helpText, confident:true, fromPlayer: fromPlayer-1});
+                window.socket.emit(PlayerEvent.sendHelp, {helpText:helpText, confident:'sure', fromPlayer: fromPlayer-1});
               },
             preDeny: (helpText) => {
                 var notConfidentHelp = document.getElementsByClassName('swal2-input')[0].value;
-                window.socket.emit(PlayerEvent.sendHelp, {helpText: notConfidentHelp, confident:false, fromPlayer: fromPlayer-1});
+                window.socket.emit(PlayerEvent.sendHelp, {helpText: notConfidentHelp, confident:'doubt', fromPlayer: fromPlayer-1});
               },
             allowOutsideClick: () => !Swal.isLoading()
             }).then((result) => {
@@ -142,8 +143,9 @@ class UiModalsManager {
 
 
             }).then((result) => {
-                console.log(result);
+                //console.log(result);
                 context.game.answerReveal.play();
+                window.socket.emit(PlayerEvent.revealMusicPlay, {});
                 setTimeout( function(){ 
                     
                     if (result.value != null || result.dismiss=="cancel"){
@@ -177,7 +179,7 @@ class UiModalsManager {
                 icon: iconR,
                 title: quText,
                 html: "<b style='color:grey;font-size: 24px;'>" + answerText + "</b>",
-                timer: 2000,
+                timer: 3500,
                 allowOutsideClick: false,
                 showConfirmButton: false
           }).then((result) => {
@@ -197,8 +199,23 @@ class UiModalsManager {
         Swal.fire({
             icon: iconR,
             title: quText,
-            html: "O συμπαίκτης σου απάντησε:<br><b style='color:grey;font-size: 24px;'>" + answerText + "</b>",
-            timer: 2500,
+            html: "Your teammate answered:<br><b style='color:grey;font-size: 24px;'>" + answerText + "</b>",
+            timer: 6500,
+            allowOutsideClick: false,
+            showConfirmButton: false
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          //console.log('I was closed by the timer')
+        }
+      })
+    }
+
+    showStepFinished(no, stepTxt){
+        Swal.fire({
+            title: "Νο"+(no+1)+" step is complete!",
+            html: "<b style='color:green;font-size: 24px;'>" + stepTxt + "</b>",
+            timer: 7000,
             allowOutsideClick: false,
             showConfirmButton: false
       }).then((result) => {
