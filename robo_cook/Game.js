@@ -49,7 +49,7 @@ class GameState extends Phaser.State {
     this.levelsName = argLevelName;
     this.myTeam = belongsTeam;
     this.game.recipeData = recipeData;
-    console.log(this.game.recipeData);
+    //console.log(this.game.recipeData);
   }
 
   create() {
@@ -57,7 +57,7 @@ class GameState extends Phaser.State {
     var _this = this;
     this.game.time.desiredFps = 45;
     //this.time.desiredFps = 30;
-    document.title = "Robo-Cook Path - Discover Recipe"
+    document.title = "Robo-Cook's Path - Discover Recipe"
     this.ingredients = ["target-1", "target-2-player", "target-3", "target-4-player","target-1", "target-2-player", "target-3", "target-4-player",
                         "target-1", "target-2-player", "target-3", "target-4-player","target-1", "target-2-player", "target-3", "target-4-player"];
     this.targetTiles = [];
@@ -83,6 +83,8 @@ class GameState extends Phaser.State {
     this.game.startPositions = [];
     this.game.roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
+    this.game.tooltipTexts = {"path-q1": "Foods & Recipes", "path-q2": "Seasonality & Locality", "path-q3": "Nutritional Principles",
+                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item"};
     //this.diceGroup = [];
     this.startSynced = false;
     diceGroup = this.add.group();
@@ -114,6 +116,7 @@ class GameState extends Phaser.State {
     this.bgTrackMusic = this.game.add.audio('bg_track', 1, true);
     this.bgTrackMusic.volume = 0.75;
     this.bgTrackMusic.play();
+    this.game.customTip = this.game.add.image(0, 0, "tooltip");
     
     for (var i=0; i < 2; i++) {
         var adice = new Dice(this.game, 56+i*90, 210, i);
@@ -169,6 +172,16 @@ class GameState extends Phaser.State {
         this.startingTiles[3-i].occupant = newPlayer;
         this.addMarkerScale(newPlayer);
         this.game.playersActive.push(newPlayer);
+        // if (i==1){
+        //   var tip3 = new Phasetips(this.game, {
+        //     targetObject: newPlayer,
+        //     context: "This is a shopper!",
+        //     position: "top",
+        //     positionOffset: 0,
+        //     customBackground: this.game.customTip,
+        //     animation: "grow"
+        //   });
+        // }
     }
     // communication tokens for server-client socketIO syncing
     this.uuidSend = uuid();
@@ -234,7 +247,8 @@ class GameState extends Phaser.State {
     registerSocketListeners(_this, window);
     // --- /Register SOCKET listeners --- //
 
-    //this.game.sound.mute = true;
+    this.isoGroup.forEach(this.createTooltip, this, false);
+    
   }
 
   addPointsGainEmitter(pointType){
@@ -244,6 +258,20 @@ class GameState extends Phaser.State {
     ptEmitter.setScale(1.5, 0.2, 1.5, 0.2, 1600, Phaser.Easing.Quintic.Out);
     ptEmitter.particleBringToTop = true;
     return ptEmitter;
+  }
+
+  createTooltip(tile){
+    if(tile.tooltipText!="none"){
+      tile.tooltip = new Phasetips(this.game, {
+        targetObject: tile,
+        context: tile.tooltipText,
+        fontSize: 15, fontFill: "blue",
+        backgroundColor: 0xd7f533, roundedCornersRadius: 10,
+        strokeColor: 0xfec72c, position: "top", animationDelay: 400, 
+        animation: "grow", animationSpeedShow:200, animationSpeedHide:100
+      });
+      tile.tooltip.alpha = 0.8;
+    }
   }
 
   // ** UPDATE Starndard FUNCTION **//
@@ -396,6 +424,7 @@ class GameState extends Phaser.State {
               tile.Ytable = y;
               tile.occupant = null;
               tile.activated = false;
+              tile.tooltipText = "none";
 
               if(tileName == "quest"){
                   tile.questpop = new QuestPopUp(this.game, false, false, -1, tile.position.x, tile.position.y);
@@ -407,6 +436,7 @@ class GameState extends Phaser.State {
                   //tile.scale.setTo(0.75, 0.75);
                   var questNum = parseInt(tileName[tileName.length-1])-1;
                   tile.questpop = new QuestPopUp(this.game, false, false, questNum, tile.position.x, tile.position.y);
+                  tile.tooltipText = this.game.tooltipTexts[tileName];
               }
               if(tileName.includes("target-")){
                   this.startingTiles.push(tile);
@@ -417,13 +447,14 @@ class GameState extends Phaser.State {
               }
               if(tileName.includes("cook-")){
                 tile.questpop = new QuestPopUp(this.game, true, false, -1, tile.position.x, tile.position.y);
+                tile.tooltipText = this.game.tooltipTexts[tileName];
                 tile.alpha = 0.6;
               }
               if(tileName.includes("shop-")){
                 tile.questpop = new QuestPopUp(this.game, false, true, -1, tile.position.x, tile.position.y);
+                tile.tooltipText = this.game.tooltipTexts[tileName];
                 tile.alpha = 0.6;
               }
-              
               /* TODO -- maybe use an effect like hoping "target-tiles" like (tween for tile.isoZ = 64;) */
               this.boardGameTiles[y][x] = tile;
           }

@@ -23,7 +23,6 @@ class QuestPopUp extends Phaser.Sprite {
         this.cookActionOptionsEng =  this.game.recipeData.cookActionOptionsEng;
         this.shoppingActionOptions =  this.game.recipeData.shoppingActionOptions
         this.shoppingActionOptionsEng =   this.game.recipeData.shoppingActionOptionsEng;
-        // "3":{ "step": "Γεμίστε την ομελέτα με ό,τι εξτρα θέλετε, διπλώστε απαλά στη μέση με τη σπάτουλα",  "points":[20,10,20] }
 
         this.recipe =  this.game.stepsInstructor;
         this.recipe_shopper = this.game.stepsShopper;
@@ -45,7 +44,6 @@ class QuestPopUp extends Phaser.Sprite {
 
         this.badgeTargetX = { 0: game.player1score1Text.x, 1: game.player1score2Text.x, 2: game.player1score3Text.x};
         this.badgeTargetY = { 0: game.player1score1Text.y-10, 1: game.player1score2Text.y-10, 2: game.player1score3Text.y-10};
-
     }
 
     waitOtherPlayer(){

@@ -118,6 +118,7 @@ WebFontConfig = {
         this.game.load.image('controlling-Shopper','assets/menus/controlling/shopper.png');
         this.game.load.image('controlling-Cook','assets/menus/controlling/cook.png');
         this.game.load.image("key-arrows", 'assets/menus/key-arrows.png');
+        this.game.load.image("tooltip", 'assets/menus/customTip.png');
 
         this.game.load.image('team-1-bonus', 'assets/badges/team-1-bonus.png');
         this.game.load.image('team-2-bonus', 'assets/badges/team-2-bonus.png');
@@ -136,13 +137,13 @@ WebFontConfig = {
         this.game.load.script("BlurY", path + "assets/scripts/BlurY.js");
         this.game.load.pack('level1', 'assets/assetPack.json', null, this);
 
-        this.game.load.image('recipe1', 'assets/menus/baby-level-2.png');
+        this.game.load.image('recipe1', 'assets/menus/easy-level.png');
         this.game.load.image('recipe2', 'assets/menus/intermediate-level-2.png');
         this.game.load.image('protein-logo', 'assets/menus/protein-logo-with-flag.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
         this.game.load.image('game-instructions', 'assets/menus/instructions-eng-short.png');
-        this.game.load.image('game-instructions-details', 'assets/menus/instructions-fixed-eng-v2.png');
+        this.game.load.image('game-instructions-details', 'assets/menus/instructions-eng-long.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
         this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
