@@ -24,7 +24,7 @@ WebFontConfig = {
 
     preload() {
       this.ready = false;
-      this.load.image('loading_bg', 'assets/images/loading_bg.jpg');
+      this.load.image('loading_bg', 'assets/images/loading_bg.png');
     }
 
 
@@ -37,8 +37,9 @@ WebFontConfig = {
         this.bgload = this.add.sprite(this.game.width/2,this.game.height/2, "loading_bg");
         this.bgload.anchor.set(0.5);
 
-        this.preloadAsset = this.add.sprite(this.game.width/2,this.game.height/2, 'preloader');
-        this.preloadAsset.anchor.setTo(0.5, 0.5);
+        this.preloadAsset = this.add.sprite(this.game.width/2-300,this.game.height/2, 'preloader');
+        this.preloadAsset.scale.setTo(0.8);
+        //this.preloadAsset.anchor.setTo(0.5, 0.5);
         this.game.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.game.load.setPreloadSprite(this.preloadAsset);
 

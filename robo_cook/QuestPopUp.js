@@ -11,8 +11,8 @@ class QuestPopUp extends Phaser.Sprite {
         this.answerComponents = this.game.add.group();
 
         // global variables
-        this.timeLimit = 50;        // timeLimit for countdown in seconds
-        this.tLimit = 50;  
+        this.timeLimit = 20;        // timeLimit for countdown in seconds
+        this.tLimit = 20;  
         this.timeOver = false;      // set to false at start
         this.timeBar = null;        // bar-display time remaining
         this.cooktile = cooktile;
@@ -39,7 +39,6 @@ class QuestPopUp extends Phaser.Sprite {
         this.game.incorrectMusic = this.game.add.audio('incorrect');
         this.game.answerReveal = this.game.add.audio('correct_answer_reveal');
         this.game.incorrectMusic.volume = 1.3;
-        //this.countDownMusic.volume -= 25;
         this.musicPlaying = false;
 
         this.badgeTargetX = { 0: game.player1score1Text.x, 1: game.player1score2Text.x, 2: game.player1score3Text.x};
@@ -75,6 +74,7 @@ class QuestPopUp extends Phaser.Sprite {
         this.questComponents = this.game.add.group();
         this.answerComponents = this.game.add.group();
         this.timeOver = false;
+        this.answered = false;
         // change position if needed (but use same position for both images)
         var musicTimer = this.countDownMusic;
         //this.musicEvent = this.game.time.events.add(20000, this.playTimerMusic, this, musicTimer);
@@ -221,7 +221,7 @@ class QuestPopUp extends Phaser.Sprite {
     displayTimeRemaining(){
         var time = Math.floor(this.game.time.totalElapsedSeconds());
         var timeLeft = this.timeLimit - time;
-        if (timeLeft == 10)
+        if (timeLeft==10)
             if (this.countDownMusic.isPlaying==false)
                 this.countDownMusic.play()
         
@@ -234,6 +234,7 @@ class QuestPopUp extends Phaser.Sprite {
                 this.closeQuestionUI(this, false, -1, -1, true);
             else
                 this.closeQuestionUI(this, false, this.categoryIndexSelected, this.currentQuestionIndex, false);
+            Swal.close();
         }
         else
             this.timeBar.scale.setTo(timeLeft / this.tLimit, 1);
@@ -278,7 +279,6 @@ class QuestPopUp extends Phaser.Sprite {
         context.qtween.onComplete.add(function() { context.questComponents.destroy(); }, this);
         context.bgBar.destroy();
         context.timeBar.destroy();
-        context.timeBar = null;
         context.timeClock.destroy();
         context.timeLabel.destroy();
         context.game.time.events.remove(context.musicEvent);
@@ -304,7 +304,7 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     update(){
-        if (this.timeBar && this.timeOver == false) 
+        if (this.timeBar && this.timeOver == false && this.answered == false) 
             this.displayTimeRemaining();
         this.game.world.bringToTop(this.questComponents);
         this.game.world.bringToTop(this.answerComponents);

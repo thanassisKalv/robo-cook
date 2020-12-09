@@ -143,31 +143,35 @@ class UiModalsManager {
 
 
             }).then((result) => {
-                //console.log(result);
-                context.game.answerReveal.play();
-                window.socket.emit(PlayerEvent.revealMusicPlay, {});
-                setTimeout( function(){ 
-                    
-                    if (result.value != null || result.dismiss=="cancel"){
-                        if( result[answersDict[rightAnswer]]){
-                            context.game.correctMusic.play();
-                            context.closeQuestionUI(context, true, context.categoryIndexSelected, context.currentQuestionIndex, false);
-                            context.game.scoreHandler.updateScore(context.categoryIndexSelected, true, teamsTurn[playersTurn]);
-                            showResult(true, questionText, answersText[answersDict[rightAnswer]]);
+                if(result.isDismissed==true && result.dismiss!="cancel")
+                    return; // handle properly the Swal.close(); case
+                else{
+                    context.answered = true;
+                    context.game.answerReveal.play();
+                    window.socket.emit(PlayerEvent.revealMusicPlay, {});
+                    setTimeout( function(){ 
+                        
+                        if (result.value != null || result.dismiss=="cancel"){
+                            if( result[answersDict[rightAnswer]]){
+                                context.game.correctMusic.play();
+                                context.closeQuestionUI(context, true, context.categoryIndexSelected, context.currentQuestionIndex, false);
+                                context.game.scoreHandler.updateScore(context.categoryIndexSelected, true, teamsTurn[playersTurn]);
+                                showResult(true, questionText, answersText[answersDict[rightAnswer]]);
+                            }
+                            else{
+                                context.game.incorrectMusic.play();
+                                context.closeQuestionUI(context, false, context.categoryIndexSelected, context.currentQuestionIndex, false);
+                                context.game.scoreHandler.updateScore(context.categoryIndexSelected, false, teamsTurn[playersTurn]);
+                                if(result.isConfirmed)
+                                    showResult(false, questionText,  optionList[0]);
+                                if(result.isDenied)
+                                    showResult(false, questionText,  optionList[1]);
+                                if(result.isDismissed)
+                                    showResult(false, questionText,  optionList[2]);
+                            }
                         }
-                        else{
-                            context.game.incorrectMusic.play();
-                            context.closeQuestionUI(context, false, context.categoryIndexSelected, context.currentQuestionIndex, false);
-                            context.game.scoreHandler.updateScore(context.categoryIndexSelected, false, teamsTurn[playersTurn]);
-                            if(result.isConfirmed)
-                                showResult(false, questionText,  optionList[0]);
-                            if(result.isDenied)
-                                showResult(false, questionText,  optionList[1]);
-                            if(result.isDismissed)
-                                showResult(false, questionText,  optionList[2]);
-                        }
-                    }
-                 } , 2700);
+                    } , 2700);
+                }
           })
 
           function showResult(result, quText, answerText){

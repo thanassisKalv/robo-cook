@@ -9,8 +9,13 @@
  - added new starting screen with less instructions and reveaal more upon button click
  - upon turn change, camera focus on playing character
  
- ### 09-12-2020
+ ### 08-12-2020
  - added a loading bar view during preloader stage
- - [content] added more recipe - to be used as game goals
- - [content] added mechanism for randomly chosing one recipe as game goal
+ - [content] added more recipes - they are to be used as game goals
+ - [content] added mechanism for randomly choosing one recipe as game goal
  - upgraded questions mechanism to shuffle the order of the offered options
+
+
+  ### 09-12-2020
+ - added **help tooltips**(*PhaseTips.js*) to certain tiles (questions and actions)
+ - fixed a bug in the interatcion of QuestionPopup mechanism with sw2 modals
