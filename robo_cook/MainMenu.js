@@ -150,18 +150,18 @@ class MainMenu extends Phaser.State {
 
     startGame1 (players, _this){
 
-        if(players["discover-recipe"].length==3)
-            for (var i = 0; i < players["discover-recipe"].length; i++) 
+        if(players.length==3)
+            for (var i = 0; i < players.length; i++)
             {
-                if (players["discover-recipe"][i].id == _this.game.myID){
-                    this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.myTeam, _this.game.recipeData);
+                if (players[i].id == _this.game.myID){
+                    this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.recipeData);
                     break; 
                 }
             }
         else{
-            for (var i = 0; i < players["discover-recipe"].length; i++) 
+            for (var i = 0; i < players.length; i++)
             {
-                if (players["discover-recipe"][i].id == _this.game.myID){
+                if (players[i].id == _this.game.myID){
                     this.textRoleAssign.setText("Your role is: " + this.roles[i]);
                     break; 
                 }

@@ -41,13 +41,12 @@ class GameState extends Phaser.State {
     this.game.iso.anchor.setTo(0.5, 0.5);
   }
 
-  init(argLevelName, myPlayer, belongsTeam, recipeData) {
+  init(argLevelName, myPlayer, recipeData) {
     this.game.maxHeightImageQuestion = 2*310;
     this.game.maxWidthImageQuestion = 2*380;
     //console.log(myPlayer)
     this.game.controllingPlayer = myPlayer+1;
     this.levelsName = argLevelName;
-    this.myTeam = belongsTeam;
     this.game.recipeData = recipeData;
     //console.log(this.game.recipeData);
   }
