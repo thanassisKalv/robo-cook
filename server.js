@@ -13,9 +13,19 @@ const PLAYERS_PER_LEVEL = 3;
 const ACTIONS_PER_STEP = 2;
 const gameLevels = JSON.parse(fs.readFileSync('gameLevels.json', 'utf8'));
 
-//var connection_string = "mongodb://127.0.0.1:27017/robocook_v01";
-//const db = require("monk")(connection_string);
-//const collection_players = db.get("PlayersInGame");
+const {
+    MONGO_USERNAME,
+    MONGO_PASSWORD,
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+  } = process.env;
+
+//var connection_string = "mongodb://127.0.0.1:27017/robocook_teams";
+const connection_string = "mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}"
+const db = require("monk")(connection_string);
+const session_stats_db = db.get("SessionStats");
+
 
 var ServerEvent = (function () {
     function ServerEvent() {
@@ -69,6 +79,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/scoreboard-class', function(req, res) {
+    res.sendFile(path.join(__dirname + '/scoreboard.html'));
+});
 
 class GameServer {
  
@@ -162,7 +175,6 @@ class GameServer {
             }
             // inform the new player about the awaiting connected players
             //socket.emit(PlayerEvent.players, _this.getConnectedPlayers(playerMessage.level));
-
             if(_this.levels[playerMessage.level][_this.gSession].length == PLAYERS_PER_LEVEL){
                 _this.levels[playerMessage.level].push([]);
                 _this.levelsPlayingNow[playerMessage.level].push(1);
@@ -175,17 +187,14 @@ class GameServer {
             var newPlayer = _this.createPlayer(socket, playerMessage);
             socket.emit(PlayerEvent.assignID, newPlayer);
 
-            console.log("Level-"+playerMessage.level + " contains: ");
-            //console.log(_this.levels[playerMessage.level]);
+            console.log("Session-"+newPlayer.session + " has " + _this.levels[playerMessage.level][_this.gSession].length + " players");
 
             if(_this.levels[playerMessage.level][_this.gSession].length>1){
                 var sessionSockets = _this.getSessionPlayers(_this.gSession);
                 for(var ix=0; ix<sessionSockets.length; ix++)
                     sessionSockets[ix].emit(PlayerEvent.players, _this.levels[playerMessage.level][_this.gSession] );
-            }
-            
+            } 
         });
-        
     };
 
     createPlayer (socket, msg) {
@@ -203,8 +212,10 @@ class GameServer {
         if(this.levels[msg.level][this.gSession].length == 1)
             this.syncedPlayersStart[this.gSession] = 0;
             
-        if(this.levels[msg.level][this.gSession].length == PLAYERS_PER_LEVEL)
-            this.questionsAnswered.push({0:[], 1:[], 2:[]});
+        if(this.levels[msg.level][this.gSession].length == PLAYERS_PER_LEVEL){
+            var startTime = new Date().getTime() / 1000;
+            this.questionsAnswered.push({0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, startTime: parseInt(startTime), endTime: ""});
+        }
 
         return socket.player;
     };
@@ -217,8 +228,13 @@ class GameServer {
                 var sessionSockets = _this.getSessionPlayers(socket.player.session);
                 for(var ix=0; ix<sessionSockets.length; ix++)
                     sessionSockets[ix].emit(PlayerEvent.quit, socket.player.id );
-
-                console.log("PLAYER-QUITED");
+                // stop session's time and save the game-stats into database
+                _this.questionsAnswered[socket.player.session].endTime = parseInt(new Date().getTime() / 1000);
+                _this.durationInSec(_this.questionsAnswered[socket.player.session]);
+                console.log("SESSION " +socket.player.session+ " FINISHED");
+                if(_this.questionsAnswered[socket.player.session].sessionEnd != true)
+                    session_stats_db.insert( _this.questionsAnswered[socket.player.session]);
+                _this.questionsAnswered[socket.player.session].sessionEnd = true;
             }
         });
      }
@@ -275,10 +291,12 @@ class GameServer {
                 _this.syncedPlayersStart[socket.player.session] ++;
 
                 if(_this.syncedPlayersStart[socket.player.session] == PLAYERS_PER_LEVEL){
-                    console.log(_this.syncedPlayersStart[socket.player.session]);
+                    console.log(socket.player.session+" session begins!");
                     var sessionSockets = _this.getSessionPlayers(socket.player.session);
                     for(var ix=0; ix<sessionSockets.length; ix++)
                         sessionSockets[ix].emit(PlayerEvent.startSynced, "synced");
+                    var startTime = new Date().getTime() / 1000;
+
                 }
             }
         });
@@ -286,18 +304,17 @@ class GameServer {
 
     addPlayerMovementListener (socket) {
         var _this = this;
-        socket.on(PlayerEvent.coordinates, function (playerMoveMessage) {
+        socket.on(PlayerEvent.coordinates, function (moveMsg) {
             if(socket.player){
-                playerMoveMessage.playerID = socket.player.id;
-                console.log(playerMoveMessage);
-                //socket.broadcast.emit(PlayerEvent.coordinates, playerMoveMessage );
+                moveMsg.playerID = socket.player.id;
+                console.log(moveMsg.player+" moves to x:" +moveMsg.playersTile.x+" - y:"+moveMsg.playersTile.y );
                 var sessionSockets = _this.getSessionPlayers(socket.player.session);
                 for(var ix=0; ix<sessionSockets.length; ix++)
                     if(sessionSockets[ix].player.id != socket.player.id)
-                        sessionSockets[ix].emit(PlayerEvent.coordinates, playerMoveMessage );
+                        sessionSockets[ix].emit(PlayerEvent.coordinates, moveMsg );
 
                 // the moving player has ALREADY the unique token
-                _this.uuidTable[playerMoveMessage.uuidToken] = 1;
+                _this.uuidTable[moveMsg.uuidToken] = 1;
             }
             if(socket.player)
                 _this.togglePlayerTurn(socket.player.level, socket.player.session );
@@ -377,7 +394,6 @@ class GameServer {
     }
 
     
-
     updateRecipeItems(socket){
         var _this = this;
         socket.on(PlayerEvent.updateRecipeItems, function (msg) {
@@ -398,8 +414,10 @@ class GameServer {
                 if(dataAnswer.correct){
                     _this.questionsAnswered[socket.player.session][dataAnswer.category].push(dataAnswer.quIndex);
                     // RESET the list when the team has all answered correctly all questions of this category
-                    if(_this.questionsAnswered[socket.player.session][dataAnswer.category].length == _this.totalQuests[dataAnswer.category])
+                    if(_this.questionsAnswered[socket.player.session][dataAnswer.category].length == _this.totalQuests[dataAnswer.category]){
                         _this.questionsAnswered[socket.player.session][dataAnswer.category] = [];
+                        _this.questionsAnswered[socket.player.session][dataAnswer.category+"R"]++;
+                    }
                 }
                 dataAnswer.updatedQuestions = _this.questionsAnswered[socket.player.session];
                 
@@ -409,7 +427,10 @@ class GameServer {
                         sessionSockets[ix].emit(PlayerEvent.opponentAnswered, dataAnswer );
                 socket.emit(PlayerEvent.updateQuestions, dataAnswer.updatedQuestions);
             }
-            console.log(_this.questionsAnswered);
+            console.log("Session "+socket.player.session+" progress:")
+            console.log(_this.questionsAnswered[socket.player.session][0],
+                        _this.questionsAnswered[socket.player.session][1], 
+                        _this.questionsAnswered[socket.player.session][2]);
         });
     };
 
@@ -437,9 +458,12 @@ class GameServer {
 
     randomIntFromInterval(min, max) { // min and max included 
         var randInt = Math.floor(Math.random() * (max - min + 1) + min);
-    
         return randInt;
     };
+
+    durationInSec(sessionStats){
+        sessionStats.dur = sessionStats.endTime - sessionStats.startTime;
+    }
 };
 
 

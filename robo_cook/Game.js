@@ -602,7 +602,7 @@ class GameState extends Phaser.State {
   moveOtherPlayer(playerMove){
     var cargs = {newPos:playerMove.playersTile, dirTile:""};
     this.isoGroup.forEach(this.findDirTile, this, false, cargs);
-    movePlayerOnBoard(this, this.game.playersActive[playersTurn-1], cargs.dirTile, false);
+    movePlayerOnBoard(this, this.game.playersActive[playerMove.player-1], cargs.dirTile, false);
   }
 
   otherPlayerAnswered(data){

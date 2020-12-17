@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Robo-cook's ScoreBoard</title>
+        <style>
+            body {
+                background-color: #333;
+                margin:0;
+            }
+            canvas {   display : block;   margin : auto;}
+        </style>
+    </head>
+    <body>
+        <div id="demo"></div>
+        <script type="text/javascript" src="libs/phaser-2.16.0.min.js"></script>
+        <script type="text/javascript" src="libs/ScoreBoard.js"></script>
+        <script type="text/javascript">
+            var scoreBoard;
+            var game = new Phaser.Game(900, 3*600, Phaser.AUTO, 'scoreboard-example', { preload: preload, create: create, update: update });
+            function preload() {
+
+                this.config = {
+                        R: 5,
+                        x: 50,
+                        y: 20,
+                        margin: {
+                            x: 0,
+                            y: 35
+                        },
+                        width: 120,
+                        height: 16,
+                        color: {
+                            border: 0x000000,
+                            rect: 0x1E90FF
+                        },
+                        scale: 1.25,
+                        label: "Class",
+                        fixToCamera: true,
+                    };
+            }
+
+            function create() {
+
+                game.stage.backgroundColor = "#8bb54a";
+
+                scoreBoard = new ScoreBoard(game, this.config );
+                var dataClasses = ["Class-XZ-WE", 
+                            "Class-GH-EE",
+                            "Class-GH-A1",
+                            "Class-GH-A2",
+                            "Class-XZ-WE", 
+                            "Class-GH-EE",
+                            "Class-GH-A1",
+                            "Class-GH-A2"];
+                var scoresC1 = ["13/15", 
+                            "9/15",
+                            "9/15",
+                            "12/15",
+                            "13/15", 
+                            "9/15",
+                            "9/15",
+                            "12/15"];
+                var scoresC2 = ["12/20", 
+                                "5/20",
+                                "15/20",
+                                "9/20",
+                                "12/20", 
+                                "12/20",
+                                "16/20",
+                                "5/20"];
+
+                var progressEnd = ["all done", 
+                                "3/4 done",
+                                "2/4 done",
+                                "2/4 done",
+                                "all done",
+                                "1/4 done",
+                                "3/4 done",
+                                "2/4 done"]
+
+                scoreBoard.draw(dataClasses);
+
+                this.config.x = 200;
+                this.config.width = 90;
+                this.config.label = "Cat-1";
+                scoreBoard2 = new ScoreBoard(game, this.config );
+                scoreBoard2.draw(scoresC1);
+
+                this.config.x = 300;
+                this.config.width = 90;
+                this.config.label = "Cat-2";
+                scoreBoard3 = new ScoreBoard(game, this.config );
+                scoreBoard3.draw(scoresC2);
+
+                
+                this.config.x = 400;
+                this.config.width = 90;
+                this.config.label = "Recipe";
+                scoreBoard4 = new ScoreBoard(game, this.config );
+                scoreBoard4.draw(progressEnd);
+
+
+            }
+
+            function update() {
+
+            }
+        </script>
+    </body>
+</html>
