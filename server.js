@@ -214,7 +214,7 @@ class GameServer {
             
         if(this.levels[msg.level][this.gSession].length == PLAYERS_PER_LEVEL){
             var startTime = new Date().getTime() / 1000;
-            this.questionsAnswered.push({0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, startTime: parseInt(startTime), endTime: ""});
+            this.questionsAnswered.push({0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, '0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: ""});
         }
 
         return socket.player;
@@ -418,6 +418,9 @@ class GameServer {
                         _this.questionsAnswered[socket.player.session][dataAnswer.category] = [];
                         _this.questionsAnswered[socket.player.session][dataAnswer.category+"R"]++;
                     }
+                }
+                else{
+                    _this.questionsAnswered[socket.player.session][dataAnswer.category+"W"]++;
                 }
                 dataAnswer.updatedQuestions = _this.questionsAnswered[socket.player.session];
                 
