@@ -94,7 +94,7 @@ class GameServer {
         this.uuidTable = {};
         this.questionsAnswered = [];
         this.levelsAnsweringSocket = [{}];
-        this.totalQuests = {0:3, 1:10, 2:20};
+        this.totalQuests = {0:13, 1:10, 2:20};
         this.levelsActionsCounter = {"discover-recipe":[0], "discover-diet":0};
         this.levelRecipe = 0;
         this.socketEvents();
@@ -199,7 +199,7 @@ class GameServer {
 
     createPlayer (socket, msg) {
         if (this.levels[msg.level][this.gSession].length == 0)
-            this.levelRecipe = 2; //this.randomIntFromInterval(0,2);
+            this.levelRecipe = this.randomIntFromInterval(0,2);
 
         socket.player = {
             level: msg.level,
