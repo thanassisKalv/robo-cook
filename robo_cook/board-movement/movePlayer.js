@@ -42,7 +42,7 @@ function movePlayerOnBoard(_this, sprite, targetTile, controlling, finishedDice,
         else{
             /* if player is "Instructor" -> then change the board's main tiles color (similar to trivial pursuit graphics)
                and reveal the recipe steps  */
-            if(targetTile.key.includes("quest") && _this.game.scoreHandler.hasUnlockedStep() && sprite.roleName=="Instructor" ){
+            if(targetTile.key.includes("quest") && _this.game.scoreHandler.hasUnlockedStep() && sprite.roleName=="Maestro" ){
                 _this.game.scoreHandler.getUnlockedStep();
                 _this.targetTiles[targetTile.ingredient].loadTexture(targetTile.ingredient.replace("target", "progress"));
             }

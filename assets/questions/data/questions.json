@@ -4,150 +4,146 @@
 		{
 			"questions": [
 				{
-					"question": "To make pasta, you need it:",
+					"question": "Per fare la pasta servono:",
 					"choices": [
-						"grains",
-						"fruit",
-						"sugars"
+						"i cereali",
+						"la frutta",
+						"gli zuccheri"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/pasta_making.jpg",
 					"answer_image": "grain-to-pasta.jpg",
 					"hqExist": true,
-					"helpQuestion": "Are fruits typical in a pasta recipe?"
+					"helpQuestion": "La frutta è tipica di una ricetta di pasta?"
 				},
 				{
-					"question": "To make bread or pizza you surely need them:",
+					"question": "Per fare il pane o la pizza servono:",
 					"choices": [
-						"water and salt",
-						"water, salt, flour and yeast",
-						"water, sugar, milk and yeast"
+						"acqua e sale",
+						"acqua, sale, farina e lievito",
+						"acqua, zucchero, latte e lievito"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/pasta.png",
 					"answer_image": "pasta.jpg",
 					"hqExist": true,
-					"helpQuestion": "Is milk an ingredient of bread?"
+					"helpQuestion": "Il latte è un ingrediente del pane?"
 				},
 				{
-					"question": "The oil is produced:",
+					"question": "L’olio viene prodotto:",
 					"choices": [
-						"from the pressing of exotic fruit stones",
-						"from the pressing of grapes",
-						"from pressing olives"
+						"dalla spremitura dei noccioli di frutta esotica",
+						"dalla spremitura dell’uva",
+						"dalla spremitura delle olive"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/oil-to-salad.png",
 					"answer_image": "olives.jpg",
 					"hqExist": true,
-					"helpQuestion": "Think of those trees that are typical around Mediterranean?"
+					"helpQuestion": "Pensa a quegli alberi tipici del Mediterraneo"
 				},
 				{
-					"question": "What is rice?",
+					"question": "Cos’e’ il riso?",
 					"choices": [
-						"a cereal",
-						"a vegetable",
-						"a seed"
+						"un cereale",
+						"un farinaceo",
+						"un seme"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/question.png",
-					"answer_image": "cereals.jpg",
-					"hqExist": true,
-					"helpQuestion": "Family of vegetables includes alikes of cucumber"
+					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Butter mostly consists of?",
+					"question": "- Il burro è composto da?",
 					"choices": [
-						"fat",
-						"combusted fruits",
-						"sugar"
+						"grassi",
+						"confettura",
+						"zuccheri"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/butters.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "For example, butter is main ingredient of peanut-butter and makes it rich in?"
+					"helpQuestion": "Ad esempio, il burro è l'ingrediente principale del burro di arachidi e lo rende ricco?"
 				},
 				{
-					"question": "What ingredient contributes mostly on taste and flavor of croissants, biscuits, pastries?",
+					"question": "Quale ingrediente contribuisce maggiormente a dare sapore e profumo ai croissant, ai biscotti ed alla pasta per dolci?",
 					"choices": [
-						"the milk",
-						"the butter",
-						"the cooked eggs"
+						"latte",
+						"burro",
+						"uova"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/croissant-biscuits.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "Sugar makes them sweet but what gives them 'creamy' taste and texture?"
+					"helpQuestion": "Lo zucchero li rende dolci, ma cosa dà loro un gusto e una consistenza cremosi?"
 				},
 				{
-					"question": "The fried food is very tasty! Let's eat it:",
+					"question": "Il fritto è molto gustoso! Mangiamolo:",
 					"choices": [
-						"twice a week",
-						"only on Sundays",
-						"rarely because it is not very good for our liver's health."
+						"due volte a settimana",
+						"solo la domenica",
+						"raramente perché non fa molto bene alla salute del nostro fegato"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/fried-foods.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "The image's recipe is higher in fat due?",
+					"question": "la ricetta nell'immagine ha un alta percentuale di grassi perché?",
 					"choices": [
-						"boiling",
-						"frying",
-						"being raw"
+						"subisce la bollitura",
+						"viene fritta",
+						"è cruda"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/fish-chips-icon.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "Think about whether it affects the way you cook?"
+					"helpQuestion": "Pensa se influisce sul modo in cui cucini?"
 				},
 				{
-					"question": "It is better to buy organic fruits and vegetables because:",
+					"question": "È meglio acquistare la frutta e la verdura biologica perché:",
 					"choices": [
-						"they are grown with substances that are not harmful to health",
-						"they cost more",
-						"they are more beautiful"
+						"sono coltivate con sostanze non dannose per la salute",
+						"costano di più",
+						"sono più belle"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/organic-food.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Can we say that all salads healthy-made?",
+					"question": "Un alimento sano è:",
 					"choices": [
-						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
-						"All salads are very healthy, just don't add too much salt",
-						"No, it is common to add so many not-so-healthy ingredients"
+						"il panino del fast food",
+						"insalata e verdura cotta",
+						"la merendina alla marmellata"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/salad-vs-burger.png",
-					"answer_image": "answer-fats-2.jpg",
-					"hqExist": true,
-					"helpQuestion": "Think of the comparison depicted in the image"
+					"answer_image": "answer-fats-2.jpg"
 				},
 				{
-					"question": "It's a better snack to eat:",
+					"question": "È uno spuntino migliore da mangiare:",
 					"choices": [
-						"the supermarket snack because it is soft and tasty",
-						"the homemade snack because we know the ingredients it is made with",
-						"the fast food snack because on television or on the radio they say it's good and healthy"
+						"la merendina del supermercato perché è soffice e gustosa",
+						"la merenda preparata in casa perché conosciamo gli ingredienti usati",
+						"la merenda del fast food perché in televisione o alla radio dicono che è buona e fa bene"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/home-vs-fast-food.jpg",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "When we prepare snacks at home, we know better their..."
+					"helpQuestion": "Quando prepariamo spuntini a casa, conosciamo meglio il loro..."
 				},
 				{
-					"question": "Citrus fruits must be consumed because:",
+					"question": "Gli agrumi vanno consumati perché:",
 					"choices": [
-						"they are rich in substances that are good for health called sugars.",
-						"they are rich in health-promoting substances called fats.",
-						"they are rich in substances that are good for health called vitamins."
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate zuccheri",
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate grassi",
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate vitamine"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/citrus-family.png",
@@ -156,135 +152,136 @@
 					"helpQuestion": "What is it so well known about that oranges are rich?"
 				},
 				{
-					"question": "In the citrus family we find:",
+					"question": "Nella famiglia degli agrumi troviamo:",
 					"choices": [
-						"tangerines, lemons, oranges, clementines",
-						"watermelon and cucumber",
-						"all berries"
+						"i mandarini. i limoni, le arance, le clementine",
+						"l’anguria e i cetrioli",
+						"tutti i frutti rossi"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/citrus-family.png",
 					"answer_image": "cereals.jpg",
 					"hqExist": true,
-					"helpQuestion": "A very typical example, a fruit rich in vitamin C"
+					"helpQuestion": "Un esempio molto tipico, un frutto ricco di vitamina C."
 				}
 
 			]
 		},
 
+
 		{
 			"questions": [
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in winter?",
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in inverno:",
 					"choices": [
-						"broccoli - persimmons - oranges",
-						"tomato - courgettes - green beans",
-						"Strawberries - apples - spinach"
+						"broccoli – cachi  – arance",
+						"pomodoro – zucchine – fagiolini",
+						"Fragole – mele – spinaci"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Do you prefer a salad of broccoli or of tomatoes in Winter?"
+					"helpQuestion": "Preferisci un'insalata di broccoli o di pomodori d'inverno?"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in summer?",
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in estate:",
 					"choices": [
-						"persimmon - black cabbage - grapefruit",
-						"Broccoli - pears - pumpkin",
-						"aubergines - tomato - watermelon"
+						"cachi – cavolo nero – pompelmo",
+						"Broccoli – pere – zucca",
+						"melanzane – pomodoro – anguria"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Can you think of a salad of broccoli with tomatoes in August?"
+					"helpQuestion": "Riuscite a pensare a un'insalata di broccoli con pomodori ad agosto?"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in autumn?",
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in autunno:",
 					"choices": [
-						"apricots - prickly pears - peaches",
-						"pumpkin - chestnut - mushrooms",
-						"Courgette - apricots - prickly pears"
+						"albicocche – fichi d’india – pesche",
+						"zucca – castagna – funghi",
+						"zucchina - albicocche – fichi d’india"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Among the listed foods, which are those that mature naturally and are consumed in spring?",
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in primavera:",
 					"choices": [
-						"Strawberries - artichokes - asparagus",
-						"Cherries - watermelon - turnip greens",
-						"Peppers - aubergines - cauliflowers"
+						"Fragole – carciofi – asparagi",
+						"Ciliege – anguria – cime di rapa",
+						"Peperoni – melanzane – cavolfiori"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Where did the rice come from? Where is it grown?",
+					"question": "Da dove proviene il riso? Dove viene coltivato?",
 					"choices": [
-						"from Italy",
-						"from abroad",
-						"from Italy and abroad"
+						"dall’italia",
+						"dall’estero",
+						"sia dall’italia che dall’estero"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/rice-varieties.jpg",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Do you agree that rice is a global food?"
+					"helpQuestion": "Sei d'accordo che il riso è un alimento globale?"
 				},
 				{
-					"question": "Is it appropriate to eat summer vegetables in winter too?",
+					"question": "È opportuno mangiare le verdure estive anche in inverno?",
 					"choices": [
-						"No, because in winter we need protein-rich vegetables",
-						"Yes, because the way we live affects our diet",
-						"It's indifferent because vegetables are always good for you"
+						"no, perche’ in inverno abbiamo bisogno di verdure ricche di proteine",
+						"si, perche’ il nostro modo di vivere  condiziona la nostra dieta",
+						"È indifferente perche’ le verdure fanno sempre bene"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What kind of fruit can you eat in the summer?",
+					"question": "Quale frutta si puo’ mangiare in estate?",
 					"choices": [
-						"Watermelon - melon - berries - cherries - strawberries",
-						"walnuts - peanuts - cashews - apples - pears",
-						"almonds - peanuts - pumpkin seeds"
+						"Anguria -  melone - frutti di bosco -  ciliegie – fragole",
+						"noci - noccioline - anacardi - mele - pere",
+						"mandorle - arachidi - semi di zucca"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What fruit can you eat in winter?",
+					"question": "Quale frutta si può mangiare in inverno?",
 					"choices": [
-						"kiwi - bananas - apples - pears - oranges",
-						"grapes - bananas - apples - pears - persimmons",
-						"Oranges - tangerines / mandarins - grapefruit - apples - pears - kiwis"
+						"Anguria -  melone - frutti di bosco -  ciliegie – fragole",
+						"noci - noccioline - anacardi - mele - pere",
+						"mandorle - arachidi - semi di zucca"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Zucchini are a typical vegetable in:",
+					"question": "Le zucchine sono un ortaggio tipicamente:",
 					"choices": [
-						"in winter",
-						"in spring",
-						"in summer"
+						"invernale",
+						"primaverile",
+						"estivo"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/seasonality-circle.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Citrus fruits are out of season:",
+					"question": "- Quand'è che gli agrumi non sono di stagione:",
 					"choices": [
-						"in summer",
-						"in winter",
-						"in the autumn"
+						"in estate",
+						"in inverno",
+						"in autunno"
 						
 					],
 					"answer": 0,
@@ -295,193 +292,192 @@
 		},
 		
 
-
 		{
 			"questions": [
 				{
-					"question": "What nutrients do meat and fish mostly provide?",
+					"question": "Quali elementi nutritivi forniscono la carne e il pesce?",
 					"choices": [
-						"proteins",
-						"mineral salts",
-						"mineral salts and proteins"
+						"le proteine",
+						"i sali minerali",
+						"i sali minerali e le proteine"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is the function of meat in our diet?",
+					"question": "Quale è la funzione della carne nella nostra alimentazione?",
 					"choices": [
-						"It helps the cells of our body to reproduce",
-						"provides us with the proteins necessary for muscle growth",
-						"provides us with the calories we need to get the energy"
+						"aiuta  le cellule del  nostro corpo a riprodursi",
+						"ci fornisce le proteine necessarie alla crescita dei muscoli",
+						"ci fornisce le calorie necessarie  per avere  l’energia"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Vegetables are a food that must always be present in the diet, why?",
+					"question": "Le verdure sono un alimento che deve essere sempre presente nella dieta, perchè?",
 					"choices": [
-						"They are rich in minerals and vitamins",
-						"they are digestible",
-						"they are always available to us because they are also grown in winter in greenhouses"
+						"sono ricche di sali minerali e vitamine",
+						"sono digeribili",
+						"sono sempre a nostra disposizione perchè vengono coltivate anche in inverno nelle serre."
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is the food pyramid?",
+					"question": "Cosa è la piramide alimentare?",
 					"choices": [
-						"A way to plate food",
-						"the graph describing how organisms depend on each other for food (plants, herbivores, carnivores)",
-						"the graphic representation of a suggested healthy nutrition"
+						"Un modo di impiattare il cibo",
+						"il grafico che descrive come gli organismi dipendono uno dall’altro per il nutrimento (piante, erbivori, carnivori)",
+						"la rappresentazione grafica della corretta e sana alimentazione"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "What is meant by nutrition?",
+					"question": "Cosa si intende per alimentazione?",
 					"choices": [
-						"the way of cooking food to make it good and nutritious",
-						"the intake by the body of food essential to its metabolism and daily vital functions",
-						"the recommended diet for losing weight"
+						"il modo di cucinare un cibo per renderlo buono e nutriente",
+						"l’assunzione da parte dell'organismo, di alimenti indispensabili al suo metabolismo e alle sue funzioni vitali quotidiane",
+						"la dieta consigliata per perdere peso"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What substance is not nutritious?",
+					"question": "Quale sostanza non è nutriente?",
 					"choices": [
-						"water",
-						"fats",
-						"carbon dioxide"
+						"acqua",
+						"grassi",
+						"anidride carbinica"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the function that carbohydrates (bread, pasta, etc.) have for the body?",
+					"question": " I carboidrati (pane, pasta, ecc.) hanno funzione...",
 					"choices": [
-						"regulatory function",
-						"protective",
-						"energy"
+						"regolatrice",
+						"protettiva",
+						"energetica"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Which food does not contain carbohydrates or sugars?",
+					"question": "I carboidrati o zuccheri in quale alimento non sono presenti?",
 					"choices": [
 						"pasta",
-						"beans",
-						"olive oil"
+						"fagioli",
+						"olio di oliva"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the name of the sugar in potatoes?",
+					"question": "Come si chiama lo zucchero contenuto nelle patate?",
 					"choices": [
-						"fructose",
-						"starch",
-						"sucrose"
+						"fruttosio",
+						"amido",
+						"saccarosio"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": " What's the name of the table sugar?",
+					"question": "Come si chiama lo zucchero da cucina?",
 					"choices": [
-						"glucose",
-						"sucrose",
-						"fructose"
+						"glucosio",
+						"saccarosio",
+						"fruttosio"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What is the main function of proteins?",
+					"question": " Quale funzione principale hanno le proteine?",
 					"choices": [
-						"energy",
-						"protective",
-						"Plastic"
+						"energetica",
+						"protettiva",
+						"plastica"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What food has no protein?",
+					"question": "Quale alimento non possiede proteine?",
 					"choices": [
-						"milk",
-						"fish",
-						"wine"
+						"latte",
+						"pesce",
+						"vino"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "What foods do we find protein in?",
+					"question": "In quali alimenti troviamo le proteine?",
 					"choices": [
-						"in water",
-						"in meat and eggs",
-						"In milk, meat, fish, eggs and legumes"
+						"nell'acqua",
+						"nella carne e nelle uova",
+						"Nel latte, nella carne, nel pesce, nelle uova e nei legumi"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Is food mainly just a source of calories?",
+					"question": "Il cibo è solo una fonte di calorie?",
 					"choices": [
-						"yes that's the most important!",
-						"yes food and some water are enough!",
-						"No, food provides our bodies with essential nutrients (proteins, fats, carbs, vitamins, and minerals)"
+						"si, ed è la cosa più importante del cibo",
+						"si, cibo ed un po' d'acqua sono abbastanza per vivere",
+						"no, perchè il cibo rifornisce il nostro corpo di una serie di elementi nutritivi essenziali (come vitamine e minerali)"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Are all fats bad for our health?",
+					"question": "I grassi sono tutti dannosi alla nostra salute?",
 					"choices": [
-						"Yes, all of them are useless",
-						"No, some of them are an essential part of a balanced diet",
-						"No, is important to consume every fat"
+						"si, tutti sono inutili",
+						"no, alcuni sono una componente essenziale di una dieta bilanciata",
+						"no, qualsiasi cosa è importante"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/all-fats.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Let's work out! What to eat first?",
+					"question": "Facciamo ginnastica! Cosa mangiare prima?",
 					"choices": [
-						"a slice of bread with honey",
-						"schnitzel",
-						"good cheese"
+						"una fetta di pane col miele",
+						"una cotoletta",
+						"del buon formaggio"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/exercise-carbs.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Before working out our body need some fast energy!"
+					"helpQuestion": "Prima di allenarci, il nostro corpo ha bisogno di energia veloce!"
 				},
 				{
-					"question": "How many portions of fruit and vegetables should be eaten?",
+					"question": "Quante porzioni di frutta e verdura vanno consumate?",
 					"choices": [
-						"2 or 3 a day",
-						"less than 2 per week",
-						"5 per week"
+						"2 o 3 al giorno",
+						"meno di 2 a settimana",
+						"5 alla settimana"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/food-pyramid.png",
@@ -490,43 +486,43 @@
 					"helpQuestion": "Think about what it is at the base of the pyramid?"
 				},
 				{
-					"question": "How many times a week should we eat red meat (beef, veal, etc.)?",
+					"question": "Quante volte alla settimana dovremmo mangiare carne rossa (manzo, vitello,etc.)?",
 					"choices": [
-						"Every day",
-						"5 times a week",
-						"2 times a week"
+						"Ogni giorno",
+						"5 volte a settimana",
+						"2 volte a settimana"
 					],
 					"answer": 2,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Notice that meat is placed higher in the pyramid (narrower level)"
+					"helpQuestion": "Si noti che la carne è posizionata più in alto nella piramide (livello più stretto)"
 				},
 				{
-					"question": "During the week it is good to consume:",
+					"question": "Durante la settimana è bene consumare:",
 					"choices": [
-						"every day fruit and vegetables",
-						"every day cheese",
-						"daily pasta with lots of olive oil and grated cheese"
+						"tutti i giorni frutta e verdura",
+						"tutti i giorni formaggio",
+						"tutti i giorni pasta condita con molto olio e formaggio grattugiato"
 					],
 					"answer": 0,
 					"image": "/assets/images_questions/food-pyramid.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "The base of our pyramid shows a healthy daily proposition"
+					"helpQuestion": "La base della piramide mostra una sana proposta quotidiana"
 				},
 				{
-					"question": "It is good to drink at least 8 glasses a day:",
+					"question": " È bene bere almeno 8 bicchieri al giorno di:",
 					"choices": [
-						"of refreshments",
-						"of water-tea etc.",
-						"of orange juice"
+						"bevande analcoliche",
+						"acqua",
+						"spremuta d’arancia"
 					],
 					"answer": 1,
 					"image": "/assets/images_questions/extended-pyramid.png",
 					"answer_image": "placeholder-answer.png",
 					"hqExist": true,
-					"helpQuestion": "Notice the updated base layer of the pyramid"
+					"helpQuestion": "Notare lo strato di base aggiornato della piramide"
 				}
 			]
 		},

@@ -51,7 +51,7 @@ class MainMenu extends Phaser.State {
         this.istructionsDetailButton.anchor.setTo(0.5, 0.5);
         this.istructionsDetailButton.alpha = 0.80;
         this.gameInstructions.addChild(this.istructionsDetailButton);
-        this.moreInstructionsText = this.add.text(0,0, "Detailed Instructions", {font: "bold 17px Comic Sans MS"});
+        this.moreInstructionsText = this.add.text(0,0, "Istruzioni dettagliate", {font: "bold 17px Comic Sans MS"});
         this.moreInstructionsText.anchor.setTo(0.5);
         this.istructionsDetailButton.addChild(this.moreInstructionsText);
 
@@ -106,7 +106,7 @@ class MainMenu extends Phaser.State {
         this.game.stage.backgroundColor = '#d7ffcf';
         this.textWait2.tween = this.add.tween(this.textWait2).to({alpha:0.1}, 1500, Phaser.Easing.Bounce.InOut, true, 0, 3);
 
-        this.roles = ["Instructor", "Shopper", "Cook"];
+        this.roles = ["Maestro", "Compratore", "Cuciniere"];
 
         var _this = this;
         this.game.socket.on(PlayerEvent.players, function (players) {
@@ -162,7 +162,7 @@ class MainMenu extends Phaser.State {
             for (var i = 0; i < players.length; i++)
             {
                 if (players[i].id == _this.game.myID){
-                    this.textRoleAssign.setText("Your role is: " + this.roles[i]);
+                    this.textRoleAssign.setText("Il tuo personaggio è: " + this.roles[i]);
                     break; 
                 }
             }

@@ -80,10 +80,10 @@ class GameState extends Phaser.State {
     this.game.helpClouds = [];
     this.game.playersActive = [];
     this.game.startPositions = [];
-    this.game.roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
+    this.game.roles = {1:"Maestro", 2: "Compratore", 3: "Cuciniere"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     this.game.tooltipTexts = {"path-q1": "Foods & Recipes", "path-q2": "Seasonality & Locality", "path-q3": "Nutritional Principles",
-                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item"};
+                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item", "bonus-tile": "??"};
     //this.diceGroup = [];
     this.startSynced = false;
     diceGroup = this.add.group();
@@ -171,16 +171,7 @@ class GameState extends Phaser.State {
         this.startingTiles[3-i].occupant = newPlayer;
         this.addMarkerScale(newPlayer);
         this.game.playersActive.push(newPlayer);
-        // if (i==1){
-        //   var tip3 = new Phasetips(this.game, {
-        //     targetObject: newPlayer,
-        //     context: "This is a shopper!",
-        //     position: "top",
-        //     positionOffset: 0,
-        //     customBackground: this.game.customTip,
-        //     animation: "grow"
-        //   });
-        // }
+
     }
     // communication tokens for server-client socketIO syncing
     this.uuidSend = uuid();
@@ -196,23 +187,7 @@ class GameState extends Phaser.State {
         //tile.scale.x = alevel.direction[y][x];
         tile.initialZ = 0;
 
-        if (alevel.ground[y][x] === 0) {
-          // Add to water tiles
-          tile.initialZ = -4;
-          this.water.push(tile);
-        }
 
-        if (alevel.ground[y][x] === 4) {
-          // Make bridge higher
-          tile.isoZ += 4;
-          tile.initialZ += 4;
-
-          // Put tile under bridge
-          const waterUnderBridge = this.game.add.isoSprite(this.size * x, this.size * y, 0, 'tileset', alevel.groundNames[0], this.groundGroup);
-          waterUnderBridge.anchor.set(0.5, 1);
-          waterUnderBridge.initialZ = -4;
-          this.water.push(waterUnderBridge);
-        }
       }
     }
 
@@ -225,10 +200,6 @@ class GameState extends Phaser.State {
     }, this);
 
     this.game.iso.simpleSort(this.groundGroup);
-
-    // Create dude
-    //this.dude = new Dude(this.game, this.startPosition);
-    //this.objectGroup.add(this.dude.sprite);
 
     this.game.world.bringToTop(this.game.panelLeft);
     this.game.world.bringToTop(this.game.panelRight);
@@ -247,7 +218,7 @@ class GameState extends Phaser.State {
     // --- /Register SOCKET listeners --- //
 
     this.isoGroup.forEach(this.createTooltip, this, false);
-    
+    this.isoGroup.forEach(this.game.scoreHandler.animateRecipeDemo, this, false);
   }
 
   addPointsGainEmitter(pointType){
@@ -454,6 +425,9 @@ class GameState extends Phaser.State {
                 tile.tooltipText = this.game.tooltipTexts[tileName];
                 tile.alpha = 0.6;
               }
+              if(tileName.includes("bonus-"))
+                tile.tooltipText = this.game.tooltipTexts[tileName];
+
               /* TODO -- maybe use an effect like hoping "target-tiles" like (tween for tile.isoZ = 64;) */
               this.boardGameTiles[y][x] = tile;
           }
@@ -550,7 +524,7 @@ class GameState extends Phaser.State {
         this.endTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-                if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false) ||
+                if(clickedTile.activated && myRole=="Maestro" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false) ||
                    (clickedTile.activated && (myRole=="Shopper" && clickedTile.questpop.cooktile)) || (clickedTile.activated && (myRole=="Cook" && clickedTile.questpop.shoptile)))
                   return;
                 else
@@ -561,7 +535,7 @@ class GameState extends Phaser.State {
         this.midTiles.forEach(clickedTile => {
             var inBounds = clickedTile.isoBounds.containsXY(this.cursorPos.x, this.cursorPos.y);
             if(inBounds && playerMoving==false){
-              if(clickedTile.activated && myRole=="Instructor" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false)||
+              if(clickedTile.activated && myRole=="Maestro" || (clickedTile.activated && this.game.scoreHandler.checkStepCompleted()!=false)||
               (clickedTile.activated && (myRole=="Shopper" && clickedTile.questpop.cooktile)) || (clickedTile.activated && (myRole=="Cook" && clickedTile.questpop.shoptile)))
                 return;
               else

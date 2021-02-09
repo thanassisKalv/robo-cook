@@ -115,9 +115,9 @@ WebFontConfig = {
         this.game.load.image('table-score','assets/badges/scoreframe/table-score.png');
         this.game.load.image('element-score','assets/badges/scoreframe/score-element.png');
         this.game.load.image('star-score','assets/badges/scoreframe/star-element.png');
-        this.game.load.image('controlling-Instructor','assets/menus/controlling/instructor.png');
-        this.game.load.image('controlling-Shopper','assets/menus/controlling/shopper.png');
-        this.game.load.image('controlling-Cook','assets/menus/controlling/cook.png');
+        this.game.load.image('controlling-Maestro','assets/menus/controlling/instructor.png');
+        this.game.load.image('controlling-Compratore','assets/menus/controlling/shopper.png');
+        this.game.load.image('controlling-Cuciniere','assets/menus/controlling/cook.png');
         this.game.load.image("key-arrows", 'assets/menus/key-arrows.png');
         this.game.load.image("tooltip", 'assets/menus/customTip.png');
 
@@ -143,8 +143,8 @@ WebFontConfig = {
         this.game.load.image('protein-logo', 'assets/menus/protein-logo-with-flag.png');
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
-        this.game.load.image('game-instructions', 'assets/menus/instructions-eng-short.png');
-        this.game.load.image('game-instructions-details', 'assets/menus/instructions-eng-long.png');
+        this.game.load.image('game-instructions', 'assets/menus/instructions-ita-short.png');
+        this.game.load.image('game-instructions-details', 'assets/menus/instructions-ita-long.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
         this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
@@ -188,11 +188,17 @@ WebFontConfig = {
         this.game.load.image('peppers-recipe', 'assets/recipe-items/peppers.png');
         this.game.load.image('cheese-recipe', 'assets/recipe-items/cheese.png');
         this.game.load.image('grate-recipe', 'assets/recipe-items/grate.png');
+        this.game.load.image('spatula-recipe', 'assets/recipe-items/spatula.png');
         this.game.load.image('boil-recipe', 'assets/recipe-items/boil-action.png');
+        this.game.load.image('fold-recipe', 'assets/recipe-items/folded.png');
+        this.game.load.image('fill-recipe', 'assets/recipe-items/fill-top.png');
         this.game.load.image('cut-recipe', 'assets/recipe-items/chop-action.png');
         this.game.load.image('salt-recipe', 'assets/recipe-items/salt.png');
         this.game.load.image('vinaigrette-recipe', 'assets/recipe-items/vinaigrette.png')
         this.game.load.image('redX', 'assets/recipe-items/redX.png');
+
+        this.game.load.spritesheet("cooking-omelette", path + "assets/recipe-items/omelette-cook-anim.png", 147, 132);
+
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         this.game.load.atlas('char', charImage, charData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);

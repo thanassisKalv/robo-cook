@@ -148,12 +148,10 @@ class PlayerScores {
       else{
          var _this = this;
          this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nRECIPE IS READY!");
-         setTimeout( function(){ 
-            _this.game.finaleMusic.play();}, 2000);
-         setTimeout(function(){
-            var xc = _this.game.startPositions[0].x/2+_this.game.startPositions[2].x/2;
-            var yc = _this.game.startPositions[0].y/2+_this.game.startPositions[2].y/2;
-            _this.game.finaleBadge = _this.game.add.image(xc, yc, "cake-complete"); }, 4000);
+         
+         setTimeout( function(){  _this.game.finaleMusic.play();}, 2000);
+         //setTimeout(function(){ _this.animateFinishedRecipe(middleTile); }, 1500);
+            
       }
    }
 
@@ -174,6 +172,21 @@ class PlayerScores {
          return true
       else
          return false
+   }
+
+   animateFinishedRecipe(tile){
+      var _this = this;
+      setTimeout( function(){
+         if(tile.key.includes("target-3")){
+            tile.recipeDemo = _this.game.add.sprite(-50, -60, 'cooking-omelette');
+            tile.recipeDemo.scale.setTo(0.7);
+            tile.recipeDemo.alpha = 0.8;
+            tile.addChild(tile.recipeDemo);
+            tile.recipeDemo.animations.add('demo-recipe');
+            tile.recipeDemo.animations.play('demo-recipe', 0.5, true);
+            _this.game.world.bringToTop(tile.recipeDemo);
+         }
+      },4000);
    }
 
    activateRecipeTile(tile){
@@ -202,9 +215,9 @@ class PlayerScores {
       this.clearPrevStep(this.unlockedStep-1, this.unlockedStep);
 
       var myRole = this.game.roles[this.game.controllingPlayer];
-      if(myRole=="Instructor")
+      if(myRole=="Maestro")
          this.game.objcvsTxt[this.unlockedStep].setText( this.recipe[this.unlockedStep].step );
-      else if(myRole=="Shopper")
+      else if(myRole=="Compratore")
          this.game.objcvsTxt[this.unlockedStep].setText( this.recipe_shopper[this.unlockedStep].step );
       else 
          this.game.objcvsTxt[this.unlockedStep].setText( this.recipe_cook[this.unlockedStep].step );
@@ -214,7 +227,7 @@ class PlayerScores {
       this.game.objcvsTxt[this.unlockedStep].fontWeight = "bold"
       this.game.objcvsTxt[this.unlockedStep].addColor("rgb(10, 225, 10)", 0);
       this.game.objcvs[this.unlockedStep].pointsFrame.selfDestroy();
-      this.game.teamProgrTxt[this.unlockedStep].setText( "Step "+(this.unlockedStep+1)+" is enabled and revealed (...almost)!" );
+      this.game.teamProgrTxt[this.unlockedStep].setText( "Il passaggio "+(this.unlockedStep+1)+" della ricetta è attivo e (quasi) svelato!" );
       // The Shopper and the Cook, should select and drag-drop their recipe-action over the correct mark
       this.game.objcvs[this.unlockedStep].loadTexture("activeObj");
       //if(myRole!="Instructor"){
@@ -288,7 +301,7 @@ class PlayerScores {
 
    updateRecipeItems(role, i, rcpItemKey){
       this.game.pickupMusic.play();
-      if(this.game.roles[this.game.controllingPlayer]=="Instructor" && role=="Shopper"){
+      if(this.game.roles[this.game.controllingPlayer]=="Maestro" && role=="Compratore"){
          this.game.objcvs[this.rcpPrgrs].actions[i].loadTexture(rcpItemKey);
          this.game.objcvs[this.rcpPrgrs].actions[i].alpha = 1.0;
          this.game.objcvs[this.rcpPrgrs].actions[i].scale.setTo(1.0);
@@ -301,7 +314,7 @@ class PlayerScores {
    }
 
    updateOtherRolesProgress(role){
-      if(this.game.roles[this.game.controllingPlayer]=="Instructor" && role=="Shopper"){
+      if(this.game.roles[this.game.controllingPlayer]=="Maestro" && role=="Compratore"){
          this.game.objcvs[this.rcpPrgrs].completedBadge.visible = true;
          this.game.objcvs[this.rcpPrgrs].actions[2].setText(this.game.objcvs[this.rcpPrgrs].actions[3]);
       }else{

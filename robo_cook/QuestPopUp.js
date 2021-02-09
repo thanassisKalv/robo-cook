@@ -86,7 +86,7 @@ class QuestPopUp extends Phaser.Sprite {
         this.timeClock.anchor.set(0.5,0.5);
         this.timeClock.scale.set(0.3);
         // add text label to left of bar
-        this.timeLabel = this.game.add.text(60, 500, 'Time\nremaining',  {font: "19px Comic Sans MS"});
+        this.timeLabel = this.game.add.text(60, 500, 'Tempo\nRimanente',  {font: "19px Comic Sans MS"});
         this.timeLimit = Math.floor(this.game.time.totalElapsedSeconds() ) + this.tLimit;
         //this.showImageAnswer(this.categoryIndexSelected, this.currentQuestionIndex);
         this.game.panelRight.addChild(this.bgBar);
@@ -132,10 +132,10 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     displayCookActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Choose a cooking action to complete your recipe", "cook", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#bf6767", "Scegli un'azione di cottura per completare la ricetta", "cook", this);
     }
     displayShopActions(options, optionsEng, currentStep){
-        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Choose an ingredient that is missing from your recipe", "shop", this);
+        this.game.UiModalsHandler.questionOfActions(options, optionsEng, currentStep, "#b8ec4a", "Scegli l'ingrediente che manca nella ricetta", "shop", this);
     }
 
     shuffle(array) {

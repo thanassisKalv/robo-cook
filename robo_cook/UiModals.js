@@ -7,7 +7,7 @@ class UiModalsManager {
     waitingModal(player){
 
         Swal.fire({
-            title: 'Wait for your teammates to sync!',
+            title: 'Aspetta che i tuo compagno si connetta!',
             //timer: 500,
             //timerProgressBar: true,
             allowOutsideClick: false,
@@ -76,8 +76,8 @@ class UiModalsManager {
               },
             showCancelButton: true,
             showDenyButton: true,
-            confirmButtonText: 'Help your teammate',
-            denyButtonText: 'Help (low confidence)',
+            confirmButtonText: 'Aiuta il tuo compagno',
+            denyButtonText: 'Aiuto (non sono sicuro)',
             cancelButtonText: "Don't send",
             confirmButtonColor: "#27c437",
             denyButtonColor: '#f4ba36ad',
@@ -203,7 +203,7 @@ class UiModalsManager {
         Swal.fire({
             icon: iconR,
             title: quText,
-            html: "Your teammate answered:<br><b style='color:grey;font-size: 24px;'>" + answerText + "</b>",
+            html: "Il tuo compagno ha risposto:<br><b style='color:grey;font-size: 24px;'>" + answerText + "</b>",
             timer: 6500,
             allowOutsideClick: false,
             showConfirmButton: false
@@ -217,7 +217,7 @@ class UiModalsManager {
 
     showStepFinished(no, stepTxt){
         Swal.fire({
-            title: "Νο"+(no+1)+" step is complete!",
+            title: "Passaggio "+(no+1)+" completato!",
             html: "<b style='color:green;font-size: 24px;'>" + stepTxt + "</b>",
             timer: 7000,
             allowOutsideClick: false,

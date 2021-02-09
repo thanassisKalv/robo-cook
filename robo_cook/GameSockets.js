@@ -1,7 +1,7 @@
 
 function registerSocketListeners(_this, window)
 {
-    const roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
+    const roles = {1:"Maestro", 2: "Compratore", 3: "Cuciniere"};
     const rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     window.socket.on(PlayerEvent.coordinates, function (playerMove) {
         _this.uuidReceived = playerMove.uuidToken;
@@ -24,7 +24,7 @@ function registerSocketListeners(_this, window)
 
     window.socket.on(PlayerEvent.getPlayerTurn, function (syncPlayersTurn) {
         playersTurn = syncPlayersTurn;
-        _this.game.playingNowText.setText(roles[playersTurn]+"'s");
+        _this.game.playingNowText.setText(roles[playersTurn]+"");
         _this.game.playingRoleIcon.loadTexture(rolesIcon[playersTurn]);
 
         if(playersTurn == _this.game.controllingPlayer){

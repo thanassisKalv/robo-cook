@@ -146,9 +146,8 @@ function createPanelL(game){
             game.objcvs.push(game.add.sprite(45, objPosY[i], "noActiveObj"));
             game.objcvs[i].scale.setTo(0.4);
             game.objcvs[i].visible = false;
-            //if(game.roles[game.controllingPlayer]=="Instructor")
-            //    game.objcvsTxt.push(game.add.text(63, objPosY[i]+5, game.stepsInstructor[i]["step"].substring(0, 12)+"...", {font: "italic 22px Handlee"}));
-            game.objcvsTxt.push(game.add.text(55, objPosY[i]+85, "Instructor must go to the correct tile to reveal the recipe step...", {font: "bold 20px Comic Sans MS"}));
+
+            game.objcvsTxt.push(game.add.text(55, objPosY[i]+85, "La Maestro deve andare nella casella giusta per scoprire il prossimo passaggio", {font: "bold 20px Comic Sans MS"}));
 
             game.objcvsTxt[i].wordWrap = true;
             game.objcvsTxt[i].wordWrapWidth = 250;
@@ -158,14 +157,13 @@ function createPanelL(game){
             game.objcvs[i].pointsFrame = new PointsFrame(game, game.stepsInstructor[i], game.panelBack, objPosY[i]+10, game.objcvs[i]);
             game.objcvs[i].pointsFrame.hide();
             
-            game.teamProgrTxt.push( game.add.text(65, objPosY[i]+45, "points to enable recipe step", {font: "bold 18px Comic Sans MS"}) );
+            game.teamProgrTxt.push( game.add.text(65, objPosY[i]+45, "punti per attivare il passaggio", {font: "bold 18px Comic Sans MS"}) );
             //game.teamProgrTxt[i].anchor.setTo(0.5);
             game.teamProgrTxt[i].wordWrap = true;
             game.teamProgrTxt[i].wordWrapWidth = 240;
             game.teamProgrTxt[i].addColor("rgb(0, 0, 255)", 0);
             game.teamProgrTxt[i].visible = false;
 
-            //if(game.roles[game.controllingPlayer]!="Instructor")
             if( game.roles[game.controllingPlayer]=="Cook" ){
                   addRecipeNonActions(game, game.objcvs[i], "shop", game.stepsShopper, [340+50, 480+50, 580+20 ], i);
                   addRecipeActions(game, game.objcvs[i], "cook", game.stepsCook, [630+50, 780+50, 680+20 ], i);
@@ -202,7 +200,7 @@ function createPanelR(game){
       game.panelBackR.addChild(game.panelBackR.panelTexture);
 
       game.controllingBadge = game.add.sprite(5, 0, "controlling-"+game.roles[game.controllingPlayer]);
-      game.controllPlayerText = game.add.text(53, 15, "Your control player\n "+game.roles[game.controllingPlayer],  {font: "bold 15px Handlee"});
+      game.controllPlayerText = game.add.text(53, 15, "Il tuo personaggio è:\n "+game.roles[game.controllingPlayer],  {font: "bold 15px Handlee"});
       game.panelBackR.addChild(game.controllingBadge);
       game.panelBackR.addChild(game.controllPlayerText);
 
