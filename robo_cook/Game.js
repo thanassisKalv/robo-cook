@@ -53,6 +53,12 @@ class GameState extends Phaser.State {
 
   create() {
 
+    // https://www.html5gamedevs.com/topic/4775-making-a-game-for-both-desktop-and-mobile/
+    //this.game.stage.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    //this.scale.startFullScreen();
+    //this.scale.setShowAll();
+    //this.scale.refresh();
+
     var _this = this;
     this.game.time.desiredFps = 45;
     //this.time.desiredFps = 30;
@@ -82,7 +88,7 @@ class GameState extends Phaser.State {
     this.game.startPositions = [];
     this.game.roles = {1:"Maestro", 2: "Compratore", 3: "Cuciniere"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
-    this.game.tooltipTexts = {"path-q1": "Foods & Recipes", "path-q2": "Seasonality & Locality", "path-q3": "Nutritional Principles",
+    this.game.tooltipTexts = {"path-q1": "CIBI E RICETTE", "path-q2": "STAGIONALITÀ / LOCALITÀ", "path-q3": "PRINCIPI NUTRITIVI",
                             "path-cook-action": "Cook Action", "path-shop-action": "Shop item", "bonus-tile": "??"};
     //this.diceGroup = [];
     this.startSynced = false;
@@ -218,7 +224,7 @@ class GameState extends Phaser.State {
     // --- /Register SOCKET listeners --- //
 
     this.isoGroup.forEach(this.createTooltip, this, false);
-    this.isoGroup.forEach(this.game.scoreHandler.animateRecipeDemo, this, false);
+    this.isoGroup.forEach(this.game.scoreHandler.animateFinishedRecipe, this, false);
   }
 
   addPointsGainEmitter(pointType){
@@ -628,6 +634,47 @@ class GameState extends Phaser.State {
     this.startingTiles = [];
     this.startPositions = [];
     this.game.tweens.removeAll();
+    
+  }
+
+  render () {
+
+      var x = 32;
+      var y = 0;
+      var yi = 32;
+
+      this.game.debug.text('Viewport', x, y += yi);
+
+      this.game.debug.text('Viewport Width: ' + this.game.scale.viewportWidth, x, y += yi);
+      this.game.debug.text('window.innerWidth: ' + window.innerWidth, x, y += yi);
+      this.game.debug.text('window.outerWidth: ' + window.outerWidth, x, y += yi);
+
+      this.game.debug.text('Viewport Height: ' + this.game.scale.viewportHeight, x, y += yi);
+      this.game.debug.text('window.innerHeight: ' + window.innerHeight, x, y += yi);
+      this.game.debug.text('window.outerHeight: ' + window.outerHeight, x, y += yi);
+
+      this.game.debug.text('Document', x, y += yi*2);
+
+      this.game.debug.text('Document Width: ' + this.game.scale.documentWidth, x, y += yi);
+      this.game.debug.text('Document Height: ' + this.game.scale.documentHeight, x, y += yi);
+
+      //  Device: How to get device size.
+
+      //  Use window.screen.width for device width and window.screen.height for device height. 
+      //  .availWidth and .availHeight give you the device size minus UI taskbars. (Try on an iPhone.) 
+      //  Device size is static and does not change when the page is resized or rotated.
+
+      x = 350;
+      y = 0;
+
+      this.game.debug.text('Device', x, y += yi);
+
+      this.game.debug.text('window.screen.width: ' + window.screen.width, x, y += yi);
+      this.game.debug.text('window.screen.availWidth: ' + window.screen.availWidth, x, y += yi);
+      this.game.debug.text('window.screen.height: ' + window.screen.height, x, y += yi);
+      this.game.debug.text('window.screen.availHeight: ' + window.screen.availHeight, x, y += yi);
+      this.game.debug.text('screen orientation: ' + this.game.scale.screenOrientation , x, y += yi);
+
   }
 }
 

@@ -73,6 +73,7 @@ WebFontConfig = {
         this.game.load.image('kitchen-team2', path+'assets/robo-cook/kitchen-team-2.png');
         this.game.load.image('soundOff', path+'assets/images/sound-off.png')
         this.game.load.image('soundOn', path+'assets/images/sound-on.png')
+        this.game.load.image('fullscreen', path+'assets/images/fullscreen.png')
         //this.game.load.audio('bgMusic', ['assets/audio/bg_music.mp3']);
         this.game.load.audio('rollDice', ['assets/audio/dice_roll.mp3']);
         this.game.load.audio('countdown', ['assets/audio/countdown10.mp3']);

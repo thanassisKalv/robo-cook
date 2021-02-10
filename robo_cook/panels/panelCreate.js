@@ -272,6 +272,7 @@ function createPanelR(game){
       game.panelBackR.addChild(game.keyArrows);
       game.panelBackR.addChild(game.keyArrowsText);
 
+      // register two panel buttons for toggling sound and fullscreen
       game.soundToggle = game.add.sprite(170, 830, "soundOn");
       game.soundToggle.scale.setTo(0.4);
       game.soundToggle.anchor.setTo(0.5);
@@ -290,6 +291,33 @@ function createPanelR(game){
             }
             
       }
+
+      game.fullscreenToggle = game.add.sprite(170,870,"fullscreen");
+      game.fullscreenToggle.scale.setTo(0.4);
+      game.fullscreenToggle.anchor.setTo(0.5);
+      game.fullscreenToggle.inputEnabled = true;
+      game.fullscreenToggle.events.onInputDown.add(gofullScreen, this);
+      game.panelBackR.addChild(game.fullscreenToggle);
+      game.scale.onFullScreenChange.add(changedScreen,this);
+
+      function changedScreen(){
+            console.log(game.scale.maxHeight );
+            game.scale.setMinMax(game.scale.minWidth, game.scale.minHeight , game.scale.maxWidth , window.screen.availHeight);
+            game.scale.refresh();
+      }
+
+      function gofullScreen() {
+
+            if (game.scale.isFullScreen){
+                game.scale.stopFullScreen();
+                //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            }
+            else{
+                game.scale.startFullScreen(false);
+                //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            }
+        
+        }
 
       return game.panelBackR;
 }

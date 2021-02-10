@@ -143,6 +143,7 @@ class UiModalsManager {
 
 
             }).then((result) => {
+                pendingMove = false;
                 if(result.isDismissed==true && result.dismiss!="cancel")
                     return; // handle properly the Swal.close(); case
                 else{

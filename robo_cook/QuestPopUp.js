@@ -46,7 +46,7 @@ class QuestPopUp extends Phaser.Sprite {
     }
 
     waitOtherPlayer(){
-        this.game.waiting_other = this.game.add.text(100, 570, 'Wait \nteamplayers...',  {font: "bold 20px Comic Sans MS"});
+        this.game.waiting_other = this.game.add.text(100, 570, 'Aspetta che\ni tuo compagno...',  {font: "bold 20px Comic Sans MS"});
         this.game.waiting_other.tween = this.game.add.tween(this.game.waiting_other).to({alpha:0.2}, 1500, Phaser.Easing.Bounce.InOut, true, 0, -1).yoyo(true, 1000);
         this.game.waiting_other.anchor.set(0.5,0.5);
         this.game.waiting_other.addColor('#4400ff', 0);
@@ -283,7 +283,7 @@ class QuestPopUp extends Phaser.Sprite {
         context.timeLabel.destroy();
         context.game.time.events.remove(context.musicEvent);
         context.timeOver == true;
-        pendingMove = false;
+        
         if(recipeAction)
             this.setDragDropItem(answer);
            //window.socket.emit(PlayerEvent.opponentAnswered, {correct:answer, category:ctgry, quIndex:quIndex, rcpAction:true});

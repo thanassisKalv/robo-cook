@@ -1,11 +1,11 @@
 # robo-cook
-robo-cook's path  -  board game in Phaser.js
+robo-cook's path  -  A board game in Phaser.js
 
 
-### latest changes (December 2020)
- - please check the new updated file ["latest-updates.md"](https://github.com/thanassisKalv/robo-cook/blob/online-multiplayer-eng/latest-changes.md/)
+### latest changes (February 2021)
+ - check the new updated file ["latest-updates.md"](https://github.com/thanassisKalv/robo-cook/blob/online-multiplayer-eng/latest-changes.md/)
 
-### done
+### done (initial version)
  - fixed the robo-cook's position return - *03/06*
  - added random-selector for questions items - *03/06*
  - fixed random-selector's range - *04/06*
