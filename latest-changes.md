@@ -4,7 +4,8 @@
 ### 09-02-2021
  - added a "game-finishing" animation of the target-recipe in the middle of the board
  - removed the english letters (I,M,C) for the roles and added icons to avoid language dependency
- - added FullScreen option and disabled a scaleManager function that crashed on *mobile devices*
+ - added *FullScreen option* and disabled a scaleManager function that crashed on *mobile devices*
+ - fixed a bug that allowed to move player in-between waiting answer to be revealed
 
 ## latest changes on Greek Version
 

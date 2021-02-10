@@ -3,7 +3,7 @@ robo-cook's path  -  A board game in Phaser.js
 
 
 ### latest changes (February 2021)
- - check the new updated file ["latest-updates.md"](https://github.com/thanassisKalv/robo-cook/blob/online-multiplayer-eng/latest-changes.md/)
+ - check the new updated file ["latest-updates.md"](https://github.com/thanassisKalv/robo-cook/blob/online-multiplayer-ita/latest-changes.md)
 
 ### done (initial version)
  - fixed the robo-cook's position return - *03/06*
