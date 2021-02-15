@@ -164,7 +164,7 @@ function createPanelL(game){
             game.teamProgrTxt[i].addColor("rgb(0, 0, 255)", 0);
             game.teamProgrTxt[i].visible = false;
 
-            if( game.roles[game.controllingPlayer]=="Cook" ){
+            if( game.roles[game.controllingPlayer]=="Cuciniere" ){
                   addRecipeNonActions(game, game.objcvs[i], "shop", game.stepsShopper, [340+50, 480+50, 580+20 ], i);
                   addRecipeActions(game, game.objcvs[i], "cook", game.stepsCook, [630+50, 780+50, 680+20 ], i);
             }else{
@@ -299,10 +299,16 @@ function createPanelR(game){
       game.fullscreenToggle.events.onInputDown.add(gofullScreen, this);
       game.panelBackR.addChild(game.fullscreenToggle);
       game.scale.onFullScreenChange.add(changedScreen,this);
+      game.scale.onOrientationChange.add(changedScreenOrient, this);
 
       function changedScreen(){
             console.log(game.scale.maxHeight );
-            game.scale.setMinMax(game.scale.minWidth, game.scale.minHeight , game.scale.maxWidth , window.screen.availHeight);
+           // game.scale.setMinMax(game.scale.minWidth, game.scale.minHeight , game.scale.maxWidth , window.screen.availHeight);
+            game.scale.setUserScale(0.8*(window.innerHeight/game.height), 0.8*(window.innerHeight/game.height))
+            game.scale.refresh();
+      }
+      function changedScreenOrient(){
+            game.scale.setUserScale(0.8*(window.innerHeight/game.height), 0.8*(window.innerHeight/game.height))
             game.scale.refresh();
       }
 

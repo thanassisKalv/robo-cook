@@ -146,7 +146,7 @@ function registerSocketListeners(_this, window)
 
     //  ******   PLAYER HAS QUITTED  -->  RESET STATE VARIABLES & RESTART SCENE
     window.socket.on(PlayerEvent.quit, function (playerID) {
-        console.log("Your opponent with ID has quitted: " + playerID );
+        console.log("Your teamplayer with ID has quitted: " + playerID );
         Swal.close();
         _this.resetGlobalState();
         //_this.music.stop();

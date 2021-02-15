@@ -1,0 +1,683 @@
+{
+	"lives": 3,
+	"categories": [
+		{
+			"questions": [
+				{
+					"question": "Il termine 'dieta' significa letteralmente:",
+					"choices": [
+						"Assunzione costante di determinati alimenti",
+						"Regime alimentare restrittivo",
+						"Regime di vita"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Parlando di quantità o qualità?"
+				},
+				{
+					"question": "L’attività fisica media si valuta grazie ai:",
+					"choices": [
+						"LARN",
+						"LAF",
+						"TID"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "pasta.jpg"
+				},
+				{
+					"question": "Secondo la piramide alimentare mediterranea ogni settimana sono consentiti:",
+					"choices": [
+						"1-2 porzioni di uova",
+						"2-3 porzioni di uova",
+						"2-4 porzioni di uova"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "olives.jpg"
+				},
+				{
+					"question": "Un IMC pari a 24 corrisponde a:",
+					"choices": [
+						"Peso regolare",
+						"Sottopeso",
+						"Sovrappeso"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "I lipidi dovrebbero apportare una % di energia:",
+					"choices": [
+						"> 35%",
+						"< 20%",
+						"Pari a circa al 20-30%"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Il pranzo dovrebbe apportare mediamente il:",
+					"choices": [
+						"15-20%",
+						"50%",
+						"35-40%"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Le reazioni alimentari tossiche:",
+					"choices": [
+						"Sono allergie alimentari",
+						"Sono intolleranze alimentari",
+						"Nessune delle risposte precedenti è corretta"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Contengono glutine:",
+					"choices": [
+						"Grano, orzo, farro e segale",
+						"Riso, mais e quinoa",
+						"Grano, mais, farro e quinoa"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "10-12 g di alcol puro corrispondono a:",
+					"choices": [
+						"una unità alcolica",
+						"due unità alcoliche",
+						"tre unità alcoliche"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "La toxoplasmosi è un rischio particolarmente grave per:",
+					"choices": [
+						"Gli anziani",
+						"I bambini",
+						"Le donne in gravidanza"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Un IMC pari a 15 corrisponde a una situazione di:",
+					"choices": [
+						"Sottopeso",
+						"Grave magrezza",
+						"Normopeso"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "La libertà dei menu è tipica della ristorazione:",
+					"choices": [
+						"Del terziario e industriale",
+						"Commerciale",
+						"Collettiva del sociale"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "I livelli di attività fisica (LAF) sono:",
+					"choices": [
+						"10",
+						"4",
+						"6"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "La formula di Lorenz serve a calcolare:",
+					"choices": [
+						"Il metabolismo basale",
+						"Il FET",
+						"Il peso teorico"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quante sono le linee guida 2017 per una sana alimentazione italiana:",
+					"choices": [
+						"10",
+						"12",
+						"13"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "La storia dietetica fa riferimento a un periodo di:",
+					"choices": [
+						"1-5 giorni",
+						"7-30 giorni",
+						"2-3 giorni"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "La sete molta intensa è uno dei sintomi tipici",
+					"choices": [
+						"dell'ipertensione",
+						"del diabete",
+						"dell'anoressia"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Gli additivi che possono influire negativamente sull’attenzione dei bambini sono:",
+					"choices": [
+						"I conservanti",
+						"I dolcificanti",
+						"I coloranti"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "L’energia necessaria per assorbire e metabolizzare gli alimenti introdotti con la dieta corrisponde:",
+					"choices": [
+						"Alla TID",
+						"Al Metabolismo Basale",
+						"Ai LAF"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Alla base della piramide alimentare mediterranea compaiono indicazioni relative a:",
+					"choices": [
+						"Attività fisica e convivialità",
+						"Stagionalità e prodotti locali",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				}
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Sono potenzialmente vettori di contaminazione alimentare",
+					"choices": [
+						"Le mosche",
+						"Le posate",
+						"I taglieri"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I batteri che non producono spore vengono definiti:",
+					"choices": [
+						"Sporigeni",
+						"Asporigeni",
+						"Vegetativi"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’effetto “mutageno” delle micotossine consiste nel fatto che:",
+					"choices": [
+						"Inducono malformazioni fetali",
+						"Causano mutazioni al DNA",
+						"Causano il cancro"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Batteri e lieviti sono:",
+					"choices": [
+						"unicellulari procarioti",
+						"pluricellulari procarioti",
+						"Acellulari"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Sono più a rischio di causare botulismo",
+					"choices": [
+						"le conserve di pomodoro",
+						"le cipolline sotto aceto",
+						"le melanzane sott'olio"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La contaminazione che si propaga attraverso veicoli e vettori è:",
+					"choices": [
+						"Diretta",
+						"Indiretta",
+						"Crociata"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I batteri che resistono alle basse temperature sono definiti:",
+					"choices": [
+						"Psicrofili",
+						"Mesofili",
+						"Termofili"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’amebiasi e la toxoplasmosi sono infestazioni causate da:",
+					"choices": [
+						"Vermi parassiti",
+						"Protozoi",
+						"Virus alimentari"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La temperatura di esercizio dello sterilizza-coltelli deve essere pari almeno a:",
+					"choices": [
+						"+70 °C",
+						"+82 °C",
+						"+100 °C"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La prevenzione dello sviluppo di contaminanti è sicura se ottenuta con una concentrazione salina:",
+					"choices": [
+						"minima pari al 20%",
+						"minima pari al 30%",
+						"minima pari al 40%"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Portatore sano di una malattia è una:",
+					"choices": [
+						"Persona infetta e malata",
+						"Persona non infetta ma malata",
+						"Persona infetta ma non malata"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Per un corretto lavaggio delle mani la temperatura dell’acqua deve essere impostata: ",
+					"choices": [
+						"Al di sotto dei 40 °C",
+						"Intorno ai 40-45 °C",
+						"Al di sopra dei 45 °C"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La rimozione dei residui grossolani è la prima fase della:",
+					"choices": [
+						"Detersione",
+						"Disinfezione",
+						"Disinfestazione"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La tecnica nota come “High Temperature/Short Time” è una tecnica di:",
+					"choices": [
+						"Pastorizzazione",
+						"Sterilizzazione",
+						"Appertizzazione in autoclave"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La tecnica detta spray drying è un metodo di:",
+					"choices": [
+						"Concentrazione",
+						"Liofilizzazione",
+						"Essiccamento"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Devono essere venduti confezionati gli alimenti:",
+					"choices": [
+						"Congelati",
+						"Surgelati",
+						"Entrambe le risposte precedenti sono sbagliate"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’irrancidimento dei grassi può essere causato:",
+					"choices": [
+						"Dalle radiazioni solari",
+						"Dall’ossigeno",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’effetto disidratante del cloruro di sodio è:",
+					"choices": [
+						"Maggiore di quello del saccarosio",
+						"Minore di quello del saccarosio",
+						"Uguale a quello del saccarosio"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Come viene sterilizzato il latte?:",
+					"choices": [
+						"Riscaldandolo per 30 secondi a 70-80 °C e poi raffreddato",
+						"Riscaldandolo a 50 °C e poi centrifugato",
+						"Riscaldandolo per frazioni di secondi a circa 140 °C"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I saccaromiceti sono:",
+					"choices": [
+						"Batteri responsabili della fermentazione omolattica",
+						"Lieviti responsabili della fermentazione eterolattica",
+						"Lieviti responsabili della fermentazione alcolica"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+		
+
+		{
+			"questions": [
+				{
+					"question": "Cosa si usa per fare il burro?",
+					"choices": [
+						"il latticello, che è una sostanza acquosa",
+						"la crema, che è una sostanza grassa",
+						"il siero del latte scremato"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Come sono i tagli di bovino provenienti dal quarto anteriore dell'animale? ",
+					"choices": [
+						"Sono pregiati come i tagli di terza categoria",
+						"Sono più pregiati di quelli del quarto posteriore",
+						"sono meno pregiati di quelli del quarto posteriore"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Cos'è la 'trafila' che si usa per fare la pasta?",
+					"choices": [
+						"uno stampo di bronzo",
+						"un disco metallico con molti fori",
+						"un forno per l’essiccazione"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Cos'è il manzo?",
+					"choices": [
+						"Un bovino da macello di tre o quattro anni",
+						"Un bovino da macello che ha più di 4 anni",
+						"Un bovino da macello di circa un anno di età"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "All'interno dell'uovo, il tuorlo ",
+					"choices": [
+						"è isolato dal guscio dalla membrana testacea",
+						"è collegato alle estremità del guscio da due filamenti proteici detti calaze",
+						"galleggia dentro una sacca di aria"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Rientra nella categoria degli alimenti 'freschi'",
+					"choices": [
+						"il pane",
+						"la birra",
+						"la carne"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Cosa sono i mitili?",
+					"choices": [
+						"crostacei",
+						"molluschi",
+						"pesci di acqua salmastra"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La vitamina K ...",
+					"choices": [
+						"è indispensabile per far coagulare il sangue",
+						"è idrosolubile",
+						"aiuta contro le infezioni"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Il siero allontanato durante la produzione dei formaggi è ricco di:",
+					"choices": [
+						"acidi grassi saturi",
+						"caseina",
+						"lattoalbumina e lattoglobulina"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Le proteine dei legumi:",
+					"choices": [
+						"difettano di lisina",
+						"difettano di metionina e cisteina",
+						"sono complete"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Ha funzione prevalentemente energetica:",
+					"choices": [
+						"la mela",
+						"la pera",
+						"la castagna"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Conferiscono colore rosso agli insaccati:",
+					"choices": [
+						"i polifosfati",
+						"lo zucchero e la polvere di latte",
+						"i nitriti e i nitrati di sodio e di potassio"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Preparazioni gastronomiche che hanno subìto un trattamento di cottura e una successiva conservazione sono definiti:",
+					"choices": [
+						"Di seconda gamma",
+						"Di terza gamma",
+						"Di quinta gamma"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Per che cosa si differenziano i legumi dei gruppi 4 e 2?",
+					"choices": [
+						"Per il sapore",
+						"Per la prevalenza di un tipo di vitamina",
+						"Per il contenuto di acqua"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "E’ un formaggio erborinato:",
+					"choices": [
+						"la mozzarella",
+						"la robiola",
+						"il gorgonzola"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Se la quantità di grasso di filtrazione presente nelle carni è ridotta, si tratta di:",
+					"choices": [
+						"prezzemolatura",
+						"marezzatura",
+						"venatura"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Per evitare il fenomeno dell’affioramento, il latte deve essere sottoposto a trattamento di:",
+					"choices": [
+						"fltrazione",
+						"sterilizzazione",
+						"omogeneizzazione"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La sottile pellicola che avvolge il tuorlo è detta:",
+					"choices": [
+						"cuticola",
+						"membrana vitellina",
+						"membrana testacea"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Abbondano nell’albume:",
+					"choices": [
+						"il colesterolo e gli acidi grassi saturi",
+						"le proteine solforate",
+						"il ferro"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Il fruttosio è abbondante:",
+					"choices": [
+						"Nella frutta",
+						"Nel miele",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		}
+	]
+}

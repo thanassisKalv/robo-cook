@@ -281,7 +281,45 @@
             "type": "image",
             "key": "image_question_3_3",
             "url": "assets/images_questions/weightloss-diet.jpg"
+        },
+
+
+        {
+            "type": "image",
+            "key": "image_question_0_M",
+            "url": "assets/images_questions/medium/category-1.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_1_M",
+            "url": "assets/images_questions/medium/category-2.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_2_M",
+            "url": "assets/images_questions/medium/category-3.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_0_H",
+            "url": "assets/images_questions/hard/category-1.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_1_H",
+            "url": "assets/images_questions/hard/category-2.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_2_H",
+            "url": "assets/images_questions/hard/category-3.png"
         }
+        
     ],
     "meta": {
         "generated": "1401380327373",

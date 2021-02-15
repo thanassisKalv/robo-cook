@@ -88,7 +88,9 @@ WebFontConfig = {
         this.game.load.audio('game_finished', ['assets/audio/new/game_finished.mp3']);
         this.game.load.audio('bg_track', ['assets/audio/new/bg_track_0.mp3']);
 
-        this.game.load.json('questions', path+'assets/questions/data/questions.json');
+        this.game.load.json('easy-level', path+'assets/questions/data/questions-l.json');
+        this.game.load.json('medium-level', path+'assets/questions/data/questions-m.json');
+        this.game.load.json('hard-level', path+'assets/questions/data/questions-h.json');
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.game.load.image('button', 'assets/questions/button.png');
         // change asset keys and folder/filenames if necessary

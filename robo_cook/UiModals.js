@@ -114,7 +114,7 @@ class UiModalsManager {
 
         Swal.fire({
             title: questionText,
-
+            
             backdrop: true,
             allowOutsideClick: false,
             background: "#eccf75",

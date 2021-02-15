@@ -28,7 +28,7 @@ class QuestPopUp extends Phaser.Sprite {
         this.recipe_shopper = this.game.stepsShopper;
         this.recipe_cook = this.game.stepsCook;
 
-        this.data = this.game.cache.getJSON('questions');
+        this.data = this.game.Qdata;
         //this.categoryIndexSelected = 1;
         this.currentQuestionIndex = 0;
 
@@ -181,7 +181,14 @@ class QuestPopUp extends Phaser.Sprite {
 
 
     prepareQuestionImage(categoryIndex, questionIndex){
-        var key = ['image_question', categoryIndex, questionIndex].join('_');
+        var key;
+        if(this.game.recipeData.diffLevel=="easy-level")
+            key = ['image_question', categoryIndex, questionIndex].join('_');
+        else if(this.game.recipeData.diffLevel=="medium-level")
+            key = ['image_question', categoryIndex, "M"].join('_');
+        else 
+            key = ['image_question', categoryIndex, "H"].join('_');
+        
         this.image_question = this.game.add.image(this.x, this.y, key);
         
         var scale1 = 1.0, scale2 = 1.0;
