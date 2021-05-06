@@ -12,6 +12,8 @@ RUN npm install
 
 COPY --chown=node:node . .
 
+COPY . /home/node/robocook
+
 EXPOSE 8080
 
 CMD [ "node", "server.js" ]
