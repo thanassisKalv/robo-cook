@@ -9,14 +9,18 @@
             }
             canvas {   display : block;   margin : auto;}
         </style>
+        <link rel="shortcut icon" type="image/png" href="assets/score.png"/>
     </head>
     <body>
         <div id="demo"></div>
+        <script type="text/javascript" src="libs/socket-v2.4.0.io.js"></script>
         <script type="text/javascript" src="libs/phaser-2.16.0.min.js"></script>
         <script type="text/javascript" src="libs/ScoreBoard.js"></script>
         <script type="text/javascript">
+            window.socket = io.connect();
+
             var scoreBoard;
-            var game = new Phaser.Game(900, 3*600, Phaser.AUTO, 'scoreboard-example', { preload: preload, create: create, update: update });
+            var game = new Phaser.Game(900, 3*600, Phaser.AUTO, 'scoreboard-classes', { preload: preload, create: create, update: update });
             function preload() {
 
                 this.config = {
@@ -41,70 +45,72 @@
 
             function create() {
 
+                this.ctgryLen = {"easy-level":{0:13, 1:10, 2:20}, "medium-level":{0:21, 1:20, 2:20}, "hard-level":{0:20, 1:20, 2:20} };
                 game.stage.backgroundColor = "#8bb54a";
 
-                scoreBoard = new ScoreBoard(game, this.config );
-                var dataClasses = ["Class-XZ-WE", 
-                            "Class-GH-EE",
-                            "Class-GH-A1",
-                            "Class-GH-A2",
-                            "Class-XZ-WE", 
-                            "Class-GH-EE",
-                            "Class-GH-A1",
-                            "Class-GH-A2"];
-                var scoresC1 = ["13/15", 
-                            "9/15",
-                            "9/15",
-                            "12/15",
-                            "13/15", 
-                            "9/15",
-                            "9/15",
-                            "12/15"];
-                var scoresC2 = ["12/20", 
-                                "5/20",
-                                "15/20",
-                                "9/20",
-                                "12/20", 
-                                "12/20",
-                                "16/20",
-                                "5/20"];
+                var _this = this;
+                window.socket.on(ScoreEvent.request, function (scoreData){
+                    //console.log(scoreData);
+                    var dataClasses = [];
+                    var scoresC1 = [];
+                    var scoresC2 = [];
+                    var scoresC3 = [];
+                    var progressEnd = [];
+                    for (var i=0; i<scoreData.length; i++){
+                        scoreData[i]["startTime"] = (new Date(scoreData[i]["startTime"] * 1000)).toLocaleDateString();   // .toLocaleTimeString();
+                        console.log(scoreData[i]);
+                        dataClasses.push(scoreData[i]["startTime"]);
+                        scoresC1.push(scoreData[i]['0'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][0]);
+                        scoresC2.push(scoreData[i]['1'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][1]);
+                        scoresC3.push(scoreData[i]['2'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][2]);
+                        progressEnd.push(scoreData[i].gLevel)
+                    }
 
-                var progressEnd = ["all done", 
-                                "3/4 done",
-                                "2/4 done",
-                                "2/4 done",
-                                "all done",
-                                "1/4 done",
-                                "3/4 done",
-                                "2/4 done"]
+                    scoreBoard = new ScoreBoard(game, _this.config );
 
-                scoreBoard.draw(dataClasses);
+                    scoreBoard.draw(dataClasses);
 
-                this.config.x = 200;
-                this.config.width = 90;
-                this.config.label = "Cat-1";
-                scoreBoard2 = new ScoreBoard(game, this.config );
-                scoreBoard2.draw(scoresC1);
+                    _this.config.x = 200;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-1";
+                    var scoreBoard2 = new ScoreBoard(game, _this.config );
+                    scoreBoard2.draw(scoresC1);
 
-                this.config.x = 300;
-                this.config.width = 90;
-                this.config.label = "Cat-2";
-                scoreBoard3 = new ScoreBoard(game, this.config );
-                scoreBoard3.draw(scoresC2);
+                    _this.config.x = 300;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-2";
+                    var scoreBoard3 = new ScoreBoard(game, _this.config );
+                    scoreBoard3.draw(scoresC2);
 
-                
-                this.config.x = 400;
-                this.config.width = 90;
-                this.config.label = "Recipe";
-                scoreBoard4 = new ScoreBoard(game, this.config );
-                scoreBoard4.draw(progressEnd);
+                    
+                    _this.config.x = 400;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-3";
+                    var scoreBoard4 = new ScoreBoard(game, _this.config );
+                    scoreBoard4.draw(scoresC3);
 
+                    _this.config.x = 530;
+                    _this.config.width = 130;
+                    _this.config.label = "Levels";
+                    var scoreBoard5 = new ScoreBoard(game, _this.config );
+                    scoreBoard5.draw(progressEnd);
+                });
+
+                window.socket.emit(ScoreEvent.request, { });
 
             }
 
             function update() {
 
             }
+            var ScoreEvent = (function () {
+                function ScoreEvent() {
+                }
+                ScoreEvent.request = "score:request";
+
+                return ScoreEvent;
+            }());
+
         </script>
     </body>
 </html>
