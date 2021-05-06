@@ -1,10 +1,7 @@
 
 var tilesetImage = 'assets/sprites/tileset.png';
 var tilesetData = 'assets/sprites/tileset.json';
-var charImage = 'assets/sprites/char.png';
-var charData = 'assets/sprites/char.json';
-var objectImage = 'assets/sprites/object.png';
-var objectData = 'assets/sprites/object.json';
+
 
 class Preloader extends Phaser.State {
 
@@ -147,13 +144,12 @@ WebFontConfig = {
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
         this.game.load.image('game-instructions', 'assets/menus/instructions-ita-short.png');
+        this.game.load.image('game-intro-pic', 'assets/menus/intro-title-pic.jpg');
         this.game.load.image('game-instructions-details', 'assets/menus/instructions-ita-long.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
         this.game.load.image('bubble3', 'assets/badges/particles/points-3.png');
 
-        this.game.load.image('tree-brown', 'assets/sprites/tree-brown.png');
-        this.game.load.image('tree-green', 'assets/sprites/tree-green.png');
 
         this.game.load.image('rcpAction-cook1', 'assets/recipe-items/recipe-1.gif');
         this.game.load.image('rcpAction-cook2', 'assets/recipe-items/recipe-2.gif');
@@ -166,6 +162,7 @@ WebFontConfig = {
         this.game.load.image('heat-recipe', 'assets/recipe-items/heating-action.jpg');
         this.game.load.image('stir-recipe', 'assets/recipe-items/stir-action.gif');
         this.game.load.image('season-recipe', 'assets/recipe-items/season-action.gif');
+        this.game.load.image('beat-recipe', 'assets/recipe-items/beat-eggs.png');
         this.game.load.image('frying-recipe', 'assets/recipe-items/frying-pan-action.png');
         this.game.load.image('pan-recipe', 'assets/recipe-items/frying-pan-action.png');
         this.game.load.image('butter-recipe', 'assets/recipe-items/butter.png');
@@ -204,10 +201,7 @@ WebFontConfig = {
 
 
         this.game.load.atlas('tileset', tilesetImage, tilesetData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
-        this.game.load.atlas('char', charImage, charData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
-        this.game.load.atlas('object', objectImage, objectData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);    
 
-        //console.log("GOT HERE!")
         //staaaart loading
         this.game.load.start();
   }
