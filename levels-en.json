@@ -1,0 +1,95 @@
+
+{
+  "levels": [ 
+    {
+        "total_steps": 4,
+
+        "recipe_name": "Salad with green beans!",
+
+        "recipe":{
+          "0":{ "step": "In a saucepan with boiling water, put green beans, add salt and boil for 10-15 minutes", "points": [10,10,10] },
+          "1":{ "step": "Strain the beans, put them in the bowl with vinaigrette dressing and salt & pepper and mix them well", "points": [10,10,10] },
+          "2":{ "step": "Cut the yellow and red peppers into thin strips and add them to the bowl with the beans", "points": [10,10,10] },
+          "3":{ "step": "Grate the goat cheese, cut the cherry tomatoes in half and serve with oregano garnish", "points": [10,10,10] }
+        },
+
+        "recipe_cook":{
+          "purpose": "Cook must go to the correct tile to reveal cooking actions",
+          "done": "Cook done!",
+          "0":{ "step": "In a -?- with boiling water, put green beans, add salt and -?- for 10-15 minutes.", "actions":["saucepan","boil"]},
+          "1":{ "step": "-?- the beans, put them in the bowl with vinaigrette dressing and salt & pepper and -?- them well", "actions":["strain","mix"]},
+          "2":{ "step": "-?- the yellow and red peppers into thin strips and -?- them to the bowl with the beans", "actions":["cut","add"]},
+          "3":{ "step": "-?- the goat cheese, -?- the cherry tomatoes in half and serve with oregano garnish", "actions":["grate","cut"]},
+
+          "0-solved": { "0": "In a saucepan with boiling water, put green beans, add salt and -?- for 10-15 minutes", "1":"In a -?- with boiling water, put green beans, add salt and boil for 10-15 minutes"},
+          "1-solved": { "0": "Strain the beans, put them in the bowl with vinaigrette dressing and salt & pepper and -?- them well", "1": "-?- the beans, put them in the bowl with vinaigrette dressing and salt & pepper and mix them well"},
+          "2-solved": { "0": "Cut the yellow and red peppers into thin strips and -?- them to the bowl with the beans", "1": "-?- the yellow and red peppers into thin strips and add them to the bowl with the beans."},
+          "3-solved":{ "0": "Grate the goat cheese, -?- the cherry tomatoes in half and serve with oregano garnish", "1": "-?- the goat cheese, cut the cherry tomatoes in half and serve with oregano garnish"}
+      },
+
+        "recipe_shopper":{
+          "purpose": "Shopper must go to the correct tile to gather ingredients",
+          "done": "Shopper done!",
+          "0":{ "step": "In a saucepan with boiling water, put green -?-, add -?- and boil for 10-15 minutes.", "actions":["beans","salt"]},
+          "1":{ "step": "Strain the beans, put them in the bowl with -?- dressing and -?- and mix them well",  "actions":["vinaigrette", "salt & pepper"] },
+          "2":{ "step": "Cut the yellow and red -?- into thin strips and add them to the -?- with the beans.",  "actions":["peppers","bowl"] },
+          "3":{ "step": "Grate the goat -?-, cut the cherry tomatoes in half and serve with -?- garnish.",  "actions":["cheese","oregano"] },
+
+          "0-solved": { "0": "In a saucepan with boiling water, put green beans, add -?- and boil for 10-15 minutes", "1":"In a saucepan with boiling water, put green -?-, add salt and boil for 10-15 minutes"},
+          "1-solved": { "0": "Strain the beans, put them in the bowl with vinaigrette dressing and -?- and mix them well", "1": "Strain the beans, put them in the bowl with -?- dressing and salt & pepper and mix them well"},
+          "2-solved": { "0": "Cut the yellow and red peppers into thin strips and add them to the -?- with the beans", "1": "Cut the yellow and red -?- into thin strips and add them to the bowl with the beans."},
+          "3-solved":{ "0": "Grate the goat cheese, cut the cherry tomatoes in half and serve with -?- garnish", "1": "Grate the goat -?-, cut the cherry tomatoes in half and serve with oregano garnish"}
+      },
+
+      "cookActionOptions" :   {"0": ["sieve", "saucepan","boil"], "1": ["frying", "strain","mix"],  "2": ["melt", "add","cut"],  "3": ["grate","cut","bake"] },
+      "cookActionOptionsEng" : {"0": ["sieve", "saucepan","boil"], "1": ["frying", "strain","mix"],  "2": ["melt", "add","cut"],  "3": ["grate","cut","bake"] },
+      "shoppingActionOptions" : { "0": [ "salt", "flour","beans"], "1": ["vinaigrette", "salt & pepper","eggs"], "2": [ "flour","peppers","bowl"], "3": ["vanilla", "cheese","oregano"] },
+      "shoppingActionOptionsEng": { "0": [ "salt", "flour","beans"], "1": ["vinaigrette", "salt & pepper","eggs"], "2": [ "flour","peppers","bowl"], "3": ["vanilla", "cheese","oregano"] }
+    },
+    {
+      "total_steps": 4,
+
+      "recipe_name": "Vanilla sponge cake!",
+  
+      "recipe":{
+      "0":{ "step": "Preheat the oven to 200 degrees. Sieve well the flour, cocoa powder and baking powder", "points": [10,10,10] },
+      "1":{ "step": "Put the sugar and 4 eggs in a bowl and mix them until the mixture is homogeneous.", "points": [10,10,10] },
+      "2":{ "step": "Add the sifted flour gradually, spoon by spoon. Mix it with the eggs to make it fluffy" ,  "points": [10,10,10] },
+      "3":{ "step": "Add vanilla essence and pour the mixture into a pan. Bake in the preheated oven for about 20 minutes" ,  "points": [10,10,10] }
+      },
+  
+      "recipe_cook":{
+      "purpose": "Cook must go to the correct tile to reveal cooking actions",
+      "done": "Cook done!",
+      "0":{ "step": "-?- the oven to 200 degrees. -?- well the flour, cocoa powder and baking powder", "actions":["preheat","sieve"]},
+      "1":{ "step": "Put the sugar and 4 eggs in a -?- and -?- them until the mixture is homogeneous",  "actions":["bowl","mix"] },
+      "2":{ "step": "-?- the sifted flour gradually, spoon by spoon. -?- it with the eggs to make it fluffy.",  "actions":["add","mix"] },
+      "3":{ "step": "Add vanilla essence and -?- the mixture into a pan. -?- in the preheated oven for about 20 minutes",  "actions":["pour","bake"] },
+  
+      "0-solved": { "0": "Preheat the oven to 200 degrees. -?- well the flour, cocoa powder and baking powder", "1":"-?- the oven to 200 degrees. Sieve well the flour, cocoa powder and baking powder"},
+      "1-solved": { "0": "Put the sugar and 4 eggs in a bowl and -?- them until the mixture is homogeneous", "1": "Put the sugar and 4 eggs in a -?- and bake them until the mixture is homogeneous"},
+      "2-solved": { "0": "Add the sifted flour gradually, spoon by spoon. -?- it with the eggs to make it fluffy.", "1": "-?- the sifted flour gradually, spoon by spoon. Mix it with the eggs to make it fluffy."},
+      "3-solved":{ "0": "Add vanilla essence and pour the mixture into a pan. -?- in the preheated oven for about 20 minutes", "1": "Add vanilla essence and -?- the mixture into a pan. Bake in the preheated oven for about 20 minutes"}
+    },
+  
+      "recipe_shopper":{
+      "purpose": "Shopper must go to the correct tile to gather ingredients",
+      "done": "Shopper done!",
+      "0":{ "step": "Preheat the oven to 200 degrees. Sieve well the -?-, the -?- powder and baking powder", "actions":["flour","cocoa"]},
+      "1":{ "step": "Put the -?- and 4 -?- in a bowl and mix them until the mixture is homogeneous",  "actions":["sugar","eggs"] },
+      "2":{ "step": "Add the sifted -?- gradually, spoon by spoon. Mix it with the -?- to make it fluffy",  "actions":["flour","eggs"] },
+      "3":{ "step": "Add -?- essence and pour the -?- into a pan. Bake in the preheated oven for about 20 minutes",  "actions":["vanilla","mixture"] },
+  
+      "0-solved": { "0": "Preheat the oven to 200 degrees. Sieve well the flour, -?- powder and baking powder", "1":"Preheat the oven to 200 degrees. Sieve well the -?-, cocoa powder and baking powder"},
+      "1-solved": { "0": "Put the sugar and 4 -?- in a bowl and mix them until the mixture is homogeneous", "1": "Put the -?- and 4 eggs in a bowl and mix them until the mixture is homogeneous"},
+      "2-solved": { "0": "Add the sifted flour gradually, spoon by spoon. Mix it with the -?- to make it fluffy", "1": "Add the sifted -?- gradually, spoon by spoon. Mix it with the eggs to make it fluffy"},
+      "3-solved":{ "0": "Add vanilla essence and pour the -?- into a pan. Bake in the preheated oven for about 20 minutes", "1": "Add -?- essence and pour the mixture into a pan. Bake in the preheated oven for about 20 minutes"}
+      },
+
+    "cookActionOptions" :   {"0": ["boil", "preheat","sieve"], "1": ["frying", "bowl","mix"],  "2": ["melt", "add","mix"],  "3": ["grate","pour","bake"] },
+    "cookActionOptionsEng" : {"0": ["boil", "preheat","sieve"], "1": ["frying", "bowl","mix"],  "2": ["melt", "add","mix"],  "3": ["grate","pour","bake"] },
+    "shoppingActionOptions" : { "0": [ "salt", "flour","cocoa"], "1": ["sugar", "salt & pepper","eggs"], "2": [ "flour","peppers","eggs"], "3": ["vanilla", "mixture","oregano"] },
+    "shoppingActionOptionsEng": { "0": [ "salt", "flour","cocoa"], "1": ["sugar", "salt & pepper","eggs"], "2": [ "flour","peppers","eggs"], "3": ["vanilla", "mixture","oregano"] }
+    }
+  ]
+}
