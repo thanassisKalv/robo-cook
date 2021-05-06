@@ -6,13 +6,16 @@ var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var uuid = require("uuid");
 var fs = require('fs');
+var nodemailer = require('nodemailer');
 const port = 8080;
 const IP = "localhost";
+require('dotenv').config()
 
 const PLAYERS_PER_LEVEL = 3;
 const ACTIONS_PER_STEP = 2;
-const gameLevels = JSON.parse(fs.readFileSync('gameLevels.json', 'utf8'));
-const gameQuestM = JSON.parse(fs.readFileSync('assets/questions/data/questions-m.json', 'utf8'));
+const levelsIta = JSON.parse(fs.readFileSync('levels-it.json', 'utf8'));
+const levelsEng = JSON.parse(fs.readFileSync('levels-en.json', 'utf8'));
+const gameLevels = {en:levelsEng, it:levelsIta};
 
 const {
     MONGO_USERNAME,
@@ -26,6 +29,19 @@ var connection_string = "mongodb://127.0.0.1:27017/robocook_teams";
 //const connection_string = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 const db = require("monk")(connection_string);
 const session_stats_db = db.get("SessionStats");
+const class_codes_db = db.get("ClassPassCodes");
+const classes_register_db = db.get("ClassesReg")
+
+var transporter = nodemailer.createTransport({
+    host: 'mail.iti.gr',
+        port: 465,
+                auth: {
+                user: process.env.EMAIL_HOST,
+                pass: process.env.EMAIL_PWD
+          }
+});
+
+
 
 
 var ServerEvent = (function () {
@@ -40,6 +56,8 @@ var GameEvent =  (function () {
     function GameEvent() {
     }
     GameEvent.authentication = "authentication:successful";
+    GameEvent.scoreRequest = "score:request";
+    GameEvent.passcodeRequest = "passcode:request";
     GameEvent.drop = "drop";
     return GameEvent;
 }());
@@ -63,6 +81,8 @@ var PlayerEvent = (function () {
     PlayerEvent.sendHelp = "player:sendHelp";
     PlayerEvent.updateQuestions = "player:updateQuestions";
     PlayerEvent.levelFull = "PlayerEvent:levelFull";
+    PlayerEvent.passcodeFailRepeat = "PlayerEvent:passcodeRepeat";
+    PlayerEvent.passcodeCorrect = "PlayerEvent:passcodeCorrect";
     PlayerEvent.stepCompleted = "PlayerEvent:stepCompleted";
     PlayerEvent.actionsCompleted = "PlayerEvent:actionsCompleted";
     PlayerEvent.subStepsCompleted = "PlayerEvent:subStepsCompleted";
@@ -77,18 +97,31 @@ var PlayerEvent = (function () {
 app.use(express.static('.'))
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/langs/index.html'));
+});
+
+app.get('/it', function(req, res) {
+    res.sendFile(path.join(__dirname + '/it.html'));
+});
+
+app.get('/en', function(req, res) {
+    res.sendFile(path.join(__dirname + '/en.html'));
 });
 
 app.get('/scoreboard-class', function(req, res) {
     res.sendFile(path.join(__dirname + '/scoreboard.html'));
 });
 
+app.get('/passcode-generator', function(req, res) {
+    res.sendFile(path.join(__dirname + '/code-generator.html'));
+});
+
+
 class GameServer {
  
     constructor() {
-        this.gameHasStarted = false;
 
+        this.classesRegistered = [];
         this.levels = {"easy-level":[[]], "medium-level":[[]], "hard-level":[[]] };
         this.levelsPlayingNow = {"easy-level":[1], "medium-level":[1], "hard-level":[1]};
         this.syncedPlayersStart = {"easy-level":[], "medium-level":[], "hard-level":[]};
@@ -97,11 +130,21 @@ class GameServer {
         this.levelsAnsweringSocket = {"easy-level":[{}], "medium-level":[{}], "hard-level":[{}]};
         this.totalQuests = {"easy-level":{0:13, 1:10, 2:20}, "medium-level":{0:21, 1:20, 2:20}, "hard-level":{0:20, 1:20, 2:20} };
         this.levelsActionsCounter = {"easy-level":[0], "medium-level":[0], "hard-level":[0]};
-        this.levelRecipe = 0;
+        this.levelRecipe = {"easy-level":0, "medium-level":0, "hard-level":0};
         this.socketEvents();
 
         //this.gameSessions = {};
         this.gSession = {"easy-level":0, "medium-level":0, "hard-level":0 };
+        this.gSessionPcodes = {"easy-level":[], "medium-level":[], "hard-level":[] };
+
+        classes_register_db.find({}).then((saved_passcodes) => {
+            console.log("Saved passcodes:");
+            this.classesRegistered = saved_passcodes;
+            saved_passcodes.forEach( function(record){ 
+                console.log("code: " + record.classCodePrefix + " - level: " + record.level) 
+            } );
+        })
+
     }
     connect (port) {
         http.listen(port, function () {
@@ -148,6 +191,10 @@ class GameServer {
         this.addShowAnswerResult(socket);
 
         this.addRevealMusicPlay(socket);
+
+        this.addScoreRequest(socket);
+
+        this.addPasscodeRequest(socket);
     };
 
     togglePlayerTurn(level, session){
@@ -160,12 +207,32 @@ class GameServer {
         this.levelsPlayingNow[level][session] = playersTurn;
     };
 
-    //resetPlayerTurn(level){
-    //    this.levelsPlayingNow[level] = 1;
-        //this.syncedPlayersStart[level] = 0;
-      //  this.levelsActionsCounter[level] = 0;
-     //   this.levelRecipe = 0;
-     //};
+    addScoreRequest(socket){
+        socket.on(GameEvent.scoreRequest , function (msg) {
+
+            session_stats_db.find({}).then((scores) => {
+                socket.emit(GameEvent.scoreRequest, scores);
+            })
+            
+        });
+    };
+
+    // if(this.classesRegistered.indexOf( passcode.toUpperCase()) < 0 ){
+    //     return false;
+    // }
+    isPasscodeValid( passcode, level ){
+        var passcodePrefix = passcode.split("-");
+        passcodePrefix.pop();
+        passcodePrefix = passcodePrefix.join("-").toUpperCase();
+
+        for (var i=0; i < this.classesRegistered.length; i++){
+
+            if( this.classesRegistered[i].classCodePrefix == passcodePrefix && 
+                this.classesRegistered[i].level == level)
+                return true;
+        }
+        return false;
+    }
 
     addSignOnListener (socket) {
         var _this = this;
@@ -174,6 +241,15 @@ class GameServer {
                 console.log("Already awaiting opponent for level: "+playerMessage.level);
                 return;
             }
+            console.log(playerMessage.passcode);
+
+            if( _this.isPasscodeValid( playerMessage.passcode, playerMessage.level ) == false){
+                socket.emit(PlayerEvent.passcodeFailRepeat, {level: playerMessage.level});
+                return;
+            }else{
+                socket.emit(PlayerEvent.passcodeCorrect, {level: playerMessage.level});
+            }
+
             // inform the new player about the awaiting connected players
             //socket.emit(PlayerEvent.players, _this.getConnectedPlayers(playerMessage.level));
             if(_this.levels[playerMessage.level][_this.gSession[playerMessage.level]].length == PLAYERS_PER_LEVEL){
@@ -200,25 +276,26 @@ class GameServer {
 
     createPlayer (socket, msg) {
         if (this.levels[msg.level][this.gSession[msg.level]].length == 0)
-            this.levelRecipe = this.randomIntFromInterval(0,2);
+            this.levelRecipe[msg.level] = this.randomIntFromInterval(0, gameLevels[msg.lang].levels.length);
 
         socket.player = {
             level: msg.level,
             session: this.gSession[msg.level],
-            recipeData: gameLevels.levels[this.levelRecipe],
+            recipeData: gameLevels[msg.lang].levels[this.levelRecipe[msg.level]],
             id: uuid()
         };
-        socket.player.recipeData["diffLevel"] = msg.level;
+        //socket.player.recipeData["diffLevel"] = msg.level;
 
         this.levels[msg.level][this.gSession[msg.level]].push(socket.player);
         if(this.levels[msg.level][this.gSession[msg.level]].length == 1){
             this.syncedPlayersStart[msg.level][this.gSession[msg.level]] = 0;
-            this.questionsAnswered[msg.level].push("-")
+            this.questionsAnswered[msg.level].push("-");
         }
 
         if(this.levels[msg.level][this.gSession[msg.level]].length == PLAYERS_PER_LEVEL){
             var startTime = new Date().getTime() / 1000;
-            this.questionsAnswered[msg.level][this.gSession[msg.level]] = {0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0,'0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: ""};
+            this.questionsAnswered[msg.level][this.gSession[msg.level]] = 
+                        {0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, '0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: "", gLevel: msg.level};
         }
 
         return socket.player;
@@ -265,7 +342,6 @@ class GameServer {
                 var sessionSockets = _this.getSessionPlayers(socket.player.session, socket.player.level);
                 for(var ix=0; ix<sessionSockets.length; ix++)
                     sessionSockets[ix].emit(PlayerEvent.diceBonus, msg);
-
             }
         });
     }
@@ -403,7 +479,6 @@ class GameServer {
         });
     }
 
-    
     updateRecipeItems(socket){
         var _this = this;
         socket.on(PlayerEvent.updateRecipeItems, function (msg) {
@@ -476,10 +551,64 @@ class GameServer {
     durationInSec(sessionStats){
         sessionStats.dur = sessionStats.endTime - sessionStats.startTime;
     }
+
+    addPasscodeRequest(socket){
+        var _this = this;
+        socket.on(GameEvent.passcodeRequest , function (msg) {
+            var mailOptions = {
+                from: 'robocook-no-reply@protein.com',
+                to: 'thanassiskalv@gmail.com',
+                subject: 'Robo-cook Path Classroom Passcodes!',
+                html: "<h1>Following classroom passcodes are enabled</h1><p>Students who access the game with any of the following code <b>will be matched with students from their own class</b> </p><p>Here are the class passcodes: </p>"
+              }
+
+            //console.log(msg);
+            setTimeout(function(){
+                const code_prefix = msg['teacherData'][2].split(" ").join("-").toUpperCase() + "-" + 
+                                    msg['teacherData'][3].split(" ").join("-").toUpperCase()  + "-" +
+                                     msg['teacherData'][4].split(" ").join("-").toUpperCase();
+                var studentsNum = parseInt( msg['teacherData'][5] );
+                var passcodes = [];
+                for (var i=0; i<studentsNum; i++){
+                    passcodes.push( code_prefix + "-" + i.toString() );
+                }
+
+                var resp = [ passcodes[0], "to...", passcodes[studentsNum-1]];
+                socket.emit(GameEvent.passcodeRequest, resp);
+
+                class_codes_db.insert( {teacher:msg['teacherData'][0], passcodes:passcodes });
+
+                var classAge = parseInt( msg['teacherData'][3] );
+                var difficulty = classAge > 15 ? "hard-level" : ( classAge >12 ? "medium-level" : "easy-level" )
+                classes_register_db.insert( {classCodePrefix: code_prefix, level: difficulty} );
+                _this.classesRegistered.push( { classCodePrefix: code_prefix, level: difficulty  });
+
+                mailOptions['to']= msg['teacherData'][0];
+
+                sendEmail(mailOptions, passcodes);
+            }, 500);
+        });
+    };
 };
 
 
-//console.log(gameLevels);
+
+function sendEmail(mailOptions, passcodes){
+
+    for (var i=0; i<passcodes.length; i++){
+        mailOptions.html += "<p> code: " + passcodes[i] + "</p>"
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log('Email sent to <' + mailOptions.to + "> with response: " + info.response);
+        }
+    });
+}
+
 
 var gameSession = new GameServer();
 gameSession.connect(port);
