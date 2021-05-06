@@ -1,6 +1,16 @@
 
 ## latest changes on Italian Version
 
+### 06-05-2021
+ - updated server to support the "passcode per classroom" mechanism (not finished)
+ - added passcode-generator page (only-teacher page)
+ - added main-menu popup element that requests the classroom passcode
+ - common server now supports two language versions of the game (copy pasted game files and translated assets)
+
+### 15-02-2021
+ - updated server code and game's menu to support 3 levels of difficulty (different sources for questions)
+ - changed the fullscreen option because it was buggy with sweetalert modals
+
 ### 09-02-2021
  - added a "game-finishing" animation of the target-recipe in the middle of the board
  - removed the english letters (I,M,C) for the roles and added icons to avoid language dependency
