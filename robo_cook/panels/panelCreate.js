@@ -133,9 +133,12 @@ function createPanelL(game){
 
       game.objectivesFrame = game.add.sprite(25, 380, "objectives");
       game.panelBack.addChild(game.objectivesFrame);
-      game.rcpTitleFrame = game.add.sprite(45, 360, 'recipe-title');
+      game.rcpTitleFrame = game.add.sprite(45, 340, 'recipe-title');
       game.panelBack.addChild(game.rcpTitleFrame);
-      game.rcpTitle = game.add.text(85, 365, game.rcpTitle, {font: "bold 17px Comic Sans MS"});
+      game.rcpTitle = game.add.text(165, 375, game.rcpTitle, {font: "bold 17px Comic Sans MS"});
+      game.rcpTitle.anchor.setTo(0.5, 0.5);
+      game.rcpTitle.wordWrap = true;
+      game.rcpTitle.wordWrapWidth = 200;
       game.rcpTitle.addColor("rgb(0, 222, 55)", 0);
       game.panelBack.addChild(game.rcpTitle);
       const objPosY = [420, 420, 420, 420];  // eite [420, 420, 420]; gia 3-steps
@@ -209,7 +212,7 @@ function createPanelR(game){
 
       game.playingNowText = game.add.text(20, 80, game.roles[playersTurn], {font: "bold 30px Handlee"})
       game.playingNowText.addColor('#ff0000', 0);
-      game.turnText = game.add.text(20, 110, "turn", {font: "bold 30px Comic Sans MS"})
+      game.turnText = game.add.text(20, 110, "turno", {font: "bold 30px Comic Sans MS"})
       game.playingRoleIcon = game.add.image(140, 140, game.rolesIcon[playersTurn]);
       game.playingRoleIcon.scale.setTo(0.5);
       game.playingRoleIcon.anchor.setTo(0.5);
@@ -308,7 +311,8 @@ function createPanelR(game){
             game.scale.refresh();
       }
       function changedScreenOrient(){
-            game.scale.setUserScale(0.8*(window.innerHeight/game.height), 0.8*(window.innerHeight/game.height))
+            console.log(window.outerHeight, window.outerWidth );
+            game.scale.setUserScale((window.outerWidth/game.width), (window.outerHeight/game.height), 30, 30)
             game.scale.refresh();
       }
 
