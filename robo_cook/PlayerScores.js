@@ -54,7 +54,9 @@ class PlayerScores {
 
       this.addElementsOnRightPanel();
 
-      this.game.scoreText = this.game.add.text(115, 40, "Keep Learning", {font: "bold 23px Comic Sans MS"});
+      this.game.scoreText = this.game.add.text(100, 40, "Continua ad imparare", {font: "bold 23px Comic Sans MS"});
+      this.game.scoreText.wordWrap = true;
+      this.game.scoreText.wordWrapWidth = 230;      
       this.game.panelBack.addChild(this.game.scoreText);
       this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
       this.game.learningBadge.scale.setTo(0.25);
@@ -116,7 +118,7 @@ class PlayerScores {
          this.game.objcvs[this.rcpPrgrs].pointsFrame.selfDestroy();
          console.log("Step-"+this.rcpPrgrs+" of recipe unlocked!");
          this.unlockedStep = this.rcpPrgrs;
-         this.game.teamProgrTxt[this.rcpPrgrs].setText("Step "+(this.unlockedStep+1)+" is activated!");
+         this.game.teamProgrTxt[this.rcpPrgrs].setText("Il passaggio "+(this.unlockedStep+1)+" è attivo!");
          this.game.teamProgrTxt[this.rcpPrgrs].y = this.game.teamProgrTxt[this.rcpPrgrs].y - 55;
          this.game.teamProgrTxt[this.rcpPrgrs].visible = true;
          this.stepInProgress = true;
