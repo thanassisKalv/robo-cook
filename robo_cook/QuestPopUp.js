@@ -11,8 +11,8 @@ class QuestPopUp extends Phaser.Sprite {
         this.answerComponents = this.game.add.group();
 
         // global variables
-        this.timeLimit = 20;        // timeLimit for countdown in seconds
-        this.tLimit = 20;  
+        this.timeLimit = 50;        // timeLimit for countdown in seconds
+        this.tLimit = 50;  
         this.timeOver = false;      // set to false at start
         this.timeBar = null;        // bar-display time remaining
         this.cooktile = cooktile;
