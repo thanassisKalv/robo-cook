@@ -54,8 +54,8 @@ class GameState extends Phaser.State {
   create() {
 
     // https://www.html5gamedevs.com/topic/4775-making-a-game-for-both-desktop-and-mobile/
-    this.game.stage.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;
-    this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+    //this.game.stage.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;
+    this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
     //this.scale.startFullScreen();
     //this.scale.setShowAll();
     //this.scale.refresh();
@@ -193,8 +193,6 @@ class GameState extends Phaser.State {
         tile.anchor.set(0.5, 1 - ((tile.height - (tile.width / 2)) / tile.height));
         //tile.scale.x = alevel.direction[y][x];
         tile.initialZ = 0;
-
-
       }
     }
 
@@ -225,8 +223,7 @@ class GameState extends Phaser.State {
     // --- /Register SOCKET listeners --- //
 
     this.isoGroup.forEach(this.createTooltip, this, false);
-    this.isoGroup.forEach(this.game.scoreHandler.animateFinishedRecipe, this, false);
-
+    console.log(this.scale.currentScaleMode);
   }
 
   addPointsGainEmitter(pointType){
