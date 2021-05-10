@@ -130,7 +130,7 @@ class GameServer {
         this.levelsAnsweringSocket = {"easy-level":[{}], "medium-level":[{}], "hard-level":[{}]};
         this.totalQuests = {"easy-level":{0:13, 1:10, 2:20}, "medium-level":{0:21, 1:20, 2:20}, "hard-level":{0:20, 1:20, 2:20} };
         this.levelsActionsCounter = {"easy-level":[0], "medium-level":[0], "hard-level":[0]};
-        this.levelRecipe = {"easy-level":0, "medium-level":0, "hard-level":0};
+        this.levelRecipe = {"easy-level":{}, "medium-level":{}, "hard-level":{}};
         this.socketEvents();
 
         //this.gameSessions = {};
@@ -220,10 +220,15 @@ class GameServer {
     // if(this.classesRegistered.indexOf( passcode.toUpperCase()) < 0 ){
     //     return false;
     // }
-    isPasscodeValid( passcode, level ){
+    keepClassCodePrefix(passcode){
         var passcodePrefix = passcode.split("-");
         passcodePrefix.pop();
         passcodePrefix = passcodePrefix.join("-").toUpperCase();
+        return passcodePrefix;
+    }
+
+    isPasscodeValid( passcode, level ){
+        var passcodePrefix = this.keepClassCodePrefix(passcode);
 
         for (var i=0; i < this.classesRegistered.length; i++){
 
@@ -232,6 +237,19 @@ class GameServer {
                 return true;
         }
         return false;
+    }
+
+    checkAvailableSessions(classroomCode, level){
+        var availableSession = -1;
+        for (var i=0; i < this.gSessionPcodes[level].length; i++){
+            //console.log(i, this.gSessionPcodes[level]);
+            if( this.gSessionPcodes[level][i] == classroomCode  &&  this.levels[level][i].length < PLAYERS_PER_LEVEL){
+                availableSession = i;
+                return availableSession;
+            }
+        }
+
+        return availableSession;
     }
 
     addSignOnListener (socket) {
@@ -250,51 +268,60 @@ class GameServer {
                 socket.emit(PlayerEvent.passcodeCorrect, {level: playerMessage.level});
             }
 
-            // inform the new player about the awaiting connected players
-            //socket.emit(PlayerEvent.players, _this.getConnectedPlayers(playerMessage.level));
-            if(_this.levels[playerMessage.level][_this.gSession[playerMessage.level]].length == PLAYERS_PER_LEVEL){
+            var classroomCode = _this.keepClassCodePrefix( playerMessage.passcode );
+
+            // if this is the first (0) session -> add the classroom passcode
+            if( _this.gSessionPcodes[playerMessage.level].length == 0){
+                _this.gSessionPcodes[playerMessage.level].push(classroomCode);
+            }
+
+            var availableSession = _this.checkAvailableSessions(classroomCode, playerMessage.level);
+
+            if( availableSession == -1 ){
                 _this.levels[playerMessage.level].push([]);
                 _this.levelsPlayingNow[playerMessage.level].push(1);
                 _this.levelsActionsCounter[playerMessage.level].push(0);
                 _this.levelsAnsweringSocket[playerMessage.level].push({});
                 _this.gSession[playerMessage.level]++;
+                _this.gSessionPcodes[playerMessage.level].push(classroomCode);
             }
 
             // create a new player and send message to her/his session it to previously connected players
-            var newPlayer = _this.createPlayer(socket, playerMessage);
+            var playerSession = availableSession==-1? _this.gSession[playerMessage.level] : availableSession;
+            var newPlayer = _this.createPlayer(socket, playerMessage, playerSession);
             socket.emit(PlayerEvent.assignID, newPlayer);
 
-            console.log("Session-"+newPlayer.session + " has " + _this.levels[playerMessage.level][_this.gSession[playerMessage.level]].length + " players");
+            console.log("Session-"+newPlayer.session + " has " + _this.levels[playerMessage.level][playerSession].length + " players");
 
-            if(_this.levels[playerMessage.level][_this.gSession[playerMessage.level]].length>1){
-                var sessionSockets = _this.getSessionPlayers(_this.gSession[playerMessage.level], playerMessage.level);
+            if(_this.levels[playerMessage.level][playerSession].length>1){
+                var sessionSockets = _this.getSessionPlayers( playerSession, playerMessage.level);
                 for(var ix=0; ix<sessionSockets.length; ix++)
-                    sessionSockets[ix].emit(PlayerEvent.players, _this.levels[playerMessage.level][_this.gSession[playerMessage.level]] );
+                    sessionSockets[ix].emit(PlayerEvent.players, _this.levels[playerMessage.level][playerSession] );
             }
         });
     };
 
-    createPlayer (socket, msg) {
-        if (this.levels[msg.level][this.gSession[msg.level]].length == 0)
-            this.levelRecipe[msg.level] = this.randomIntFromInterval(0, gameLevels[msg.lang].levels.length);
+    createPlayer (socket, msg, playerSession) {
+        if (this.levels[msg.level][playerSession].length == 0)
+            this.levelRecipe[msg.level][playerSession] = this.randomIntFromInterval(0, gameLevels[msg.lang].levels.length);
 
         socket.player = {
             level: msg.level,
-            session: this.gSession[msg.level],
-            recipeData: gameLevels[msg.lang].levels[this.levelRecipe[msg.level]],
+            session: playerSession,
+            recipeData: gameLevels[msg.lang].levels[this.levelRecipe[msg.level][playerSession]],
             id: uuid()
         };
         //socket.player.recipeData["diffLevel"] = msg.level;
 
-        this.levels[msg.level][this.gSession[msg.level]].push(socket.player);
-        if(this.levels[msg.level][this.gSession[msg.level]].length == 1){
-            this.syncedPlayersStart[msg.level][this.gSession[msg.level]] = 0;
+        this.levels[msg.level][playerSession].push(socket.player);
+        if(this.levels[msg.level][playerSession].length == 1){
+            this.syncedPlayersStart[msg.level][playerSession] = 0;
             this.questionsAnswered[msg.level].push("-");
         }
 
-        if(this.levels[msg.level][this.gSession[msg.level]].length == PLAYERS_PER_LEVEL){
+        if(this.levels[msg.level][playerSession].length == PLAYERS_PER_LEVEL){
             var startTime = new Date().getTime() / 1000;
-            this.questionsAnswered[msg.level][this.gSession[msg.level]] = 
+            this.questionsAnswered[msg.level][playerSession] = 
                         {0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, '0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: "", gLevel: msg.level};
         }
 
@@ -579,7 +606,7 @@ class GameServer {
                 class_codes_db.insert( {teacher:msg['teacherData'][0], passcodes:passcodes });
 
                 var classAge = parseInt( msg['teacherData'][3] );
-                var difficulty = classAge > 15 ? "hard-level" : ( classAge >12 ? "medium-level" : "easy-level" )
+                var difficulty = classAge > 15 ? "hard-level" : ( classAge > 12 ? "medium-level" : "easy-level" )
                 classes_register_db.insert( {classCodePrefix: code_prefix, level: difficulty} );
                 _this.classesRegistered.push( { classCodePrefix: code_prefix, level: difficulty  });
 
