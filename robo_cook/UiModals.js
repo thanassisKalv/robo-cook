@@ -78,7 +78,7 @@ class UiModalsManager {
             showDenyButton: true,
             confirmButtonText: 'Aiuta il tuo compagno',
             denyButtonText: 'Aiuto (non sono sicuro)',
-            cancelButtonText: "Don't send",
+            cancelButtonText: "Non inviare",
             confirmButtonColor: "#27c437",
             denyButtonColor: '#f4ba36ad',
             showLoaderOnConfirm: true,
