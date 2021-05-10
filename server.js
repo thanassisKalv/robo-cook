@@ -33,12 +33,11 @@ const class_codes_db = db.get("ClassPassCodes");
 const classes_register_db = db.get("ClassesReg")
 
 var transporter = nodemailer.createTransport({
-    host: 'mail.iti.gr',
-        port: 465,
-                auth: {
-                user: process.env.EMAIL_HOST,
-                pass: process.env.EMAIL_PWD
-          }
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_HOST,
+        pass: process.env.EMAIL_PWD
+      }
 });
 
 
@@ -112,10 +111,13 @@ app.get('/scoreboard-class', function(req, res) {
     res.sendFile(path.join(__dirname + '/scoreboard.html'));
 });
 
-app.get('/passcode-generator', function(req, res) {
+app.get('/en-passcode-generator', function(req, res) {
     res.sendFile(path.join(__dirname + '/code-generator.html'));
 });
 
+app.get('/it-passcode-generator', function(req, res) {
+    res.sendFile(path.join(__dirname + '/code-generator-it.html'));
+});
 
 class GameServer {
  
@@ -232,8 +234,7 @@ class GameServer {
 
         for (var i=0; i < this.classesRegistered.length; i++){
 
-            if( this.classesRegistered[i].classCodePrefix == passcodePrefix && 
-                this.classesRegistered[i].level == level)
+            if( this.classesRegistered[i].classCodePrefix == passcodePrefix)
                 return true;
         }
         return false;
@@ -582,13 +583,18 @@ class GameServer {
     addPasscodeRequest(socket){
         var _this = this;
         socket.on(GameEvent.passcodeRequest , function (msg) {
+            var emailSubject = "Robo-cook Path - Classroom Passcodes";
+            var emailHTML = "<h1>Following classroom passcodes are enabled</h1><p>Students who access the game with any of the following code <b>will be matched with students from their own class</b> </p><p>Here are the class passcodes: </p>";
+            if(msg['teacherData'][6]=="italian"){
+                emailSubject = "Robo-cook Path - Lista dei codici di accesso";
+                emailHTML = "<h1>I seguenti codici di accesso per la classe sono stati attivati</h1><p>Gli studenti che accedono al gioco con questi codici potranno giocare con studenti della stessa classe</b> </p><p>Lista dei codici di accesso: </p>";
+            }
             var mailOptions = {
                 from: 'robocook-no-reply@protein.com',
                 to: 'thanassiskalv@gmail.com',
-                subject: 'Robo-cook Path Classroom Passcodes!',
-                html: "<h1>Following classroom passcodes are enabled</h1><p>Students who access the game with any of the following code <b>will be matched with students from their own class</b> </p><p>Here are the class passcodes: </p>"
+                subject: emailSubject,
+                html: emailHTML
               }
-
             //console.log(msg);
             setTimeout(function(){
                 const code_prefix = msg['teacherData'][2].split(" ").join("-").toUpperCase() + "-" + 
@@ -600,7 +606,7 @@ class GameServer {
                     passcodes.push( code_prefix + "-" + i.toString() );
                 }
 
-                var resp = [ passcodes[0], "to...", passcodes[studentsNum-1]];
+                var resp = "[" + passcodes[0]+", to..." + passcodes[studentsNum-1] +"]";
                 socket.emit(GameEvent.passcodeRequest, resp);
 
                 class_codes_db.insert( {teacher:msg['teacherData'][0], passcodes:passcodes });
