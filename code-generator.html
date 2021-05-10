@@ -78,9 +78,9 @@
               '<input id="swal-input1" class="swal2-input swal2-custom">' +
               '<label for="swal-input2" style="float:left;font-weight:bold">Your country</label>'+
               '<input id="swal-input2" class="swal2-input swal2-custom">'+
-              '<label for="swal-input3" style="float:left;font-weight:bold">Name of your school name</label>'+
+              '<label for="swal-input3" style="float:left;font-weight:bold">Name of your school</label>'+
               '<input id="swal-input3" class="swal2-input swal2-custom">'+
-              '<label for="swal-input5" style="float:left;font-weight:bold">Your class</label>'+
+              '<label for="swal-input5" style="float:left;font-weight:bold">Class and section for which you request the codes</label>'+
               '<input id="swal-input5" class="swal2-input swal2-custom">'+
               '<label for="swal-input4" style="float:left;font-weight:bold">Your students average age</label>'+
               '<input id="swal-input4" class="swal2-input swal2-custom">' +
@@ -118,6 +118,7 @@
                     document.getElementById('swal-input5').value,
                     document.getElementById('swal-input6').value
                   ]
+                  teacherData.push("english");
                   window.socket.emit(PasscodeEvent.request, {teacherData: teacherData });
                   return;
                 }

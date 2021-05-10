@@ -70,26 +70,26 @@
         setTimeout(function(){
             Swal.fire({
               allowOutsideClick: false,
-              title: "Provide the following information and get classroom passcodes for the game",
+              title: "Fornisci le seguenti informazioni per ottenere i codici per giocare",
               html:
-              '<label for="swal-input0" style="float:left;font-weight:bold">Your email</label>'+
+              '<label for="swal-input0" style="float:left;font-weight:bold">La tua email</label>'+
               '<input id="swal-input0" class="swal2-input swal2-custom">' +
-              '<label for="swal-input1" style="float:left;font-weight:bold">Confirm your email repeating</label>'+
+              '<label for="swal-input1" style="float:left;font-weight:bold">Conferma la tua mail</label>'+
               '<input id="swal-input1" class="swal2-input swal2-custom">' +
-              '<label for="swal-input2" style="float:left;font-weight:bold">Your country</label>'+
+              '<label for="swal-input2" style="float:left;font-weight:bold">Il tuo paese</label>'+
               '<input id="swal-input2" class="swal2-input swal2-custom">'+
-              '<label for="swal-input3" style="float:left;font-weight:bold">Classe e sezione per cui richiedi i codici</label>'+
+              '<label for="swal-input3" style="float:left;font-weight:bold">Denominazione della tua scuola </label>'+
               '<input id="swal-input3" class="swal2-input swal2-custom">'+
-              '<label for="swal-input5" style="float:left;font-weight:bold">Your class</label>'+
+              '<label for="swal-input5" style="float:left;font-weight:bold">Classe e sezione per cui richiedi i codici</label>'+
               '<input id="swal-input5" class="swal2-input swal2-custom">'+
-              '<label for="swal-input4" style="float:left;font-weight:bold">Your students average age</label>'+
+              '<label for="swal-input4" style="float:left;font-weight:bold">Età media dei tuoi student</label>'+
               '<input id="swal-input4" class="swal2-input swal2-custom">' +
-              '<label for="swal-input6" style="float:left;font-weight:bold">Number of class students</label>'+
+              '<label for="swal-input6" style="float:left;font-weight:bold">Numero degli studenti della tua classe</label>'+
               '<input id="swal-input6" class="swal2-input swal2-custom">',
               input: 'checkbox',
-              inputPlaceholder: 'My data are solely used for game communication',
+              inputPlaceholder: 'I dati saranno usati solo per la comunicazione necessaria al gioco per funzionare. ',
               inputValidator: (result) => {
-                  return !result && 'You need to agree with data usage'
+                  return !result && 'Si prega di confermare'
                 },
               focusConfirm: false,
               showLoaderOnConfirm: true,
@@ -118,6 +118,8 @@
                     document.getElementById('swal-input5').value,
                     document.getElementById('swal-input6').value
                   ]
+
+                  teacherData.push("italian");
                   window.socket.emit(PasscodeEvent.request, {teacherData: teacherData });
                   return;
                 }
