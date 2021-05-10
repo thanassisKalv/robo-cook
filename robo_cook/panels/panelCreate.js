@@ -300,12 +300,13 @@ function createPanelR(game){
       game.fullscreenToggle.anchor.setTo(0.5);
       game.fullscreenToggle.inputEnabled = true;
       game.fullscreenToggle.events.onInputDown.add(gofullScreen, this);
+      game.fullscreenToggle.visible = false;
       game.panelBackR.addChild(game.fullscreenToggle);
       game.scale.onFullScreenChange.add(changedScreen,this);
       game.scale.onOrientationChange.add(changedScreenOrient, this);
 
       function changedScreen(){
-            console.log(game.scale.maxHeight );
+            //console.log(game.scale.maxHeight );
            // game.scale.setMinMax(game.scale.minWidth, game.scale.minHeight , game.scale.maxWidth , window.screen.availHeight);
             game.scale.setUserScale(0.8*(window.innerHeight/game.height), 0.8*(window.innerHeight/game.height))
             game.scale.refresh();
