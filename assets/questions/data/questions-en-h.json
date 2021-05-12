@@ -1,0 +1,683 @@
+{
+	"lives": 3,
+	"categories": [
+		{
+			"questions": [
+				{
+					"question": "The term 'diet' literally means:",
+					"choices": [
+						"Constant intake of certain foods",
+						"Restrictive diet",
+						"Life-style"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Are we talking about quantity or quality?"
+				},
+				{
+					"question": "Average physical activity is evaluated using:",
+					"choices": [
+						"RNI",
+						"PAL",
+						"DIT"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "pasta.jpg"
+				},
+				{
+					"question": "Which of the following are allowed every week according to the Mediterranean food pyramid?",
+					"choices": [
+						"1-2 servings of eggs",
+						"2-3 servings of eggs",
+						"2-4 servings of eggs"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "olives.jpg"
+				},
+				{
+					"question": "A BMI of 24 corresponds to:",
+					"choices": [
+						"Regular weight",
+						"Underweight",
+						"Overweight"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Which percentage of energy should lipids provide?",
+					"choices": [
+						"> 35%",
+						"< 20%",
+						"Approximately 20-30%"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "On average, lunch should cover:",
+					"choices": [
+						"15-20%",
+						"50%",
+						"35-40%"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Toxic food reactions are:",
+					"choices": [
+						"Food allergies",
+						"Food intolerances",
+						"None of the previous answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Gluten is contained in:",
+					"choices": [
+						"Wheat, barley, spelled, and rye",
+						"Rice, corn and quinoa",
+						"Wheat, corn, spelled, and quinoa"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "10-12 g of pure alcohol correspond to:",
+					"choices": [
+						"one alcoholic unit",
+						"two alcoholic units",
+						"three alcoholic units"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Toxoplasmosis is a particularly serious risk for:",
+					"choices": [
+						"Elderly people",
+						"Children",
+						"Pregnant women"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "A BMI of 15 corresponds to a situation of:",
+					"choices": [
+						"Underweight",
+						"Severe thinness",
+						"Normal weight"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Restaurant menus are typical of:",
+					"choices": [
+						"Tertiary and industrial sectors",
+						"Commercial catering",
+						"Collective of the social"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "The physical activity levels  (PAL) are:",
+					"choices": [
+						"10",
+						"4",
+						"6"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Lorenz formula is used to find:",
+					"choices": [
+						"The basal metabolic rate",
+						"The EER",
+						"The theoretical weight"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "How many 2017 guidelines are there for a healthy Italian diet:",
+					"choices": [
+						"10",
+						"12",
+						"13"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "A 'diet history' refers to a period of:",
+					"choices": [
+						"1-5 days",
+						"7-30 days",
+						"2-3 days"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Very intense thirst is one of the typical symptoms of",
+					"choices": [
+						"Hypertension",
+						"Diabetes",
+						"Anorexia"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "The additives that can negatively affect children's attention are:",
+					"choices": [
+						"Preservatives",
+						"Sweeteners",
+						"Dyes"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "The energy required to absorb and metabolize the foods introduced in the diet corresponds to:",
+					"choices": [
+						"DIT",
+						"Basal Metabolism",
+						"PAL"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "At the basis of the Mediterranean food pyramid there are indications relating to:",
+					"choices": [
+						"Physical activity and conviviality",
+						"Seasonality and local products",
+						"Both of the above answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				}
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Which of the following are potential vectors of food contamination:",
+					"choices": [
+						"Flies",
+						"Cutlery",
+						"Cutting boards"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Bacteria that do not produce spores are defined as:",
+					"choices": [
+						"Sporogens",
+						"Asporogens",
+						"Vegetative"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The 'mutagenic' effect of mycotoxins consists in the fact that:",
+					"choices": [
+						"They induce fetal malformations",
+						"They cause DNA mutations",
+						"They cause cancer"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Bacteria and yeasts are:",
+					"choices": [
+						"unicellular prokaryotes",
+						"multicellular prokaryotes",
+						"Acellular"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following are more at risk of causing botulism:",
+					"choices": [
+						"Tomato preserves",
+						"Pickled onions",
+						"Aubergines in oil"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Contamination that spreads through vehicles and vectors is:",
+					"choices": [
+						"Direct",
+						"Indirect",
+						"Crossed"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Bacteria that resist low temperatures are defined as:",
+					"choices": [
+						"Psychrophiles",
+						"Mesophiles",
+						"Thermophiles"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Amoebiasis and toxoplasmosis are infestations caused by:",
+					"choices": [
+						"Parasitic worms",
+						"Protozoa",
+						"Food viruses"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The operating temperature of the knife sterilizer must be at least equal to:",
+					"choices": [
+						"+70 °C",
+						"+82 °C",
+						"+100 °C"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The prevention of development of contaminants is certain to be achieved with a salt concentration of:",
+					"choices": [
+						"minimum 20%",
+						"minimum 30%",
+						"minimum 40%"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "A 'healthy carrier' of a disease is a person:",
+					"choices": [
+						"Infected and sick",
+						"Not infected but sick",
+						"Infected but not sick"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "For proper hand washing, the water temperature must be set:",
+					"choices": [
+						"Below 40 ° C",
+						"Around 40-45 ° C",
+						"Above 45 ° C"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The removal of coarse residues is the first phase of:",
+					"choices": [
+						"Cleansing",
+						"Disinfection",
+						"Disinfestation"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The technique known as 'High Temperature / Short Time' is a technique of:",
+					"choices": [
+						"Pasteurization",
+						"Sterilization",
+						"Appertization in an autoclave"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The technique called spray drying is a method of:",
+					"choices": [
+						"Concentration",
+						"Lyophilization",
+						"Drying"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Food must be sold packaged when:",
+					"choices": [
+						"Frozen",
+						"Deep frozen",
+						"Both of the above answers are wrong"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Rancidity of fats can be caused by:",
+					"choices": [
+						"Solar radiation",
+						"Oxygen",
+						"Both of the above answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The dehydrating effect of sodium chloride is:",
+					"choices": [
+						"Greater than that of sucrose",
+						"Lower than that of sucrose",
+						"Equal to that of sucrose"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "How is milk sterilized?",
+					"choices": [
+						"Heating it for 30 seconds at 70-80 °C and then cooling it",
+						"Heating it to 50 ° C and then centrifuging it",
+						"By heating it for fractions of seconds at about 140 °C"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Saccharomycetes are:",
+					"choices": [
+						"Bacteria responsible for homolactic fermentation",
+						"Yeasts responsible for heterolactic fermentation",
+						"Yeasts responsible for alcoholic fermentation"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+		
+
+		{
+			"questions": [
+				{
+					"question": "What is used to make butter?",
+					"choices": [
+						"Buttermilk, which is a watery substance",
+						"The cream, which is a fatty substance",
+						"The whey of the skimmed milk"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "The cuts of bovine coming from the forequarter of the animal are:",
+					"choices": [
+						"As precious as the third category cuts",
+						"More valuable than those of the rear quarter",
+						"Less valuable than those of the hind quarter"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "What is the die that is used to make pasta?",
+					"choices": [
+						"A bronze mold",
+						"A metal disc with many holes",
+						"An oven for drying"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "What is beef?",
+					"choices": [
+						"A three or four year old cattle for slaughter",
+						"A cattle for slaughter that is over 4 years old",
+						"A slaughter cattle about one year old"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Inside the egg, the yolk",
+					"choices": [
+						"Is isolated from the shell by the testaceous membrane",
+						"Is connected to the ends of the shell by two protein filaments called chalazae",
+						"Floats inside a pocket of air"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The category of 'fresh' food includes:",
+					"choices": [
+						"Bread",
+						"Beer",
+						"Meat"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What are mussels?",
+					"choices": [
+						"crustaceans",
+						"molluscs",
+						"brackish water fish"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Vitamin K ...",
+					"choices": [
+						"Is essential for blood to clot",
+						"Is water soluble",
+						"Helps against infections"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Whey removed during cheese production is rich in:",
+					"choices": [
+						"Saturated fatty acids",
+						"Casein",
+						"Lactalbumin and lactoglobulin"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Legume proteins:",
+					"choices": [
+						"Lack lysine",
+						"Lack methionine and cysteine",
+						"Are complete"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following has a mainly energy function:",
+					"choices": [
+						"Apple",
+						"Pear",
+						"Chestnut"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following give red color to sausages:",
+					"choices": [
+						"Polyphosphates",
+						"Sugar and milk powder",
+						"Nitrites,sodium nitrates and potassium nitrates"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Gastronomic preparations that have undergone a cooking treatment and subsequent conservation are defined:",
+					"choices": [
+						"Second range",
+						"Third range",
+						"Fifth range"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What are the differences between the legumes of groups 4 and 2?",
+					"choices": [
+						"The flavor",
+						"The prevalence of one type of vitamin",
+						"The water content"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following is a blue cheese:",
+					"choices": [
+						"Mozzarella",
+						"Robiola",
+						"Gorgonzola"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "If the amount of filter fat present in meat is low, we talk about:",
+					"choices": [
+						"medium marbling",
+						"fine marbling",
+						"Meat grain" 
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "To avoid the phenomenon of surfacing, the milk must be subjected to which treatment:",
+					"choices": [
+						"Fltration",
+						"Sterilization",
+						"Homogenization"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The thin film that surrounds the yolk is called:",
+					"choices": [
+						"Cuticle",
+						"Vitelline membrane",
+						"Testaceous membrane"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following is abundant in egg whites:",
+					"choices": [
+						"Cholesterol and saturated fatty acids",
+						"Sulfur-containing proteins",
+						"Iron"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Fructose is abundant in:",
+					"choices": [
+						"Fruit",
+						"Honey",
+						"Both of the above"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		}
+	]
+}

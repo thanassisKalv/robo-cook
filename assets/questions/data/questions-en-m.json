@@ -4,11 +4,11 @@
 		{
 			"questions": [
 				{
-					"question": "Cosa significa Alimentazione?",
+					"question": "What does alimentation mean?",
 					"choices": [
-						"Scelta e consumo consapevole di alimenti e bevande",
-						"Quantità di cibo consumato da un individuo per vivere",
-						"Processi biologici di assorbimento dei principi nutritivi"
+						"Conscious choice and consumption of food and drinks",
+						"Amount of food consumed by an individual to live",
+						"Biological processes of nutrient absorption"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-1.png",
@@ -17,18 +17,18 @@
 					"helpQuestion": "Parlando di quantità o qualità?"
 				},
 				{
-					"question": "E Nutrizione?",
+					"question": "And Nutrition?",
 					"choices": [
-						"Il modo di mangiare di un individuo e della sua famiglia",
-						"I tipi di nutrienti che vengono mangiati",
-						"Processi biologici di assorbimento ed utilizzo dei principi nutritivi"
+						"The eating habits of an individual and his family",
+						"The types of nutrients eaten",
+						"Biological processes of absorption and use of nutritional principles"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "pasta.jpg"
 				},
 				{
-					"question": "Percentuale acqua presente nell'uomo adulto",
+					"question": "Percentage of water in a human adult",
 					"choices": [
 						"50%",
 						"65%",
@@ -39,29 +39,29 @@
 					"answer_image": "olives.jpg"
 				},
 				{
-					"question": "Gli alimenti alla base della piramide alimentare devono essere consumati:",
+					"question": "The foods at the base of the food pyramid must be consumed:",
 					"choices": [
-						"Con frequenza giornaliera",
-						"Con frequenza settimanale",
-						"Ad ogni pasto principale"
+						"On a daily basis",
+						"On a weekly basis",
+						"At every main meal"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Qual è la percentuale di energia che dovremmo ricavare dai carboidrati?",
+					"question": "What percentage of energy should we get from carbohydrates?",
 					"choices": [
-						"30-35% e non più del 10% dagli zuccheri semplici",
-						"55-60% e non più del 15% dagli zuccheri semplici",
-						"50% di cui la metà dagli zuccheri semplici"
+						"30-35% and no more than 10% from simple sugars",
+						"55-60% and no more than 15% from simple sugars",
+						"50% of which half from simple sugars"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Quante calorie dovrebbe fornire mediamente uno spuntino?",
+					"question": "How many calories should an average snack provide?",
 					"choices": [
 						"3%",
 						"10%",
@@ -72,7 +72,7 @@
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Quante energie consuma mediamente ballare? (30 minuti)",
+					"question": "How much energy, on average, does dancing consume? (30 minutes)",
 					"choices": [
 						"84 kcal",
 						"378 kcal",
@@ -83,154 +83,154 @@
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Alla base della piramide alimentare mediterranea compaiono indicazioni relative a:",
+					"question": "At the base of the Mediterranean food pyramid there are outlines relating to:",
 					"choices": [
-						"Attività fisica e convivialità",
-						"Stagionalità e prodotti locali",
-						"Entrambe le risposte precedenti sono corrette"
+						"Physical activity and conviviality",
+						"Seasonality and local products",
+						"Both of the above answers are correct"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Se l’assunzione di calorie è maggiore del dispendio energetico il peso corporeo:",
+					"question": "If the calorie intake is greater than the energy spent, the body weight:",
 					"choices": [
-						"Resta invariato",
-						"Aumenta",
-						"Diminuisce"
+						"Remains unchanged",
+						"Increases",
+						"Decreases"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "answer-fats-2.jpg"
 				},
 				{
-					"question": "Quali sono i fattori che condizionano il fabbisogno energetico di ogni persona?",
+					"question": "What are the factors that affect the energy needs of each person?",
 					"choices": [
-						"Obesità o eccessiva magrezza",
-						"Età, clima, sesso, stato di salute e attività svolte",
-						"Altezza e peso"
+						"Obesity or excessive thinness",
+						"Age, climate, sex, state of health and activities sustained",
+						"Height and weight"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "In cosa consiste essenzialmente il fabbisogno calorico giornaliero?",
+					"question": "What does the 'daily caloric requirement' consist of?",
 					"choices": [
-						"È il metabolismo basale giornaliero",
-						"È la quantità minima di energia che consuma il nostro corpo",
-						"Metabolismo basale + calorie necessarie per attività svolte"					
+						"It is the daily basal metabolic rate",
+						"It is the minimum amount of energy that our body consumes",
+						"Basal metabolism + calories needed for the activities performed"					
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Che cosa si intende per Dieta mediterranea?",
+					"question": "What do we mean by the 'Mediterranean diet'?",
 					"choices": [
-						"Modello di dieta usata nel bacino del Mediterraneo da circa un secolo",
-						"Tipo di dieta dimagrante usata nel bacino del Mediterraneo",
-						"Dieta dimagrante usata in Italia e in Grecia"
+						"A diet model used in the Mediterranean basin for about a century",
+						"A type of weight loss diet used in the Mediterranean basin",
+						"A weight loss diet used in Italy and Greece"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Le nuove linee guida per una sana alimentazione hanno introdotto raccomandazioni:",
+					"question": "The new guidelines for healthy eating have introduced recommendations:",
 					"choices": [
-						"Sugli integratori alimentari",
-						"Sulle diete da seguire",
-						"Entrambe le risposte precedenti sono corrette"
+						"On food supplements",
+						"On the diets to follow",
+						"Both of the above answers are correct"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Quali alimenti si trovano alla base della piramide alimentare mediterranea?",
+					"question": "What foods are found at the base of the Mediterranean food pyramid?",
 					"choices": [
-						"Mozzarella e pomodori",
-						"Cereali, patate e legumi",
-						"Carne rossa e dolci"
+						"Mozzarella and tomatoes",
+						"Cereals, potatoes and legumes",
+						"Red meat and sweets"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Il latte materno è carente di:",
+					"question": "Breast milk lacks:",
 					"choices": [
-						"Iodio",
-						"Potassio",
-						"Ferro"
+						"Iodine",
+						"Potassium",
+						"Iron"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "L'importanza degli alimenti deve essere valutata in termini di?",
+					"question": "The importance of food must be evaluated in terms of?",
 					"choices": [
-						"Costo dei alimenti",
-						"Contenuto dei principi nutritivi",
-						"Valore biologico, biodisponibilità e valore nutritivo"
+						"Cost of food",
+						"Content of nutritional principles",
+						"Biological value, bioavailability and nutritional value"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Quando si dice che una persona ha una magrezza grave?",
+					"question": "When a person is considered having a 'severe thinness'?",
 					"choices": [
-						"Quando IMC è inferiore a 16 Kg/mq",
-						"Quando IMC sta tra 25 e 30 Kg/mq",
-						"Quando IMC è superiore a 30 Kg/mq"
+						"When their BMI is under 16 Kg / sqm",
+						"When their BMI is between 25 and 30 Kg / sqm",
+						"When their BMI is above 30 Kg / sqm"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Che cosa significa LARN?",
+					"question": "What does RNI mean?",
 					"choices": [
-						"Livelli di Assunzione Raccomandati di Nitriti",
-						"Linea di Assunzione Regolare di Nutrienti",
-						"Livelli di Assunzione Riferimento di Nutrienti"
+						"Recommended Intake Levels of Nitrites",
+						"Regular Nutrient Intake Line",
+						"Nutrient Reference Intake Levels"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Quali sono i fattori che favoriscono l'obesità?",
+					"question": "What are the factors that favor obesity?",
 					"choices": [
-						"Mangiare troppa pasta",
-						"Eccessivo apporto calorico e scarsa attività fisica",
-						"Assumere cibi appartenenti a un solo gruppo di nutrienti"
+						"Eating too much pasta",
+						"Excessive calorie intake and poor physical activity",
+						"Eating foods belonging to only one group of nutrients"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "Al termine della gravidanza il metabolismo basale:",
+					"question": "At the end of pregnancy, the basal metabolic rate:",
 					"choices": [
-						"Aumenta del 20%",
-						"Diminuisce del 10%",
-						"Resta invariato"
+						"Increases by 20%",
+						"Decreases by 10%",
+						"Remains unchanged"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "cereals.jpg"
 				},
 				{
-					"question": "2g X Kg di peso corporeo equivale al fabbisogno proteico:",
+					"question": "2g X Kg of body weight is the protein requirement:",
 					"choices": [
-						"Degli anziani",
-						"Durante il primo anno di vita",
-						"Durante l’allattamento"
+						"For the elderly",
+						"During the first year of life",
+						"During breastfeeding"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-1.png",
@@ -244,110 +244,121 @@
 		{
 			"questions": [
 				{
-					"question": "Si definiscono contaminanti alimentari:",
+					"question": "Food contaminants are defined as:",
 					"choices": [
-						"Tutte le sostanze non aggiunte intenzionalmente agli alimenti",
-						"Le sostanze aggiunte intenzionalmente agli alimenti",
-						"Gli additivi"
+						"All substances not intentionally added to food",
+						"Substances added intentionally to food",
+						"Additives"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Un alimento contaminato",
+					"question": "A contaminated food",
 					"choices": [
-						"Può avere un profilo sensoriale alterato",
-						"Può causare patologia",
-						"Entrambe le risposte precedenti sono corrette"
+						"May have an altered sensory profile",
+						"Can cause pathology",
+						"Both of the above answers are correct"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Le micotossine sono:",
+					"question": "Mycotoxins are:",
 					"choices": [
-						"Contaminanti fisici naturali",
-						"Contaminanti chimici sintetici",
-						"Contaminanti chimici naturali"
+						"Natural physical contaminants",
+						"Synthetic chemical contaminants",
+						"Natural chemical contaminants"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Sono contaminanti fisici",
+					"question": "Which of the following are physical contaminants:",
 					"choices": [
-						"Corpi estranei volontariamente aggiunti",
-						"Virus, batteri e muffe",
-						"Corpi estranei accidentalmente presenti"
+						"Voluntarily added foreign bodies",
+						"Viruses, bacteria and molds",
+						"Foreign bodies accidentally present"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Il “bioaccumulo” è un fenomeno che riguarda:",
+					"question": "'Bioaccumulation' is a phenomenon that concerns:",
 					"choices": [
-						"I farmaci veterinari",
-						"Le micotossine",
-						"I metalli pesanti"
+						"Veterinary drugs",
+						"Mycotoxins",
+						"Heavy metals"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-1.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Gli elminti sono",
+					"question": "Helminths are",
 					"choices": [
-						"Protozoi unicellulari",
-						"Vermi",
-						"Prioni"
+						"Unicellular protozoa",
+						"Worms",
+						"Prions"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Le epatiti sono infezioni trasmessa da:",
+					"question": "Hepatitis are infections transmitted by:",
 					"choices": [
-						"Funghi",
-						"Vermi parassiti",
-						"Viru"
+						"Mushrooms",
+						"Parasitic worms",
+						"Virus"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "L’ingestione di tossine già presenti nell’alimento al momento del consumo causa:",
+					"question": "Ingestion of toxins already present in the food at the time of consumption causes:",
 					"choices": [
-						"Intossicazioni alimentari",
-						"Tossinfezioni alimentari",
-						"Infezioni alimentari"
+						"Food poisoning",
+						"Poisoning",
+						"Food infections"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Toxoplasmosi e listeriosi sono particolarmente pericolose:",
+					"question": "Toxoplasmosis and listeriosis are especially dangerous:",
 					"choices": [
-						"Per una donna in allattamento",
-						"Per una donna adulta",
-						"Per una donna incinta"
+						"For a lactating woman",
+						"For an adult woman",
+						"For a pregnant woman"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "La prevenzione dello sviluppo di contaminanti è sicura se ottenuta con una concentrazione di zucchero:",
+					"question": "The prevention of contaminants development is safe if achieved with a sugar concentration:",
 					"choices": [
-						"minima pari al 20%",
-						"minima pari al 30%",
-						"minima pari al 50%"
+						"Of 20% minimum",
+						"Of 30% minimum",
+						"Of 50% minimum"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Flies and cockroaches can be:",
+					"choices": [
+						"Active means of contamination",
+						"Passive means of contamination",
+						"Passive vectors of contamination"
 						
 					],
 					"answer": 2,
@@ -355,23 +366,11 @@
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Mosche e scarafaggi sono possono essere:",
+					"question": "Personnel clothing, environments and equipments can be:",
 					"choices": [
-						"Veicoli attivi di contaminazione",
-						"Veicoli passivi di contaminazione",
-						"Vettori passivi di contaminazione"
-						
-					],
-					"answer": 2,
-					"image": "assets/images_questions/medium/category-2.png",
-					"answer_image": "placeholder-answer.png"
-				},
-				{
-					"question": "Indumenti del personale, ambienti e attrezzature possono essere:",
-					"choices": [
-						"Veicoli di contaminazione",
-						"Vettori di contaminazione",
-						"Entrambe le risposte precedenti sono errate"
+						"Contamination carriers",
+						"Contamination vectors",
+						"Both of the above answers are incorrect"
 						
 					],
 					"answer": 0,
@@ -379,23 +378,11 @@
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Con la pastorizzazione non è possibile eliminare:",
+					"question": "With pasteurization it is not possible to eliminate:",
 					"choices": [
-						"Le muffe",
-						"i batteri sotto forma di spora",
-						"I batteri in forma vegetativa"
-						
-					],
-					"answer": 1,
-					"image": "assets/images_questions/medium/category-2.png",
-					"answer_image": "placeholder-answer.png"
-				},
-				{
-					"question": "La formazione di macrocristalli di ghiaccio è favorita dal processo di:",
-					"choices": [
-						"Surgelazione",
-						"Congelamento",
-						"Entrambe le risposte precedenti sono sbagliate"
+						"Molds",
+						"Bacteria in the form of spores",
+						"Bacteria in vegetative form"
 						
 					],
 					"answer": 1,
@@ -403,69 +390,78 @@
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "I metodi di conservazione basati sulle fermentazioni sono definiti:",
+					"question": "The formation of ice macrocrystals is favored by the process of:",
 					"choices": [
-						"Biologici",
-						"Chimico-fisici",
-						"Chimici"
+						"Deep freezing",
+						"Freezing",
+						"Both of the above answers are wrong"
 						
 					],
-					"answer": 0,
+					"answer": 1,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "L’olio è efficace contro i batteri:",
+					"question": "Conservation methods based on fermentation are defined as:",
 					"choices": [
-						"Aerobi",
-						"Anaerobi",
-						"Osmofili"
+						"Biological",
+						"Chemical-physical",
+						"Chemical"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quale tra le seguenti rappresenta una tecnica di conservazione fisica con il caldo?",
+					"question": "What kind of bacteria is oil effective against?",
 					"choices": [
-						"Pastorizzazione",
-						"Concentrazione",
-						"Aggiunta di sale"
-						
+						"Aerobic",
+						"Anaerobic",
+						"Osmophilic"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Una tecnica chimico-fisica di conservazione è:",
+					"question": "Which of the following represents a high-temperature physical preservation technique?",
 					"choices": [
-						"La salagione",
-						"La conservazione sotto spirito",
-						"L’affumicamento"
+						"Pasteurization",
+						"Concentration",
+						"Adding salt"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following is a chemical-physical conservation technique:",
+					"choices": [
+						"Salting",
+						"Conservation under spirit",
+						"Smoking"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "A cosa serve il congelamento?",
+					"question": "What is freezing used for?",
 					"choices": [
-						"a rallentare/bloccare la crescita dei microrganismi",
-						"ad uccidere solo i batteri patogeni",
-						"ad uccidere tutti i microrganismi"
-						
+						"To slow down / block the growth of microorganisms",
+						"To kill pathogenic bacteria only",
+						"To kill all microorganisms"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-2.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Cosa in intende per risanamento del latte?",
+					"question": "What is meant by 'milk sanitation'?",
 					"choices": [
-						"I processi di omogeneizzazione e degassazione",
-						"La scrematura del grasso",
-						"Le procedure di sterilizzazione e pastorizzazione"
+						"Homogenization and degassing processes",
+						"Fat skimming",
+						"Sterilization and pasteurization procedures"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-2.png",
@@ -478,220 +474,220 @@
 		{
 			"questions": [
 				{
-					"question": "Lo zucchero da cucina (saccarosio) è composto da ...",
+					"question": "Table sugar (sucrose) is composed of ...",
 					"choices": [
-						"fruttosio+galattosio",
-						"ribosio+glucosio",
-						"glucosio+fruttosio"
+						"fructose + galactose",
+						"ribose + glucose",
+						"glucose + fructose"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Quando acquistiamo una bottiglia con l'indicazione 'latte' ",
+					"question": "When we buy a bottle with the label 'milk':",
 					"choices": [
-						"Si tratta sicuramente di latte vaccino",
-						"È latte vaccino solo se è conservato nei frigoriferi",
-						"Può essere latte vaccino oppure di capra"
+						"It is certainly cow milk",
+						"It is cow milk only if it is stored in refrigerators",
+						"It can be either cow milk or goat milk"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Qual è il minerale presente in maggiore quantità nel nostro corpo?",
+					"question": "In our body, which of the following minerals is present in the largest quantity?",
 					"choices": [
-						"calcio",
-						"fosforo",
-						"ferro"
+						"Calcium",
+						"Phosphorus",
+						"Iron"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Indica quale delle seguenti affermazioni è falsa",
+					"question": "Which of the following statements is false?",
 					"choices": [
-						"Il riso è un cereale",
-						"L'agnello fa parte della categoria degli ovini",
-						"Il pane si ottiene impastando farina, acqua, lievito e uova"
+						"Rice is a cereal",
+						"Lamb belongs to the ovis family",
+						"Bread is made with flour, water, yeast and eggs"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "answer1.png"
 				},
 				{
-					"question": "Quale vitamina si trova in grande quantità nella frutta di sapore acidulo?",
+					"question": "Which vitamin is found in large quantities in sour-tasting fruit?",
 					"choices": [
-						"Vitamina B12",
-						"Vitamina C",
-						"Vitamina k"
+						"Vitamin B12",
+						"Vitamin C",
+						"Vitamin K"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Trova la definizione sbagliata: gli amminoacidi",
+					"question": "Find the wrong definition: amino acids",
 					"choices": [
-						"presentano un gruppo basico e un gruppo acido",
-						"costituiscono l'amido",
-						"esistono una ventina di amminoacidi in natura"
+						"have a basic group and an acid group",
+						"make up starch",
+					      "About twenty amino acids exist in nature"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Come si classificano i principi nutritivi o nutrienti?",
+					"question": "How are nutritional principles or nutrients classified?",
 					"choices": [
-						"Glucidi, protidi, lipidi, vitamine, acqua e sali minerali",
-						"Cereali, ortaggi, frutta, carne, latte e uova",
-						"Energetici, per la crescita, protettivi"
+						"Glucides, proteins, lipids, vitamins, water and mineral salts",
+						"Cereals, vegetables, fruit, meat, milk and eggs",
+						"Energetic, for growth, protective"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quali sono i gruppi di principi alimentari che si classificano fra i principi organici?",
+					"question": "What are the groups of food principles that are classified among the organic principles?",
 					"choices": [
-						"I grassi animali",
-						"Elementi minerali e acqua",
-						"Glucidi, lipidi, protidi, vitamine"
+						"Animal fats",
+						"Mineral elements and water",
+						"Glucides, lipids, proteins, vitamins"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quali sono i principi alimentari che dovrebbero fornire gran parte dell'energia di cui abbiamo bisogno?",
+					"question": "What are the main nutrients that should provide most of the energy we need?",
 					"choices": [
-						"Le vitamine",
-						"I carboidrati",
-						"Le proteine"
+						"Vitamins",
+						"Carbohydrates",
+						"Proteins"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quali fra questi alimenti contengono vitamina C in grande quantità?",
+					"question": "Which of these foods contain vitamin C in large quantities?",
 					"choices": [
-						"Cereali",
-						"Latte e suoi derivati",
-						"Agrumi"
+						"Cereals",
+						"Milk and its derivatives",
+						"Citrus fruits"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Cosa sono le proteine?",
+					"question": "What are proteins?",
 					"choices": [
-						"Sostanze che svolgono principalmente la funzione plastica",
-						"Principi alimentari inorganici aventi funzione protettiva",
-						"Sostanze di origine esclusivamente animale"
+						"Substances that mainly perform structural function",
+						"Inorganic food ingredients with protective function",
+						"Substances of exclusively animal origin"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quali fra gli alimenti sono ricchi di proteine?",
+					"question": "Which foods are rich in protein?",
 					"choices": [
-						"Gli ortaggi",
-						"Le carni, il pesce, le uova, i derivati del latte e i legumi",
-						"I cereali e le patate"
+						"Vegetables",
+						"Meat, fish, eggs, milk derivatives and legumes",
+						"Cereals and potatoes"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "In quali alimenti siamo in grande quantità i carboidrati?",
+					"question": "In which foods are carbohydrates present in large quantities?",
 					"choices": [
-						"Nei cereali, nelle patate e nei legumi",
-						"Nell'olio di oliva e nel burro",
-						"Nella carni bianche e nel pesce"
+						"In cereals, potatoes and legumes",
+						"In olive oil and butter",
+						"In white meat and fish"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Che cosa si intende per proteine ​​ad alto valore biologico?",
+					"question": "What do is meant by 'high biological value proteins'?",
 					"choices": [
-						"Proteine che contengono tutti gli 8-10 aminoacidi essenziali",
-						"Proteine derivate da carni di allevamento intensivo",
-						"Proteine derivanti da carne di cavallo"
+						"Proteins that contain all 8-10 essential amino acids",
+						"Proteins derived from intensively farmed meat",
+						"Proteins from horse meat "
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Quali tra questi non sono alimenti nutrizionalmente essenziali?",
+					"question": "Which of these are not nutritionally essential foods?",
 					"choices": [
-						"Caffè, thé e tisane",
-						"Latte e uova",
-						"Ortaggi e cereali"
+						"Coffee, tea, and herbal teas",
+						"Milk and eggs",
+						"Vegetables and cereals"
 					],
 					"answer": 0,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Di quale gruppo fondamentale fa parte il riso?",
+					"question": "Which fundamental group does rice belong to?",
 					"choices": [
-						"Gruppo 5",
-						"Gruppo 1",
-						"Gruppo 3"
+						"Group 5",
+						"Group 1",
+						"Group 3"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Di quale gruppo fondamentale fanno parte i fagioli secchi?",
+					"question": "Which fundamental group do dry beans belong to?",
 					"choices": [
-						"Gruppo 5",
-						"Gruppo 2",
-						"Gruppo 4"
+						"Group 5",
+						"Group 2",
+						"Group 4"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Indica quale delle seguenti affermazioni è corretta",
+					"question": "Which of the following statements is correct?",
 					"choices": [
-						"L'orzo è il cereale più consumato al mondo",
-						"Il parmigiano reggiano è un formaggio fresco",
-						"Il prosciutto crudo si ottiene dalla coscia del maiale"
+						"Barley is the most consumed cereal in the world",
+						"Parmigiano Reggiano is a fresh cheese",
+						"Raw ham is obtained from the pork leg"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Sono ricchi di vitamina B12 gli alimenti appartenenti al:",
+					"question": "Which of the following foods are rich in vitamin B12?",
 					"choices": [
-						"Gruppo di latte e derivati",
-						"Gruppo di carne e pesce",
-						"Gruppo di grassi e oli da condimento"
+						"Milk and its derivatives",
+						"Meat and fish",
+						"Fats and oils"
 					],
 					"answer": 1,
 					"image": "assets/images_questions/medium/category-3.png",
 					"answer_image": "placeholder-answer.png"
 				},
 				{
-					"question": "Cosa contiene l'impasto della pasta?",
+					"question": "What does the pasta dough contain?",
 					"choices": [
-						"semola di grano duro, acqua e lievito",
-						"farina bianca, acqua e lievito",
-						"semola di grano duro e acqua"
+						"Semolina of durum wheat, water and yeast",
+						"White flour, water and yeast",
+						"Semolina of durum wheat and water"
 					],
 					"answer": 2,
 					"image": "assets/images_questions/medium/category-3.png",
