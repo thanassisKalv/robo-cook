@@ -161,13 +161,8 @@ class MainMenu extends Phaser.State {
             console.log("Player got a unique ID: " +  _this.game.myID );
         });
 
-        this.game.socket.on(PlayerEvent.levelFull, function (warning) {
-            _this.textWait.setText("Sorry the level is full at the moment");
-            _this.textWait.fill = "#ff0000";
-        });
-
         this.game.socket.on(PlayerEvent.passcodeFailRepeat, function (response) {
-            var errorCodeTitle = "Your provided passcode was not found for "+response.level+"!\n" + "Please Submit your class passcode (provided by your teacher)";
+            var errorCodeTitle = "Il codice di accesso inserito non è valido!\n" + "Inserisci il tuo codice d'accesso (fornito dall'insegnante)";
 
             if (response.level == "easy-level")
                 _this.submitPassCode("easy-level", "it", _this.level2Button, _this.level3Button, _this.textWait, errorCodeTitle);
@@ -216,7 +211,6 @@ class MainMenu extends Phaser.State {
     }
 
     joinGame1 (pointer) {
-        //console.log(this.game.connectedPlayers);
         //this.wsocket.emit(GameEvent.authentication, { level: "easy-level", lang: "it"});
         this.submitPassCode("easy-level", "it", this.level2Button, this.level3Button, this.textWait);
         // this.level2Button.inputEnabled = false; this.level2Button.alpha = 0.6;
@@ -224,28 +218,26 @@ class MainMenu extends Phaser.State {
     }
 
     joinGame2(){
-        //console.log("Sorry the level is currently under construction!")
         //this.textWait2.setText("Sorry the level is currently under construction!");
         this.submitPassCode("medium-level", "it", this.level1Button, this.level3Button, this.textWait2);
     }
 
     joinGame3(){
-        //console.log("Sorry the level is currently under construction!")
-        //this.textWait2.setText("Sorry the level is currently under construction!");
+        //this.textWait3.setText("Sorry the level is currently under construction!");
         this.submitPassCode("hard-level", "it", this.level1Button, this.level2Button, this.textWait3);
     }
 
-    submitPassCode(level, lang, but1, but2, txtWait, title = "Submit your class passcode (provided by your teacher)"){
+    submitPassCode(level, lang, but1, but2, txtWait, title = "Inserisci il tuo codice d'accesso (fornito dall'insegnante)"){
         var _this = this;
         Swal.fire({
             title: title,
-            html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Type your code correctly</label>'+
+            html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Scrivi il codice correttamente</label>'+
             '<input id="swal-input1" class="swal2-input swal2-custom">',
             focusConfirm: false,
             showLoaderOnConfirm: true,
             preConfirm: () => {
                 if (document.getElementById('swal-input1').value.length < 6){
-                    Swal.showValidationMessage( 'A pass-code cannot be so short!');
+                    Swal.showValidationMessage( 'Il codice di accesso non può essere così breve!');
                 }
                 else{
                     var passcode = document.getElementById('swal-input1').value;
@@ -258,8 +250,7 @@ class MainMenu extends Phaser.State {
     startGame1 (players, _this){
 
         if(players.length==3)
-            for (var i = 0; i < players.length; i++)
-            {
+            for (var i = 0; i < players.length; i++){
                 if (players[i].id == _this.game.myID){
                     _this.game.recipeData['diffLevel'] = _this.game.diffLevel;
                     this.state.start('GameState', true, false, "Beginer Cook", i, _this.game.recipeData);
@@ -267,18 +258,13 @@ class MainMenu extends Phaser.State {
                 }
             }
         else{
-            for (var i = 0; i < players.length; i++)
-            {
+            for (var i = 0; i < players.length; i++){
                 if (players[i].id == _this.game.myID){
                     this.textRoleAssign.setText("Il tuo personaggio è: " + this.roles[i]);
                     break; 
                 }
             }
         }
-    }
-    
-    startGameRecipe2 (pointer) {
-        this.state.start('GameState');
     }
 
 };
