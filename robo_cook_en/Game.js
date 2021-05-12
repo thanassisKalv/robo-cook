@@ -53,6 +53,13 @@ class GameState extends Phaser.State {
 
   create() {
 
+    // https://www.html5gamedevs.com/topic/4775-making-a-game-for-both-desktop-and-mobile/
+    //this.game.stage.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;
+    this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+    //this.scale.startFullScreen();
+    //this.scale.setShowAll();
+    //this.scale.refresh();
+        
     var _this = this;
     this.game.time.desiredFps = 45;
     //this.time.desiredFps = 30;
@@ -71,7 +78,7 @@ class GameState extends Phaser.State {
     this.game.totalSteps = this.game.recipeData.total_steps;
     this.game.rcpTitle = this.game.recipeData.recipe_name;
 
-    this.data = this.game.cache.getJSON('questions-eng');
+    this.game.Qdata = this.game.cache.getJSON(this.game.recipeData.diffLevel);
     this.game.questionsAnswered = {0:[], 1:[], 2:[]};
 
     this.startPositions = [];

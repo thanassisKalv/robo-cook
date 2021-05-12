@@ -84,7 +84,10 @@ WebFontConfig = {
         this.game.load.audio('game_finished', ['assets/audio/new/game_finished.mp3']);
         this.game.load.audio('bg_track', ['assets/audio/new/bg_track_0.mp3']);
 
-        this.game.load.json('questions-eng', path+'assets/questions/data/questions-eng.json');
+        //this.game.load.json('questions-eng', path+'assets/questions/data/questions-eng.json');
+        this.game.load.json('easy-level', path+'assets/questions/data/questions-eng.json');
+        this.game.load.json('medium-level', path+'assets/questions/data/questions-en-m.json');
+        this.game.load.json('hard-level', path+'assets/questions/data/questions-en-h.json');
         this.game.load.pack('images_questions', 'assets/images-pack.json', null, this);
         this.game.load.image('button', 'assets/questions/button.png');
         // change asset keys and folder/filenames if necessary
@@ -141,6 +144,7 @@ WebFontConfig = {
         this.game.load.image('protein-logo-small', 'assets/menus/protein-logo-3.png');
         this.game.load.image('system-reqs', 'assets/menus/requirements-check.png');
         this.game.load.image('game-instructions', 'assets/menus/instructions-eng-short.png');
+        this.game.load.image('game-intro-pic', 'assets/menus/intro-title-pic.jpg');
         this.game.load.image('game-instructions-details', 'assets/menus/instructions-eng-long.png');
         this.game.load.image('bubble1', 'assets/badges/particles/points-1.png');
         this.game.load.image('bubble2', 'assets/badges/particles/points-2.png');
