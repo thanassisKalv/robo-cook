@@ -323,7 +323,7 @@ class GameServer {
         if(this.levels[msg.level][playerSession].length == PLAYERS_PER_LEVEL){
             var startTime = new Date().getTime() / 1000;
             this.questionsAnswered[msg.level][playerSession] = 
-                        {0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, '0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: "", gLevel: msg.level};
+                    {0:[], 1:[], 2:[], '0R':0, '1R':0, '2R':0, '0W':0, '1W':0, '2W':0, startTime: parseInt(startTime), endTime: "", gLevel: msg.level};
         }
 
         return socket.player;
@@ -345,6 +345,7 @@ class GameServer {
                 else{  // stop session's time and save the game-stats into database
                     _this.questionsAnswered[socket.player.level][socket.player.session].endTime = parseInt(new Date().getTime() / 1000);
                     _this.durationInSec(_this.questionsAnswered[socket.player.level][socket.player.session]);
+                    _this.questionsAnswered[socket.player.level][socket.player.session].passcode = _this.gSessionPcodes[socket.player.level][socket.player.session];
                     
                     if(_this.questionsAnswered[socket.player.level][socket.player.session].sessionEnd != true)
                         session_stats_db.insert( _this.questionsAnswered[socket.player.level][socket.player.session]);
