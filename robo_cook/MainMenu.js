@@ -6,16 +6,6 @@ class MainMenu extends Phaser.State {
         this.stage.disableVisibilityChange = true;
 
         this.wsocket = this.game.socket;
-        this.levelImage1 = this.add.image(this.game.width/2-450, this.game.height/2-200, "recipe1");
-        this.levelImage1.anchor.setTo(0.5, 0.5);
-        this.levelImage1.scale.setTo(0.5, 0.5);
-        this.levelImage1.visible = false;
-        this.levelImage2 = this.add.image(this.game.width/2-450, this.game.height/2-100, "recipe2");
-        this.levelImage2.anchor.setTo(0.5, 0.5);
-        this.levelImage2.scale.setTo(0.55, 0.55);
-        this.levelImage2.alpha = 0.35;
-        this.levelImage2.visible = false;
-
 
         this.gameIntroPic =  this.add.image(0, 0, "game-intro-pic");
         this.gameIntroPic.anchor.setTo(0.5,0.5);
@@ -53,13 +43,13 @@ class MainMenu extends Phaser.State {
 
         this.gameInstructions = this.add.image(this.game.width/2+350, this.game.height/2, "game-instructions");
         this.gameInstructions.anchor.setTo(0.5, 0.5);
-	    this.istructionsDetailButton = this.add.button(0, 200, "buttons", this.moreInstructionShow, this, 
+	    this.istructionsDetailButton = this.add.button(0, 270, "buttons", this.moreInstructionShow, this, 
                                           "green_button00.png", "green_button00.png", 
                                           "green_button02.png", "green_button00.png");
         this.istructionsDetailButton.anchor.setTo(0.5, 0.5);
         this.istructionsDetailButton.alpha = 0.80;
         this.gameInstructions.addChild(this.istructionsDetailButton);
-        this.moreInstructionsText = this.add.text(0,0, "Istruzioni dettagliate", {font: "bold 17px Comic Sans MS"});
+        this.moreInstructionsText = this.add.text(0,0, "Pagina successiva", {font: "bold 17px Comic Sans MS"});
         this.moreInstructionsText.anchor.setTo(0.5);
         this.istructionsDetailButton.addChild(this.moreInstructionsText);
 
@@ -206,8 +196,11 @@ class MainMenu extends Phaser.State {
     }
 
     moreInstructionShow(button){
-        button.visible = false;
-        this.gameInstructions.loadTexture("game-instructions-details");
+        //button.visible = false;
+        if(this.gameInstructions.key=="game-instructions")
+            this.gameInstructions.loadTexture("game-instructions-2");
+        else
+            this.gameInstructions.loadTexture("game-instructions");
     }
 
     joinGame1 (pointer) {
