@@ -59,7 +59,7 @@ class MainMenu extends Phaser.State {
         this.istructionsDetailButton.anchor.setTo(0.5, 0.5);
         this.istructionsDetailButton.alpha = 0.80;
         this.gameInstructions.addChild(this.istructionsDetailButton);
-        this.moreInstructionsText = this.add.text(0,0, "Istruzioni dettagliate", {font: "bold 17px Comic Sans MS"});
+        this.moreInstructionsText = this.add.text(0,0, "Detailed Instructions", {font: "bold 17px Comic Sans MS"});
         this.moreInstructionsText.anchor.setTo(0.5);
         this.istructionsDetailButton.addChild(this.moreInstructionsText);
 

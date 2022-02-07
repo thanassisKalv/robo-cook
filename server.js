@@ -40,9 +40,6 @@ var transporter = nodemailer.createTransport({
       }
 });
 
-
-
-
 var ServerEvent = (function () {
     function ServerEvent() {
     }
