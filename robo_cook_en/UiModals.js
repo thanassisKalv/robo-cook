@@ -29,7 +29,7 @@ class UiModalsManager {
         console.log(currentStep);
         Swal.fire({
             title: actionTitle,
-            html:  '<div style="color:#2196f3;font-size: 24px;font-family:Handlee;font-weight:bold;">' + currentStep.replaceAll("-?-", '<img class="inline-img" src="assets/recipe-items/recipe-inline-'+role+'.png">') + '</div>',
+            html:  '<div style="color:#200b91;font-size: 24px;font-family:Handlee;font-weight:bold;">' + currentStep.replaceAll("-?-", '<img class="inline-img" src="assets/recipe-items/recipe-inline-'+role+'.png">') + '</div>',
             backdrop: true,
             allowOutsideClick: false,
             background: bgColor,
