@@ -56,12 +56,12 @@ class PlayerScores {
 
       this.game.scoreText = this.game.add.text(115, 40, "Keep Learning", {font: "bold 23px Comic Sans MS"});
       this.game.panelBack.addChild(this.game.scoreText);
-      this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
-      this.game.learningBadge.scale.setTo(0.25);
-      this.game.panelBack.addChild(this.game.learningBadge);
-      this.game.searchBadge = this.game.add.image(50, 35, "research-icon");
-      this.game.searchBadge.scale.setTo(0.3);
-      this.game.panelBack.addChild(this.game.searchBadge);
+      // this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
+      // this.game.learningBadge.scale.setTo(0.25);
+      // this.game.panelBack.addChild(this.game.learningBadge);
+      // this.game.searchBadge = this.game.add.image(50, 35, "research-icon");
+      // this.game.searchBadge.scale.setTo(0.3);
+      // this.game.panelBack.addChild(this.game.searchBadge);
 
 
       this.game.stepDoneMusic = this.game.add.audio('step_done');

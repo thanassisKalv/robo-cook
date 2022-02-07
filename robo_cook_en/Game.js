@@ -90,7 +90,7 @@ class GameState extends Phaser.State {
     this.game.roles = {1:"Instructor", 2: "Shopper", 3: "Cook"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     this.game.tooltipTexts = {"path-q1": "Foods & Recipes", "path-q2": "Seasonality & Locality", "path-q3": "Nutritional Principles",
-                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item"};
+                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item", "quest": "Discover recipe"};
     //this.diceGroup = [];
     this.startSynced = false;
     diceGroup = this.add.group();
@@ -428,6 +428,7 @@ class GameState extends Phaser.State {
                   tile.ingredient = this.ingredients.shift();
                   tile.scale.setTo(1.2, 1.2);
                   tile.alpha = 1.0;
+                  tile.tooltipText = this.game.tooltipTexts[tileName];
               }
               if(tileName.includes("path-q")){
                   //tile.scale.setTo(0.75, 0.75);

@@ -54,16 +54,16 @@ class PlayerScores {
 
       this.addElementsOnRightPanel();
 
-      this.game.scoreText = this.game.add.text(100, 40, "Continua ad imparare", {font: "bold 23px Comic Sans MS"});
+      this.game.scoreText = this.game.add.text(70, 40, "Continua ad imparare", {font: "bold 23px Comic Sans MS"});
       this.game.scoreText.wordWrap = true;
-      this.game.scoreText.wordWrapWidth = 230;      
+      this.game.scoreText.wordWrapWidth = 340;      
       this.game.panelBack.addChild(this.game.scoreText);
-      this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
-      this.game.learningBadge.scale.setTo(0.25);
-      this.game.panelBack.addChild(this.game.learningBadge);
-      this.game.searchBadge = this.game.add.image(50, 35, "research-icon");
-      this.game.searchBadge.scale.setTo(0.3);
-      this.game.panelBack.addChild(this.game.searchBadge);
+      //this.game.learningBadge = this.game.add.image(275, 35, "learning-icon");
+      //this.game.learningBadge.scale.setTo(0.25);
+      //this.game.panelBack.addChild(this.game.learningBadge);
+      //this.game.searchBadge = this.game.add.image(50, 35, "research-icon");
+      //this.game.searchBadge.scale.setTo(0.3);
+      //this.game.panelBack.addChild(this.game.searchBadge);
 
 
       this.game.stepDoneMusic = this.game.add.audio('step_done');
@@ -129,7 +129,7 @@ class PlayerScores {
 
    updateRecipeProgress(){
       var _this = this;
-      this.game.teamProgrTxt[this.rcpPrgrs].setText("\n\nStep "+(this.rcpPrgrs+1)+" is complete!");
+      this.game.teamProgrTxt[this.rcpPrgrs].setText("\n\nPassaggio "+(this.rcpPrgrs+1)+" completato!");
       this.game.objcvsTxt[this.rcpPrgrs].visible = false;
       this.stepInProgress = false;
       var x = this.rcpPrgrs;
@@ -149,7 +149,7 @@ class PlayerScores {
       }
       else{
          var _this = this;
-         this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nRECIPE IS READY!");
+         this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nLa ricetta è pronta!");
          
          setTimeout( function(){  _this.game.finaleMusic.play();}, 2000);
          //setTimeout(function(){ _this.animateFinishedRecipe(middleTile); }, 1500);

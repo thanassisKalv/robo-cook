@@ -90,7 +90,7 @@ class GameState extends Phaser.State {
     this.game.roles = {1:"Maestro", 2: "Compratore", 3: "Cuciniere"};
     this.game.rolesIcon = {1:'badge-chef', 2:'badge-shopper', 3:'badge-cook'};
     this.game.tooltipTexts = {"path-q1": "CIBI E RICETTE", "path-q2": "STAGIONALITÀ / LOCALITÀ", "path-q3": "PRINCIPI NUTRITIVI",
-                            "path-cook-action": "Cook Action", "path-shop-action": "Shop item", "bonus-tile": "??"};
+                            "path-cook-action": "Prepara la ricetta", "path-shop-action": "Compra l'ingrediente", "bonus-tile": "??", "quest": "Scopri la ricetta"};
     //this.diceGroup = [];
     this.startSynced = false;
     diceGroup = this.add.group();
@@ -371,7 +371,7 @@ class GameState extends Phaser.State {
     }
 
 
-    this.game.diceSum.setText("Dice: " + total);
+    this.game.diceSum.setText("Dadi: " + total);
     this.game.world.bringToTop(this.game.cursor);
 
   }
@@ -406,6 +406,7 @@ class GameState extends Phaser.State {
                   tile.ingredient = this.ingredients.shift();
                   tile.scale.setTo(1.2, 1.2);
                   tile.alpha = 1.0;
+                  tile.tooltipText = this.game.tooltipTexts[tileName];
               }
               if(tileName.includes("path-q")){
                   //tile.scale.setTo(0.75, 0.75);

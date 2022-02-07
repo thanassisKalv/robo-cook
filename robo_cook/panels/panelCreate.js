@@ -225,7 +225,7 @@ function createPanelR(game){
             game.playingRoleIcon.tween.resume();
       
       // dices
-      game.diceSum = game.add.text(26, 360, "Dice: -", {font: "28px Comic Sans MS"});
+      game.diceSum = game.add.text(26, 360, "Dadi: -", {font: "28px Comic Sans MS"});
       game.panelBackR.addChild(game.diceSum);
 
       game.dicePlusTeam1 = game.add.sprite( 26, 420, "team-1-bonus");

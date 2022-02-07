@@ -15,7 +15,7 @@
 
         "recipe_cook":{
           "purpose": "Il Cuciniere deve andare nella casella giusta per scoprire i passaggi della ricetta",
-          "done": "Cook done!",
+          "done": "Il Cuciniere è pronto!",
           "0":{ "step": "Mettere i fagiolini in una -?- con acqua bollente, salare e far -?- per 10-15 minuti", "actions":["saucepan","boil"]},
           "1":{ "step": "-?- i fagioli, metterli nella ciotola con condimento di vinaigrette e sale e pepe e -?- bene", "actions":["strain","mix"]},
           "2":{ "step": "-?- i peperoni gialli e rossi a listarelle sottili e -?- alla ciotola con i fagioli", "actions":["cut","add"]},
@@ -29,7 +29,7 @@
 
         "recipe_shopper":{
           "purpose": "Il Compratore deve andare nella casella giusta per scoprire gli ingredienti",
-          "done": "Shopper done!",
+          "done": "il Compratore è pronto!",
           "0":{ "step": "Mettere i -?- in una casseruola con acqua bollente, -?- e far bollire per 10-15 minuti", "actions":["beans","salt"]},
           "1":{ "step": "Scolare i fagioli, metterli nella ciotola con condimento di -?- e -?- e mescolarli bene",  "actions":["vinaigrette", "salt & pepper"] },
           "2":{ "step": "Tagliare i -?- gialli e rossi a listarelle sottili e aggiungerli alla -?- con i fagioli.",  "actions":["peppers","bowl"] },
@@ -62,7 +62,7 @@
   
       "recipe_cook":{
       "purpose": "Il Cuciniere deve andare nella casella giusta per scoprire i passaggi della ricetta",
-      "done": "Cook done!",
+      "done": "Il Cuciniere è pronto!",
       "0":{ "step": "-?- il forno a 200 gradi. -?- bene la farina, il cacao in polvere e il lievito", "actions":["preheat","sieve"]},
       "1":{ "step": "Mettere lo zucchero e le uova in una -?- e -?- fino ad ottenere un composto omogeneo",  "actions":["bowl","mix"] },
       "2":{ "step": "-?- gradualmente la farina setacciata, cucchiaio per cucchiaio. -?- con le uova per renderlo soffice",  "actions":["add","mix"] },
@@ -76,7 +76,7 @@
   
       "recipe_shopper":{
       "purpose": "Il Compratore deve andare nella casella giusta per scoprire gli ingredienti",
-      "done": "Shopper done!",
+      "done": "il Compratore è pronto!",
       "0":{ "step": "Preriscalda il forno a 200 gradi. Setacciare bene la -?-, il -?- in polvere e il lievito", "actions":["flour","cocoa"]},
       "1":{ "step": "Mettere lo -?- e le -?- in una ciotola e mescolare fino ad ottenere un composto omogeneo",  "actions":["sugar","eggs"] },
       "2":{ "step": "Aggiungere gradualmente la -?- setacciata, cucchiaio per cucchiaio. Battere con le -?- per renderlo soffice",  "actions":["flour","eggs"] },
