@@ -150,10 +150,7 @@ class PlayerScores {
          this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nRECIPE IS READY!");
          setTimeout( function(){ 
             _this.game.finaleMusic.play();}, 2000);
-         setTimeout(function(){
-            var xc = _this.game.startPositions[0].x/2+_this.game.startPositions[2].x/2;
-            var yc = _this.game.startPositions[0].y/2+_this.game.startPositions[2].y/2;
-            _this.game.finaleBadge = _this.game.add.image(xc, yc, "cake-complete"); }, 4000);
+         setTimeout( function(){ _this.game.UiModalsHandler.showFinishedRecipe(); }, 2000);
       }
    }
 

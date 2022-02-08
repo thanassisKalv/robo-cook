@@ -152,6 +152,7 @@ class PlayerScores {
          this.game.teamProgrTxt[this.rcpPrgrs-1].setText("\n\nLa ricetta è pronta!");
          
          setTimeout( function(){  _this.game.finaleMusic.play();}, 2000);
+         setTimeout( function(){ _this.game.UiModalsHandler.showFinishedRecipe(); }, 2000);
          //setTimeout(function(){ _this.animateFinishedRecipe(middleTile); }, 1500);
             
       }
