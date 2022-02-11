@@ -222,22 +222,23 @@ class MainMenu extends Phaser.State {
 
     submitPassCode(level, lang, but1, but2, txtWait, title = "Inserisci il tuo codice d'accesso (fornito dall'insegnante)"){
         var _this = this;
-        Swal.fire({
-            title: title,
-            html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Scrivi il codice correttamente</label>'+
-            '<input id="swal-input1" class="swal2-input swal2-custom">',
-            focusConfirm: false,
-            showLoaderOnConfirm: true,
-            preConfirm: () => {
-                if (document.getElementById('swal-input1').value.length < 6){
-                    Swal.showValidationMessage( 'Il codice di accesso non può essere così breve!');
-                }
-                else{
-                    var passcode = document.getElementById('swal-input1').value;
-                    _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: passcode});
-                }
-            }
-          }).then((result) => { /* pass */ })
+        _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: "without-pass-code"});
+        // Swal.fire({
+        //     title: title,
+        //     html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Scrivi il codice correttamente</label>'+
+        //     '<input id="swal-input1" class="swal2-input swal2-custom">',
+        //     focusConfirm: false,
+        //     showLoaderOnConfirm: true,
+        //     preConfirm: () => {
+        //         if (document.getElementById('swal-input1').value.length < 6){
+        //             Swal.showValidationMessage( 'Il codice di accesso non può essere così breve!');
+        //         }
+        //         else{
+        //             var passcode = document.getElementById('swal-input1').value;
+        //             _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: passcode});
+        //         }
+        //     }
+        //   }).then((result) => { /* pass */ })
     }
 
     startGame1 (players, _this){

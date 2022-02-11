@@ -108,13 +108,7 @@ app.get('/scoreboard-class', function(req, res) {
     res.sendFile(path.join(__dirname + '/scoreboard.html'));
 });
 
-app.get('/en-passcode-generator', function(req, res) {
-    res.sendFile(path.join(__dirname + '/code-generator.html'));
-});
 
-app.get('/it-passcode-generator', function(req, res) {
-    res.sendFile(path.join(__dirname + '/code-generator-it.html'));
-});
 
 class GameServer {
  
@@ -192,8 +186,6 @@ class GameServer {
         this.addRevealMusicPlay(socket);
 
         this.addScoreRequest(socket);
-
-        this.addPasscodeRequest(socket);
     };
 
     togglePlayerTurn(level, session){
@@ -219,23 +211,6 @@ class GameServer {
     // if(this.classesRegistered.indexOf( passcode.toUpperCase()) < 0 ){
     //     return false;
     // }
-    keepClassCodePrefix(passcode){
-        var passcodePrefix = passcode.split("-");
-        passcodePrefix.pop();
-        passcodePrefix = passcodePrefix.join("-").toUpperCase();
-        return passcodePrefix;
-    }
-
-    isPasscodeValid( passcode, level ){
-        var passcodePrefix = this.keepClassCodePrefix(passcode);
-
-        for (var i=0; i < this.classesRegistered.length; i++){
-
-            if( this.classesRegistered[i].classCodePrefix == passcodePrefix)
-                return true;
-        }
-        return false;
-    }
 
     checkAvailableSessions(classroomCode, level){
         var availableSession = -1;
@@ -257,16 +232,14 @@ class GameServer {
                 console.log("Already awaiting opponent for level: "+playerMessage.level);
                 return;
             }
+
+            playerMessage.passcode = "without-pass-code";
             console.log(playerMessage.passcode);
 
-            if( _this.isPasscodeValid( playerMessage.passcode, playerMessage.level ) == false){
-                socket.emit(PlayerEvent.passcodeFailRepeat, {level: playerMessage.level});
-                return;
-            }else{
-                socket.emit(PlayerEvent.passcodeCorrect, {level: playerMessage.level});
-            }
+            socket.emit(PlayerEvent.passcodeCorrect, {level: playerMessage.level});
 
-            var classroomCode = _this.keepClassCodePrefix( playerMessage.passcode );
+            // var classroomCode = _this.keepClassCodePrefix( playerMessage.passcode );
+            var classroomCode = playerMessage.passcode;
 
             // if this is the first (0) session -> add the classroom passcode
             if( _this.gSessionPcodes[playerMessage.level].length == 0){
@@ -578,67 +551,12 @@ class GameServer {
         sessionStats.dur = sessionStats.endTime - sessionStats.startTime;
     }
 
-    addPasscodeRequest(socket){
-        var _this = this;
-        socket.on(GameEvent.passcodeRequest , function (msg) {
-            var emailSubject = "Robo-cook Path - Classroom Passcodes";
-            var emailHTML = "<h1>Following classroom passcodes are enabled</h1><p>Students who access the game with any of the following code <b>will be matched with students from their own class</b> </p><p>Here are the class passcodes: </p>";
-            if(msg['teacherData'][6]=="italian"){
-                emailSubject = "Robo-cook Path - Lista dei codici di accesso";
-                emailHTML = "<h1>I seguenti codici di accesso per la classe sono stati attivati</h1><p>Gli studenti che accedono al gioco con questi codici potranno giocare con studenti della stessa classe</b> </p><p>Lista dei codici di accesso: </p>";
-            }
-            var mailOptions = {
-                from: 'robocook-no-reply@protein.com',
-                to: 'thanassiskalv@gmail.com',
-                subject: emailSubject,
-                html: emailHTML
-              }
-            //console.log(msg);
-            setTimeout(function(){
-                const code_prefix = msg['teacherData'][2].split(" ").join("-").toUpperCase() + "-" + 
-                                    msg['teacherData'][3].split(" ").join("-").toUpperCase()  + "-" +
-                                     msg['teacherData'][4].split(" ").join("-").toUpperCase();
-                var studentsNum = parseInt( msg['teacherData'][5] );
-                var passcodes = [];
-                for (var i=0; i<studentsNum; i++){
-                    passcodes.push( code_prefix + "-" + i.toString() );
-                }
 
-                var resp = "[" + passcodes[0]+", to..." + passcodes[studentsNum-1] +"]";
-                socket.emit(GameEvent.passcodeRequest, resp);
-
-                class_codes_db.insert( {teacher:msg['teacherData'][0], passcodes:passcodes });
-
-                var classAge = parseInt( msg['teacherData'][3] );
-                var difficulty = classAge > 15 ? "hard-level" : ( classAge > 12 ? "medium-level" : "easy-level" )
-                classes_register_db.insert( {classCodePrefix: code_prefix, level: difficulty} );
-                _this.classesRegistered.push( { classCodePrefix: code_prefix, level: difficulty  });
-
-                mailOptions['to']= msg['teacherData'][0];
-
-                sendEmail(mailOptions, passcodes);
-            }, 500);
-        });
-    };
 };
 
 
 
-function sendEmail(mailOptions, passcodes){
 
-    for (var i=0; i<passcodes.length; i++){
-        mailOptions.html += "<p> code: " + passcodes[i] + "</p>"
-    }
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log('Email sent to <' + mailOptions.to + "> with response: " + info.response);
-        }
-    });
-}
 
 
 var gameSession = new GameServer();

@@ -206,36 +206,35 @@ class MainMenu extends Phaser.State {
     joinGame1 (pointer) {
         //this.wsocket.emit(GameEvent.authentication, { level: "easy-level", lang: "it"});
         this.submitPassCode("easy-level", "en");
+        //this.wsocket.emit(GameEvent.authentication, { level: "easy-level" });
     }
 
     joinGame2(){
         //this.textWait2.setText("Sorry the level is currently under construction!");
         this.submitPassCode("medium-level", "en");
+        //this.wsocket.emit(GameEvent.authentication, { level: "medium-level" });
     }
 
     joinGame3(){
         //this.textWait3.setText("Sorry the level is currently under construction!");
         this.submitPassCode("hard-level", "en");
+        //this.wsocket.emit(GameEvent.authentication, { level: "hard-level" });
     }
 
     submitPassCode(level, lang, title = "Submit your class passcode (provided by your teacher)"){
         var _this = this;
-        Swal.fire({
-            title: title,
-            html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Type your code correctly</label>'+
-            '<input id="swal-input1" class="swal2-input swal2-custom">',
-            focusConfirm: false,
-            showLoaderOnConfirm: true,
-            preConfirm: () => {
-                if (document.getElementById('swal-input1').value.length < 6){
-                    Swal.showValidationMessage( 'Passcode cannot be so short!');
-                }
-                else{
-                    var passcode = document.getElementById('swal-input1').value;
-                    _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: passcode});
-                }
-            }
-          }).then((result) => { /* pass */ })
+        _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: "without-pass-code"});
+        // Swal.fire({
+        //     title: title,
+        //     html: '<label for="swal-input1" style="float:left;font-weight:bold;font-size:19px">Type your code correctly</label>'+
+        //     '<input id="swal-input1" class="swal2-input swal2-custom">',
+        //     focusConfirm: false,
+        //     showLoaderOnConfirm: true,
+        //     preConfirm: () => {
+        //         var passcode = document.getElementById('swal-input1').value;
+        //         _this.wsocket.emit(GameEvent.authentication, {level: level, lang: lang, passcode: passcode});
+        //     }
+        //   }).then((result) => { /* pass */ })
     }
 
     startGame1 (players, _this){
