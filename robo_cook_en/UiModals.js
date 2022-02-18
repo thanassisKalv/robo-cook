@@ -234,7 +234,7 @@ class UiModalsManager {
     showFinishedRecipe(){
         Swal.fire({
             title: "Recipe is ready\nLet's play again!",
-            html: "<b style='color:green;font-size: 24px;'>Play the same level and answer more questions or try a more difficult level</b>",
+            html: "<b style='color:green;font-size: 24px;'>Keep playing, change roles, answer to more questions and prepare new recipes.</b>",
             timer: 700000,
             backdrop: true,
             showDenyButton: false,
