@@ -532,14 +532,15 @@ class GameServer {
     }
 
     getSessionPlayers(gsession, lvl){
-        return Object.keys(io.sockets.connected).reduce((acc, socketID) => {
-            const player = io.sockets.connected[socketID].player;
+        var acc = [];
+        for (const [_, socket] of io.sockets.sockets) {
+            const player = socket.player;
             if (player && player.session==gsession && player.level==lvl) {
-                acc.push(io.sockets.connected[socketID]);
+                acc.push( socket );
             }
-            //console.log(acc);
-            return acc;
-        }, []);
+          }
+          return acc;
+
     }
 
     randomIntFromInterval(min, max) { // min and max included 
