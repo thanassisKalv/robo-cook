@@ -15,14 +15,16 @@ services:
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
+      - EMAIL_HOST=$EMAIL_HOST
+      - EMAIL_PWD=$EMAIL_PWD
     ports:
-      - "8080:8080"
+      - "8085:8085"
     volumes:
-      - .:/home/node/robocook
-      - node_modules:/home/node/app/robocook
+      - .:/home/node/robocook-open
+      - node_modules:/home/node/app/robocook-open
     networks:
       - app-network
-    command: ./wait-for.sh db:27017 -- /home/node/robocook/node_modules/.bin/nodemon server.js
+    command: /home/node/robocook-open/node_modules/.bin/nodemon server.js
 
   db:
     image: mongo:4.1.8-xenial
