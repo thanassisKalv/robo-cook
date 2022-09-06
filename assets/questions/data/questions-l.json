@@ -1,0 +1,580 @@
+{
+	"lives": 3,
+	"categories": [
+		{
+			"questions": [
+				{
+					"question": "Per fare la pasta servono:",
+					"choices": [
+						"i cereali",
+						"la frutta",
+						"gli zuccheri"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/pasta_making.jpg",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "La frutta è tipica di una ricetta di pasta?"
+				},
+				{
+					"question": "Per fare il pane o la pizza servono:",
+					"choices": [
+						"acqua e sale",
+						"acqua, sale, farina e lievito",
+						"acqua, zucchero, latte e lievito"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/pasta.png",
+					"answer_image": "pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Il latte è un ingrediente del pane?"
+				},
+				{
+					"question": "L’olio viene prodotto:",
+					"choices": [
+						"dalla spremitura dei noccioli di frutta esotica",
+						"dalla spremitura dell’uva",
+						"dalla spremitura delle olive"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/oil-to-salad.png",
+					"answer_image": "olives.jpg",
+					"hqExist": true,
+					"helpQuestion": "Pensa a quegli alberi tipici del Mediterraneo"
+				},
+				{
+					"question": "Cos’e’ il riso?",
+					"choices": [
+						"un cereale",
+						"un farinaceo",
+						"un seme"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/question.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "- Il burro è composto da?",
+					"choices": [
+						"grassi",
+						"confettura",
+						"zuccheri"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/butters.png",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Ad esempio, il burro è l'ingrediente principale del burro di arachidi e lo rende ricco?"
+				},
+				{
+					"question": "Quale ingrediente contribuisce maggiormente a dare sapore e profumo ai croissant, ai biscotti ed alla pasta per dolci?",
+					"choices": [
+						"latte",
+						"burro",
+						"uova"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/croissant-biscuits.png",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Lo zucchero li rende dolci, ma cosa dà loro un gusto e una consistenza cremosi?"
+				},
+				{
+					"question": "Il fritto è molto gustoso! Mangiamolo:",
+					"choices": [
+						"due volte a settimana",
+						"solo la domenica",
+						"raramente perché non fa molto bene alla salute del nostro fegato"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/fried-foods.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "la ricetta nell'immagine ha un alta percentuale di grassi perché?",
+					"choices": [
+						"subisce la bollitura",
+						"viene fritta",
+						"è cruda"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/fish-chips-icon.png",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Pensa se influisce sul modo in cui cucini?"
+				},
+				{
+					"question": "È meglio acquistare la frutta e la verdura biologica perché:",
+					"choices": [
+						"sono coltivate con sostanze non dannose per la salute",
+						"costano di più",
+						"sono più belle"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/organic-food.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Un alimento sano è:",
+					"choices": [
+						"il panino del fast food",
+						"insalata e verdura cotta",
+						"la merendina alla marmellata"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/salad-vs-burger.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "È uno spuntino migliore da mangiare:",
+					"choices": [
+						"la merendina del supermercato perché è soffice e gustosa",
+						"la merenda preparata in casa perché conosciamo gli ingredienti usati",
+						"la merenda del fast food perché in televisione o alla radio dicono che è buona e fa bene"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/home-vs-fast-food.jpg",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Quando prepariamo spuntini a casa, conosciamo meglio il loro..."
+				},
+				{
+					"question": "Gli agrumi vanno consumati perché:",
+					"choices": [
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate zuccheri",
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate grassi",
+						"Sono ricchi di sostanze che fanno bene alla salute chiamate vitamine"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/citrus-family.png",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Le arance sono ricche?"
+				},
+				{
+					"question": "Nella famiglia degli agrumi troviamo:",
+					"choices": [
+						"i mandarini. i limoni, le arance, le clementine",
+						"l’anguria e i cetrioli",
+						"tutti i frutti rossi"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/citrus-family.png",
+					"answer_image": "cereals.jpg",
+					"hqExist": true,
+					"helpQuestion": "Un esempio molto tipico, un frutto ricco di vitamina C."
+				}
+
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in inverno:",
+					"choices": [
+						"broccoli – cachi  – arance",
+						"pomodoro – zucchine – fagiolini",
+						"Fragole – mele – spinaci"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Preferisci un'insalata di broccoli o di pomodori d'inverno?"
+				},
+				{
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in estate:",
+					"choices": [
+						"cachi – cavolo nero – pompelmo",
+						"Broccoli – pere – zucca",
+						"melanzane – pomodoro – anguria"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Riuscite a pensare a un'insalata di broccoli con pomodori ad agosto?"
+				},
+				{
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in autunno:",
+					"choices": [
+						"albicocche – fichi d’india – pesche",
+						"zucca – castagna – funghi",
+						"zucchina - albicocche – fichi d’india"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Tra gli alimenti elencati trova quelli che maturano naturalmente e si consumano in primavera:",
+					"choices": [
+						"Fragole – carciofi – asparagi",
+						"Ciliege – anguria – cime di rapa",
+						"Peperoni – melanzane – cavolfiori"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Da dove proviene il riso? Dove viene coltivato?",
+					"choices": [
+						"dall’italia",
+						"dall’estero",
+						"sia dall’italia che dall’estero"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/rice-varieties.jpg",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Sei d'accordo che il riso è un alimento globale?"
+				},
+				{
+					"question": "È opportuno mangiare le verdure estive anche in inverno?",
+					"choices": [
+						"no, perche’ in inverno abbiamo bisogno di verdure ricche di proteine",
+						"si, perche’ il nostro modo di vivere  condiziona la nostra dieta",
+						"È indifferente perche’ le verdure fanno sempre bene"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quale frutta si puo’ mangiare in estate?",
+					"choices": [
+						"Anguria -  melone - frutti di bosco -  ciliegie – fragole",
+						"noci - noccioline - anacardi - mele - pere",
+						"mandorle - arachidi - semi di zucca"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quale frutta si può mangiare in inverno?",
+					"choices": [
+						"Anguria -  melone - frutti di bosco -  ciliegie – fragole",
+						"noci - noccioline - anacardi - mele - pere",
+						"mandorle - arachidi - semi di zucca"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Le zucchine sono un ortaggio tipicamente:",
+					"choices": [
+						"invernale",
+						"primaverile",
+						"estivo"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quand'è che gli agrumi non sono di stagione:",
+					"choices": [
+						"in estate",
+						"in inverno",
+						"in autunno"
+						
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/seasonality-circle.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+		
+
+		{
+			"questions": [
+				{
+					"question": "Quali elementi nutritivi forniscono la carne e il pesce?",
+					"choices": [
+						"le proteine",
+						"i sali minerali",
+						"i sali minerali e le proteine"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Quale è la funzione della carne nella nostra alimentazione?",
+					"choices": [
+						"aiuta  le cellule del  nostro corpo a riprodursi",
+						"ci fornisce le proteine necessarie alla crescita dei muscoli",
+						"ci fornisce le calorie necessarie  per avere  l’energia"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Le verdure sono un alimento che deve essere sempre presente nella dieta, perchè?",
+					"choices": [
+						"sono ricche di sali minerali e vitamine",
+						"sono digeribili",
+						"sono sempre a nostra disposizione perchè vengono coltivate anche in inverno nelle serre."
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Cosa è la piramide alimentare?",
+					"choices": [
+						"Un modo di impiattare il cibo",
+						"il grafico che descrive come gli organismi dipendono uno dall’altro per il nutrimento (piante, erbivori, carnivori)",
+						"la rappresentazione grafica della corretta e sana alimentazione"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Cosa si intende per alimentazione?",
+					"choices": [
+						"il modo di cucinare un cibo per renderlo buono e nutriente",
+						"l’assunzione da parte dell'organismo, di alimenti indispensabili al suo metabolismo e alle sue funzioni vitali quotidiane",
+						"la dieta consigliata per perdere peso"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quale sostanza non è nutriente?",
+					"choices": [
+						"acqua",
+						"grassi",
+						"anidride carbinica"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": " I carboidrati (pane, pasta, ecc.) hanno funzione...",
+					"choices": [
+						"regolatrice",
+						"protettiva",
+						"energetica"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I carboidrati o zuccheri in quale alimento non sono presenti?",
+					"choices": [
+						"pasta",
+						"fagioli",
+						"olio di oliva"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Come si chiama lo zucchero contenuto nelle patate?",
+					"choices": [
+						"fruttosio",
+						"amido",
+						"saccarosio"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Come si chiama lo zucchero da cucina?",
+					"choices": [
+						"glucosio",
+						"saccarosio",
+						"fruttosio"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": " Quale funzione principale hanno le proteine?",
+					"choices": [
+						"energetica",
+						"protettiva",
+						"plastica"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quale alimento non possiede proteine?",
+					"choices": [
+						"latte",
+						"pesce",
+						"vino"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "In quali alimenti troviamo le proteine?",
+					"choices": [
+						"nell'acqua",
+						"nella carne e nelle uova",
+						"Nel latte, nella carne, nel pesce, nelle uova e nei legumi"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Il cibo è solo una fonte di calorie?",
+					"choices": [
+						"si, ed è la cosa più importante del cibo",
+						"si, cibo ed un po' d'acqua sono abbastanza per vivere",
+						"no, perchè il cibo rifornisce il nostro corpo di una serie di elementi nutritivi essenziali (come vitamine e minerali)"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I grassi sono tutti dannosi alla nostra salute?",
+					"choices": [
+						"si, tutti sono inutili",
+						"no, alcuni sono una componente essenziale di una dieta bilanciata",
+						"no, qualsiasi cosa è importante"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Facciamo ginnastica! Cosa mangiare prima?",
+					"choices": [
+						"una fetta di pane col miele",
+						"una cotoletta",
+						"del buon formaggio"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/exercise-carbs.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Prima di allenarci, il nostro corpo ha bisogno di energia veloce!"
+				},
+				{
+					"question": "Quante porzioni di frutta e verdura vanno consumate?",
+					"choices": [
+						"2 o 3 al giorno",
+						"meno di 2 a settimana",
+						"5 alla settimana"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Think about what it is at the base of the pyramid?"
+				},
+				{
+					"question": "Quante volte alla settimana dovremmo mangiare carne rossa (manzo, vitello,etc.)?",
+					"choices": [
+						"Ogni giorno",
+						"5 volte a settimana",
+						"2 volte a settimana"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Si noti che la carne è posizionata più in alto nella piramide (livello più stretto)"
+				},
+				{
+					"question": "Durante la settimana è bene consumare:",
+					"choices": [
+						"tutti i giorni frutta e verdura",
+						"tutti i giorni formaggio",
+						"tutti i giorni pasta condita con molto olio e formaggio grattugiato"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/food-pyramid.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "La base della piramide mostra una sana proposta quotidiana"
+				},
+				{
+					"question": " È bene bere almeno 8 bicchieri al giorno di:",
+					"choices": [
+						"bevande analcoliche",
+						"acqua",
+						"spremuta d’arancia"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/extended-pyramid.png",
+					"answer_image": "placeholder-answer.png",
+					"hqExist": true,
+					"helpQuestion": "Notare lo strato di base aggiornato della piramide"
+				}
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Which category of fats are mostly artificially made?",
+					"choices": [
+						"Trans",
+						"Saturated",
+						"Unsaturated"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-1.jpg"
+				},
+				{
+					"question": "Are all fats bad for our health?",
+					"choices": [
+						"Yes all of them are useless",
+						"No, some of them are an essential part of a balanced diet",
+						"No all of them are important"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Can we say that all salads healthy-made?",
+					"choices": [
+						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
+						"All salads are very healthy, just don't add too much salt",
+						"No, it is common to add so many not-so-healthy ingredients"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/salads_variety.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "People follow diets with the purpose to lose weight?",
+					"choices": [
+						"Yes, that's the normal way",
+						"Not always, some diets are not designed for losing weight",
+						"Following diets is not a healthy idea"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/weightloss-diet.jpg",
+					"answer_image": "answer-fats-2.jpg"
+				}
+			]
+		}
+	]
+}

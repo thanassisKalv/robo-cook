@@ -1,0 +1,134 @@
+
+<html>
+  <head>
+    <meta charset = "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robo-Cook Code Generator</title>
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+  </head>
+
+  <body>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Handlee">
+    <link rel="stylesheet" type="text/css" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/uuid-random@1.3.2/index.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="libs/socket-v2.4.0.io.js"></script>
+    
+    <div id="demo" >
+      <style>
+        .swal2-title {
+          font-family: cursive!important;
+          color: #4bc565!important
+        }
+        .swal2-actions > button {
+            font-family: cursive!important;
+            font-size: larger!important;
+          }
+          .inline-img {
+            display: inline;
+            height:43px;
+            padding: 0;
+            vertical-align: baseline;
+          }
+          .swal2-input {
+              height: 1.825em;
+              padding: 0 .75em;
+          }
+          .swal2-custom{
+            margin: 0.5em auto;
+          }
+      </style>
+
+    <script type="text/javascript" id="script">
+      
+      window.onload = function() {
+        window.socket = io.connect();
+
+        var PasscodeEvent = (function () {
+                function PasscodeEvent() {
+                }
+                PasscodeEvent.request = "passcode:request";
+
+                return PasscodeEvent;
+          }());
+
+          window.socket.on(PasscodeEvent.request, function (scoreData){
+            Swal.close();
+            
+            Swal.fire( {
+              title: JSON.stringify(scoreData),
+              icon: 'success',
+              allowOutsideClick: false,
+              confirmButtonText: "Ottenere i codici di acceso per un'altra classe",
+              html: '<div style="font-size:21px"> I codici di accesso arriveranno nella <b>casella email che hai indicato</b>' +
+                '<p> Ora puoi tornare al gioco oppure</p> <div>'
+            }).then((result) => { 
+              location.reload();
+            })
+
+          });
+
+        setTimeout(function(){
+            Swal.fire({
+              allowOutsideClick: false,
+              title: "Fornisci le seguenti informazioni per ottenere i codici per giocare",
+              html:
+              '<label for="swal-input0" style="float:left;font-weight:bold">La tua email</label>'+
+              '<input id="swal-input0" class="swal2-input swal2-custom">' +
+              '<label for="swal-input1" style="float:left;font-weight:bold">Conferma la tua mail</label>'+
+              '<input id="swal-input1" class="swal2-input swal2-custom">' +
+              '<label for="swal-input2" style="float:left;font-weight:bold">Il tuo paese</label>'+
+              '<input id="swal-input2" class="swal2-input swal2-custom">'+
+              '<label for="swal-input3" style="float:left;font-weight:bold">Denominazione della tua scuola </label>'+
+              '<input id="swal-input3" class="swal2-input swal2-custom">'+
+              '<label for="swal-input5" style="float:left;font-weight:bold">Classe e sezione per cui richiedi i codici</label>'+
+              '<input id="swal-input5" class="swal2-input swal2-custom">'+
+              '<label for="swal-input4" style="float:left;font-weight:bold">Età media dei tuoi student</label>'+
+              '<input id="swal-input4" class="swal2-input swal2-custom">' +
+              '<label for="swal-input6" style="float:left;font-weight:bold">Numero degli studenti della tua classe</label>'+
+              '<input id="swal-input6" class="swal2-input swal2-custom">',
+              input: 'checkbox',
+              inputPlaceholder: 'I dati saranno usati solo per la comunicazione necessaria al gioco per funzionare. ',
+              inputValidator: (result) => {
+                  return !result && 'Si prega di confermare'
+                },
+              focusConfirm: false,
+              showLoaderOnConfirm: true,
+              preConfirm: () => {
+                if (document.getElementById('swal-input0').value != document.getElementById('swal-input1').value){
+                  Swal.showValidationMessage(
+                      'Email1 should equal Email2!'
+                    )
+                }
+                else if (document.getElementById('swal-input1').value == "" ||
+                    document.getElementById('swal-input2').value == "" ||
+                    document.getElementById('swal-input3').value == "" ||
+                    document.getElementById('swal-input4').value == "" ||
+                    document.getElementById('swal-input5').value == "" ||
+                    document.getElementById('swal-input6').value == ""){
+                  Swal.showValidationMessage(
+                      'No info field can be empty!'
+                    )
+                }
+                else{
+                  var teacherData = [
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value,
+                    document.getElementById('swal-input3').value,
+                    document.getElementById('swal-input4').value,
+                    document.getElementById('swal-input5').value,
+                    document.getElementById('swal-input6').value
+                  ]
+
+                  teacherData.push("italian");
+                  window.socket.emit(PasscodeEvent.request, {teacherData: teacherData });
+                  return;
+                }
+              }
+            }).then((result) => { /* pass */ })
+        }, 500);
+      }
+      
+    </script>
+    </div>
+  </body>
+</html>

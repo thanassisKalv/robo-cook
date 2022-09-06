@@ -1,0 +1,144 @@
+
+{
+  "levels": [ 
+    {
+        "total_steps": 4,
+
+        "recipe_name": "Insalata calda con fagiolini e formaggio!",
+
+        "recipe":{
+          "0":{ "step": "Mettere i fagiolini in una casseruola con acqua bollente, salare e far bollire per 10-15 minuti", "points": [10,10,10] },
+          "1":{ "step": "Scolare i fagioli, metterli nella ciotola con condimento di vinaigrette e sale e pepe e mescolarli bene", "points": [10,10,10] },
+          "2":{ "step": "Tagliare i peperoni gialli e rossi a listarelle sottili e aggiungerli alla ciotola con i fagioli", "points": [10,10,10] },
+          "3":{ "step": "Grattugiare il caprino, tagliare a metà i pomodorini e servire con contorno di origano", "points": [10,10,10] }
+        },
+
+        "recipe_cook":{
+          "purpose": "Il Cuciniere deve andare nella casella giusta per scoprire i passaggi della ricetta",
+          "done": "Il Cuciniere è pronto!",
+          "0":{ "step": "Mettere i fagiolini in una -?- con acqua bollente, salare e far -?- per 10-15 minuti", "actions":["saucepan","boil"]},
+          "1":{ "step": "-?- i fagioli, metterli nella ciotola con condimento di vinaigrette e sale e pepe e -?- bene", "actions":["strain","mix"]},
+          "2":{ "step": "-?- i peperoni gialli e rossi a listarelle sottili e -?- alla ciotola con i fagioli", "actions":["cut","add"]},
+          "3":{ "step": "-?- il caprino, -?- a metà i pomodorini e servire con contorno di origano", "actions":["grate","cut"]},
+
+          "0-solved": { "0": "Mettere i fagiolini in una casseruola con acqua bollente, salare e far -?- per 10-15 minuti", "1":"Mettere i fagiolini in una -?- con acqua bollente, salare e far bollire per 10-15 minuti"},
+          "1-solved": { "0": "Scolare i fagioli, metterli nella ciotola con condimento di vinaigrette e sale e pepe e -?- bene", "1": "-?- i fagioli, metterli nella ciotola con condimento di vinaigrette e sale e pepe e mescolarli bene"},
+          "2-solved": { "0": "Tagliare i peperoni gialli e rossi a listarelle sottili e -?- alla ciotola con i fagioli", "1": "-?- i peperoni gialli e rossi a listarelle sottili e aggiungerli alla ciotola con i fagioli"},
+          "3-solved":{ "0": "Grattugiare il caprino, -?- a metà i pomodorini e servire con contorno di origano", "1": "-?- il caprino, tagliare a metà i pomodorini e servire con contorno di origano"}
+      },
+
+        "recipe_shopper":{
+          "purpose": "Il Compratore deve andare nella casella giusta per scoprire gli ingredienti",
+          "done": "il Compratore è pronto!",
+          "0":{ "step": "Mettere i -?- in una casseruola con acqua bollente, -?- e far bollire per 10-15 minuti", "actions":["beans","salt"]},
+          "1":{ "step": "Scolare i fagioli, metterli nella ciotola con condimento di -?- e -?- e mescolarli bene",  "actions":["vinaigrette", "salt & pepper"] },
+          "2":{ "step": "Tagliare i -?- gialli e rossi a listarelle sottili e aggiungerli alla -?- con i fagioli.",  "actions":["peppers","bowl"] },
+          "3":{ "step": "Grattugiare il -?-, tagliare a metà i pomodorini e servire con contorno di -?-",  "actions":["cheese","oregano"] },
+
+          "0-solved": { "0": "Mettere i fagiolini in una casseruola con acqua bollente, -?- e far bollire per 10-15 minuti", "1":"Mettere i -?- in una casseruola con acqua bollente, salare e far bollire per 10-15 minuti"},
+          "1-solved": { "0": "Scolare i fagioli, metterli nella ciotola con condimento di vinaigrette e -?- e mescolarli bene", "1": "Scolare i fagioli, metterli nella ciotola con condimento di -?- e sale e pepe e mescolarli bene"},
+          "2-solved": { "0": "Tagliare i peperoni gialli e rossi a listarelle sottili e aggiungerli alla -?- con i fagioli", "1": "Tagliare i -?- gialli e rossi a listarelle sottili e aggiungerli alla ciotola con i fagioli"},
+          "3-solved":{ "0": "Grattugiare il caprino, tagliare a metà i pomodorini e servire con contorno di -?-", "1": "Grattugiare il -?-, tagliare a metà i pomodorini e servire con contorno di origano"}
+      },
+
+      "cookActionOptions" :   {"0": ["setacciare", "casseruola","bollire"], "1": ["friggere", "scolare","mescolare"],  "2": ["sciogliere", "aggiungere", "tagliare"],  "3": ["grattugiare ","tagliare", "cuocere"] },
+      "cookActionOptionsEng" : {"0": ["sieve", "saucepan","boil"], "1": ["frying", "strain","mix"],  "2": ["melt", "add","cut"],  "3": ["grate","cut","bake"] },
+      "shoppingActionOptions" : { "0": [ "sale", "farina","fagioli"], "1": ["vinaigrette", "sale e pepe","uova"], "2": [ "farina","peperoni","ciotola"], "3": ["vaniglia","caprino","origano"] },
+      "shoppingActionOptionsEng": { "0": [ "salt", "flour","beans"], "1": ["vinaigrette", "salt & pepper","eggs"], "2": [ "flour","peppers","bowl"], "3": ["vanilla", "cheese","oregano"] }
+    },
+
+
+    {
+      "total_steps": 4,
+
+      "recipe_name": "Pan di spagna alla vaniglia!",
+  
+      "recipe":{
+      "0":{ "step": "Preriscalda il forno a 200 gradi. Setacciare bene la farina, il cacao in polvere e il lievito", "points": [10,10,10] },
+      "1":{ "step": "Mettere lo zucchero e le uova in una ciotola e mescolare fino ad ottenere un composto omogeneo", "points": [10,10,10] },
+      "2":{ "step": "Aggiungere gradualmente la farina setacciata, cucchiaio per cucchiaio. Battere con le uova per renderlo soffice" , "points": [10,10,10] },
+      "3":{ "step": "Aggiungere l'aroma di vaniglia e versare il composto in una padella. Cuocere in forno preriscaldato per circa 20 minuti" , "points": [10,10,10] }
+      },
+  
+      "recipe_cook":{
+      "purpose": "Il Cuciniere deve andare nella casella giusta per scoprire i passaggi della ricetta",
+      "done": "Il Cuciniere è pronto!",
+      "0":{ "step": "-?- il forno a 200 gradi. -?- bene la farina, il cacao in polvere e il lievito", "actions":["preheat","sieve"]},
+      "1":{ "step": "Mettere lo zucchero e le uova in una -?- e -?- fino ad ottenere un composto omogeneo",  "actions":["bowl","mix"] },
+      "2":{ "step": "-?- gradualmente la farina setacciata, cucchiaio per cucchiaio. -?- con le uova per renderlo soffice",  "actions":["add","mix"] },
+      "3":{ "step": "Aggiungere l'aroma di vaniglia e -?- il composto in una padella. -?- in forno preriscaldato per circa 20 minuti",  "actions":["pour","bake"] },
+  
+      "0-solved": { "0": "Preriscalda il forno a 200 gradi. -?- bene la farina, il cacao in polvere e il lievito", "1":"-?- il forno a 200 gradi. Setacciare bene la farina, il cacao in polvere e il lievito"},
+      "1-solved": { "0": "Mettere lo zucchero e le uova in una ciotola e -?- fino ad ottenere un composto omogeneo", "1": "Mettere lo zucchero e le uova in una -?- e mescolare fino ad ottenere un composto omogeneo"},
+      "2-solved": { "0": "Aggiungere gradualmente la farina setacciata, cucchiaio per cucchiaio. -?- con le uova per renderlo soffice", "1": "-?- gradualmente la farina setacciata, cucchiaio per cucchiaio. Battere con le uova per renderlo soffice"},
+      "3-solved": { "0": "Aggiungere l'aroma di vaniglia e versare il composto in una padella. -? in forno preriscaldato per circa 20 minuti", "1": "Aggiungere l'aroma di vaniglia e -?- il composto in una padella. Cuocere in forno preriscaldato per circa 20 minuti"}
+    },
+  
+      "recipe_shopper":{
+      "purpose": "Il Compratore deve andare nella casella giusta per scoprire gli ingredienti",
+      "done": "il Compratore è pronto!",
+      "0":{ "step": "Preriscalda il forno a 200 gradi. Setacciare bene la -?-, il -?- in polvere e il lievito", "actions":["flour","cocoa"]},
+      "1":{ "step": "Mettere lo -?- e le -?- in una ciotola e mescolare fino ad ottenere un composto omogeneo",  "actions":["sugar","eggs"] },
+      "2":{ "step": "Aggiungere gradualmente la -?- setacciata, cucchiaio per cucchiaio. Battere con le -?- per renderlo soffice",  "actions":["flour","eggs"] },
+      "3":{ "step": "Aggiungere l'aroma di -?- e versare il -?- in una padella. Cuocere in forno preriscaldato per circa 20 minuti",  "actions":["vanilla","mixture"] },
+  
+      "0-solved": { "0": "Preriscalda il forno a 200 gradi. Setacciare bene la farina, il -?- in polvere e il lievito", "1":"Preriscalda il forno a 200 gradi. Setacciare bene la -?-, il cacao in polvere e il lievito"},
+      "1-solved": { "0": "Mettere lo zucchero e le -?- in una ciotola e mescolare fino ad ottenere un composto omogeneo", "1": "Mettere lo -?- e le uova in una ciotola e mescolare fino ad ottenere un composto omogeneo"},
+      "2-solved": { "0": "Aggiungere gradualmente la farina setacciata, cucchiaio per cucchiaio. Battere con le -?- per renderlo soffice", "1": "Aggiungere gradualmente la -?- setacciata, cucchiaio per cucchiaio. Battere con le uova per renderlo soffice"},
+      "3-solved": { "0": "Aggiungere l'aroma di vaniglia e versare il -?- in una padella. Cuocere in forno preriscaldato per circa 20 minuti", "1": "Aggiungere l'aroma di -?- e versare il composto in una padella. Cuocere in forno preriscaldato per circa 20 minuti"}
+      },
+
+    "cookActionOptions" :   {"0": ["bollire ", "preriscaldare", "setacciare"], "1": ["friggere", "ciotola ","mescolare"],  "2": ["sciogliere", "aggiungere", "battere"],  "3": ["grattugiare","versare","cuocere"] },
+    "cookActionOptionsEng" : {"0": ["boil", "preheat","sieve"], "1": ["frying", "bowl","mix"],  "2": ["melt", "add", "mix"],  "3": ["grate","pour","bake"] },
+    "shoppingActionOptions" : { "0": [ "sale", "farina","cacao"], "1": ["zucchero", "sale e pepe","uova"], "2": [ "farina","peperoni","uova"], "3": ["vaniglia", "composto","origano"] },
+    "shoppingActionOptionsEng": { "0": [ "salt", "flour","cocoa"], "1": ["sugar", "salt & pepper","eggs"], "2": [ "flour","peppers","eggs"], "3": ["vanilla", "mixture","oregano"] }
+    },
+
+
+    {
+      "total_steps": 4,
+
+      "recipe_name": "Frittata di base!",
+  
+      "recipe":{
+      "0":{ "step": "Sbattere le uova e condire bene con sale e pepe", "points": [10,10,10] },
+      "1":{ "step": "Scaldare l'olio e il burro in una padella antiaderente a fuoco medio-basso", "points": [10,10,10] },
+      "2":{ "step": "Una volta sciolto il burro, buttare le uova nella padella e inclinare la padella fino a coprire la superficie" , "points": [10,10,10] },
+      "3":{ "step": "Riempire la parte superiore della frittata con il condimento preferito (formaggio grattugiato o salmone affumicato). Piegare delicatamente a metà con la spatola" , "points": [10,10,10] }
+      },
+  
+      "recipe_cook":{
+      "purpose": "Il Cuciniere deve andare nella casella giusta per scoprire i passaggi della ricetta",
+      "done": "Il Cuciniere è pronto!",
+      "0":{ "step": "-?- le uova e -?- bene con sale e pepe", "actions":["beat","season"]},
+      "1":{ "step": "-?- l'olio e il burro in una -?- antiaderente a fuoco medio-basso",  "actions":["heat","pan"] },
+      "2":{ "step": "Una volta -?- il burro, buttare le uova nella padella e -?- la padella fino a coprire la superficie",  "actions":["melt","tilt"] },
+      "3":{ "step": "-?- la parte superiore della frittata con il condimento preferito (formaggio grattugiato o salmone affumicato). -?- delicatamente a metà con la spatola",  "actions":["fill","fold"] },
+  
+      "0-solved": { "0": "Sbattere le uova e -?- bene con sale e pepe", "1":"-?- le uova e condire bene con sale e pepe"},
+      "1-solved": { "0": "Scaldare l'olio e il burro in una -?- antiaderente a fuoco medio-basso", "1": "-?- l'olio e il burro in una padella antiaderente a fuoco medio-basso"},
+      "2-solved": { "0": "Una volta sciolto il burro, buttare le uova nella padella e -?- la padella fino a coprire la superficie", "1": "Una volta -?- il burro, buttare le uova nella padella e inclinare la padella fino a coprire la superficie"},
+      "3-solved": { "0": "Riempire la parte superiore della frittata con il condimento preferito (formaggio grattugiato o salmone affumicato). -?- delicatamente a metà con la spatola", "1": "-?- la parte superiore della frittata con il condimento preferito (formaggio grattugiato o salmone affumicato). Piegare delicatamente a metà con la spatola"}
+      },
+
+      "recipe_shopper":{
+      "purpose": "Il Compratore deve andare nella casella giusta per scoprire gli ingredienti",
+      "done": "Il Compratore è pronto!",
+      "0":{ "step": "Sbattere le -?- e condire bene con -?-", "actions":["eggs","salt & pepper"]},
+      "1":{ "step": "Scaldare l'-?- e il -?- in una padella antiaderente a fuoco medio-basso",  "actions":["oil","butter"] },
+      "2":{ "step": "Una volta sciolto il -?-, buttare le -?- nella padella e inclinare la padella fino a coprire la superficie",  "actions":["butter","eggs"] },
+      "3":{ "step": "Riempire la parte superiore della frittata con il condimento preferito (-?- grattugiato o salmone affumicato). Piegare delicatamente a metà con la -?-",  "actions":["vanilla","mixture"] },
+ 
+      "0-solved": { "0": "Sbattere le uova e condire bene con -?-", "1":"Sbattere le -?- e condire bene con sale e pepe"},
+      "1-solved": { "0": "Scaldare l'olio e il -?- in una padella antiaderente a fuoco medio-basso", "1": "Scaldare l'-?- e il burro in una padella antiaderente a fuoco medio-basso"},
+      "2-solved": { "0": "Una volta sciolto il burro, buttare le -?- nella padella e inclinare la padella fino a coprire la superficie", "1": "Una volta sciolto il -?-, buttare le uova nella padella e inclinare la padella fino a coprire la superficie"},
+      "3-solved": { "0": "Riempire la parte superiore della frittata con il condimento preferito (formaggio grattugiato o salmone affumicato). Piegare delicatamente a metà con la -?-", "1": "Riempire la parte superiore della frittata con il condimento preferito (-?- grattugiato o salmone affumicato). Piegare delicatamente a metà con la spatola"}
+      },
+
+    "cookActionOptions" :   {"0": ["sbattere ", "preriscaldare", "condire"], "1": ["scaldare", "ciotola ","padella"],  "2": ["sciogliere", "aggiungere", "inclinare"],  "3": ["grattugiare","riempire","piegare"] },
+    "cookActionOptionsEng" : {"0": ["beat", "preheat","season"], "1": ["heat", "bowl","pan"],  "2": ["melt", "add", "tilt"],  "3": ["grate","fill","fold"] },
+    "shoppingActionOptions" : { "0": [ "uova", "farina","sale e pepe"], "1": ["zucchero", "olio","burro"], "2": [ "farina","burro","uova"], "3": ["vaniglia", "formaggio","spatola"] },
+    "shoppingActionOptionsEng": { "0": [ "eggs", "flour","salt & pepper"], "1": ["sugar", "oil","butter"], "2": [ "flour","butter","eggs"], "3": ["vanilla", "cheese","spatula"] }
+    }
+  ]
+}

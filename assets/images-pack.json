@@ -17,11 +17,6 @@
         },
         {
             "type": "image",
-            "key": "image_answer_0_1",
-            "url": "assets/images_questions/oxygen.png"
-        },
-        {
-            "type": "image",
             "key": "image_question_0_2",
             "url": "/assets/images_questions/oil-to-salad.png"
         },
@@ -33,7 +28,47 @@
         {
             "type": "image",
             "key": "image_question_0_4",
-            "url": "/assets/images_questions/citrus-family.jpg"
+            "url": "/assets/images_questions/butters.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_5",
+            "url": "/assets/images_questions/croissant-biscuits.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_6",
+            "url": "/assets/images_questions/fried-foods.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_7",
+            "url": "/assets/images_questions/fish-chips-icon.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_8",
+            "url": "/assets/images_questions/organic-food.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_9",
+            "url": "/assets/images_questions/salad-vs-burger.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_10",
+            "url": "/assets/images_questions/home-vs-fast-food.jpg"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_11",
+            "url": "/assets/images_questions/citrus-family.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_0_12",
+            "url": "/assets/images_questions/citrus-family.png"
         },
 
 
@@ -71,7 +106,7 @@
         {
             "type": "image",
             "key": "image_question_1_4",
-            "url": "/assets/images_questions/rice-varieties.png"
+            "url": "/assets/images_questions/rice-varieties.jpg"
         },
         {
             "type": "image",
@@ -119,7 +154,7 @@
         {
             "type": "image",
             "key": "image_answer_2_1",
-            "url": "assets/images_questions/answer2.png"
+            "url": "assets/images_questions/answer1.png"
         },
         {
             "type": "image",
@@ -176,6 +211,43 @@
             "key": "image_question_2_12",
             "url": "assets/images_questions/food-pyramid.png"
         },
+        {
+            "type": "image",
+            "key": "image_question_2_13",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_14",
+            "url": "assets/images_questions/all-fats.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_15",
+            "url": "assets/images_questions/exercise-carbs.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_16",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_17",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_18",
+            "url": "assets/images_questions/food-pyramid.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_2_19",
+            "url": "assets/images_questions/extended-pyramid.png"
+        },
+
+
 
 
 
@@ -199,7 +271,55 @@
             "type": "image",
             "key": "image_answer_3_1",
             "url": "assets/images_questions/answer-fats-2.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_2",
+            "url": "assets/images_questions/salads_variety.png"
+        },
+        {
+            "type": "image",
+            "key": "image_question_3_3",
+            "url": "assets/images_questions/weightloss-diet.jpg"
+        },
+
+
+        {
+            "type": "image",
+            "key": "image_question_0_M",
+            "url": "assets/images_questions/medium/category-1.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_1_M",
+            "url": "assets/images_questions/medium/category-2.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_2_M",
+            "url": "assets/images_questions/medium/category-3.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_0_H",
+            "url": "assets/images_questions/hard/category-1.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_1_H",
+            "url": "assets/images_questions/hard/category-2.png"
+        },
+
+        {
+            "type": "image",
+            "key": "image_question_2_H",
+            "url": "assets/images_questions/hard/category-3.png"
         }
+        
     ],
     "meta": {
         "generated": "1401380327373",

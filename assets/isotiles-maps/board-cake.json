@@ -1,0 +1,106 @@
+ {
+	  "tileNames": [ "empty", "quest", "path-simple", "start", "path-q1", "path-q2", "path-q3", 
+				"target-1", "target-2-player", "target-3", "target-4-player", "bonus-tile", "path-cook-action", "path-shop-action"],
+  	"tileMapOld": [
+		[ 0,0,0,0,0,0,0,15,0,0,0,0,0,0 , 0,0,0,0,0,0,0,15,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 , 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ,  0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,5,6,4,2,2,0,2,6,5,4,0,0 , 0,0,5,6,4,2,2,0,2,6,5,4,0,0 ],
+  		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+  		[ 4,0,6,0,0,0,0,0,0,0,0,6,0,6 ,4,0,6,0,0,0,0,0,0,0,0,6,0,6],
+  		[ 5,0,0,5,0,0,0,0,0,9,8,0,0,4 , 5,0,0,5,0,0,0,0,0,9,8,0,0,4],
+  		[ 6,0,0,0,4,0,0,0,0,10,7,0,0,5 , 6,0,0,0,4,0,0,0,0,10,7,0,0,5],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 2,0,0,0,0,0,15,2,0,0,0,0,0,2 , 2,0,0,0,0,0,15,2,0,0,0,0,0,2],
+		[ 2,0,0,0,0,0,2,15,0,0,0,0,0,2 , 2,0,0,0,0,0,2,15,0,0,0,0,0,2],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 4,0,0,13,12,0,0,0,0,4,0,0,0,4 , 4,0,0,13,12,0,0,0,0,4,0,0,0,4],
+		[ 6,0,0,14,11,0,0,0,0,0,5,0,0,5 , 6,0,0,14,11,0,0,0,0,0,5,0,0,5],
+		[ 5,0,6,0,0,0,0,0,0,0,0,6,0,6 , 5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+		[ 0,0,4,5,6,2,0,2,2,4,5,6,0,0 ,  0,0,4,5,6,2,0,2,2,4,5,6,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0, 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0 , 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,15,0,0,0,0,0,0 , 0,0,0,0,0,0,0,15,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 , 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,2,0,0,0,0,0,0 ,  0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,5,6,4,2,2,0,2,6,5,4,0,0 , 0,0,5,6,4,2,2,0,2,6,5,4,0,0 ],
+  		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+  		[ 4,0,6,0,0,0,0,0,0,0,0,6,0,6 ,4,0,6,0,0,0,0,0,0,0,0,6,0,6],
+  		[ 5,0,0,5,0,0,0,0,0,9,8,0,0,4 , 5,0,0,5,0,0,0,0,0,9,8,0,0,4],
+  		[ 6,0,0,0,4,0,0,0,0,10,7,0,0,5 , 6,0,0,0,4,0,0,0,0,10,7,0,0,5],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 2,0,0,0,0,0,15,2,0,0,0,0,0,2 , 2,0,0,0,0,0,15,2,0,0,0,0,0,2],
+		[ 2,0,0,0,0,0,2,15,0,0,0,0,0,2 , 2,0,0,0,0,0,2,15,0,0,0,0,0,2],
+		[ 2,0,0,0,0,2,0,0,2,0,0,0,0,2 , 2,0,0,0,0,2,0,0,2,0,0,0,0,2],
+		[ 4,0,0,13,12,0,0,0,0,4,0,0,0,4 , 4,0,0,13,12,0,0,0,0,4,0,0,0,4],
+		[ 6,0,0,14,11,0,0,0,0,0,5,0,0,5 , 6,0,0,14,11,0,0,0,0,0,5,0,0,5],
+		[ 5,0,6,0,0,0,0,0,0,0,0,6,0,6 , 5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,1,0,0,0,0,0,0,0,0,0,0,1,0 , 0,1,0,0,0,0,0,0,0,0,0,0,1,0],
+		[ 0,0,4,5,6,2,0,2,2,4,5,6,0,0 ,  0,0,4,5,6,2,0,2,2,4,5,6,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0, 0,0,0,0,0,0,2,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,2,0,0,0,0,0,0,0 , 0,0,0,0,0,0,2,0,0,0,0,0,0,0]
+	  ],
+
+	  "tileMap": [
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0 ],
+  		[ 0,0,0,0,0,0,0,5,6,4,2,12,0,13,6,5,4,0,0 ],
+  		[ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0 ],
+  		[ 0,0,0,0,0,4,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+  		[ 0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,13,0,0,4 ],
+  		[ 0,0,0,0,0,6,0,0,0,4,0,0,0,0,12,0,0,0,5 ],
+		[ 0,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,0,0,2 ],
+		[ 0,0,0,0,0,12,0,0,0,0,0,9,8,0,0,0,0,0,13 ],
+		[ 0,0,0,0,0,13,0,0,0,0,0,10,7,0,0,0,0,0,12],
+		[ 0,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,0,0,2 ],
+		[ 0,0,0,0,0,4,0,0,0,13,0,0,0,0,4,0,0,0,4 ],
+		[ 0,0,0,0,0,6,0,0,12,0,0,0,0,0,0,5,0,0,5 ],
+		[ 0,0,0,0,0,5,0,6,0,0,0,0,0,0,0,0,6,0,6 ],
+		[ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0 ],
+		[ 0,0,0,0,0,0,0,4,5,6,13,0,12,2,4,5,6,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0 ],
+		[ 0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0 ]
+  	],
+	  "total_steps": 4,
+
+	  "recipe_name": "Vanilla sponge cake!",
+
+	  "recipe":{
+		"0":{ "step": "Preheat the oven to 200 degrees. Sieve well the flour, cocoa powder and baking powder", "points": [10,10,10] },
+		"1":{ "step": "Put the sugar and 4 eggs in a bowl and mix them until the mixture is homogeneous.", "points": [10,10,10] },
+		"2":{ "step": "Add the sifted flour gradually, spoon by spoon. Mix it with the eggs to make it fluffy" ,  "points": [10,10,10] },
+		"3":{ "step": "Add vanilla essence and pour the mixture into a pan. Bake in the preheated oven for about 20 minutes" ,  "points": [10,10,10] }
+	  },
+
+	  "recipe_cook":{
+		"purpose": "Cook must go to the correct tile to reveal cooking actions",
+		"done": "Cook done!",
+		"0":{ "step": "-?- the oven to 200 degrees. -?- well the flour, cocoa powder and baking powder", "actions":["preheat","sieve"]},
+		"1":{ "step": "Put the sugar and 4 eggs in a -?- and -?- them until the mixture is homogeneous",  "actions":["bowl","mix"] },
+		"2":{ "step": "-?- the sifted flour gradually, spoon by spoon. -?- it with the eggs to make it fluffy.",  "actions":["add","mix"] },
+		"3":{ "step": "Add vanilla essence and -?- the mixture into a pan. -?- in the preheated oven for about 20 minutes",  "actions":["pour","bake"] },
+
+		"0-solved": { "0": "Preheat the oven to 200 degrees. -?- well the flour, cocoa powder and baking powder", "1":"-?- the oven to 200 degrees. Sieve well the flour, cocoa powder and baking powder"},
+		"1-solved": { "0": "Put the sugar and 4 eggs in a bowl and -?- them until the mixture is homogeneous", "1": "Put the sugar and 4 eggs in a -?- and bake them until the mixture is homogeneous"},
+		"2-solved": { "0": "Add the sifted flour gradually, spoon by spoon. -?- it with the eggs to make it fluffy.", "1": "-?- the sifted flour gradually, spoon by spoon. Mix it with the eggs to make it fluffy."},
+		"3-solved":{ "0": "Add vanilla essence and pour the mixture into a pan. -?- in the preheated oven for about 20 minutes", "1": "Add vanilla essence and -?- the mixture into a pan. Bake in the preheated oven for about 20 minutes"}
+	},
+
+	  "recipe_shopper":{
+		"purpose": "Shopper must go to the correct tile to gather ingredients",
+		"done": "Shopper done!",
+		"0":{ "step": "Preheat the oven to 200 degrees. Sieve well the -?-, the -?- powder and baking powder", "actions":["flour","cocoa"]},
+		"1":{ "step": "Put the -?- and 4 -?- in a bowl and mix them until the mixture is homogeneous",  "actions":["sugar","eggs"] },
+		"2":{ "step": "Add the sifted -?- gradually, spoon by spoon. Mix it with the -?- to make it fluffy",  "actions":["flour","eggs"] },
+		"3":{ "step": "Add vanilla essence and -?- the mixture into a pan. -?- in the preheated oven for about 20 minutes",  "actions":["vanilla","mixture"] },
+
+		"0-solved": { "0": "Preheat the oven to 200 degrees. Sieve well the flour, -?- powder and baking powder", "1":"Preheat the oven to 200 degrees. Sieve well the -?-, cocoa powder and baking powder"},
+		"1-solved": { "0": "Put the sugar and 4 -?- in a bowl and mix them until the mixture is homogeneous", "1": "Put the -?- and 4 eggs in a bowl and mix them until the mixture is homogeneous"},
+		"2-solved": { "0": "Add the sifted flour gradually, spoon by spoon. Mix it with the -?- to make it fluffy", "1": "Add the sifted -?- gradually, spoon by spoon. Mix it with the eggs to make it fluffy"},
+		"3-solved":{ "0": "Add vanilla essence and pour the -?- into a pan. Bake in the preheated oven for about 20 minutes", "1": "Add -?- essence and pour the mixture into a pan. Bake in the preheated oven for about 20 minutes"}
+	}
+
+}

@@ -9,7 +9,7 @@
         {
             "type": "image",
             "key": "quest",
-            "url": "assets/tileset/quest-recipe.png",
+            "url": "assets/tileset/path-recipe-step.png",
             "overwrite": false
         },
         {
@@ -50,80 +50,20 @@
         },
         {
             "type": "image",
-            "key": "path-q4",
+            "key": "bonus-tile",
             "url": "assets/tileset/path-quest-exchang.png",
             "overwrite": false
         },
         {
             "type": "image",
-            "key": "arrow",
-            "url": "assets/images/sprites/arrow.png",
+            "key": "path-cook-action",
+            "url": "assets/tileset/path-cook-action.png",
             "overwrite": false
         },
         {
             "type": "image",
-            "key": "bg",
-            "url": "assets/images/background-scene-1.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "gamebg",
-            "url": "assets/images/defenseBG.jpg",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "moneyholder",
-            "url": "assets/images/moneyholder.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "healthholder",
-            "url": "assets/images/healthHolder.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "title",
-            "url": "assets/images/title.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "btnAgain",
-            "url": "assets/images/btnAgain.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "btnBegin",
-            "url": "assets/images/btnBegin.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "gameoverText",
-            "url": "assets/images/gameoverText.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q1-info",
-            "url": "assets/questions/path-q1.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q2-info",
-            "url": "assets/questions/path-q2.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "path-q3-info",
-            "url": "assets/questions/path-q3.png",
+            "key": "path-shop-action",
+            "url": "assets/tileset/path-shop-action.png",
             "overwrite": false
         },
         {
@@ -134,7 +74,7 @@
         },
         {
             "type": "image",
-            "key": "target-2",
+            "key": "target-2-player",
             "url": "assets/tileset/riverNW.png",
             "overwrite": false
         },
@@ -146,7 +86,7 @@
         },
         {
             "type": "image",
-            "key": "target-4",
+            "key": "target-4-player",
             "url": "assets/tileset/riverES.png",
             "overwrite": false
         },
@@ -158,7 +98,7 @@
         },
         {
             "type": "image",
-            "key": "progress-2",
+            "key": "progress-2-player",
             "url": "assets/tileset/progressNW.png",
             "overwrite": false
         },
@@ -170,8 +110,14 @@
         },
         {
             "type": "image",
-            "key": "progress-4",
+            "key": "progress-4-player",
             "url": "assets/tileset/progressES.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "cake-finished",
+            "url": "assets/tileset/cake-finish.png",
             "overwrite": false
         },
         {
@@ -193,18 +139,16 @@
             "overwrite": false
         },
         {
-            "type": "spritesheet",
-            "key": "human",
-            "url": "assets/images/sprites/Human/human_regular_hair.png",
-            "frameWidth": 60,
-            "frameHeight": 60
+            "type": "image",
+            "key": "green-mark",
+            "url": "assets/robo-cook/green-mark-big.png",
+            "overwrite": false
         },
         {
-            "type": "spritesheet",
-            "key": "baldguy",
-            "url": "assets/images/sprites/Human/human_regular_bald.png",
-            "frameWidth": 60,
-            "frameHeight": 60
+            "type": "image",
+            "key": "yellow-mark",
+            "url": "assets/robo-cook/yellow-mark-big.png",
+            "overwrite": false
         },
         {
             "type": "spritesheet",
@@ -223,7 +167,7 @@
         {
             "type": "json",
             "key": "mapdata",
-            "url": "assets/isotiles.json"
+            "url": "assets/isotiles-maps/board-salad.json"
         }
     ],
     "meta": {

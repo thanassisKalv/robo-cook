@@ -1,17 +1,15 @@
-var roboCook = {};
 
-roboCook.Boot = function (game) {
-};
 
-roboCook.Boot.prototype = {
+class Boot extends Phaser.State {
 
-    preload: function () {
+    preload () {
         //  Here we load the assets required for our preloader (in this case a background and a loading bar)
         // this.load.image('preloaderBackground', 'images/preloader_background.jpg');
         // this.load.image('preloaderBar', 'images/preloadr_bar.png');
-    },
+        this.load.image('preloader', 'assets/images/loading_bar2.png');
+    }
 
-    create: function () {
+    create () {
         var myScript = document.getElementById("script");
 
         //  Unless you specifically know your game needs to support multi-touch I would recommend setting this to 1
@@ -31,14 +29,15 @@ roboCook.Boot.prototype = {
         else{
             //  Same goes for mobile settings.
             //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
-            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.minWidth = 480;
             this.scale.minHeight = 260;
             this.scale.maxWidth = 1024;
             this.scale.maxHeight = 768;
             this.scale.forceLandscape = true;
+            this.scale.forceOrientation(true);
             this.scale.pageAlignHorizontally = true;
-            this.scale.setScreenSize(true);
+            //this.scale.setScreenSize(true);
         }
 
         this.scale.refresh();

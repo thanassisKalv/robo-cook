@@ -1,13 +1,11 @@
 # robo-cook
-robo-cook's path  -  board game in Phaser.js
+robo-cook's path  -  A board game in Phaser.js
 
 
-### to do
- - add fixedCamera frame UI
- - add cameraFollow() of playing character
- - fix ongoing little bugs (items positioning because of isometric world etc.)
+### latest changes (February 2021)
+ - check the new updated file ["latest-updates.md"](https://github.com/thanassisKalv/robo-cook/blob/online-multiplayer-ita/latest-changes.md)
 
-### done
+### done (initial version)
  - fixed the robo-cook's position return - *03/06*
  - added random-selector for questions items - *03/06*
  - fixed random-selector's range - *04/06*
@@ -23,3 +21,7 @@ robo-cook's path  -  board game in Phaser.js
  - changed/added badges for player's progress & added PlayerScores.js class for handling them - *17/06*
  - fixed bug in playerturn change & added a new instructions page on start menu - *19/06*
  - MAJOR: implement the multiple-choice questions' popup-card with nicer UI using [sweetalert2](https://sweetalert2.github.io/) - *27/09*
+ - added left and right fixedCamera frame UIs - *24/10*
+ - added mechanisms and graphics for RPG - *24/10*
+ - team-players now help the answering player (see the question without options) - *24/10*
+ - manage answered questions [server and frontend] to not appear again till all answers have been given for a category - *10/11*

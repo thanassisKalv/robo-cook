@@ -1,0 +1,749 @@
+{
+	"lives": 3,
+	"categories": [
+		{
+			"questions": [
+				{
+					"question": "What does alimentation mean?",
+					"choices": [
+						"Conscious choice and consumption of food and drinks",
+						"Amount of food consumed by an individual to live",
+						"Biological processes of nutrient absorption"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Parlando di quantità o qualità?"
+				},
+				{
+					"question": "And Nutrition?",
+					"choices": [
+						"The eating habits of an individual and his family",
+						"The types of nutrients eaten",
+						"Biological processes of absorption and use of nutritional principles"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "pasta.jpg"
+				},
+				{
+					"question": "Percentage of water in a human adult",
+					"choices": [
+						"50%",
+						"65%",
+						"85%"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "olives.jpg"
+				},
+				{
+					"question": "The foods at the base of the food pyramid must be consumed:",
+					"choices": [
+						"On a daily basis",
+						"On a weekly basis",
+						"At every main meal"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What percentage of energy should we get from carbohydrates?",
+					"choices": [
+						"30-35% and no more than 10% from simple sugars",
+						"55-60% and no more than 15% from simple sugars",
+						"50% of which half from simple sugars"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "How many calories should an average snack provide?",
+					"choices": [
+						"3%",
+						"10%",
+						"20%"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "How much energy, on average, does dancing consume? (30 minutes)",
+					"choices": [
+						"84 kcal",
+						"378 kcal",
+						"500 kcal"				
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "At the base of the Mediterranean food pyramid there are outlines relating to:",
+					"choices": [
+						"Physical activity and conviviality",
+						"Seasonality and local products",
+						"Both of the above answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "If the calorie intake is greater than the energy spent, the body weight:",
+					"choices": [
+						"Remains unchanged",
+						"Increases",
+						"Decreases"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "What are the factors that affect the energy needs of each person?",
+					"choices": [
+						"Obesity or excessive thinness",
+						"Age, climate, sex, state of health and activities sustained",
+						"Height and weight"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What does the 'daily caloric requirement' consist of?",
+					"choices": [
+						"It is the daily basal metabolic rate",
+						"It is the minimum amount of energy that our body consumes",
+						"Basal metabolism + calories needed for the activities performed"					
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What do we mean by the 'Mediterranean diet'?",
+					"choices": [
+						"A diet model used in the Mediterranean basin for about a century",
+						"A type of weight loss diet used in the Mediterranean basin",
+						"A weight loss diet used in Italy and Greece"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "The new guidelines for healthy eating have introduced recommendations:",
+					"choices": [
+						"On food supplements",
+						"On the diets to follow",
+						"Both of the above answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What foods are found at the base of the Mediterranean food pyramid?",
+					"choices": [
+						"Mozzarella and tomatoes",
+						"Cereals, potatoes and legumes",
+						"Red meat and sweets"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Breast milk lacks:",
+					"choices": [
+						"Iodine",
+						"Potassium",
+						"Iron"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "The importance of food must be evaluated in terms of?",
+					"choices": [
+						"Cost of food",
+						"Content of nutritional principles",
+						"Biological value, bioavailability and nutritional value"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "When a person is considered having a 'severe thinness'?",
+					"choices": [
+						"When their BMI is under 16 Kg / sqm",
+						"When their BMI is between 25 and 30 Kg / sqm",
+						"When their BMI is above 30 Kg / sqm"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What does RNI mean?",
+					"choices": [
+						"Recommended Intake Levels of Nitrites",
+						"Regular Nutrient Intake Line",
+						"Nutrient Reference Intake Levels"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "What are the factors that favor obesity?",
+					"choices": [
+						"Eating too much pasta",
+						"Excessive calorie intake and poor physical activity",
+						"Eating foods belonging to only one group of nutrients"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "At the end of pregnancy, the basal metabolic rate:",
+					"choices": [
+						"Increases by 20%",
+						"Decreases by 10%",
+						"Remains unchanged"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "2g X Kg of body weight is the protein requirement:",
+					"choices": [
+						"For the elderly",
+						"During the first year of life",
+						"During breastfeeding"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				}
+
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Food contaminants are defined as:",
+					"choices": [
+						"All substances not intentionally added to food",
+						"Substances added intentionally to food",
+						"Additives"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "A contaminated food",
+					"choices": [
+						"May have an altered sensory profile",
+						"Can cause pathology",
+						"Both of the above answers are correct"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Mycotoxins are:",
+					"choices": [
+						"Natural physical contaminants",
+						"Synthetic chemical contaminants",
+						"Natural chemical contaminants"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following are physical contaminants:",
+					"choices": [
+						"Voluntarily added foreign bodies",
+						"Viruses, bacteria and molds",
+						"Foreign bodies accidentally present"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "'Bioaccumulation' is a phenomenon that concerns:",
+					"choices": [
+						"Veterinary drugs",
+						"Mycotoxins",
+						"Heavy metals"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Helminths are",
+					"choices": [
+						"Unicellular protozoa",
+						"Worms",
+						"Prions"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Hepatitis are infections transmitted by:",
+					"choices": [
+						"Mushrooms",
+						"Parasitic worms",
+						"Virus"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Ingestion of toxins already present in the food at the time of consumption causes:",
+					"choices": [
+						"Food poisoning",
+						"Poisoning",
+						"Food infections"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Toxoplasmosis and listeriosis are especially dangerous:",
+					"choices": [
+						"For a lactating woman",
+						"For an adult woman",
+						"For a pregnant woman"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The prevention of contaminants development is safe if achieved with a sugar concentration:",
+					"choices": [
+						"Of 20% minimum",
+						"Of 30% minimum",
+						"Of 50% minimum"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Flies and cockroaches can be:",
+					"choices": [
+						"Active means of contamination",
+						"Passive means of contamination",
+						"Passive vectors of contamination"
+						
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Personnel clothing, environments and equipments can be:",
+					"choices": [
+						"Contamination carriers",
+						"Contamination vectors",
+						"Both of the above answers are incorrect"
+						
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "With pasteurization it is not possible to eliminate:",
+					"choices": [
+						"Molds",
+						"Bacteria in the form of spores",
+						"Bacteria in vegetative form"
+						
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "The formation of ice macrocrystals is favored by the process of:",
+					"choices": [
+						"Deep freezing",
+						"Freezing",
+						"Both of the above answers are wrong"
+						
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Conservation methods based on fermentation are defined as:",
+					"choices": [
+						"Biological",
+						"Chemical-physical",
+						"Chemical"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What kind of bacteria is oil effective against?",
+					"choices": [
+						"Aerobic",
+						"Anaerobic",
+						"Osmophilic"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following represents a high-temperature physical preservation technique?",
+					"choices": [
+						"Pasteurization",
+						"Concentration",
+						"Adding salt"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following is a chemical-physical conservation technique:",
+					"choices": [
+						"Salting",
+						"Conservation under spirit",
+						"Smoking"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What is freezing used for?",
+					"choices": [
+						"To slow down / block the growth of microorganisms",
+						"To kill pathogenic bacteria only",
+						"To kill all microorganisms"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What is meant by 'milk sanitation'?",
+					"choices": [
+						"Homogenization and degassing processes",
+						"Fat skimming",
+						"Sterilization and pasteurization procedures"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+		
+
+		{
+			"questions": [
+				{
+					"question": "Table sugar (sucrose) is composed of ...",
+					"choices": [
+						"fructose + galactose",
+						"ribose + glucose",
+						"glucose + fructose"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "When we buy a bottle with the label 'milk':",
+					"choices": [
+						"It is certainly cow milk",
+						"It is cow milk only if it is stored in refrigerators",
+						"It can be either cow milk or goat milk"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "In our body, which of the following minerals is present in the largest quantity?",
+					"choices": [
+						"Calcium",
+						"Phosphorus",
+						"Iron"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Which of the following statements is false?",
+					"choices": [
+						"Rice is a cereal",
+						"Lamb belongs to the ovis family",
+						"Bread is made with flour, water, yeast and eggs"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Which vitamin is found in large quantities in sour-tasting fruit?",
+					"choices": [
+						"Vitamin B12",
+						"Vitamin C",
+						"Vitamin K"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Find the wrong definition: amino acids",
+					"choices": [
+						"have a basic group and an acid group",
+						"make up starch",
+					      "About twenty amino acids exist in nature"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "How are nutritional principles or nutrients classified?",
+					"choices": [
+						"Glucides, proteins, lipids, vitamins, water and mineral salts",
+						"Cereals, vegetables, fruit, meat, milk and eggs",
+						"Energetic, for growth, protective"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What are the groups of food principles that are classified among the organic principles?",
+					"choices": [
+						"Animal fats",
+						"Mineral elements and water",
+						"Glucides, lipids, proteins, vitamins"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What are the main nutrients that should provide most of the energy we need?",
+					"choices": [
+						"Vitamins",
+						"Carbohydrates",
+						"Proteins"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of these foods contain vitamin C in large quantities?",
+					"choices": [
+						"Cereals",
+						"Milk and its derivatives",
+						"Citrus fruits"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What are proteins?",
+					"choices": [
+						"Substances that mainly perform structural function",
+						"Inorganic food ingredients with protective function",
+						"Substances of exclusively animal origin"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which foods are rich in protein?",
+					"choices": [
+						"Vegetables",
+						"Meat, fish, eggs, milk derivatives and legumes",
+						"Cereals and potatoes"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "In which foods are carbohydrates present in large quantities?",
+					"choices": [
+						"In cereals, potatoes and legumes",
+						"In olive oil and butter",
+						"In white meat and fish"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What do is meant by 'high biological value proteins'?",
+					"choices": [
+						"Proteins that contain all 8-10 essential amino acids",
+						"Proteins derived from intensively farmed meat",
+						"Proteins from horse meat "
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of these are not nutritionally essential foods?",
+					"choices": [
+						"Coffee, tea, and herbal teas",
+						"Milk and eggs",
+						"Vegetables and cereals"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which fundamental group does rice belong to?",
+					"choices": [
+						"Group 5",
+						"Group 1",
+						"Group 3"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which fundamental group do dry beans belong to?",
+					"choices": [
+						"Group 5",
+						"Group 2",
+						"Group 4"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following statements is correct?",
+					"choices": [
+						"Barley is the most consumed cereal in the world",
+						"Parmigiano Reggiano is a fresh cheese",
+						"Raw ham is obtained from the pork leg"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Which of the following foods are rich in vitamin B12?",
+					"choices": [
+						"Milk and its derivatives",
+						"Meat and fish",
+						"Fats and oils"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "What does the pasta dough contain?",
+					"choices": [
+						"Semolina of durum wheat, water and yeast",
+						"White flour, water and yeast",
+						"Semolina of durum wheat and water"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Which category of fats are mostly artificially made?",
+					"choices": [
+						"Trans",
+						"Saturated",
+						"Unsaturated"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-1.jpg"
+				},
+				{
+					"question": "Are all fats bad for our health?",
+					"choices": [
+						"Yes all of them are useless",
+						"No, some of them are an essential part of a balanced diet",
+						"No all of them are important"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Can we say that all salads healthy-made?",
+					"choices": [
+						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
+						"All salads are very healthy, just don't add too much salt",
+						"No, it is common to add so many not-so-healthy ingredients"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/salads_variety.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "People follow diets with the purpose to lose weight?",
+					"choices": [
+						"Yes, that's the normal way",
+						"Not always, some diets are not designed for losing weight",
+						"Following diets is not a healthy idea"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/weightloss-diet.jpg",
+					"answer_image": "answer-fats-2.jpg"
+				}
+			]
+		}
+	]
+}

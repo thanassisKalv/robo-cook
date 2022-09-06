@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Robo-cook's ScoreBoard</title>
+        <style>
+            body {
+                background-color: #333;
+                margin:0;
+            }
+            canvas {   display : block;   margin : auto;}
+        </style>
+        <link rel="shortcut icon" type="image/png" href="assets/score.png"/>
+    </head>
+    <body>
+        <div id="demo"></div>
+        <script type="text/javascript" src="libs/socket-v2.4.0.io.js"></script>
+        <script type="text/javascript" src="libs/phaser-2.17.0.min.js"></script>
+        <script type="text/javascript" src="libs/ScoreBoard.js"></script>
+        <script type="text/javascript">
+            window.socket = io.connect();
+
+            var scoreBoard;
+            var game = new Phaser.Game(900, 3*600, Phaser.AUTO, 'scoreboard-classes', { preload: preload, create: create, update: update });
+            function preload() {
+
+                this.config = {
+                        R: 5,
+                        x: 50,
+                        y: 20,
+                        margin: {
+                            x: 0,
+                            y: 35
+                        },
+                        width: 120,
+                        height: 16,
+                        color: {
+                            border: 0x000000,
+                            rect: 0x1E90FF
+                        },
+                        scale: 1.25,
+                        label: "Class",
+                        fixToCamera: true,
+                    };
+            }
+
+            function create() {
+
+                this.ctgryLen = {"easy-level":{0:13, 1:10, 2:20}, "medium-level":{0:21, 1:20, 2:20}, "hard-level":{0:20, 1:20, 2:20} };
+                game.stage.backgroundColor = "#8bb54a";
+
+                var _this = this;
+                window.socket.on(ScoreEvent.request, function (scoreData){
+                    //console.log(scoreData);
+                    var dataClasses = [];
+                    var scoresC1 = [];
+                    var scoresC2 = [];
+                    var scoresC3 = [];
+                    var progressEnd = [];
+                    for (var i=0; i<scoreData.length; i++){
+                        scoreData[i]["startTime"] = (new Date(scoreData[i]["startTime"] * 1000)).toLocaleDateString();   // .toLocaleTimeString();
+                        console.log(scoreData[i]);
+                        dataClasses.push(scoreData[i]["startTime"]);
+                        scoresC1.push(scoreData[i]['0'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][0]);
+                        scoresC2.push(scoreData[i]['1'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][1]);
+                        scoresC3.push(scoreData[i]['2'].length+"/"+ _this.ctgryLen[scoreData[i].gLevel][2]);
+                        progressEnd.push(scoreData[i].gLevel)
+                    }
+
+                    scoreBoard = new ScoreBoard(game, _this.config );
+
+                    scoreBoard.draw(dataClasses);
+
+                    _this.config.x = 200;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-1";
+                    var scoreBoard2 = new ScoreBoard(game, _this.config );
+                    scoreBoard2.draw(scoresC1);
+
+                    _this.config.x = 300;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-2";
+                    var scoreBoard3 = new ScoreBoard(game, _this.config );
+                    scoreBoard3.draw(scoresC2);
+
+                    
+                    _this.config.x = 400;
+                    _this.config.width = 90;
+                    _this.config.label = "Cat-3";
+                    var scoreBoard4 = new ScoreBoard(game, _this.config );
+                    scoreBoard4.draw(scoresC3);
+
+                    _this.config.x = 530;
+                    _this.config.width = 130;
+                    _this.config.label = "Levels";
+                    var scoreBoard5 = new ScoreBoard(game, _this.config );
+                    scoreBoard5.draw(progressEnd);
+                });
+
+                window.socket.emit(ScoreEvent.request, { });
+
+            }
+
+            function update() {
+
+            }
+            var ScoreEvent = (function () {
+                function ScoreEvent() {
+                }
+                ScoreEvent.request = "score:request";
+
+                return ScoreEvent;
+            }());
+
+        </script>
+    </body>
+</html>

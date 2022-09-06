@@ -1,0 +1,753 @@
+{
+	"lives": 3,
+	"categories": [
+		{
+			"questions": [
+				{
+					"question": "Cosa significa Alimentazione?",
+					"choices": [
+						"Scelta e consumo consapevole di alimenti e bevande",
+						"Quantità di cibo consumato da un individuo per vivere",
+						"Processi biologici di assorbimento dei principi nutritivi"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "grain-to-pasta.jpg",
+					"hqExist": true,
+					"helpQuestion": "Parlando di quantità o qualità?"
+				},
+				{
+					"question": "E Nutrizione?",
+					"choices": [
+						"Il modo di mangiare di un individuo e della sua famiglia",
+						"I tipi di nutrienti che vengono mangiati",
+						"Processi biologici di assorbimento ed utilizzo dei principi nutritivi"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "pasta.jpg"
+				},
+				{
+					"question": "Percentuale acqua presente nell'uomo adulto",
+					"choices": [
+						"50%",
+						"65%",
+						"85%"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "olives.jpg"
+				},
+				{
+					"question": "Gli alimenti alla base della piramide alimentare devono essere consumati:",
+					"choices": [
+						"Con frequenza giornaliera",
+						"Con frequenza settimanale",
+						"Ad ogni pasto principale"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Qual è la percentuale di energia che dovremmo ricavare dai carboidrati?",
+					"choices": [
+						"30-35% e non più del 10% dagli zuccheri semplici",
+						"55-60% e non più del 15% dagli zuccheri semplici",
+						"50% di cui la metà dagli zuccheri semplici"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quante calorie dovrebbe fornire mediamente uno spuntino?",
+					"choices": [
+						"3%",
+						"10%",
+						"20%"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quante energie consuma mediamente ballare? (30 minuti)",
+					"choices": [
+						"84 kcal",
+						"378 kcal",
+						"500 kcal"				
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Alla base della piramide alimentare mediterranea compaiono indicazioni relative a:",
+					"choices": [
+						"Attività fisica e convivialità",
+						"Stagionalità e prodotti locali",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Se l’assunzione di calorie è maggiore del dispendio energetico il peso corporeo:",
+					"choices": [
+						"Resta invariato",
+						"Aumenta",
+						"Diminuisce"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Quali sono i fattori che condizionano il fabbisogno energetico di ogni persona?",
+					"choices": [
+						"Obesità o eccessiva magrezza",
+						"Età, clima, sesso, stato di salute e attività svolte",
+						"Altezza e peso"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "In cosa consiste essenzialmente il fabbisogno calorico giornaliero?",
+					"choices": [
+						"È il metabolismo basale giornaliero",
+						"È la quantità minima di energia che consuma il nostro corpo",
+						"Metabolismo basale + calorie necessarie per attività svolte"					
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Che cosa si intende per Dieta mediterranea?",
+					"choices": [
+						"Modello di dieta usata nel bacino del Mediterraneo da circa un secolo",
+						"Tipo di dieta dimagrante usata nel bacino del Mediterraneo",
+						"Dieta dimagrante usata in Italia e in Grecia"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Le nuove linee guida per una sana alimentazione hanno introdotto raccomandazioni:",
+					"choices": [
+						"Sugli integratori alimentari",
+						"Sulle diete da seguire",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quali alimenti si trovano alla base della piramide alimentare mediterranea?",
+					"choices": [
+						"Mozzarella e pomodori",
+						"Cereali, patate e legumi",
+						"Carne rossa e dolci"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Il latte materno è carente di:",
+					"choices": [
+						"Iodio",
+						"Potassio",
+						"Ferro"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "L'importanza degli alimenti deve essere valutata in termini di?",
+					"choices": [
+						"Costo dei alimenti",
+						"Contenuto dei principi nutritivi",
+						"Valore biologico, biodisponibilità e valore nutritivo"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quando si dice che una persona ha una magrezza grave?",
+					"choices": [
+						"Quando IMC è inferiore a 16 Kg/mq",
+						"Quando IMC sta tra 25 e 30 Kg/mq",
+						"Quando IMC è superiore a 30 Kg/mq"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Che cosa significa LARN?",
+					"choices": [
+						"Livelli di Assunzione Raccomandati di Nitriti",
+						"Linea di Assunzione Regolare di Nutrienti",
+						"Livelli di Assunzione Riferimento di Nutrienti"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Quali sono i fattori che favoriscono l'obesità?",
+					"choices": [
+						"Mangiare troppa pasta",
+						"Eccessivo apporto calorico e scarsa attività fisica",
+						"Assumere cibi appartenenti a un solo gruppo di nutrienti"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "Al termine della gravidanza il metabolismo basale:",
+					"choices": [
+						"Aumenta del 20%",
+						"Diminuisce del 10%",
+						"Resta invariato"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				},
+				{
+					"question": "2g X Kg di peso corporeo equivale al fabbisogno proteico:",
+					"choices": [
+						"Degli anziani",
+						"Durante il primo anno di vita",
+						"Durante l’allattamento"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "cereals.jpg"
+				}
+
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Si definiscono contaminanti alimentari:",
+					"choices": [
+						"Tutte le sostanze non aggiunte intenzionalmente agli alimenti",
+						"Le sostanze aggiunte intenzionalmente agli alimenti",
+						"Gli additivi"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Un alimento contaminato",
+					"choices": [
+						"Può avere un profilo sensoriale alterato",
+						"Può causare patologia",
+						"Entrambe le risposte precedenti sono corrette"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Le micotossine sono:",
+					"choices": [
+						"Contaminanti fisici naturali",
+						"Contaminanti chimici sintetici",
+						"Contaminanti chimici naturali"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Sono contaminanti fisici",
+					"choices": [
+						"Corpi estranei volontariamente aggiunti",
+						"Virus, batteri e muffe",
+						"Corpi estranei accidentalmente presenti"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Il “bioaccumulo” è un fenomeno che riguarda:",
+					"choices": [
+						"I farmaci veterinari",
+						"Le micotossine",
+						"I metalli pesanti"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-1.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Gli elminti sono",
+					"choices": [
+						"Protozoi unicellulari",
+						"Vermi",
+						"Prioni"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Le epatiti sono infezioni trasmessa da:",
+					"choices": [
+						"Funghi",
+						"Vermi parassiti",
+						"Viru"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’ingestione di tossine già presenti nell’alimento al momento del consumo causa:",
+					"choices": [
+						"Intossicazioni alimentari",
+						"Tossinfezioni alimentari",
+						"Infezioni alimentari"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Toxoplasmosi e listeriosi sono particolarmente pericolose:",
+					"choices": [
+						"Per una donna in allattamento",
+						"Per una donna adulta",
+						"Per una donna incinta"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La prevenzione dello sviluppo di contaminanti è sicura se ottenuta con una concentrazione di zucchero:",
+					"choices": [
+						"minima pari al 20%",
+						"minima pari al 30%",
+						"minima pari al 50%"
+						
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Mosche e scarafaggi sono possono essere:",
+					"choices": [
+						"Veicoli attivi di contaminazione",
+						"Veicoli passivi di contaminazione",
+						"Vettori passivi di contaminazione"
+						
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Indumenti del personale, ambienti e attrezzature possono essere:",
+					"choices": [
+						"Veicoli di contaminazione",
+						"Vettori di contaminazione",
+						"Entrambe le risposte precedenti sono errate"
+						
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Con la pastorizzazione non è possibile eliminare:",
+					"choices": [
+						"Le muffe",
+						"i batteri sotto forma di spora",
+						"I batteri in forma vegetativa"
+						
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "La formazione di macrocristalli di ghiaccio è favorita dal processo di:",
+					"choices": [
+						"Surgelazione",
+						"Congelamento",
+						"Entrambe le risposte precedenti sono sbagliate"
+						
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "I metodi di conservazione basati sulle fermentazioni sono definiti:",
+					"choices": [
+						"Biologici",
+						"Chimico-fisici",
+						"Chimici"
+						
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "L’olio è efficace contro i batteri:",
+					"choices": [
+						"Aerobi",
+						"Anaerobi",
+						"Osmofili"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quale tra le seguenti rappresenta una tecnica di conservazione fisica con il caldo?",
+					"choices": [
+						"Pastorizzazione",
+						"Concentrazione",
+						"Aggiunta di sale"
+						
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Una tecnica chimico-fisica di conservazione è:",
+					"choices": [
+						"La salagione",
+						"La conservazione sotto spirito",
+						"L’affumicamento"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "A cosa serve il congelamento?",
+					"choices": [
+						"a rallentare/bloccare la crescita dei microrganismi",
+						"ad uccidere solo i batteri patogeni",
+						"ad uccidere tutti i microrganismi"
+						
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Cosa in intende per risanamento del latte?",
+					"choices": [
+						"I processi di omogeneizzazione e degassazione",
+						"La scrematura del grasso",
+						"Le procedure di sterilizzazione e pastorizzazione"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-2.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+		
+
+		{
+			"questions": [
+				{
+					"question": "Lo zucchero da cucina (saccarosio) è composto da ...",
+					"choices": [
+						"fruttosio+galattosio",
+						"ribosio+glucosio",
+						"glucosio+fruttosio"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Quando acquistiamo una bottiglia con l'indicazione 'latte' ",
+					"choices": [
+						"Si tratta sicuramente di latte vaccino",
+						"È latte vaccino solo se è conservato nei frigoriferi",
+						"Può essere latte vaccino oppure di capra"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Qual è il minerale presente in maggiore quantità nel nostro corpo?",
+					"choices": [
+						"calcio",
+						"fosforo",
+						"ferro"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Indica quale delle seguenti affermazioni è falsa",
+					"choices": [
+						"Il riso è un cereale",
+						"L'agnello fa parte della categoria degli ovini",
+						"Il pane si ottiene impastando farina, acqua, lievito e uova"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "answer1.png"
+				},
+				{
+					"question": "Quale vitamina si trova in grande quantità nella frutta di sapore acidulo?",
+					"choices": [
+						"Vitamina B12",
+						"Vitamina C",
+						"Vitamina k"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Trova la definizione sbagliata: gli amminoacidi",
+					"choices": [
+						"presentano un gruppo basico e un gruppo acido",
+						"costituiscono l'amido",
+						"esistono una ventina di amminoacidi in natura"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Come si classificano i principi nutritivi o nutrienti?",
+					"choices": [
+						"Glucidi, protidi, lipidi, vitamine, acqua e sali minerali",
+						"Cereali, ortaggi, frutta, carne, latte e uova",
+						"Energetici, per la crescita, protettivi"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quali sono i gruppi di principi alimentari che si classificano fra i principi organici?",
+					"choices": [
+						"I grassi animali",
+						"Elementi minerali e acqua",
+						"Glucidi, lipidi, protidi, vitamine"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quali sono i principi alimentari che dovrebbero fornire gran parte dell'energia di cui abbiamo bisogno?",
+					"choices": [
+						"Le vitamine",
+						"I carboidrati",
+						"Le proteine"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quali fra questi alimenti contengono vitamina C in grande quantità?",
+					"choices": [
+						"Cereali",
+						"Latte e suoi derivati",
+						"Agrumi"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Cosa sono le proteine?",
+					"choices": [
+						"Sostanze che svolgono principalmente la funzione plastica",
+						"Principi alimentari inorganici aventi funzione protettiva",
+						"Sostanze di origine esclusivamente animale"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quali fra gli alimenti sono ricchi di proteine?",
+					"choices": [
+						"Gli ortaggi",
+						"Le carni, il pesce, le uova, i derivati del latte e i legumi",
+						"I cereali e le patate"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "In quali alimenti siamo in grande quantità i carboidrati?",
+					"choices": [
+						"Nei cereali, nelle patate e nei legumi",
+						"Nell'olio di oliva e nel burro",
+						"Nella carni bianche e nel pesce"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Che cosa si intende per proteine ​​ad alto valore biologico?",
+					"choices": [
+						"Proteine che contengono tutti gli 8-10 aminoacidi essenziali",
+						"Proteine derivate da carni di allevamento intensivo",
+						"Proteine derivanti da carne di cavallo"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Quali tra questi non sono alimenti nutrizionalmente essenziali?",
+					"choices": [
+						"Caffè, thé e tisane",
+						"Latte e uova",
+						"Ortaggi e cereali"
+					],
+					"answer": 0,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Di quale gruppo fondamentale fa parte il riso?",
+					"choices": [
+						"Gruppo 5",
+						"Gruppo 1",
+						"Gruppo 3"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Di quale gruppo fondamentale fanno parte i fagioli secchi?",
+					"choices": [
+						"Gruppo 5",
+						"Gruppo 2",
+						"Gruppo 4"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Indica quale delle seguenti affermazioni è corretta",
+					"choices": [
+						"L'orzo è il cereale più consumato al mondo",
+						"Il parmigiano reggiano è un formaggio fresco",
+						"Il prosciutto crudo si ottiene dalla coscia del maiale"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Sono ricchi di vitamina B12 gli alimenti appartenenti al:",
+					"choices": [
+						"Gruppo di latte e derivati",
+						"Gruppo di carne e pesce",
+						"Gruppo di grassi e oli da condimento"
+					],
+					"answer": 1,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				},
+				{
+					"question": "Cosa contiene l'impasto della pasta?",
+					"choices": [
+						"semola di grano duro, acqua e lievito",
+						"farina bianca, acqua e lievito",
+						"semola di grano duro e acqua"
+					],
+					"answer": 2,
+					"image": "assets/images_questions/medium/category-3.png",
+					"answer_image": "placeholder-answer.png"
+				}
+			]
+		},
+
+
+		{
+			"questions": [
+				{
+					"question": "Which category of fats are mostly artificially made?",
+					"choices": [
+						"Trans",
+						"Saturated",
+						"Unsaturated"
+					],
+					"answer": 0,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-1.jpg"
+				},
+				{
+					"question": "Are all fats bad for our health?",
+					"choices": [
+						"Yes all of them are useless",
+						"No, some of them are an essential part of a balanced diet",
+						"No all of them are important"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/all-fats.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "Can we say that all salads healthy-made?",
+					"choices": [
+						"Yes certainly all kind of salads are good for us because vegetables are always good for you!",
+						"All salads are very healthy, just don't add too much salt",
+						"No, it is common to add so many not-so-healthy ingredients"
+					],
+					"answer": 2,
+					"image": "/assets/images_questions/salads_variety.png",
+					"answer_image": "answer-fats-2.jpg"
+				},
+				{
+					"question": "People follow diets with the purpose to lose weight?",
+					"choices": [
+						"Yes, that's the normal way",
+						"Not always, some diets are not designed for losing weight",
+						"Following diets is not a healthy idea"
+					],
+					"answer": 1,
+					"image": "/assets/images_questions/weightloss-diet.jpg",
+					"answer_image": "answer-fats-2.jpg"
+				}
+			]
+		}
+	]
+}
