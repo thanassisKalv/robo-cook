@@ -14,10 +14,10 @@
     "monk": "^7.3.2",
     "nodemailer": "^6.9.9",
     "socket.io-client": "^4.7.5",
-    "uuid": "^3.3.2"
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
-    "socket.io": "^4.5.3"
+    "socket.io": "^4.7.5"
   }
 }
