@@ -12,7 +12,7 @@
     "dotenv": "^8.2.0",
     "express": "^5.0.1",
     "monk": "^7.3.2",
-    "nodemailer": "^6.9.9",
+    "nodemailer": "^7.0.7",
     "socket.io-client": "^4.7.5",
     "uuid": "^3.4.0"
   },
