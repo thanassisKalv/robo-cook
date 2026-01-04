@@ -10,7 +10,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^5.0.1",
+    "express": "^5.2.1",
     "monk": "^7.3.2",
     "nodemailer": "^7.0.11",
     "socket.io-client": "^4.7.5",
