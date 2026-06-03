@@ -13,7 +13,7 @@
     "express": "^5.2.1",
     "monk": "^7.3.2",
     "nodemailer": "^8.0.5",
-    "socket.io-client": "^4.7.5",
+    "socket.io-client": "^4.8.3",
     "uuid": "^14.0.0"
   },
   "devDependencies": {
